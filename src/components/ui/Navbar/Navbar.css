@@ -1,0 +1,125 @@
+.navbar-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 5px 15px 0 rgb(0, 0, 0, 0.5);
+    width: 95%;
+    height: 80px;
+    border-radius: 13px;
+    background-color: #fff;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 9999;
+}
+.navbar-logo{
+    color: #222;
+    font-size: 2rem;
+    cursor: pointer;
+}
+.nav-menu{
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-gap: 10px;
+    list-style: none;
+    align-items: center;
+}
+.navlinks{
+    cursor: pointer;
+}
+.navlinks a:hover{
+    background: #009398;
+    color: #fff;
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+}
+.nav-button a{
+    padding: 0.5rem 1rem;
+    white-space: nowrap;
+    border-radius: 0.3rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    background-color: #a09797;
+}
+.nav-button a:hover{
+    background-color: #942b18;
+}
+.menu-icons span{
+    cursor: pointer;
+}
+.menu-icons{
+    display: none;
+}
+@media screen and (max-width: 850px) {
+    .navbar-items{
+        z-index: 99;
+    }
+    .nav-menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: #fff;
+        width: 100%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: -100%;
+        opacity: 0;
+        align-items: stretch;
+        padding: 80px 0 30px 0;
+        margin: 0;
+        transition: 0.3s all ease-in-out;
+        border-radius: 13px;
+    }
+    .nav-menu.active{
+        left: 0;
+        opacity: 1;
+        z-index: -1;
+        transition: 0.3s all ease-in-out;
+    }
+    .navlinks:hover{
+        background: #01959a;
+        color: #fff;
+        border-radius: 4px;
+        transition: all 0.2 ease-in-out;
+    }
+    .nav-button:hover{
+        background: #01959a;
+        transition: none;
+    }
+    .nav-button{
+        display: block;
+        align-items: center;
+        padding: 1.5rem;
+        margin: auto;
+        border-radius: 4px;
+        width: 80%;
+        background: #01959a;
+        text-decoration: none;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+    .nav-button a{
+        background: #01959a;
+    }
+    .nav-button a:hover{
+        background-color: #01959a;
+    }
+    .nav-menu li{
+        padding: 20px 0;
+    }
+    .menu-icons{
+        display: block;
+    }
+    .menu-icons{
+        font-size: 1.2rem;
+        color: #222;
+    }
+}
