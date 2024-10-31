@@ -1,8 +1,8 @@
 import './Colaborator.css'
 import ColaboratorData from './ColaboratorData'
-import res1 from '../../../assets/images/restaurant1.webp'
-import res2 from '../../../assets/images/res2.jpg'
-import res3 from '../../../assets/images/res3.jpg'
+import res1 from '../../../../assets/images/restaurant1.webp'
+import res2 from '../../../../assets/images/res2.jpg'
+import res3 from '../../../../assets/images/res3.jpg'
 
 const Colaborator = () => {
   return (

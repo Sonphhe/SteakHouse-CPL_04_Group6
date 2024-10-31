@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css'
-import Login from './components/ui/Login/Login'
-import Register from './components/ui/Register/Register'
-import ForgotPassword from './components/ui/ForgotPassword/ForgotPassword'
+import Login from './pages/UserLoginView/components/Login/Login'
+import Register from './pages/UserLoginView/components/Register/Register'
+import ForgotPassword from './pages/UserLoginView/components/ForgotPassword/ForgotPassword'
 import UserLoginView from './pages/UserLoginView/UserLoginView'
 import Home from './pages/HomePage/HomePage'
 

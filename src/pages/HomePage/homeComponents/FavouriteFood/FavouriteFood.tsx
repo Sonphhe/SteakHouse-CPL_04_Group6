@@ -1,10 +1,10 @@
 import './FavouriteFood.css'
-import beff_wellington1 from '../../../assets/images/beef-wellington-brocolini.webp'
-import beff_wellington2 from '../../../assets/images/beef-wellington-steak-dish.avif'
-import t_bone1 from '../../../assets/images/T-bone-oven.jpg'
-import t_bone2 from '../../../assets/images/tbone3.jpg'
-import regular_steak1 from '../../../assets/images/regular-steak1.jpg'
-import regular_steak2 from '../../../assets/images/regular3.jpg'
+import beff_wellington1 from '../../../../assets/images/beef-wellington-brocolini.webp'
+import beff_wellington2 from '../../../../assets/images/beef-wellington-steak-dish.avif'
+import t_bone1 from '../../../../assets/images/T-bone-oven.jpg'
+import t_bone2 from '../../../../assets/images/tbone3.jpg'
+import regular_steak1 from '../../../../assets/images/regular-steak1.jpg'
+import regular_steak2 from '../../../../assets/images/regular3.jpg'
 import FavouriteFoodData from './FavouriteFoodData'
 
 const FavouriteFood = () => {

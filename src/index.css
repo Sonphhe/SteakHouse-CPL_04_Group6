@@ -15,7 +15,8 @@ body {
   align-items: center;
   text-align: center;
   background: url('./assets/images/background.jpg');
-  background-size: cover;
+  background-size: auto;
+  background-repeat: no-repeat;
 }
 
 code {
