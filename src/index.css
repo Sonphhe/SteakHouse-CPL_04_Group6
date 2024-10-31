@@ -11,11 +11,9 @@ body {
   font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
-  /* display: flex; */
   justify-content: center;
   align-items: center;
   text-align: center;
-  /* min-height: 100vh; */
   background: url('./assets/images/background.jpg');
   background-size: cover;
 }
