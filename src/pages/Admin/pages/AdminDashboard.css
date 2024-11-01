@@ -1,0 +1,161 @@
+/* Layout */
+/* Admin Dashboard specific styles */
+/* Override global background image for admin dashboard */
+.admin-dashboard {
+    background-image: none; /* Remove the global background */
+    background-color: #f0f2f5; /* Replace with a light color */
+}
+
+.admin-dashboard {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f2f5; /* Light background for admin */
+}
+
+.dashboard-container {
+    display: flex;
+    flex: 1;
+}
+
+.dashboard-main {
+    flex: 1;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+.admin-dashboard {
+    display: flex;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #d6c6a6;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .logo img {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.menu {
+    width: 100%;
+}
+
+.menu a {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.menu a:hover {
+    background-color: #c5b292;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.header h1 {
+    text-align: center;
+    color: #74aa50;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+/* Stats Section */
+.stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-card {
+    background-color: #fff;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .icon {
+    font-size: 30px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Charts Section */
+.charts {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 10px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.chart-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+}
+
+/* Revenue Section */
+.revenue-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.revenue-details {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+}
+
+.revenue-details h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.revenue-details p {
+    font-size: 0.9em;
+    margin: 8px 0;
+}
+
+.positive {
+    color: #00ff33;
+}
+
+.negative {
+    color: #ff0000;
+}
