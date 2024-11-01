@@ -1,0 +1,85 @@
+.contact-us-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px; 
+    background-color: #FAF3E0; 
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info,
+.contact-form {
+    width: 48%; 
+    padding: 20px;
+    background-color: #FFFFFF; 
+    border-radius: 8px; 
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.contact-info h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #A52A2A; 
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.contact-image {
+    width: 80%; 
+    border-radius: 8px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form label {
+    font-weight: bold;
+    color: #A52A2A;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 15px;
+    border: 2px solid #A52A2A; /* Steakhouse-themed border color */
+    border-radius: 8px;
+    background-color: #EFEFEF; /* Màu nền cho trường nhập liệu */
+    font-size: 16px;
+    width: 100%; /* Sử dụng chiều rộng đầy đủ */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for form fields */
+    transition: box-shadow 0.3s ease;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow on focus */
+    outline: none;
+}
+
+.contact-form textarea {
+    min-height: 280px; /* Giảm chiều cao tối thiểu nếu cần */
+}
+
+.contact-form button {
+    padding: 14px 30px;
+    background-color: #A52A2A; /* Nút màu chủ đạo */
+    color: #F5F5F5;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.contact-form button:hover {
+    background-color: #8B0000; /* Màu nền khi hover */
+}
