@@ -5,22 +5,22 @@ const ContactUs: React.FC = () => {
     return (
       <div className="contact-us-container">
         <div className="contact-info">
-          <h2>Thông tin liên hệ</h2>
-          <p>Địa chỉ:  Hà Nội</p>
+          <h2>Contact Information</h2>
+          <p>Address: Hanoi</p>
           <p>Email: steakhouse8386@gmail.com</p>
-          <p>Điện thoại: 09 9999 9999</p>
+          <p>Phone: 09 9999 9999</p>
           <img src={contactImage} alt="Contact us" className="contact-image" />
         </div>
         <form className="contact-form">
-          <label>Your name</label>
-          <input type="text" placeholder="Họ và tên của bạn" />
+          <label>Your Name</label>
+          <input type="text" placeholder="Your full name" />
           <label>Title</label>
-          <input type="text" placeholder="Tiêu đề" />
+          <input type="text" placeholder="Title" />
           <label>Phone</label>
-          <input type="text" placeholder="Số điện thoại của bạn" />
-          <label>Your message</label>
-          <textarea placeholder="Nội dung tin nhắn của bạn"></textarea>
-          <button type="submit">Gửi</button>
+          <input type="text" placeholder="Your phone number" />
+          <label>Your Message</label>
+          <textarea placeholder="Your message content"></textarea>
+          <button type="submit">Send</button>
         </form>
       </div>
     );
