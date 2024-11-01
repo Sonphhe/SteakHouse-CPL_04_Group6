@@ -6,6 +6,8 @@ import ForgotPassword from './pages/UserLoginView/components/ForgotPassword/Forg
 import UserLoginView from './pages/UserLoginView/UserLoginView'
 import Home from './pages/HomePage/HomePage'
 import Menu from './pages/Menu/Menu';
+import AboutUs from './pages/About/About'
+import ContactUs from './pages/Contact/Contact'
 function App() {
 
   return (
@@ -18,7 +20,8 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/forgotpass' element={<ForgotPassword />} />
           <Route path='/menu' element={<Menu />} />
-
+          <Route path='/about' element={<AboutUs />} />
+          <Route path='/contact' element={<ContactUs />} />
         </Routes>
       </BrowserRouter>
     </div>
