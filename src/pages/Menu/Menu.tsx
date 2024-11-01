@@ -41,65 +41,71 @@ interface MenuItem {
   price: string
   image: string
   category: string
+  description: string; 
 }
 
 const Menu: React.FC = () => {
   const navigate = useNavigate() // Khai báo useNavigate
   const menuItems: MenuItem[] = [
-    { name: 'HOKUBEE STEAK', price: '235.000 ₫', image: steak1, category: 'Steak' },
-    { name: 'USA RIB EYE STEAK', price: '195.000 ₫', image: steak2, category: 'Steak' },
-    { name: 'USA TOPBLADE STEAK', price: '165.000 ₫', image: steak3, category: 'Steak' },
-    { name: 'VIETNAM BEEFSTEAK', price: '105.000 ₫', image: steak4, category: 'Steak' },
-    { name: 'SHAKING BEEF', price: '95.000 ₫', image: steak5, category: 'Steak' },
-    { name: 'LAMB STEAK', price: '145.000 ₫', image: steak6, category: 'Steak' },
-    { name: 'SHAKEN BEEF WITH PEPPER SAUCE', price: '95.000 ₫', image: steak7, category: 'Steak' },
-    { name: 'NORWEGIAN SALMON', price: '175.000 ₫', image: steak8, category: 'Steak' },
-    { name: 'SMOKED DUCK BREAST', price: '95.000 ₫', image: steak9, category: 'Steak' },
-    { name: 'COOKTAIL FRUIT SEASON', price: '46.000 ₫', image: drinks1, category: 'Drinks' },
-    { name: 'BEACH FRUIT COCKTAIL', price: '45.000 ₫', image: drinks2, category: 'Drinks' },
-    { name: 'MOCKTAIL TORNADOL', price: '55.000 ₫', image: drinks3, category: 'Drinks' },
-    { name: 'GREEN FOREST COCKTAIL', price: '60.000 ₫', image: drinks4, category: 'Drinks' },
-    { name: 'FRUIT SEASON MOCKTAIL', price: '70.000 ₫', image: drinks5, category: 'Drinks' },
-    { name: 'CHILE WINE', price: '65.000 ₫', image: drinks6, category: 'Drinks' },
-    { name: 'SALT LEMON SODA', price: '75.000 ₫', image: drinks7, category: 'Drinks' },
-    { name: 'LEMON JUICE', price: '80.000 ₫', image: drinks8, category: 'Drinks' },
+    { name: 'HOKUBEE STEAK', price: '235.000 ₫', image: steak1, category: 'Steak', description: 'Steak Bo Hokubee, sirloin'  },
+    { name: 'USA RIB EYE STEAK', price: '195.000 ₫', image: steak2, category: 'Steak', description: 'USA Rib eye steak'  },
+    { name: 'USA TOPBLADE STEAK', price: '165.000 ₫', image: steak3, category: 'Steak' , description: 'USA Topblade steak' },
+    { name: 'VIETNAM BEEFSTEAK', price: '105.000 ₫', image: steak4, category: 'Steak' , description: 'Vietnamese Beefsteak, from beef tenderloin' },
+    { name: 'SHAKING BEEF', price: '95.000 ₫', image: steak5, category: 'Steak' , description: 'SHAKING BEEF' },
+    { name: 'LAMB STEAK', price: '145.000 ₫', image: steak6, category: 'Steak' , description: 'Imported Australian lamb, loin' },
+    { name: 'SHAKEN BEEF WITH PEPPER SAUCE', price: '95.000 ₫', image: steak7, category: 'Steak' , description: 'SHAKEN BEEF WITH PEPPER SAUCE' },
+    { name: 'NORWEGIAN SALMON', price: '175.000 ₫', image: steak8, category: 'Steak', description: 'NORWEGIAN SALMON'  },
+    { name: 'SMOKED DUCK BREAST', price: '95.000 ₫', image: steak9, category: 'Steak' , description: 'SMOKED DUCK BREAST' },
+    { name: 'COOKTAIL FRUIT SEASON', price: '46.000 ₫', image: drinks1, category: 'Drinks' , description: 'COOKTAIL FRUIT SEASON' },
+    { name: 'BEACH FRUIT COCKTAIL', price: '45.000 ₫', image: drinks2, category: 'Drinks' , description: 'BEACH FRUIT COCKTAIL' },
+    { name: 'MOCKTAIL TORNADOL', price: '55.000 ₫', image: drinks3, category: 'Drinks' , description: 'MOCKTAIL TORNADOL' },
+    { name: 'GREEN FOREST COCKTAIL', price: '60.000 ₫', image: drinks4, category: 'Drinks' , description: 'GREEN FOREST COCKTAIL' },
+    { name: 'FRUIT SEASON MOCKTAIL', price: '70.000 ₫', image: drinks5, category: 'Drinks' , description: 'FRUIT SEASON MOCKTAIL' },
+    { name: 'CHILE WINE', price: '65.000 ₫', image: drinks6, category: 'Drinks' , description: 'CHILE WINE' },
+    { name: 'SALT LEMON SODA', price: '75.000 ₫', image: drinks7, category: 'Drinks' , description: 'SALT LEMON SODA' },
+    { name: 'LEMON JUICE', price: '80.000 ₫', image: drinks8, category: 'Drinks' , description: 'LEMON JUICE' },
     {
       name: 'SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE',
       price: '65.000 ₫',
       image: salad1,
       category: 'Salad'
+      , description: 'SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE' 
     },
-    { name: 'BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE', price: '65.000 ₫', image: salad2, category: 'Salad' },
-    { name: 'BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE', price: '60.000 ₫', image: salad3, category: 'Salad' },
-    { name: 'BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE', price: '65.000 ₫', image: salad4, category: 'Salad' },
-    { name: 'SAUSAGE / BACON SALAD WITH CHEESE SAUCE', price: '50.000 ₫', image: salad5, category: 'Salad' },
-    { name: 'MULBERRY SALAD AND ICE CREAM', price: '55.000 ₫', image: salad6, category: 'Salad' },
-    { name: 'SEAFOOD PASTA WITH TOMYUM SAUCE', price: '165.000 ₫', image: spaghetti1, category: 'Spaghetti' },
-    { name: 'SEAFOOD PASTA WITH SALTED EGG PRODUCTS', price: '185.000 ₫', image: spaghetti2, category: 'Spaghetti' },
+    { name: 'BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE', price: '65.000 ₫', image: salad2, category: 'Salad' , description: 'BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE' },
+    { name: 'BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE', price: '60.000 ₫', image: salad3, category: 'Salad' , description: 'BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE' },
+    { name: 'BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE', price: '65.000 ₫', image: salad4, category: 'Salad' , description: 'BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE' },
+    { name: 'SAUSAGE / BACON SALAD WITH CHEESE SAUCE', price: '50.000 ₫', image: salad5, category: 'Salad' , description: 'SAUSAGE / BACON SALAD WITH CHEESE SAUCE'},
+    { name: 'MULBERRY SALAD AND ICE CREAM', price: '55.000 ₫', image: salad6, category: 'Salad' , description: 'MULBERRY SALAD AND ICE CREAM' },
+    { name: 'SEAFOOD PASTA WITH TOMYUM SAUCE', price: '165.000 ₫', image: spaghetti1, category: 'Spaghetti' , description: 'SEAFOOD PASTA WITH TOMYUM SAUCE' },
+    { name: 'SEAFOOD PASTA WITH SALTED EGG PRODUCTS', price: '185.000 ₫', image: spaghetti2, category: 'Spaghetti' , description:'SEAFOOD PASTA WITH SALTED EGG PRODUCTS' },
     {
       name: 'FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES',
       price: '95.000 ₫',
       image: spaghetti3,
       category: 'Spaghetti'
+      , description: 'FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES'
     },
-    { name: 'SALMON PASTA WITH CREAM', price: '175.000 ₫', image: spaghetti4, category: 'Spaghetti' },
+    { name: 'SALMON PASTA WITH CREAM', price: '175.000 ₫', image: spaghetti4, category: 'Spaghetti' , description: 'SALMON PASTA WITH CREAM' },
     {
       name: 'FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS',
       price: '110.000 ₫',
       image: spaghetti5,
       category: 'Spaghetti'
+      , description: 'FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS'
     },
     {
       name: 'FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES',
       price: '100.000 ₫',
       image: spaghetti6,
       category: 'Spaghetti'
+      , description:  'FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES'
     },
     {
       name: 'SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES',
       price: '130.000 ₫',
       image: spaghetti7,
       category: 'Spaghetti'
+      , description: 'SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES'
     }
   ]
 
@@ -152,6 +158,9 @@ const Menu: React.FC = () => {
       setCurrentPage(currentPage + 1)
     }
   }
+  const handleProductClick = (item: MenuItem) => {
+    navigate(`/productdetail/${item.name}`, { state: { item } });
+  };
 
   return (
     <div>
@@ -189,11 +198,15 @@ const Menu: React.FC = () => {
           </div>
           <div className='menu-items'>
             {paginatedItems.map((item, index) => (
-              <div className='menu-item' key={index}>
-                <img src={item.image} alt={item.name} />
-                <h3>{item.name}</h3>
-                <p>{item.price}</p>
-              </div>
+                        <div
+                        className="menu-item"
+                        key={index}
+                        onClick={() => handleProductClick(item)}
+                      >
+                        <img src={item.image} alt={item.name} />
+                        <h3>{item.name}</h3>
+                        <p>{item.price}</p>
+                      </div>
             ))}
           </div>
           <div className='pagination'>
