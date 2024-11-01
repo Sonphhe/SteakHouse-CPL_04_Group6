@@ -13,23 +13,28 @@ const Navbar = () => {
   const navListItems = [
     {
       text: 'Home',
-      icon: <IoHome />
+      icon: <IoHome />,
+      link: '/home'
     },
     {
       text: 'Menu',
-      icon: <MdOutlineRestaurantMenu />
+      icon: <MdOutlineRestaurantMenu />,
+      link: '/menu'
     },
     {
       text: 'Blog',
-      icon: <IoLogoWechat />
+      icon: <IoLogoWechat />,
+      link: '/blog'
     },
     {
       text: 'About',
-      icon: <AiFillInfoCircle />
+      icon: <AiFillInfoCircle />,
+      link: '/about'
     },
     {
       text: 'Contact',
-      icon: <FaPhoneVolume />
+      icon: <FaPhoneVolume />,
+      link: '/contact'
     }
   ]
 
@@ -46,7 +51,7 @@ const Navbar = () => {
       <ul className={closeMenu ? 'nav-menu' : 'nav-menu active'}>
         {navListItems.map((item, i) => (
           <li className='navlinks' key={i}>
-            <Link to={''}
+            <Link to={item.link}
               style={{
                 textDecoration: 'none',
                 color: '#222',
