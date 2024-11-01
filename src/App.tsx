@@ -8,6 +8,7 @@ import Home from './pages/HomePage/HomePage'
 import Menu from './pages/Menu/Menu';
 import AboutUs from './pages/About/About'
 import ContactUs from './pages/Contact/Contact'
+import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
 function App() {
 
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path='/menu' element={<Menu />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact' element={<ContactUs />} />
+          <Route path='/dashboard' element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
