@@ -3,6 +3,7 @@
   background-color: #ffffff;
   min-height: 100vh;
   padding: 20px; /* Thêm padding cho toàn bộ khu vực menu */
+  margin-top: -10px;
 }
 
 .sidebar {

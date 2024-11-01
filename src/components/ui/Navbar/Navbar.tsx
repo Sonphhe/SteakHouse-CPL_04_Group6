@@ -42,7 +42,7 @@ const Navbar = () => {
 
   return (
     <nav className='navbar-items'>
-      <h1 className='navbar-logo'>Steak House</h1>
+     <Link style={{textDecoration: 'none'}} to={'/home'}><h1 className='navbar-logo'>SteakHouse</h1></Link> 
 
       <div className='menu-icons'>
         <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
