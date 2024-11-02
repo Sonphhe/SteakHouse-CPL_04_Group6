@@ -10,6 +10,7 @@ import ProductDetail from './pages/Menu/ProductDetail/ProductDetail';
 import AboutUs from './pages/About/About'
 import ContactUs from './pages/Contact/Contact'
 import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
+import Blog from './pages/Blog/Blog'
 function App() {
 
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/dashboard' element={<AdminDashboard />} />
+          <Route path='/blog' element={<Blog />} />
         </Routes>
       </BrowserRouter>
     </div>
