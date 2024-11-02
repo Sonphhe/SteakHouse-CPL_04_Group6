@@ -2,7 +2,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faShoppingBag, faBoxOpen, faFileInvoice } from '@fortawesome/free-solid-svg-icons';
-import './AdminDashboard.css';
+import './AdminDashboard.module.css';
 
 const AdminDashboard = () => {
     return (
