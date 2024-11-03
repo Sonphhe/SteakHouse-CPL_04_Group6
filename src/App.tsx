@@ -11,6 +11,7 @@ import AboutUs from './pages/About/About'
 import ContactUs from './pages/Contact/Contact'
 import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
 import Blog from './pages/Blog/Blog'
+import PostDetail from './pages/Blog/blogComponent/PostDetail'
 function App() {
 
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='/contact' element={<ContactUs />} />
           <Route path='/dashboard' element={<AdminDashboard />} />
           <Route path='/blog' element={<Blog />} />
+          <Route path='/blog/postdetail' element={<PostDetail/>} />
         </Routes>
       </BrowserRouter>
     </div>

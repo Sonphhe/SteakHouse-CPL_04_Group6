@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import './BlogCard.css'
-import profile_image from '../../../../assets/images/profile-image.jpg'
+import profile_image from '../../../assets/images/profile-image.jpg'
+import PostAuthor from './PostAuthor';
 
 const BlogCard = (props: { thumbnail: string; category: string; title: string; des: string; authorId: number }) => {
   return (
@@ -15,11 +15,7 @@ const BlogCard = (props: { thumbnail: string; category: string; title: string; d
         <p>{props.des}</p>
       </div>
       <div className='post-footer'>
-        <img src={profile_image} alt='' />
-        <div className="post-footer-name">
-            <h4>By: {props.authorId}</h4>
-            <p>Just now</p>
-        </div>
+        <PostAuthor profile_image={profile_image} authorId={props.authorId} />
         <Link to={`/blog/categories/${props.category}`}>{props.category}</Link>
       </div>
     </div>
