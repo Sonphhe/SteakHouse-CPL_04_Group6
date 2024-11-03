@@ -1,12 +1,12 @@
 
 import { Link } from 'react-router-dom';
- import './Sidebar.module.css';
+ import './Sidebar.css';
 
 const Sidebar = () => {
     return (
-        <aside className="sidebar">
+        <aside className="sidebar-SidebarHKC">
             <h2>Admin Menu</h2>
-            <ul className="menu">
+            <ul className="menu-SidebarHKC">
                 <li><Link to="/admin/dashboard">Dashboard</Link></li>
                 <li><Link to="/admin/product-management">Product Management</Link></li>
                 <li><Link to="/admin/account-management">Account Management</Link></li>
