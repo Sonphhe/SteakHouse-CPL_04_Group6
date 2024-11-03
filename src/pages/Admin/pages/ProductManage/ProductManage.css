@@ -1,0 +1,105 @@
+/* Main Admin Dashboard Layout */
+.admin-dashboard-hungkc {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f2f5;
+}
+
+.dashboard-container-hungkc {
+    display: flex;
+    flex: 1;
+    padding-top: 60px; /* Account for navbar height */
+}
+
+.dashboard-main-hungkc {
+    flex: 1;
+    padding: 30px;
+    margin-left: 250px; /* Width of sidebar */
+    background-color: #ffffff;
+}
+
+/* Product Manage Styling */
+.product-manage-hungkc {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-manage-header-hungkc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.add-product-btn-hungkc {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.add-product-btn-hungkc:hover {
+    background-color: #218838;
+}
+
+.search-bar-hungkc {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.product-table-hungkc {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.product-table-hungkc th, .product-table-hungkc td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+}
+
+.product-table-hungkc th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+.product-table-hungkc tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.product-image-hungkc {
+    width: 50px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.status-icon-hungkc {
+    color: #28a745;
+    font-size: 1.5em;
+}
+
+.action-icon-hungkc {
+    margin: 0 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.edit-icon-hungkc {
+    color: #ffc107;
+}
+
+.delete-icon-hungkc {
+    color: #dc3545;
+}

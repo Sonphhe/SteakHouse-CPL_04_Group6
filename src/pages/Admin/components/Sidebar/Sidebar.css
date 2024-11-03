@@ -1,5 +1,5 @@
 /* Sidebar Styling */
-.sidebar {
+.sidebar-SidebarHKC {
     width: 250px;
     background-color: #d6c6a6;
     padding: 20px;
@@ -16,7 +16,7 @@
 }
 
 /* Sidebar Header */
-.sidebar h2 {
+.sidebar-SidebarHKC h2 {
     font-size: 1.5em;
     color: #333;
     margin-bottom: 30px;
@@ -25,7 +25,7 @@
 }
 
 /* Logo Styling (Optional) */
-.sidebar .logo img {
+.sidebar-SidebarHKC .logo img {
     width: 80px;
     margin-bottom: 20px;
     border-radius: 50%;
@@ -33,7 +33,7 @@
 }
 
 /* Sidebar Menu */
-.menu {
+.menu-SidebarHKC {
     width: 100%;
     list-style-type: none;
     padding: 0;
@@ -42,11 +42,11 @@
     flex-direction: column; /* Ensure menu items are displayed vertically */
 }
 
-.menu li {
+.menu-SidebarHKC li {
     margin: 10px 0;
 }
 
-.menu li a {
+.menu-SidebarHKC li a {
     display: block;
     padding: 12px 15px;
     color: #333;
@@ -58,7 +58,7 @@
     transition: background-color 0.3s, color 0.3s;
 }
 
-.menu li a:hover {
+.menu-SidebarHKC li a:hover {
     background-color: #c5b292;
     color: #74aa50;
 }

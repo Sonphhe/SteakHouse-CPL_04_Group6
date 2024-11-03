@@ -12,6 +12,7 @@ import ContactUs from './pages/Contact/Contact'
 import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
 import Blog from './pages/Blog/Blog'
 import PostDetail from './pages/Blog/blogComponent/PostDetail'
+import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
 function App() {
 
   return (
@@ -27,7 +28,8 @@ function App() {
           <Route path="/productdetail/:productName" element={<ProductDetail />} />
           <Route path='/about' element={<AboutUs />} />
           <Route path='/contact' element={<ContactUs />} />
-          <Route path='/dashboard' element={<AdminDashboard />} />
+          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+          <Route path='/admin/product-manage' element={<ProductManage />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/blog/postdetail' element={<PostDetail/>} />
         </Routes>

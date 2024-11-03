@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './navbar.css';
+import './Navbar.css';
 
 const Navbar = () => {
     const [time, setTime] = useState(new Date());
@@ -20,11 +20,11 @@ const Navbar = () => {
     });
 
     return (
-        <nav className="navbar">
-            <h1 className="navbar-title">Admin Dashboard</h1>
-            <div className="navbar-right">
-                <span className="navbar-time">{formattedTime}</span>
-                <Link to="/logout" className="navbar-logout">
+        <nav className="navbar-NavbarHKC">
+            <h1 className="navbar-title-NavbarHKC">Admin Dashboard</h1>
+            <div className="navbar-right-NavbarHKC">
+                <span className="navbar-time-NavbarHKC">{formattedTime}</span>
+                <Link to="/logout" className="navbar-logout-NavbarHKC">
                     Logout
                 </Link>
             </div>
