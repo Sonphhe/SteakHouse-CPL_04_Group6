@@ -1,4 +1,3 @@
-
 import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,18 +12,18 @@ const ProductManage = () => {
     ];
 
     return (
-        <div className="admin-dashboard">
+        <div className="admin-dashboard-hungkc">
             <Navbar />
-            <div className="dashboard-container">
+            <div className="dashboard-container-hungkc">
                 <Sidebar />
-                <main className="dashboard-main">
-                    <div className="product-manage">
-                        <div className="product-manage-header">
-                            <button className="add-product-btn">Add Product</button>
-                            <input type="text" placeholder="Search" className="search-bar" />
+                <main className="dashboard-main-hungkc">
+                    <div className="product-manage-hungkc">
+                        <div className="product-manage-header-hungkc">
+                            <button className="add-product-btn-hungkc">Add Product</button>
+                            <input type="text" placeholder="Search" className="search-bar-hungkc" />
                         </div>
 
-                        <table className="product-table">
+                        <table className="product-table-hungkc">
                             <thead>
                                 <tr>
                                     <th>No.</th>
@@ -42,16 +41,16 @@ const ProductManage = () => {
                                     <tr key={product.id}>
                                         <td>{index + 1}</td>
                                         <td>{product.name}</td>
-                                        <td><img src={product.image} alt={product.name} className="product-image" /></td>
+                                        <td><img src={product.image} alt={product.name} className="product-image-hungkc" /></td>
                                         <td>{product.quantity}</td>
                                         <td>{product.price}</td>
                                         <td>{product.description}</td>
                                         <td>
-                                            {product.status ? <FontAwesomeIcon icon={faCheck} className="status-icon" /> : ''}
+                                            {product.status ? <FontAwesomeIcon icon={faCheck} className="status-icon-hungkc" /> : ''}
                                         </td>
                                         <td>
-                                            <FontAwesomeIcon icon={faEdit} className="action-icon edit-icon" />
-                                            <FontAwesomeIcon icon={faTrash} className="action-icon delete-icon" />
+                                            <FontAwesomeIcon icon={faEdit} className="action-icon-hungkc edit-icon-hungkc" />
+                                            <FontAwesomeIcon icon={faTrash} className="action-icon-hungkc delete-icon-hungkc" />
                                         </td>
                                     </tr>
                                 ))}

@@ -1,5 +1,5 @@
-/* Admin Dashboard Layout */
-.admin-dashboard {
+/* Main Admin Dashboard Layout */
+.admin-dashboard-hungkc {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -7,13 +7,13 @@
     background-color: #f0f2f5;
 }
 
-.dashboard-container {
+.dashboard-container-hungkc {
     display: flex;
     flex: 1;
     padding-top: 60px; /* Account for navbar height */
 }
 
-.dashboard-main {
+.dashboard-main-hungkc {
     flex: 1;
     padding: 30px;
     margin-left: 250px; /* Width of sidebar */
@@ -21,19 +21,21 @@
 }
 
 /* Product Manage Styling */
-.product-manage {
+.product-manage-hungkc {
     background-color: #f8f9fa;
     padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.product-manage-header {
+.product-manage-header-hungkc {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.add-product-btn {
+.add-product-btn-hungkc {
     padding: 10px 20px;
     background-color: #28a745;
     color: white;
@@ -43,11 +45,11 @@
     font-size: 1em;
 }
 
-.add-product-btn:hover {
+.add-product-btn-hungkc:hover {
     background-color: #218838;
 }
 
-.search-bar {
+.search-bar-hungkc {
     padding: 10px;
     font-size: 1em;
     border: 1px solid #ccc;
@@ -55,45 +57,49 @@
     width: 200px;
 }
 
-.product-table {
+.product-table-hungkc {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
-.product-table th, .product-table td {
+.product-table-hungkc th, .product-table-hungkc td {
     padding: 15px;
-    text-align: center;
+    text-align: left;
     border: 1px solid #dee2e6;
 }
 
-.product-table th {
-    background-color: #28a745;
+.product-table-hungkc th {
+    background-color: #007bff;
     color: white;
+    font-weight: bold;
 }
 
-.product-table tr:nth-child(even) {
-    background-color: #f8f9fa;
+.product-table-hungkc tr:nth-child(even) {
+    background-color: #f2f2f2;
 }
 
-.product-image {
+.product-image-hungkc {
     width: 50px;
     height: auto;
     border-radius: 4px;
 }
 
-.status-icon {
+.status-icon-hungkc {
     color: #28a745;
+    font-size: 1.5em;
 }
 
-.action-icon {
-    margin: 0 5px;
+.action-icon-hungkc {
+    margin: 0 8px;
     cursor: pointer;
+    font-size: 1.2em;
 }
 
-.edit-icon {
+.edit-icon-hungkc {
     color: #ffc107;
 }
 
-.delete-icon {
+.delete-icon-hungkc {
     color: #dc3545;
 }
