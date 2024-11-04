@@ -19,14 +19,18 @@ const TableManagement: React.FC = () => {
   ];
 
   return (
-    <div>
+    <div className="admin-dashboard">
       <Navbar />
-      <div className="table-management-container">
+      <div className="dashboard-container">
         <Sidebar />
-        <div className="table-content">
-          <div className="table-inner-container">
-            <button className="add-table-btn">Add Table</button>
-            <table>
+        <main className="dashboard-main">
+          <div className="table-management">
+            <div className="table-management-header">
+              <button className="add-table-btn">Add Table</button>
+              <input type="text" placeholder="Search" className="search-bar" />
+            </div>
+
+            <table className="table-management-table">
               <thead>
                 <tr>
                   <th>No.</th>
@@ -58,7 +62,7 @@ const TableManagement: React.FC = () => {
               </tbody>
             </table>
           </div>
-        </div>
+        </main>
       </div>
     </div>
   );
