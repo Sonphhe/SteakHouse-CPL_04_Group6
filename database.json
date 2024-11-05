@@ -1,0 +1,402 @@
+{
+  "role": [
+    {
+      "roleId": 1,
+      "roleName": "admin"
+    },
+    {
+      "roleId": 2,
+      "roleName": "cashier"
+    },
+    {
+      "roleId": 3,
+      "roleName": "customer"
+    }
+  ],
+  "account": [
+    {
+      "id": 1,
+      "username": "sonpham123",
+      "password": "123",
+      "roleId": 1,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "username": "linhnguyen456",
+      "password": "456",
+      "roleId": 2,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "username": "minhtran789",
+      "password": "789",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "username": "anhle101",
+      "password": "101",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 5,
+      "username": "phongvo102",
+      "password": "102",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 6,
+      "username": "hoanganh202",
+      "password": "202",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 7,
+      "username": "baoquang303",
+      "password": "303",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 8,
+      "username": "quyenpham404",
+      "password": "404",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 9,
+      "username": "ngoctran505",
+      "password": "505",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 10,
+      "username": "truongle606",
+      "password": "606",
+      "roleId": 3,
+      "image": ""
+    }
+  ],
+  "productCategory": [
+    {
+      "id": 1,
+      "categoryName": "Steak"
+    },
+    {
+      "id": 2,
+      "categoryName": "Spaghetti"
+    },
+    {
+      "id": 3,
+      "categoryName": "Drink"
+    },
+    {
+      "id": 4,
+      "categoryName": "Salad"
+    }
+  ],
+  "product": [
+    {
+      "productId": 1,
+      "productName": "Hokubee Steak",
+      "productOldPrice": 100,
+      "productPrice": 90,
+      "image": "",
+      "description": "Steak Bo Hokubee, sirloin",
+      "categoryId": 1
+    },
+    {
+      "productId": 2,
+      "productName": "Wagyu Beef",
+      "productOldPrice": 120,
+      "productPrice": 115,
+      "image": "",
+      "description": "Japanese Wagyu beef, A5 quality",
+      "categoryId": 2
+    },
+    {
+      "productId": 3,
+      "productName": "Tenderloin Steak",
+      "productOldPrice": 85,
+      "productPrice": 80,
+      "image": "",
+      "description": "Tenderloin steak, juicy and tender",
+      "categoryId": 3
+    },
+    {
+      "productId": 4,
+      "productName": "Ribeye Steak",
+      "productOldPrice": 95,
+      "productPrice": 90,
+      "image": "",
+      "description": "Rich and flavorful ribeye steak",
+      "categoryId": 4
+    },
+    {
+      "productId": 5,
+      "productName": "T-bone Steak",
+      "productOldPrice": 110,
+      "productPrice": 100,
+      "image": "",
+      "description": "Classic T-bone steak with bone-in",
+      "categoryId": 1
+    },
+    {
+      "productId": 6,
+      "productName": "Filet Mignon",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "",
+      "description": "Premium cut filet mignon",
+      "categoryId": 2
+    },
+    {
+      "productId": 7,
+      "productName": "Tomahawk Steak",
+      "productOldPrice": 140,
+      "productPrice": 135,
+      "image": "",
+      "description": "Thick and flavorful Tomahawk steak",
+      "categoryId": 3
+    },
+    {
+      "productId": 8,
+      "productName": "Porterhouse Steak",
+      "productOldPrice": 115,
+      "productPrice": 110,
+      "image": "",
+      "description": "Porterhouse steak, a tender cut",
+      "categoryId": 4
+    },
+    {
+      "productId": 9,
+      "productName": "New York Strip",
+      "productOldPrice": 105,
+      "productPrice": 100,
+      "image": "",
+      "description": "Classic New York strip steak",
+      "categoryId": 1
+    },
+    {
+      "productId": 10,
+      "productName": "Denver Steak",
+      "productOldPrice": 70,
+      "productPrice": 65,
+      "image": "",
+      "description": "Juicy Denver steak, well-marbled",
+      "categoryId": 2
+    },
+    {
+      "productId": 11,
+      "productName": "Flank Steak",
+      "productOldPrice": 80,
+      "productPrice": 75,
+      "image": "",
+      "description": "Flank steak, lean and flavorful",
+      "categoryId": 3
+    },
+    {
+      "productId": 12,
+      "productName": "Flat Iron Steak",
+      "productOldPrice": 75,
+      "productPrice": 70,
+      "image": "",
+      "description": "Flat iron steak, tender and tasty",
+      "categoryId": 4
+    },
+    {
+      "productId": 13,
+      "productName": "Skirt Steak",
+      "productOldPrice": 85,
+      "productPrice": 80,
+      "image": "",
+      "description": "Marinated skirt steak for grilling",
+      "categoryId": 1
+    },
+    {
+      "productId": 14,
+      "productName": "Hanger Steak",
+      "productOldPrice": 90,
+      "productPrice": 85,
+      "image": "",
+      "description": "Flavorful hanger steak, lean cut",
+      "categoryId": 2
+    },
+    {
+      "productId": 15,
+      "productName": "Chuck Eye Steak",
+      "productOldPrice": 60,
+      "productPrice": 55,
+      "image": "",
+      "description": "Affordable chuck eye steak",
+      "categoryId": 3
+    },
+    {
+      "productId": 16,
+      "productName": "Sirloin Tip Steak",
+      "productOldPrice": 65,
+      "productPrice": 60,
+      "image": "",
+      "description": "Sirloin tip steak, lean and tasty",
+      "categoryId": 4
+    },
+    {
+      "productId": 17,
+      "productName": "Tri-Tip Steak",
+      "productOldPrice": 95,
+      "productPrice": 90,
+      "image": "",
+      "description": "California-style tri-tip steak",
+      "categoryId": 1
+    },
+    {
+      "productId": 18,
+      "productName": "Brisket",
+      "productOldPrice": 100,
+      "productPrice": 95,
+      "image": "",
+      "description": "Slow-cooked brisket, rich flavor",
+      "categoryId": 2
+    },
+    {
+      "productId": 19,
+      "productName": "Top Sirloin",
+      "productOldPrice": 85,
+      "productPrice": 80,
+      "image": "",
+      "description": "Top sirloin, juicy and flavorful",
+      "categoryId": 3
+    },
+    {
+      "productId": 20,
+      "productName": "Picanha",
+      "productOldPrice": 110,
+      "productPrice": 105,
+      "image": "",
+      "description": "Brazilian-style picanha steak",
+      "categoryId": 4
+    }
+  ],
+  "blogCategory": [
+    {
+        "id": 1,
+        "name": "Meat"
+      },
+      {
+        "id": 2,
+        "name": "Vegetables"
+      },
+      {
+        "id": 3,
+        "name": "Fruits"
+      },
+      {
+        "id": 4,
+        "name": "Dairy & Eggs"
+      },
+      {
+        "id": 5,
+        "name": "Grains & Cereals"
+      },
+      {
+        "id": 6,
+        "name": "Bakery & Desserts"
+      },
+      {
+        "id": 7,
+        "name": "Spices & Condiments"
+      },
+      {
+        "id": 8,
+        "name": "Snacks & Sweets"
+      },
+      {
+        "id": 9,
+        "name": "Beverages"
+      },
+      {
+        "id": 10,
+        "name": "Prepared Meals"
+      }
+  ],
+  "blog" : [
+    {
+      "id": 1,
+      "title": "Understanding Quantum Mechanics",
+      "description": "A beginner-friendly guide to quantum mechanics.",
+      "image": "",
+      "blogCategoryId": 2
+    },
+    {
+      "id": 2,
+      "title": "The Basics of Machine Learning",
+      "description": "An introductory article on machine learning concepts and applications.",
+      "image": "",
+      "blogCategoryId": 3
+    },
+    {
+      "id": 3,
+      "title": "Exploring the Human Brain",
+      "description": "Insights into neuroscience and how the brain functions.",
+      "image": "",
+      "blogCategoryId": 4
+    },
+    {
+      "id": 4,
+      "title": "History of Ancient Civilizations",
+      "description": "A journey through ancient civilizations and their impact on modern society.",
+      "image": "",
+      "blogCategoryId": 1
+    },
+    {
+      "id": 5,
+      "title": "Introduction to Artificial Intelligence",
+      "description": "A look at the fundamentals of AI and its impact on the future.",
+      "image": "",
+      "blogCategoryId": 3
+    },
+    {
+      "id": 6,
+      "title": "Climate Change and Its Effects",
+      "description": "An analysis of climate change and its global impact.",
+      "image": "",
+      "blogCategoryId": 5
+    },
+    {
+      "id": 7,
+      "title": "Guide to Meditation and Mindfulness",
+      "description": "Exploring techniques for mindfulness and achieving mental clarity.",
+      "image": "",
+      "blogCategoryId": 6
+    },
+    {
+      "id": 8,
+      "title": "The Future of Renewable Energy",
+      "description": "Examining renewable energy sources and their role in sustainability.",
+      "image": "",
+      "blogCategoryId": 5
+    },
+    {
+      "id": 9,
+      "title": "How to Improve Your Writing Skills",
+      "description": "Tips and techniques to become a more effective writer.",
+      "image": "",
+      "blogCategoryId": 7
+    },
+    {
+      "id": 10,
+      "title": "The Fundamentals of Blockchain Technology",
+      "description": "An introductory guide to blockchain and its applications.",
+      "image": "",
+      "blogCategoryId": 3
+    }
+  ]
+}

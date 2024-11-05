@@ -40,3 +40,14 @@
     font-size: 1.3rem;
     padding: .9rem 0 .2rem 0;
 }
+
+@media screen and (max-width: 850px) {
+    .colab-card{
+        display: flex;
+        flex-direction: column;
+    }
+    .c-card{
+        width: 100%;
+        margin: 20px 0;
+    }
+}
