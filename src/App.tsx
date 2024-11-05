@@ -13,6 +13,7 @@ import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
 import Blog from './pages/Blog/Blog'
 import PostDetail from './pages/Blog/blogComponent/PostDetail'
 import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
+import TableManagement from './pages/Admin/pages/TableManagement/TableManagement'
 function App() {
 
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/admin/product-manage' element={<ProductManage />} />
           <Route path='/blog' element={<Blog />} />
           <Route path='/blog/postdetail' element={<PostDetail/>} />
+          <Route path='/admin/table-management' element={<TableManagement/>} />
         </Routes>
       </BrowserRouter>
     </div>
