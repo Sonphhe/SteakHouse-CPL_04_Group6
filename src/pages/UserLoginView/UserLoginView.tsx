@@ -1,4 +1,5 @@
 import Login from "./components/Login/Login"
+import './UserLoginView.css'
 
 const UserLoginView = () => {
   return (

@@ -1,9 +1,10 @@
-import Hero from "./homeComponents/Hero/Hero"
+import Hero from "../../components/ui/Hero/Hero"
 import Navbar from "../../components/ui/Navbar/Navbar"
 import hero_homeImg from '../../assets/images/hero-home2.jpg'
 import './HomePage.css'
 import FavouriteFood from "./homeComponents/FavouriteFood/FavouriteFood"
 import Colaborator from "./homeComponents/Colaborator/Colaborator"
+import Footer from "../../components/ui/Footer/Footer"
 
 const Home = () => {
     return (
@@ -17,7 +18,7 @@ const Home = () => {
         />
         <FavouriteFood/>
         <Colaborator/>
-        <Footer
+        <Footer/>
       </div>
     )
   }

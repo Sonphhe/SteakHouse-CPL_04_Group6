@@ -18,6 +18,10 @@
     cursor: pointer;
     padding:1rem .8rem ;
 }
+.c-card a{
+    text-decoration: none;
+    color: black;
+}
 .c-image{
     height: 200px;
     overflow: hidden;
