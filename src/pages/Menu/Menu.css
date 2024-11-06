@@ -40,23 +40,25 @@
   padding-left: 20px;
 }
 
-.search-bar {
+.search-barr {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
 
-.search-bar input {
+.search-barr input {
   width: 65%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-.search-bar select {
+.search-barr select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
 }
 
 .menu-items {
@@ -66,27 +68,33 @@
 }
 
 .menu-item {
-  border: 1px solid #ccc;
-  border-radius: 8px; /* Giảm border-radius */
-  overflow: hidden;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Giảm hiệu ứng bóng mờ */
-  transition: transform 0.2s ease; /* Giảm thời gian chuyển đổi */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .menu-item:hover {
-  transform: scale(1.05); /* Giảm hiệu ứng phóng to */
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 .menu-item img {
   width: 90%; /* Đảm bảo ảnh chiếm toàn bộ khung */
   height: auto;
   border-bottom: 1px solid #ccc; /* Thêm viền dưới cho hình ảnh */
+  border-radius: 8px;
 }
 
 .menu-item h3 {
-  margin: 10px 0; /* Giảm khoảng cách trên dưới */
-  font-size: 1em; /* Giảm kích thước font chữ */
+  font-size: 1.1em;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .menu-item p {
