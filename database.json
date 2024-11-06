@@ -106,10 +106,10 @@
   "product": [
     {
       "productId": 1,
-      "productName": "Hokubee Steak",
+      "productName": "Hokubee Steakout ogee da fix xong",
       "productOldPrice": 100,
       "productPrice": 90,
-      "image": "",
+      "image": "src/assets/images/steak2.jpg",
       "description": "Steak Bo Hokubee, sirloin",
       "categoryId": 1
     },
@@ -118,7 +118,7 @@
       "productName": "Wagyu Beef",
       "productOldPrice": 120,
       "productPrice": 115,
-      "image": "",
+      "image": "src/assets/images/steak3.jpg",
       "description": "Japanese Wagyu beef, A5 quality",
       "categoryId": 2
     },
@@ -127,7 +127,7 @@
       "productName": "Tenderloin Steak",
       "productOldPrice": 85,
       "productPrice": 80,
-      "image": "",
+      "image": "src/assets/images/steak3.jpg",
       "description": "Tenderloin steak, juicy and tender",
       "categoryId": 3
     },
@@ -136,7 +136,7 @@
       "productName": "Ribeye Steak",
       "productOldPrice": 95,
       "productPrice": 90,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI1.jpeg",
       "description": "Rich and flavorful ribeye steak",
       "categoryId": 4
     },
@@ -145,7 +145,7 @@
       "productName": "T-bone Steak",
       "productOldPrice": 110,
       "productPrice": 100,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI2.jpeg",
       "description": "Classic T-bone steak with bone-in",
       "categoryId": 1
     },
@@ -154,7 +154,7 @@
       "productName": "Filet Mignon",
       "productOldPrice": 130,
       "productPrice": 125,
-      "image": "",
+      "image": "src/assets/images/SALAD1.jpeg",
       "description": "Premium cut filet mignon",
       "categoryId": 2
     },
@@ -163,7 +163,7 @@
       "productName": "Tomahawk Steak",
       "productOldPrice": 140,
       "productPrice": 135,
-      "image": "",
+      "image": "src/assets/images/SALAD2.jpg",
       "description": "Thick and flavorful Tomahawk steak",
       "categoryId": 3
     },
@@ -172,7 +172,7 @@
       "productName": "Porterhouse Steak",
       "productOldPrice": 115,
       "productPrice": 110,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI5.jpeg",
       "description": "Porterhouse steak, a tender cut",
       "categoryId": 4
     },
@@ -181,7 +181,7 @@
       "productName": "New York Strip",
       "productOldPrice": 105,
       "productPrice": 100,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI6.jpg",
       "description": "Classic New York strip steak",
       "categoryId": 1
     },
@@ -190,7 +190,7 @@
       "productName": "Denver Steak",
       "productOldPrice": 70,
       "productPrice": 65,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI7.jpg",
       "description": "Juicy Denver steak, well-marbled",
       "categoryId": 2
     },
@@ -199,7 +199,7 @@
       "productName": "Flank Steak",
       "productOldPrice": 80,
       "productPrice": 75,
-      "image": "",
+      "image": "src/assets/images/steak4.jpeg",
       "description": "Flank steak, lean and flavorful",
       "categoryId": 3
     },
@@ -208,7 +208,7 @@
       "productName": "Flat Iron Steak",
       "productOldPrice": 75,
       "productPrice": 70,
-      "image": "",
+      "image": "src/assets/images/steak5.jpg",
       "description": "Flat iron steak, tender and tasty",
       "categoryId": 4
     },
@@ -217,7 +217,7 @@
       "productName": "Skirt Steak",
       "productOldPrice": 85,
       "productPrice": 80,
-      "image": "",
+      "image": "src/assets/images/steak6.jpg",
       "description": "Marinated skirt steak for grilling",
       "categoryId": 1
     },
@@ -226,7 +226,7 @@
       "productName": "Hanger Steak",
       "productOldPrice": 90,
       "productPrice": 85,
-      "image": "",
+      "image": "src/assets/images/steak7.jpg",
       "description": "Flavorful hanger steak, lean cut",
       "categoryId": 2
     },
@@ -235,7 +235,7 @@
       "productName": "Chuck Eye Steak",
       "productOldPrice": 60,
       "productPrice": 55,
-      "image": "",
+      "image": "src/assets/images/steak8.jpg",
       "description": "Affordable chuck eye steak",
       "categoryId": 3
     },
@@ -244,7 +244,7 @@
       "productName": "Sirloin Tip Steak",
       "productOldPrice": 65,
       "productPrice": 60,
-      "image": "",
+      "image": "src/assets/images/steak9.jpg",
       "description": "Sirloin tip steak, lean and tasty",
       "categoryId": 4
     },
@@ -253,7 +253,7 @@
       "productName": "Tri-Tip Steak",
       "productOldPrice": 95,
       "productPrice": 90,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI7.jpg",
       "description": "California-style tri-tip steak",
       "categoryId": 1
     },
@@ -262,7 +262,7 @@
       "productName": "Brisket",
       "productOldPrice": 100,
       "productPrice": 95,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI1.jpeg",
       "description": "Slow-cooked brisket, rich flavor",
       "categoryId": 2
     },
@@ -271,7 +271,7 @@
       "productName": "Top Sirloin",
       "productOldPrice": 85,
       "productPrice": 80,
-      "image": "",
+      "image": "src/assets/images/SALAD2.jpg",
       "description": "Top sirloin, juicy and flavorful",
       "categoryId": 3
     },
@@ -280,7 +280,7 @@
       "productName": "Picanha",
       "productOldPrice": 110,
       "productPrice": 105,
-      "image": "",
+      "image": "src/assets/images/SPAGHETTI2.jpeg",
       "description": "Brazilian-style picanha steak",
       "categoryId": 4
     }
