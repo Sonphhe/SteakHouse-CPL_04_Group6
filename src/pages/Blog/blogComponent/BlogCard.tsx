@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import profile_image from '../../../assets/images/profile-image.jpg'
 import PostAuthor from './PostAuthor';
 
-const BlogCard = (props: { thumbnail: string; category: string; title: string; des: string; authorId: number }) => {
+const BlogCard = (props: { thumbnail: string; category: number; title: string; des: string; authorId: number }) => {
   return (
     <div className='blog-card'>
       <div className='post-thumbnail'>

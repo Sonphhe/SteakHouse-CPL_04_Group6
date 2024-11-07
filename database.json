@@ -300,23 +300,23 @@
       },
       {
         "id": 4,
-        "name": "Dairy & Eggs"
+        "name": "Dairy&Eggs"
       },
       {
         "id": 5,
-        "name": "Grains & Cereals"
+        "name": "Grains&Cereals"
       },
       {
         "id": 6,
-        "name": "Bakery & Desserts"
+        "name": "Bakery&Desserts"
       },
       {
         "id": 7,
-        "name": "Spices & Condiments"
+        "name": "Spices&Condiments"
       },
       {
         "id": 8,
-        "name": "Snacks & Sweets"
+        "name": "Snacks&Sweets"
       },
       {
         "id": 9,
@@ -324,79 +324,90 @@
       },
       {
         "id": 10,
-        "name": "Prepared Meals"
+        "name": "Meals"
       }
   ],
   "blog" : [
-    {
+    { 
       "id": 1,
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
-      "image": "",
-      "blogCategoryId": 2
+      "image": "src/assets/images/steak3.jpg",
+      "blogCategoryId": 2,
+      "accountId": 2
+      
     },
     {
       "id": 2,
       "title": "The Basics of Machine Learning",
       "description": "An introductory article on machine learning concepts and applications.",
-      "image": "",
-      "blogCategoryId": 3
+      "image": "src/assets/images/beef-wellington-brocolini.webp",
+      "blogCategoryId": 3,
+      "accountId": 2
     },
     {
       "id": 3,
       "title": "Exploring the Human Brain",
       "description": "Insights into neuroscience and how the brain functions.",
-      "image": "",
-      "blogCategoryId": 4
+      "image": "src/assets/images/regular-steak1.jpg",
+      "blogCategoryId": 4,
+      "accountId": 2
     },
     {
       "id": 4,
       "title": "History of Ancient Civilizations",
       "description": "A journey through ancient civilizations and their impact on modern society.",
-      "image": "",
-      "blogCategoryId": 1
+      "image": "src/assets/images/steak4.jpeg",
+      "blogCategoryId": 1,
+      "accountId": 2
     },
     {
       "id": 5,
       "title": "Introduction to Artificial Intelligence",
       "description": "A look at the fundamentals of AI and its impact on the future.",
-      "image": "",
-      "blogCategoryId": 3
+      "image": "src/assets/images/SPAGHETTI6.jpg",
+      "blogCategoryId": 3,
+      "accountId": 2
     },
     {
       "id": 6,
       "title": "Climate Change and Its Effects",
       "description": "An analysis of climate change and its global impact.",
-      "image": "",
-      "blogCategoryId": 5
+      "image": "src/assets/images/SALAD2.jpg",
+      "blogCategoryId": 5,
+      "accountId": 2
     },
     {
       "id": 7,
       "title": "Guide to Meditation and Mindfulness",
       "description": "Exploring techniques for mindfulness and achieving mental clarity.",
-      "image": "",
-      "blogCategoryId": 6
+      "image": "src/assets/images/restaurant1.webp",
+      "blogCategoryId": 6,
+      "accountId": 2
     },
     {
       "id": 8,
       "title": "The Future of Renewable Energy",
       "description": "Examining renewable energy sources and their role in sustainability.",
-      "image": "",
-      "blogCategoryId": 5
+      "image": "src/assets/images/restaurant1.webp",
+      "blogCategoryId": 5,
+      "accountId": 2
     },
     {
       "id": 9,
       "title": "How to Improve Your Writing Skills",
       "description": "Tips and techniques to become a more effective writer.",
-      "image": "",
-      "blogCategoryId": 7
+      "image": "src/assets/images/restaurant1.webp",
+      "blogCategoryId": 7,
+      "accountId": 2
     },
     {
       "id": 10,
       "title": "The Fundamentals of Blockchain Technology",
       "description": "An introductory guide to blockchain and its applications.",
-      "image": "",
-      "blogCategoryId": 3
+      "image": "src/assets/images/SPAGHETTI6.jpg",
+      "blogCategoryId": 3,
+      "accountId": 2
     }
   ],
   "menuItems": [

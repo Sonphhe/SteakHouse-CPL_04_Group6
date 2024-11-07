@@ -6,6 +6,8 @@ interface SteakHouseType {
   accounts: AccountType[]
   products: ProductType[]
   categories: ProductCategoryType[]
+  blogCategories: BlogCategoryType[]
+  blogs: BlogType[]
 }
 
 interface AccountType {
@@ -28,6 +30,18 @@ interface ProductCategoryType {
   id: number
   categoryName: string
 }
+interface BlogCategoryType {
+  id: number
+  name: string
+}
+interface BlogType {
+  id: number
+  title: string
+  description: string
+  image: string
+  blogCategoryId: number
+  accountId: number
+}
 
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -39,7 +53,9 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [accounts, setAccounts] = useState<AccountType[]>([])
   const [products, setProducts] = useState<ProductType[]>([])
   const [categories, setCategories] = useState<ProductCategoryType[]>([])
-
+  const [blogCategories, setBlogCategories] = useState<BlogCategoryType[]>([])
+  const [blogs, setBlogs] = useState<BlogType[]>([])
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -51,6 +67,12 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
 
         const categoryRes = await axios.get(`${API_ROOT}/productCategory`)
         setCategories(categoryRes.data)
+
+        const blogCategoryRes = await axios.get(`${API_ROOT}/blogCategory`)
+        setBlogCategories(blogCategoryRes.data)
+
+        const blogRes = await axios.get(`${API_ROOT}/blog`)
+        setBlogs(blogRes.data)
       } catch (error) {
         console.error('Error fetching account data:', error)
       }
@@ -58,7 +80,11 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     fetchData()
   }, [])
 
-  return <SteakHouseContext.Provider value={{ accounts, products, categories }}>{children}</SteakHouseContext.Provider>
+  return (
+    <SteakHouseContext.Provider value={{ accounts, products, categories, blogCategories, blogs }}>
+      {children}
+    </SteakHouseContext.Provider>
+  )
 }
 
 export const useSteakHouseContext = () => {
