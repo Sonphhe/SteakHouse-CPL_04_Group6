@@ -1,0 +1,644 @@
+{
+  "role": [
+    {
+      "roleId": 1,
+      "roleName": "admin"
+    },
+    {
+      "roleId": 2,
+      "roleName": "cashier"
+    },
+    {
+      "roleId": 3,
+      "roleName": "customer"
+    }
+  ],
+  "account": [
+    {
+      "id": 1,
+      "username": "sonpham123",
+      "password": "123",
+      "roleId": 1,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "username": "linhnguyen456",
+      "password": "456",
+      "roleId": 2,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "username": "minhtran789",
+      "password": "789",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "username": "anhle101",
+      "password": "101",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 5,
+      "username": "phongvo102",
+      "password": "102",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 6,
+      "username": "hoanganh202",
+      "password": "202",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 7,
+      "username": "baoquang303",
+      "password": "303",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 8,
+      "username": "quyenpham404",
+      "password": "404",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 9,
+      "username": "ngoctran505",
+      "password": "505",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 10,
+      "username": "truongle606",
+      "password": "606",
+      "roleId": 3,
+      "image": ""
+    }
+  ],
+  "productCategory": [
+    {
+      "id": 1,
+      "categoryName": "Steak"
+    },
+    {
+      "id": 2,
+      "categoryName": "Spaghetti"
+    },
+    {
+      "id": 3,
+      "categoryName": "Drinks"
+    },
+    {
+      "id": 4,
+      "categoryName": "Salad"
+    }
+  ],
+  "product": [
+    {
+      "productId": 1,
+      "productName": "Hokubee Steakout ogee da fix xong",
+      "productOldPrice": 100,
+      "productPrice": 90,
+      "image": "src/assets/images/steak2.jpg",
+      "description": "Steak Bo Hokubee, sirloin",
+      "categoryId": 1
+    },
+    {
+      "productId": 2,
+      "productName": "Wagyu Beef",
+      "productOldPrice": 120,
+      "productPrice": 115,
+      "image": "src/assets/images/steak3.jpg",
+      "description": "Japanese Wagyu beef, A5 quality",
+      "categoryId": 2
+    },
+    {
+      "productId": 3,
+      "productName": "Tenderloin Steak",
+      "productOldPrice": 85,
+      "productPrice": 80,
+      "image": "src/assets/images/steak3.jpg",
+      "description": "Tenderloin steak, juicy and tender",
+      "categoryId": 3
+    },
+    {
+      "productId": 4,
+      "productName": "Ribeye Steak",
+      "productOldPrice": 95,
+      "productPrice": 90,
+      "image": "src/assets/images/SPAGHETTI1.jpeg",
+      "description": "Rich and flavorful ribeye steak",
+      "categoryId": 4
+    },
+    {
+      "productId": 5,
+      "productName": "T-bone Steak",
+      "productOldPrice": 110,
+      "productPrice": 100,
+      "image": "src/assets/images/SPAGHETTI2.jpeg",
+      "description": "Classic T-bone steak with bone-in",
+      "categoryId": 1
+    },
+    {
+      "productId": 6,
+      "productName": "Filet Mignon",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "src/assets/images/SALAD1.jpeg",
+      "description": "Premium cut filet mignon",
+      "categoryId": 2
+    },
+    {
+      "productId": 7,
+      "productName": "Tomahawk Steak",
+      "productOldPrice": 140,
+      "productPrice": 135,
+      "image": "src/assets/images/SALAD2.jpg",
+      "description": "Thick and flavorful Tomahawk steak",
+      "categoryId": 3
+    },
+    {
+      "productId": 8,
+      "productName": "Porterhouse Steak",
+      "productOldPrice": 115,
+      "productPrice": 110,
+      "image": "src/assets/images/SPAGHETTI5.jpeg",
+      "description": "Porterhouse steak, a tender cut",
+      "categoryId": 4
+    },
+    {
+      "productId": 9,
+      "productName": "New York Strip",
+      "productOldPrice": 105,
+      "productPrice": 100,
+      "image": "src/assets/images/SPAGHETTI6.jpg",
+      "description": "Classic New York strip steak",
+      "categoryId": 1
+    },
+    {
+      "productId": 10,
+      "productName": "Denver Steak",
+      "productOldPrice": 70,
+      "productPrice": 65,
+      "image": "src/assets/images/SPAGHETTI7.jpg",
+      "description": "Juicy Denver steak, well-marbled",
+      "categoryId": 2
+    },
+    {
+      "productId": 11,
+      "productName": "Flank Steak",
+      "productOldPrice": 80,
+      "productPrice": 75,
+      "image": "src/assets/images/steak4.jpeg",
+      "description": "Flank steak, lean and flavorful",
+      "categoryId": 3
+    },
+    {
+      "productId": 12,
+      "productName": "Flat Iron Steak",
+      "productOldPrice": 75,
+      "productPrice": 70,
+      "image": "src/assets/images/steak5.jpg",
+      "description": "Flat iron steak, tender and tasty",
+      "categoryId": 4
+    },
+    {
+      "productId": 13,
+      "productName": "Skirt Steak",
+      "productOldPrice": 85,
+      "productPrice": 80,
+      "image": "src/assets/images/steak6.jpg",
+      "description": "Marinated skirt steak for grilling",
+      "categoryId": 1
+    },
+    {
+      "productId": 14,
+      "productName": "Hanger Steak",
+      "productOldPrice": 90,
+      "productPrice": 85,
+      "image": "src/assets/images/steak7.jpg",
+      "description": "Flavorful hanger steak, lean cut",
+      "categoryId": 2
+    },
+    {
+      "productId": 15,
+      "productName": "Chuck Eye Steak",
+      "productOldPrice": 60,
+      "productPrice": 55,
+      "image": "src/assets/images/steak8.jpg",
+      "description": "Affordable chuck eye steak",
+      "categoryId": 3
+    },
+    {
+      "productId": 16,
+      "productName": "Sirloin Tip Steak",
+      "productOldPrice": 65,
+      "productPrice": 60,
+      "image": "src/assets/images/steak9.jpg",
+      "description": "Sirloin tip steak, lean and tasty",
+      "categoryId": 4
+    },
+    {
+      "productId": 17,
+      "productName": "Tri-Tip Steak",
+      "productOldPrice": 95,
+      "productPrice": 90,
+      "image": "src/assets/images/SPAGHETTI7.jpg",
+      "description": "California-style tri-tip steak",
+      "categoryId": 1
+    },
+    {
+      "productId": 18,
+      "productName": "Brisket",
+      "productOldPrice": 100,
+      "productPrice": 95,
+      "image": "src/assets/images/SPAGHETTI1.jpeg",
+      "description": "Slow-cooked brisket, rich flavor",
+      "categoryId": 2
+    },
+    {
+      "productId": 19,
+      "productName": "Top Sirloin",
+      "productOldPrice": 85,
+      "productPrice": 80,
+      "image": "src/assets/images/SALAD2.jpg",
+      "description": "Top sirloin, juicy and flavorful",
+      "categoryId": 3
+    },
+    {
+      "productId": 20,
+      "productName": "Picanha",
+      "productOldPrice": 110,
+      "productPrice": 105,
+      "image": "src/assets/images/SPAGHETTI2.jpeg",
+      "description": "Brazilian-style picanha steak",
+      "categoryId": 4
+    }
+  ],
+  "blogCategory": [
+    {
+        "id": 1,
+        "name": "Meat"
+      },
+      {
+        "id": 2,
+        "name": "Vegetables"
+      },
+      {
+        "id": 3,
+        "name": "Fruits"
+      },
+      {
+        "id": 4,
+        "name": "Dairy & Eggs"
+      },
+      {
+        "id": 5,
+        "name": "Grains & Cereals"
+      },
+      {
+        "id": 6,
+        "name": "Bakery & Desserts"
+      },
+      {
+        "id": 7,
+        "name": "Spices & Condiments"
+      },
+      {
+        "id": 8,
+        "name": "Snacks & Sweets"
+      },
+      {
+        "id": 9,
+        "name": "Beverages"
+      },
+      {
+        "id": 10,
+        "name": "Prepared Meals"
+      }
+  ],
+  "blog" : [
+    {
+      "id": 1,
+      "title": "Understanding Quantum Mechanics",
+      "description": "A beginner-friendly guide to quantum mechanics.",
+      "image": "",
+      "blogCategoryId": 2
+    },
+    {
+      "id": 2,
+      "title": "The Basics of Machine Learning",
+      "description": "An introductory article on machine learning concepts and applications.",
+      "image": "",
+      "blogCategoryId": 3
+    },
+    {
+      "id": 3,
+      "title": "Exploring the Human Brain",
+      "description": "Insights into neuroscience and how the brain functions.",
+      "image": "",
+      "blogCategoryId": 4
+    },
+    {
+      "id": 4,
+      "title": "History of Ancient Civilizations",
+      "description": "A journey through ancient civilizations and their impact on modern society.",
+      "image": "",
+      "blogCategoryId": 1
+    },
+    {
+      "id": 5,
+      "title": "Introduction to Artificial Intelligence",
+      "description": "A look at the fundamentals of AI and its impact on the future.",
+      "image": "",
+      "blogCategoryId": 3
+    },
+    {
+      "id": 6,
+      "title": "Climate Change and Its Effects",
+      "description": "An analysis of climate change and its global impact.",
+      "image": "",
+      "blogCategoryId": 5
+    },
+    {
+      "id": 7,
+      "title": "Guide to Meditation and Mindfulness",
+      "description": "Exploring techniques for mindfulness and achieving mental clarity.",
+      "image": "",
+      "blogCategoryId": 6
+    },
+    {
+      "id": 8,
+      "title": "The Future of Renewable Energy",
+      "description": "Examining renewable energy sources and their role in sustainability.",
+      "image": "",
+      "blogCategoryId": 5
+    },
+    {
+      "id": 9,
+      "title": "How to Improve Your Writing Skills",
+      "description": "Tips and techniques to become a more effective writer.",
+      "image": "",
+      "blogCategoryId": 7
+    },
+    {
+      "id": 10,
+      "title": "The Fundamentals of Blockchain Technology",
+      "description": "An introductory guide to blockchain and its applications.",
+      "image": "",
+      "blogCategoryId": 3
+    }
+  ],
+  "menuItems": [
+    {
+      "id": "steak1",
+      "name": "HOKUBEE STEAK",
+      "price": "235.000 ₫",
+     "image": "../../assets/images/steak1.jpg",
+      "category": "Steak",
+      "description": "Steak Bo Hokubee, sirloin"
+    },
+    {
+      "id": "steak2",
+      "name": "USA RIB EYE STEAK",
+      "price": "195.000 ₫",
+      "image": "../../assets/images/steak2.jpg",
+      "category": "Steak",
+      "description": "USA Rib eye steak"
+    },
+    {
+      "id": "steak3",
+      "name": "USA TOPBLADE STEAK",
+      "price": "165.000 ₫",
+      "image": "../../assets/images/steak3.jpg",
+      "category": "Steak",
+      "description": "USA Topblade steak"
+    },
+    {
+      "id": "steak4",
+      "name": "VIETNAM BEEFSTEAK",
+      "price": "105.000 ₫",
+      "image": "../../assets/images/steak4.jpeg",
+      "category": "Steak",
+      "description": "Vietnamese Beefsteak, from beef tenderloin"
+    },
+    {
+      "id": "steak5",
+      "name": "LAMB STEAK",
+      "price": "145.000 ₫",
+      "image": "../../assets/images/steak5.jpg",
+      "category": "Steak",
+      "description": "Imported Australian lamb, loin"
+    },
+    {
+      "id": "steak6",
+      "name": "USA TOPBLADE STEAK",
+      "price": "165.000 ₫",
+      "image": "../../assets/images/steak6.jpg",
+      "category": "Steak",
+      "description": "USA Topblade steak"
+    },
+    {
+      "id": "steak7",
+      "name": "SHAKEN BEEF WITH PEPPER SAUCE",
+      "price": "95.000 ₫",
+      "image": "../../assets/images/steak7.jpg",
+      "category": "Steak",
+      "description": "SHAKEN BEEF WITH PEPPER SAUCE"
+    },
+    {
+      "id": "steak8",
+      "name": "NORWEGIAN SALMON",
+      "price": "175.000 ₫",
+      "image": "../../assets/images/steak8.jpg",
+      "description": "NORWEGIAN SALMON"
+    },
+    {
+      "id": "steak9",
+      "name": "SMOKED DUCK BREAST",
+      "price": "95.000 ₫",
+      "image": "../../assets/images/steak9.jpg",
+      "category": "Steak",
+      "description": "SMOKED DUCK BREAST"
+    },
+    {
+      "id": "drinks1",
+      "name": "COOKTAIL FRUIT SEASON",
+      "price": "46.000 ₫",
+      "image": "../../assets/images/DRINKS1.jpeg",
+      "category": "Drinks",
+      "description": "USA Topblade steak"
+    },
+    {
+      "id": "drinks2",
+      "name": "BEACH FRUIT COCKTAIL",
+      "price": "45.000 ₫",
+      "image": "../../assets/images/DRINKS2.jpg",
+      "category": "Drinks",
+      "description": "BEACH FRUIT COCKTAIL"
+    },
+    {
+      "id": "drinks3",
+      "name": "MOCKTAIL TORNADOL",
+      "price": "55.000 ₫",
+     "image": "../../assets/images/DRINKS3.jpeg",
+      "category": "Drinks",
+      "description": "USA Topblade steak"
+    },
+    {
+      "id": "drinks4",
+      "name": "GREEN FOREST COCKTAIL",
+      "price": "60.000 ₫",
+      "image": "../../assets/images/DRINKS4.jpg",
+      "category": "Drinks",
+      "description": "GREEN FOREST COCKTAIL"
+    },
+    {
+      "id": "drinks5",
+      "name": "FRUIT SEASON MOCKTAIL",
+      "price": "70.000 ₫",
+      "image": "../../assets/images/DRINKS5.jpeg",
+      "category": "Drinks",
+      "description": "FRUIT SEASON MOCKTAIL"
+    },
+    {
+      "id": "drinks6",
+      "name": "CHILE WINE",
+      "price": "65.000 ₫",
+      "image": "../../assets/images/DRINKS6.jpeg",
+      "category": "Drinks",
+      "description": "CHILE WINE"
+    },
+    {
+      "id": "drinks7",
+      "name": "SALT LEMON SODA",
+      "price": "75.000 ₫",
+     "image": "../../assets/images/DRINKS7.jpg",
+      "category": "Drinks",
+      "description": "SALT LEMON SODA"
+    },
+    {
+      "id": "drinks8",
+      "name": "LEMON JUICE",
+      "price": "165.000 ₫",
+      "image": "../../assets/images/DRINKS8.jpg",
+      "category": "Drinks",
+      "description": "LEMON JUICE"
+    },
+    {
+      "id": "salad1",
+      "name": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
+      "price": "65.000 ₫",
+      "image": "../../assets/images/SALAD1.jpeg",
+      "category": "Salad",
+      "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE"
+    },
+    {
+      "id": "salad2",
+      "name": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
+      "price": "65.000 ₫",
+      "image": "../../assets/images/SALAD2.jpg",
+      "category": "Salad",
+      "description": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE"
+    },
+    {
+      "id": "salad3",
+      "name": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+      "price": "60.000 ₫",
+     "image": "../../assets/images/SALAD3.jpg",
+      "category": "Salad",
+      "description": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE"
+    },
+    {
+      "id": "salad4",
+      "name": "BEEF / CHICKEN / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+      "price": "65.000 ₫",
+      "image": "../../assets/images/SALAD4.jpg",
+      "category": "Salad",
+      "description": "BEEF / CHICKEN / TUNA SALAD MIXED WITH MAYONNAISE SAUCE"
+    },
+    {
+      "id": "salad5",
+      "name": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
+      "price": "65.000 ₫",
+     "image": "../../assets/images/SALAD5.jpg",
+      "category": "Salad",
+      "description": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE"
+    },
+    {
+      "id": "salad6",
+      "name": "MULBERRY SALAD AND ICE CREAM",
+      "price": "65.000 ₫",
+      "image": "../../assets/images/SALAD6.jpg",
+      "category": "Salad",
+      "description": "MULBERRY SALAD AND ICE CREAM"
+    },
+    {
+      "id": "spaghetti1",
+      "name": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+      "price": "165.000 ₫",
+      "image": "../../assets/images/SPAGHETTI1.jpeg",
+      "category": "Spaghetti",
+      "description": "SEAFOOD PASTA WITH TOMYUM SAUCE"
+    },
+    {
+      "id": "spaghetti2",
+      "name": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
+      "price": "185.000 ₫",
+     "image": "../../assets/images/SPAGHETTI2.jpeg",
+      "category": "Spaghetti",
+      "description": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS"
+    },
+    {
+      "id": "spaghetti3",
+      "name": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
+      "price": "95.000 ₫",
+      "image": "../../assets/images/SPAGHETTI3.jpg",
+      "category": "Spaghetti",
+      "description": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES"
+    },
+    {
+      "id": "spaghetti4",
+      "name": "SALMON PASTA WITH CREAM",
+      "price": "195.000 ₫",
+      "image": "../../assets/images/SPAGHETTI4.jpg",
+      "category": "Spaghetti",
+      "description": "SALMON PASTA WITH CREAM"
+    },
+    {
+      "id": "spaghetti5",
+      "name": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
+      "price": "110.000 ₫",
+      "image": "../../assets/images/SPAGHETTI5.jpeg",
+      "category": "Spaghetti",
+      "description": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS"
+    },
+    {
+      "id": "spaghetti6",
+      "name": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
+      "price": "95.000 ₫",
+      "image": "../../assets/images/SPAGHETTI6.jpg",
+      "category": "Spaghetti",
+      "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES"
+    },
+    {
+      "id": "spaghetti7",
+      "name": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
+      "price": "130.000 ₫",
+     "image": "../../assets/images/SPAGHETTI7.jpg",
+      "category": "Spaghetti",
+      "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES"
+    }
+  
+  ]
+}

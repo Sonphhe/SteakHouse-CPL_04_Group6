@@ -1,0 +1,79 @@
+.register {
+  background-size: auto;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background: url('../../../../assets/images/background.jpg');
+}
+.wrapper-register {
+  width: 450px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(30px);
+  color: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: absolute;
+  right: 33%;
+  left: 33%;
+  top: 2%;
+}
+
+.register-header {
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px 10px;
+}
+
+.register-header h1 {
+  text-align: center;
+  color: #ffff;
+}
+
+.register-header p {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.register-content {
+  padding: 20px 20px;
+}
+
+.register-content input {
+  margin: 5px 0;
+}
+
+.register-pivacy p {
+  font-size: 13px;
+  font-weight: 200;
+  color: #e5e5e5;
+}
+
+.register-pivacy p a {
+  color: rgb(50, 50, 248);
+  font-weight: 400;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.register-pivacy p a:hover {
+  text-decoration: underline;
+}
+
+.register-button {
+  display: flex;
+  justify-self: center;
+  margin: 10px;
+}
+.register-button button {
+  width: 150px;
+  height: 35px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.register-button button:hover {
+  background: #dad0d0;
+}

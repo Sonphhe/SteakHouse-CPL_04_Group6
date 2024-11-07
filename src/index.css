@@ -14,8 +14,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: url('./assets/images/background.jpg');
-  background-size: cover;
 }
 
 code {
