@@ -109,7 +109,7 @@
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
       "productPrice": 235,
-      "image": "src/assets/images/steak1.jpg",
+      "image": "/assets/images/SALAD2.jpg",
       "description": "Steak Bo Hokubee, sirloin",
       "categoryId": 1
     },
@@ -118,7 +118,7 @@
       "productName": "USA RIB EYE STEAK",
       "productOldPrice": 120,
       "productPrice": 195,
-      "image": "src/assets/images/steak2.jpg",
+      "image": "/assets/images/steak2.jpg",
       "description": "USA RIB EYE STEAK",
       "categoryId": 1
     },
@@ -127,7 +127,7 @@
       "productName": "USA TOPBLADE STEAK",
       "productOldPrice": 85,
       "productPrice": 165,
-      "image": "src/assets/images/steak3.jpg",
+      "image": "/assets/images/steak3.jpg",
       "description": "USA Topblade steak",
       "categoryId": 1
     },
@@ -136,7 +136,7 @@
       "productName": "VIETNAM BEEFSTEAK",
       "productOldPrice": 95,
       "productPrice": 105,
-      "image": "src/assets/images/steak4.jpeg",
+      "image": "/assets/images/steak4.jpeg",
       "description": "Vietnamese Beefsteak, from beef tenderloin",
       "categoryId": 1
     },
@@ -145,7 +145,7 @@
       "productName": "SHAKING BEEF",
       "productOldPrice": 110,
       "productPrice": 95,
-      "image": "src/assets/images/steak5.jpg",
+      "image": "/assets/images/steak5.jpg",
       "description": "SHAKING BEEF",
       "categoryId": 1
     },
@@ -154,7 +154,7 @@
       "productName": "LAMB STEAK",
       "productOldPrice": 130,
       "productPrice": 125,
-      "image": "src/assets/images/steak6.jpg",
+      "image": "/assets/images/steak6.jpg",
       "description": "Imported Australian lamb, loin",
       "categoryId": 1
     },
@@ -163,7 +163,7 @@
       "productName": "SHAKEN BEEF WITH PEPPER SAUCE",
       "productOldPrice": 140,
       "productPrice": 95,
-      "image": "src/assets/images/steak7.jpg",
+      "image": "/assets/images/steak7.jpg",
       "description": "SHAKEN BEEF WITH PEPPER SAUCE",
       "categoryId": 1
     },
@@ -172,7 +172,7 @@
       "productName": "NORWEGIAN SALMON",
       "productOldPrice": 115,
       "productPrice": 175,
-      "image": "src/assets/images/steak8.jpg",
+      "image": "/assets/images/steak8.jpg",
       "description": "NORWEGIAN SALMON",
       "categoryId": 1
     },
@@ -181,7 +181,7 @@
       "productName": "SMOKED DUCK BREAST",
       "productOldPrice": 105,
       "productPrice": 100,
-      "image": "src/assets/images/steak9.jpg",
+      "image": "/assets/images/steak9.jpg",
       "description": "SMOKED DUCK BREAST",
       "categoryId": 1
     },
@@ -190,7 +190,7 @@
       "productName": "COOKTAIL FRUIT SEASON",
       "productOldPrice": 70,
       "productPrice": 46,
-      "image": "src/assets/images/DRINKS1.jpeg",
+      "image": "/assets/images/DRINKS1.jpeg",
       "description": "COOKTAIL FRUIT SEASON",
       "categoryId": 2
     },
@@ -199,7 +199,7 @@
       "productName": "BEACH FRUIT COCKTAIL",
       "productOldPrice": 80,
       "productPrice": 45,
-      "image": "src/assets/images/DRINKS2.jpg",
+      "image": "/assets/images/DRINKS2.jpg",
       "description": "BEACH FRUIT COCKTAIL",
       "categoryId": 2
     },
@@ -208,7 +208,7 @@
       "productName": "MOCKTAIL TORNADOL",
       "productOldPrice": 75,
       "productPrice": 55,
-      "image": "src/assets/images/DRINKS3.jpeg",
+      "image": "/assets/images/DRINKS3.jpeg",
       "description": "MOCKTAIL TORNADOL",
       "categoryId": 2
     },
@@ -217,7 +217,7 @@
       "productName": "GREEN FOREST COCKTAIL",
       "productOldPrice": 85,
       "productPrice": 60,
-      "image": "src/assets/images/DRINKS3.jpeg",
+      "image": "/assets/images/DRINKS3.jpeg",
       "description": "GREEN FOREST COCKTAIL",
       "categoryId": 2
     },
@@ -226,7 +226,7 @@
       "productName": "FRUIT SEASON MOCKTAIL",
       "productOldPrice": 90,
       "productPrice": 85,
-      "image": "src/assets/images/DRINKS4.jpg",
+      "image": "/assets/images/DRINKS4.jpg",
       "description": "FRUIT SEASON MOCKTAIL",
       "categoryId": 2
     },
@@ -235,7 +235,7 @@
       "productName": "CHILE WINE",
       "productOldPrice": 60,
       "productPrice": 55,
-      "image": "src/assets/images/DRINKS5.jpeg",
+      "image": "/assets/images/DRINKS5.jpeg",
       "description": "CHILE WINE",
       "categoryId": 2
     },
@@ -244,7 +244,7 @@
       "productName": "SALT LEMON SODA",
       "productOldPrice": 65,
       "productPrice": 60,
-      "image": "src/assets/images/DRINKS6.jpeg",
+      "image": "/assets/images/DRINKS6.jpeg",
       "description": "SALT LEMON SODA",
       "categoryId": 2
     },
@@ -253,7 +253,7 @@
       "productName": "LEMON JUICE",
       "productOldPrice": 95,
       "productPrice": 90,
-      "image": "src/assets/images/DRINKS7.jpg",
+      "image": "/assets/images/DRINKS7.jpg",
       "description": "LEMON JUICE",
       "categoryId": 2
     },
@@ -262,7 +262,7 @@
       "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
       "productOldPrice": 100,
       "productPrice": 165,
-      "image": "src/assets/images/SPAGHETTI1.jpeg",
+      "image": "/assets/images/SPAGHETTI1.jpeg",
       "description": "SEAFOOD PASTA WITH TOMYUM SAUCE",
       "categoryId": 3
     },
@@ -271,7 +271,7 @@
       "productName": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
       "productOldPrice": 85,
       "productPrice": 180,
-      "image": "src/assets/images/SPAGHETTI2.jpeg",
+      "image": "/assets/images/SPAGHETTI2.jpeg",
       "description": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
       "categoryId": 3
     },
@@ -280,7 +280,7 @@
       "productName": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
       "productOldPrice": 110,
       "productPrice": 105,
-      "image": "src/assets/images/SPAGHETTI3.jpg",
+      "image": "/assets/images/SPAGHETTI3.jpg",
       "description": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
       "categoryId": 3
     }
@@ -290,7 +290,7 @@
       "productName": "SALMON PASTA WITH CREAM",
       "productOldPrice": 110,
       "productPrice": 110,
-      "image": "src/assets/images/SPAGHETTI4.jpg",
+      "image": "/assets/images/SPAGHETTI4.jpg",
       "description": "SALMON PASTA WITH CREAM",
       "categoryId": 3
     },
@@ -299,7 +299,7 @@
       "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
       "productOldPrice": 110,
       "productPrice": 105,
-      "image": "src/assets/images/SPAGHETTI5.jpeg",
+      "image": "/assets/images/SPAGHETTI5.jpeg",
       "description": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
       "categoryId": 3
     },
@@ -308,7 +308,7 @@
       "productName": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
       "productOldPrice": 110,
       "productPrice": 105,
-      "image": "src/assets/images/SPAGHETTI6.jpg",
+      "image": "/assets/images/SPAGHETTI6.jpg",
       "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
       "categoryId": 3
     },
@@ -317,7 +317,7 @@
       "productName": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
       "productOldPrice": 110,
       "productPrice": 130,
-      "image": "src/assets/images/SPAGHETTI7.jpg",
+      "image": "/assets/images/SPAGHETTI7.jpg",
       "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
       "categoryId": 3
     },
@@ -326,7 +326,7 @@
       "productName": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
-      "image": "src/assets/images/SALAD1.jpeg",
+      "image": "/assets/images/SALAD1.jpeg",
       "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
       "categoryId": 4
     },
@@ -335,7 +335,7 @@
       "productName": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
-      "image": "src/assets/images/SALAD2.jpg",
+      "image": "/assets/images/SALAD2.jpg",
       "description": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
       "categoryId": 4
     }
@@ -345,7 +345,7 @@
       "productName": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
       "productOldPrice": 110,
       "productPrice": 60,
-      "image": "src/assets/images/SALAD3.jpg",
+      "image": "/assets/images/SALAD3.jpg",
       "description": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
       "categoryId": 4
     },
@@ -354,7 +354,7 @@
       "productName": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
-      "image": "src/assets/images/SALAD4.png",
+      "image": "/assets/images/SALAD4.png",
       "description": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
       "categoryId": 4
     },
@@ -363,7 +363,7 @@
       "productName": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
       "productOldPrice": 110,
       "productPrice": 50,
-      "image": "src/assets/images/SALAD5.jpg",
+      "image": "/assets/images/SALAD5.jpg",
       "description": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
       "categoryId": 4
     },
@@ -372,7 +372,7 @@
       "productName": "MULBERRY SALAD AND ICE CREAM",
       "productOldPrice": 110,
       "productPrice": 55,
-      "image": "src/assets/images/SALAD6.jpg",
+      "image": "/assets/images/SALAD6.jpg",
       "description": "MULBERRY SALAD AND ICE CREAM",
       "categoryId": 4
     }
@@ -424,7 +424,7 @@
       "id": 1,
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
-      "image": "src/assets/images/steak3.jpg",
+      "image": "/assets/images/steak3.jpg",
       "blogCategoryId": 2,
       "accountId": 2
       
@@ -433,7 +433,7 @@
       "id": 2,
       "title": "The Basics of Machine Learning",
       "description": "An introductory article on machine learning concepts and applications.",
-      "image": "src/assets/images/beef-wellington-brocolini.webp",
+      "image": "/assets/images/beef-wellington-brocolini.webp",
       "blogCategoryId": 3,
       "accountId": 2
     },
@@ -441,7 +441,7 @@
       "id": 3,
       "title": "Exploring the Human Brain",
       "description": "Insights into neuroscience and how the brain functions.",
-      "image": "src/assets/images/regular-steak1.jpg",
+      "image": "/assets/images/regular-steak1.jpg",
       "blogCategoryId": 4,
       "accountId": 2
     },
@@ -449,7 +449,7 @@
       "id": 4,
       "title": "History of Ancient Civilizations",
       "description": "A journey through ancient civilizations and their impact on modern society.",
-      "image": "src/assets/images/steak4.jpeg",
+      "image": "/assets/images/steak4.jpeg",
       "blogCategoryId": 1,
       "accountId": 2
     },
@@ -457,7 +457,7 @@
       "id": 5,
       "title": "Introduction to Artificial Intelligence",
       "description": "A look at the fundamentals of AI and its impact on the future.",
-      "image": "src/assets/images/SPAGHETTI6.jpg",
+      "image": "/assets/images/SPAGHETTI6.jpg",
       "blogCategoryId": 3,
       "accountId": 2
     },
@@ -465,7 +465,7 @@
       "id": 6,
       "title": "Climate Change and Its Effects",
       "description": "An analysis of climate change and its global impact.",
-      "image": "src/assets/images/SALAD2.jpg",
+      "image": "/assets/images/SALAD2.jpg",
       "blogCategoryId": 5,
       "accountId": 2
     },
@@ -473,7 +473,7 @@
       "id": 7,
       "title": "Guide to Meditation and Mindfulness",
       "description": "Exploring techniques for mindfulness and achieving mental clarity.",
-      "image": "src/assets/images/restaurant1.webp",
+      "image": "/assets/images/restaurant1.webp",
       "blogCategoryId": 6,
       "accountId": 2
     },
@@ -481,7 +481,7 @@
       "id": 8,
       "title": "The Future of Renewable Energy",
       "description": "Examining renewable energy sources and their role in sustainability.",
-      "image": "src/assets/images/restaurant1.webp",
+      "image": "/assets/images/restaurant1.webp",
       "blogCategoryId": 5,
       "accountId": 2
     },
@@ -489,7 +489,7 @@
       "id": 9,
       "title": "How to Improve Your Writing Skills",
       "description": "Tips and techniques to become a more effective writer.",
-      "image": "src/assets/images/restaurant1.webp",
+      "image": "/assets/images/restaurant1.webp",
       "blogCategoryId": 7,
       "accountId": 2
     },
@@ -497,7 +497,7 @@
       "id": 10,
       "title": "The Fundamentals of Blockchain Technology",
       "description": "An introductory guide to blockchain and its applications.",
-      "image": "src/assets/images/SPAGHETTI6.jpg",
+      "image": "/assets/images/SPAGHETTI6.jpg",
       "blogCategoryId": 3,
       "accountId": 2
     }

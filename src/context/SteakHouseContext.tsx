@@ -67,7 +67,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [categories, setCategories] = useState<ProductCategoryType[]>([])
   const [blogCategories, setBlogCategories] = useState<BlogCategoryType[]>([])
   const [blogs, setBlogs] = useState<BlogType[]>([])
-  
+
   const [filteredItems, setFilteredItems] = useState<ProductType[]>([])
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<string>('default')
@@ -99,15 +99,12 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     fetchData()
   }, [])
 
-  return (
-    <SteakHouseContext.Provider value={{ accounts, products, categories, blogCategories, blogs }}>
   // Tổng số trang
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
 
   // Xử lý lọc theo danh mục
   const handleFilter = (category: string) => {
-    const items =
-      category === 'All' ? products : products.filter((item) => item.categoryId.toString() === category)
+    const items = category === 'All' ? products : products.filter((item) => item.categoryId.toString() === category)
     setFilteredItems(items)
     setCurrentPage(1)
   }
@@ -115,9 +112,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   // Xử lý tìm kiếm
   const handleSearch = (query: string) => {
     setSearchQuery(query)
-    const filtered = products.filter((item) =>
-      item.productName.toLowerCase().includes(query.toLowerCase())
-    )
+    const filtered = products.filter((item) => item.productName.toLowerCase().includes(query.toLowerCase()))
     setFilteredItems(filtered)
     setCurrentPage(1)
   }
@@ -161,6 +156,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         accounts,
         products,
         categories,
+        blogCategories,
+        blogs,
         searchQuery,
         sortOrder,
         currentPage,
@@ -170,7 +167,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         handleSort,
         handlePrevious,
         handleNext,
-        getPaginatedItems,
+        getPaginatedItems
       }}
     >
       {children}
