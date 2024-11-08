@@ -67,7 +67,7 @@ const Menu: React.FC = () => {
             {getPaginatedItems().map((product) => (
               <div
                 className='menu-item'
-                key={product.productId}
+                key={product.id}
                 onClick={() => handleProductClick(product)}
               >
                 <img src={product.image} alt={product.productName} />

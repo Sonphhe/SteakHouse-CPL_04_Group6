@@ -65,13 +65,9 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
 
   const deleteProduct = async (id: number) => {
     try {
-      // Use id as a query parameter
-      await axios.delete(`${API_ROOT}/product`, {
-        params: {
-          id: id,  // Pass id as a query parameter
-        },
-      });
-      
+      // Use id as part of the URL path
+      await axios.delete(`${API_ROOT}/product/${id}`);
+  
       // Update the local state to reflect the deletion
       setProducts((prev) => prev.filter((product) => product.id !== id));
       setFilteredProducts((prev) => prev.filter((product) => product.id !== id));
@@ -79,6 +75,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
       console.error('Error deleting product:', error);
     }
   };
+  
   
 
   const filterProducts = (searchTerm: string) => {
