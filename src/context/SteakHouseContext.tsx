@@ -30,7 +30,7 @@ interface AccountType {
 }
 
 interface ProductType {
-  productId: number
+  id: number
   productName: string
   productOldPrice: number
   productPrice: number
