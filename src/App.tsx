@@ -9,15 +9,26 @@ import Home from './pages/HomePage/HomePage'
 function App() {
   return (
     <div className='App'>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<UserLoginView/>} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/home' element={<Home />} />
-          <Route path='/register' element={<Register />} />
-          <Route path='/forgotpass' element={<ForgotPassword />} />
-        </Routes>
-      </BrowserRouter>
+      <SteakHouseProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<UserLoginView />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/home' element={<Home />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/forgotpass' element={<ForgotPassword />} />
+            <Route path='/menu' element={<Menu />} />
+            <Route path='/productdetail/:productName' element={<ProductDetail />} />
+            <Route path='/about' element={<AboutUs />} />
+            <Route path='/contact' element={<ContactUs />} />
+            <Route path='/admin/dashboard' element={<AdminDashboard />} />
+            <Route path='/admin/product-manage' element={<ProductManage />} />
+            <Route path='/blog' element={<Blog />} />
+            <Route path='/blog/postdetail' element={<PostDetail />} />
+            <Route path='/admin/table-management' element={<TableManagement />} />
+          </Routes>
+        </BrowserRouter>
+      </SteakHouseProvider>
     </div>
   )
 }
