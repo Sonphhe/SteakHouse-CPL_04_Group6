@@ -14,20 +14,20 @@ const ProductManage = () => {
   const handleAddProduct = () => {
     addProduct({
       ...newProduct,
-      productId: Date.now(), // Unique ID for the new product
+      id: Date.now(), // Unique ID for the new product
       productOldPrice: newProduct.productPrice,
       categoryId: 1, // Example category ID, you may want to make this dynamic
     });
     setNewProduct({ productName: '', productPrice: 0, description: '', image: '' });
   };
 
-  const handleEditProduct = (productId: number) => {
+  const handleEditProduct = (id: number) => {
     const updatedProduct = { productName: 'Updated Product Name' };
-    editProduct(productId, updatedProduct);
+    editProduct(id, updatedProduct);
   };
 
-  const handleDeleteProduct = (productId: number) => {
-    deleteProduct(productId);
+  const handleDeleteProduct = (id: number) => {
+    deleteProduct(id);
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -68,7 +68,7 @@ const ProductManage = () => {
               </thead>
               <tbody>
                 {products.map((product, index) => (
-                  <tr key={product.productId}>
+                  <tr key={product.id}>
                     <td>{index + 1}</td>
                     <td>{product.productName}</td>
                     <td><img src={product.image} alt={product.productName} className="product-image-hungkc" /></td>
@@ -76,8 +76,8 @@ const ProductManage = () => {
                     <td>{product.description}</td>
                     <td>{product.categoryId ? <FontAwesomeIcon icon={faCheck} className="status-icon-hungkc" /> : ''}</td>
                     <td>
-                      <FontAwesomeIcon icon={faEdit} className="action-icon-hungkc edit-icon-hungkc" onClick={() => handleEditProduct(product.productId)} />
-                      <FontAwesomeIcon icon={faTrash} className="action-icon-hungkc delete-icon-hungkc" onClick={() => handleDeleteProduct(product.productId)} />
+                      <FontAwesomeIcon icon={faEdit} className="action-icon-hungkc edit-icon-hungkc" onClick={() => handleEditProduct(product.id)} />
+                      <FontAwesomeIcon icon={faTrash} className="action-icon-hungkc delete-icon-hungkc" onClick={() => handleDeleteProduct(product.id)} />
                     </td>
                   </tr>
                 ))}
