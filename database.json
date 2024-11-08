@@ -217,7 +217,7 @@
       "productName": "GREEN FOREST COCKTAIL",
       "productOldPrice": 85,
       "productPrice": 60,
-      "image": "/assets/images/DRINKS3.jpeg",
+      "image": "/assets/images/DRINKS4.jpg",
       "description": "GREEN FOREST COCKTAIL",
       "categoryId": 2
     },
@@ -226,7 +226,7 @@
       "productName": "FRUIT SEASON MOCKTAIL",
       "productOldPrice": 90,
       "productPrice": 85,
-      "image": "/assets/images/DRINKS4.jpg",
+      "image": "/assets/images/DRINKS5.jpeg",
       "description": "FRUIT SEASON MOCKTAIL",
       "categoryId": 2
     },
@@ -235,7 +235,7 @@
       "productName": "CHILE WINE",
       "productOldPrice": 60,
       "productPrice": 55,
-      "image": "/assets/images/DRINKS5.jpeg",
+      "image": "/assets/images/DRINKS6.jpeg",
       "description": "CHILE WINE",
       "categoryId": 2
     },
@@ -244,7 +244,7 @@
       "productName": "SALT LEMON SODA",
       "productOldPrice": 65,
       "productPrice": 60,
-      "image": "/assets/images/DRINKS6.jpeg",
+      "image": "/assets/images/DRINKS7.jpg",
       "description": "SALT LEMON SODA",
       "categoryId": 2
     },
@@ -253,7 +253,7 @@
       "productName": "LEMON JUICE",
       "productOldPrice": 95,
       "productPrice": 90,
-      "image": "/assets/images/DRINKS7.jpg",
+      "image": "/assets/images/DRINKS8.jpg",
       "description": "LEMON JUICE",
       "categoryId": 2
     },
@@ -310,6 +310,69 @@
       "image": "/assets/images/SPAGHETTI6.jpg",
       "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
       "categoryId": 3
+    },
+    {
+      "id": 24,
+      "productName": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
+      "productOldPrice": 110,
+      "productPrice": 130,
+      "image": "/assets/images/SPAGHETTI7.jpg",
+      "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
+      "categoryId": 3
+    },
+    {
+      "id": 25,
+      "productName": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
+      "productOldPrice": 110,
+      "productPrice": 65,
+      "image": "/assets/images/SALAD1.jpeg",
+      "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
+      "categoryId": 4
+    },
+    {
+      "id": 26,
+      "productName": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
+      "productOldPrice": 110,
+      "productPrice": 65,
+      "image": "/assets/images/SALAD2.jpg",
+      "description": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
+      "categoryId": 4
+    },
+    {
+      "id": 27,
+      "productName": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+      "productOldPrice": 110,
+      "productPrice": 60,
+      "image": "/assets/images/SALAD3.jpg",
+      "description": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+      "categoryId": 4
+    },
+    {
+      "id": 28,
+      "productName": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+      "productOldPrice": 110,
+      "productPrice": 65,
+      "image": "/assets/images/SALAD4.png",
+      "description": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+      "categoryId": 4
+    },
+    {
+      "id": 29,
+      "productName": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
+      "productOldPrice": 110,
+      "productPrice": 50,
+      "image": "/assets/images/SALAD5.jpg",
+      "description": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
+      "categoryId": 4
+    },
+    {
+      "id": 30,
+      "productName": "MULBERRY SALAD AND ICE CREAM",
+      "productOldPrice": 110,
+      "productPrice": 60,
+      "image": "/assets/images/SALAD6.jpg",
+      "description": "MULBERRY SALAD AND ICE CREAM",
+      "categoryId": 4
     }
   ],
   "blogCategory": [
