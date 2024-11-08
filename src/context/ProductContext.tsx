@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_ROOT } from '../utils/constants';
 
 interface ProductType {
-  productId: number;
+  id: number;
   productName: string;
   productOldPrice: number;
   productPrice: number;
@@ -15,8 +15,8 @@ interface ProductType {
 interface ProductContextType {
   products: ProductType[];
   addProduct: (product: ProductType) => Promise<void>;
-  editProduct: (productId: number, updatedProduct: Partial<ProductType>) => Promise<void>;
-  deleteProduct: (productId: number) => Promise<void>;
+  editProduct: (id: number, updatedProduct: Partial<ProductType>) => Promise<void>;
+  deleteProduct: (id: number) => Promise<void>;
   filterProducts: (searchTerm: string) => void;
 }
 
@@ -49,32 +49,32 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     }
   };
 
-  const editProduct = async (productId: number, updatedProduct: Partial<ProductType>) => {
+  const editProduct = async (id: number, updatedProduct: Partial<ProductType>) => {
     try {
-      const response = await axios.put(`${API_ROOT}/product/${productId}`, updatedProduct);
+      const response = await axios.put(`${API_ROOT}/product/${id}`, updatedProduct);
       setProducts((prev) =>
-        prev.map((product) => (product.productId === parseInt(`${productId}`, 10) ? { ...product, ...response.data } : product))
+        prev.map((product) => (product.id === parseInt(`${id}`, 10) ? { ...product, ...response.data } : product))
       );
       setFilteredProducts((prev) =>
-        prev.map((product) => (product.productId === parseInt(`${productId}`, 10) ? { ...product, ...response.data } : product))
+        prev.map((product) => (product.id === parseInt(`${id}`, 10) ? { ...product, ...response.data } : product))
       );
     } catch (error) {
       console.error('Error editing product:', error);
     }
   };
 
-  const deleteProduct = async (productId: number) => {
+  const deleteProduct = async (id: number) => {
     try {
-      // Use productId as a query parameter
+      // Use id as a query parameter
       await axios.delete(`${API_ROOT}/product`, {
         params: {
-          productId: productId,  // Pass productId as a query parameter
+          id: id,  // Pass id as a query parameter
         },
       });
       
       // Update the local state to reflect the deletion
-      setProducts((prev) => prev.filter((product) => product.productId !== productId));
-      setFilteredProducts((prev) => prev.filter((product) => product.productId !== productId));
+      setProducts((prev) => prev.filter((product) => product.id !== id));
+      setFilteredProducts((prev) => prev.filter((product) => product.id !== id));
     } catch (error) {
       console.error('Error deleting product:', error);
     }
