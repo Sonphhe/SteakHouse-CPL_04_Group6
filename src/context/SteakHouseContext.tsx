@@ -78,6 +78,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [currentPage, setCurrentPage] = useState<number>(1)
   const itemsPerPage = 8
 
+
+  
   // Fetch data on mount
   useEffect(() => {
     const fetchData = async () => {

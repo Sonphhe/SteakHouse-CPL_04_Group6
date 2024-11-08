@@ -105,7 +105,7 @@
   ],
   "product": [
     {
-      "id": 1,
+      "productId": 1,
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
       "productPrice": 235,
@@ -114,7 +114,7 @@
       "categoryId": 1
     },
     {
-      "id": 2,
+      "productId": 2,
       "productName": "USA RIB EYE STEAK",
       "productOldPrice": 120,
       "productPrice": 195,
@@ -123,7 +123,7 @@
       "categoryId": 1
     },
     {
-      "id": 3,
+      "productId": 3,
       "productName": "USA TOPBLADE STEAK",
       "productOldPrice": 85,
       "productPrice": 165,
@@ -132,7 +132,7 @@
       "categoryId": 1
     },
     {
-      "id": 4,
+      "productId": 4,
       "productName": "VIETNAM BEEFSTEAK",
       "productOldPrice": 95,
       "productPrice": 105,
@@ -141,7 +141,7 @@
       "categoryId": 1
     },
     {
-      "id": 5,
+      "productId": 5,
       "productName": "SHAKING BEEF",
       "productOldPrice": 110,
       "productPrice": 95,
@@ -150,7 +150,7 @@
       "categoryId": 1
     },
     {
-      "id": 6,
+      "productId": 6,
       "productName": "LAMB STEAK",
       "productOldPrice": 130,
       "productPrice": 125,
@@ -159,7 +159,7 @@
       "categoryId": 1
     },
     {
-      "id": 7,
+      "productId": 7,
       "productName": "SHAKEN BEEF WITH PEPPER SAUCE",
       "productOldPrice": 140,
       "productPrice": 95,
@@ -168,7 +168,7 @@
       "categoryId": 1
     },
     {
-      "id": 8,
+      "productId": 8,
       "productName": "NORWEGIAN SALMON",
       "productOldPrice": 115,
       "productPrice": 175,
@@ -177,7 +177,7 @@
       "categoryId": 1
     },
     {
-      "id": 9,
+      "productId": 9,
       "productName": "SMOKED DUCK BREAST",
       "productOldPrice": 105,
       "productPrice": 100,
@@ -186,7 +186,7 @@
       "categoryId": 1
     },
     {
-      "id": 10,
+      "productId": 10,
       "productName": "COOKTAIL FRUIT SEASON",
       "productOldPrice": 70,
       "productPrice": 46,
@@ -195,7 +195,7 @@
       "categoryId": 2
     },
     {
-      "id": 11,
+      "productId": 11,
       "productName": "BEACH FRUIT COCKTAIL",
       "productOldPrice": 80,
       "productPrice": 45,
@@ -204,7 +204,7 @@
       "categoryId": 2
     },
     {
-      "id": 12,
+      "productId": 12,
       "productName": "MOCKTAIL TORNADOL",
       "productOldPrice": 75,
       "productPrice": 55,
@@ -213,7 +213,7 @@
       "categoryId": 2
     },
     {
-      "id": 13,
+      "productId": 13,
       "productName": "GREEN FOREST COCKTAIL",
       "productOldPrice": 85,
       "productPrice": 60,
@@ -222,7 +222,7 @@
       "categoryId": 2
     },
     {
-      "id": 14,
+      "productId": 14,
       "productName": "FRUIT SEASON MOCKTAIL",
       "productOldPrice": 90,
       "productPrice": 85,
@@ -231,7 +231,7 @@
       "categoryId": 2
     },
     {
-      "id": 15,
+      "productId": 15,
       "productName": "CHILE WINE",
       "productOldPrice": 60,
       "productPrice": 55,
@@ -240,7 +240,7 @@
       "categoryId": 2
     },
     {
-      "id": 16,
+      "productId": 16,
       "productName": "SALT LEMON SODA",
       "productOldPrice": 65,
       "productPrice": 60,
@@ -249,7 +249,7 @@
       "categoryId": 2
     },
     {
-      "id": 17,
+      "productId": 17,
       "productName": "LEMON JUICE",
       "productOldPrice": 95,
       "productPrice": 90,
@@ -258,7 +258,7 @@
       "categoryId": 2
     },
     {
-      "id": 18,
+      "productId": 18,
       "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
       "productOldPrice": 100,
       "productPrice": 165,
@@ -267,7 +267,7 @@
       "categoryId": 3
     },
     {
-      "id": 19,
+      "productId": 19,
       "productName": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
       "productOldPrice": 85,
       "productPrice": 180,
@@ -276,7 +276,7 @@
       "categoryId": 3
     },
     {
-      "id": 20,
+      "productId": 20,
       "productName": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
       "productOldPrice": 110,
       "productPrice": 105,
@@ -285,7 +285,7 @@
       "categoryId": 3
     },
     {
-      "id": 21,
+      "productId": 21,
       "productName": "SALMON PASTA WITH CREAM",
       "productOldPrice": 110,
       "productPrice": 110,
@@ -294,7 +294,7 @@
       "categoryId": 3
     },
     {
-      "id": 22,
+      "productId": 22,
       "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
       "productOldPrice": 110,
       "productPrice": 105,
@@ -303,44 +303,13 @@
       "categoryId": 3
     },
     {
-      "id": 23,
+      "productId": 23,
       "productName": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
       "productOldPrice": 110,
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI6.jpg",
       "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
       "categoryId": 3
-    },
-    {
-      "id": 24,
-      "productName": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
-      "productOldPrice": 110,
-      "productPrice": 130,
-      "image": "/assets/images/SPAGHETTI7.jpg",
-      "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
-      "categoryId": 3
-    },
-    {
-      "id": 25,
-      "productName": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
-      "productOldPrice": 110,
-      "productPrice": 65,
-      "image": "/assets/images/SALAD1.jpeg",
-      "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
-      "categoryId": 4
-    },
-    {
-      "productName": "Updated Product Name",
-      "id": 27
-    },
-    {
-      "id": 26,
-      "productName": "MULBERRY SALAD AND ICE CREAM",
-      "productOldPrice": 110,
-      "productPrice": 55,
-      "image": "/assets/images/SALAD6.jpg",
-      "description": "MULBERRY SALAD AND ICE CREAM",
-      "categoryId": 4
     }
   ],
   "blogCategory": [
