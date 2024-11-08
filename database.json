@@ -1,0 +1,471 @@
+{
+  "role": [
+    {
+      "roleId": 1,
+      "roleName": "admin"
+    },
+    {
+      "roleId": 2,
+      "roleName": "cashier"
+    },
+    {
+      "roleId": 3,
+      "roleName": "customer"
+    }
+  ],
+  "account": [
+    {
+      "id": 1,
+      "username": "sonpham123",
+      "password": "123",
+      "roleId": 1,
+      "image": ""
+    },
+    {
+      "id": 2,
+      "username": "linhnguyen456",
+      "password": "456",
+      "roleId": 2,
+      "image": ""
+    },
+    {
+      "id": 3,
+      "username": "minhtran789",
+      "password": "789",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 4,
+      "username": "anhle101",
+      "password": "101",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 5,
+      "username": "phongvo102",
+      "password": "102",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 6,
+      "username": "hoanganh202",
+      "password": "202",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 7,
+      "username": "baoquang303",
+      "password": "303",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 8,
+      "username": "quyenpham404",
+      "password": "404",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 9,
+      "username": "ngoctran505",
+      "password": "505",
+      "roleId": 3,
+      "image": ""
+    },
+    {
+      "id": 10,
+      "username": "truongle606",
+      "password": "606",
+      "roleId": 3,
+      "image": ""
+    }
+  ],
+  "productCategory": [
+    {
+      "id": 1,
+      "categoryName": "Steak"
+    },
+    {
+      "id": 2,
+      "categoryName": "Drinks"
+    },
+    {
+      "id": 3,
+      "categoryName": "Spaghetti"
+    },
+    {
+      "id": 4,
+      "categoryName": "Salad"
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 235,
+      "image": "/assets/images/SALAD2.jpg",
+      "description": "Steak Bo Hokubee, sirloin",
+      "categoryId": 1
+    },
+    {
+      "id": 2,
+      "productName": "USA RIB EYE STEAK",
+      "productOldPrice": 120,
+      "productPrice": 195,
+      "image": "/assets/images/steak2.jpg",
+      "description": "USA RIB EYE STEAK",
+      "categoryId": 1
+    },
+    {
+      "id": 3,
+      "productName": "USA TOPBLADE STEAK",
+      "productOldPrice": 85,
+      "productPrice": 165,
+      "image": "/assets/images/steak3.jpg",
+      "description": "USA Topblade steak",
+      "categoryId": 1
+    },
+    {
+      "id": 4,
+      "productName": "VIETNAM BEEFSTEAK",
+      "productOldPrice": 95,
+      "productPrice": 105,
+      "image": "/assets/images/steak4.jpeg",
+      "description": "Vietnamese Beefsteak, from beef tenderloin",
+      "categoryId": 1
+    },
+    {
+      "id": 5,
+      "productName": "SHAKING BEEF",
+      "productOldPrice": 110,
+      "productPrice": 95,
+      "image": "/assets/images/steak5.jpg",
+      "description": "SHAKING BEEF",
+      "categoryId": 1
+    },
+    {
+      "id": 6,
+      "productName": "LAMB STEAK",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "/assets/images/steak6.jpg",
+      "description": "Imported Australian lamb, loin",
+      "categoryId": 1
+    },
+    {
+      "id": 7,
+      "productName": "SHAKEN BEEF WITH PEPPER SAUCE",
+      "productOldPrice": 140,
+      "productPrice": 95,
+      "image": "/assets/images/steak7.jpg",
+      "description": "SHAKEN BEEF WITH PEPPER SAUCE",
+      "categoryId": 1
+    },
+    {
+      "id": 8,
+      "productName": "NORWEGIAN SALMON",
+      "productOldPrice": 115,
+      "productPrice": 175,
+      "image": "/assets/images/steak8.jpg",
+      "description": "NORWEGIAN SALMON",
+      "categoryId": 1
+    },
+    {
+      "id": 9,
+      "productName": "SMOKED DUCK BREAST",
+      "productOldPrice": 105,
+      "productPrice": 100,
+      "image": "/assets/images/steak9.jpg",
+      "description": "SMOKED DUCK BREAST",
+      "categoryId": 1
+    },
+    {
+      "id": 10,
+      "productName": "COOKTAIL FRUIT SEASON",
+      "productOldPrice": 70,
+      "productPrice": 46,
+      "image": "/assets/images/DRINKS1.jpeg",
+      "description": "COOKTAIL FRUIT SEASON",
+      "categoryId": 2
+    },
+    {
+      "id": 11,
+      "productName": "BEACH FRUIT COCKTAIL",
+      "productOldPrice": 80,
+      "productPrice": 45,
+      "image": "/assets/images/DRINKS2.jpg",
+      "description": "BEACH FRUIT COCKTAIL",
+      "categoryId": 2
+    },
+    {
+      "id": 12,
+      "productName": "MOCKTAIL TORNADOL",
+      "productOldPrice": 75,
+      "productPrice": 55,
+      "image": "/assets/images/DRINKS3.jpeg",
+      "description": "MOCKTAIL TORNADOL",
+      "categoryId": 2
+    },
+    {
+      "id": 13,
+      "productName": "GREEN FOREST COCKTAIL",
+      "productOldPrice": 85,
+      "productPrice": 60,
+      "image": "/assets/images/DRINKS3.jpeg",
+      "description": "GREEN FOREST COCKTAIL",
+      "categoryId": 2
+    },
+    {
+      "id": 14,
+      "productName": "FRUIT SEASON MOCKTAIL",
+      "productOldPrice": 90,
+      "productPrice": 85,
+      "image": "/assets/images/DRINKS4.jpg",
+      "description": "FRUIT SEASON MOCKTAIL",
+      "categoryId": 2
+    },
+    {
+      "id": 15,
+      "productName": "CHILE WINE",
+      "productOldPrice": 60,
+      "productPrice": 55,
+      "image": "/assets/images/DRINKS5.jpeg",
+      "description": "CHILE WINE",
+      "categoryId": 2
+    },
+    {
+      "id": 16,
+      "productName": "SALT LEMON SODA",
+      "productOldPrice": 65,
+      "productPrice": 60,
+      "image": "/assets/images/DRINKS6.jpeg",
+      "description": "SALT LEMON SODA",
+      "categoryId": 2
+    },
+    {
+      "id": 17,
+      "productName": "LEMON JUICE",
+      "productOldPrice": 95,
+      "productPrice": 90,
+      "image": "/assets/images/DRINKS7.jpg",
+      "description": "LEMON JUICE",
+      "categoryId": 2
+    },
+    {
+      "id": 18,
+      "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+      "productOldPrice": 100,
+      "productPrice": 165,
+      "image": "/assets/images/SPAGHETTI1.jpeg",
+      "description": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+      "categoryId": 3
+    },
+    {
+      "id": 19,
+      "productName": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
+      "productOldPrice": 85,
+      "productPrice": 180,
+      "image": "/assets/images/SPAGHETTI2.jpeg",
+      "description": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
+      "categoryId": 3
+    },
+    {
+      "id": 20,
+      "productName": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
+      "productOldPrice": 110,
+      "productPrice": 105,
+      "image": "/assets/images/SPAGHETTI3.jpg",
+      "description": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
+      "categoryId": 3
+    },
+    {
+      "id": 21,
+      "productName": "SALMON PASTA WITH CREAM",
+      "productOldPrice": 110,
+      "productPrice": 110,
+      "image": "/assets/images/SPAGHETTI4.jpg",
+      "description": "SALMON PASTA WITH CREAM",
+      "categoryId": 3
+    },
+    {
+      "id": 22,
+      "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
+      "productOldPrice": 110,
+      "productPrice": 105,
+      "image": "/assets/images/SPAGHETTI5.jpeg",
+      "description": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
+      "categoryId": 3
+    },
+    {
+      "id": 23,
+      "productName": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
+      "productOldPrice": 110,
+      "productPrice": 105,
+      "image": "/assets/images/SPAGHETTI6.jpg",
+      "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
+      "categoryId": 3
+    },
+    {
+      "id": 24,
+      "productName": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
+      "productOldPrice": 110,
+      "productPrice": 130,
+      "image": "/assets/images/SPAGHETTI7.jpg",
+      "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
+      "categoryId": 3
+    },
+    {
+      "id": 25,
+      "productName": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
+      "productOldPrice": 110,
+      "productPrice": 65,
+      "image": "/assets/images/SALAD1.jpeg",
+      "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
+      "categoryId": 4
+    },
+    {
+      "productName": "Updated Product Name",
+      "id": 27
+    },
+    {
+      "id": 26,
+      "productName": "MULBERRY SALAD AND ICE CREAM",
+      "productOldPrice": 110,
+      "productPrice": 55,
+      "image": "/assets/images/SALAD6.jpg",
+      "description": "MULBERRY SALAD AND ICE CREAM",
+      "categoryId": 4
+    }
+  ],
+  "blogCategory": [
+    {
+      "id": 1,
+      "name": "Meat"
+    },
+    {
+      "id": 2,
+      "name": "Vegetables"
+    },
+    {
+      "id": 3,
+      "name": "Fruits"
+    },
+    {
+      "id": 4,
+      "name": "Dairy&Eggs"
+    },
+    {
+      "id": 5,
+      "name": "Grains&Cereals"
+    },
+    {
+      "id": 6,
+      "name": "Bakery&Desserts"
+    },
+    {
+      "id": 7,
+      "name": "Spices&Condiments"
+    },
+    {
+      "id": 8,
+      "name": "Snacks&Sweets"
+    },
+    {
+      "id": 9,
+      "name": "Beverages"
+    },
+    {
+      "id": 10,
+      "name": "Meals"
+    }
+  ],
+  "blog": [
+    {
+      "id": 1,
+      "title": "Understanding Quantum Mechanics",
+      "description": "A beginner-friendly guide to quantum mechanics.",
+      "image": "/assets/images/steak3.jpg",
+      "blogCategoryId": 2,
+      "accountId": 2
+    },
+    {
+      "id": 2,
+      "title": "The Basics of Machine Learning",
+      "description": "An introductory article on machine learning concepts and applications.",
+      "image": "/assets/images/beef-wellington-brocolini.webp",
+      "blogCategoryId": 3,
+      "accountId": 2
+    },
+    {
+      "id": 3,
+      "title": "Exploring the Human Brain",
+      "description": "Insights into neuroscience and how the brain functions.",
+      "image": "/assets/images/regular-steak1.jpg",
+      "blogCategoryId": 4,
+      "accountId": 2
+    },
+    {
+      "id": 4,
+      "title": "History of Ancient Civilizations",
+      "description": "A journey through ancient civilizations and their impact on modern society.",
+      "image": "/assets/images/steak4.jpeg",
+      "blogCategoryId": 1,
+      "accountId": 2
+    },
+    {
+      "id": 5,
+      "title": "Introduction to Artificial Intelligence",
+      "description": "A look at the fundamentals of AI and its impact on the future.",
+      "image": "/assets/images/SPAGHETTI6.jpg",
+      "blogCategoryId": 3,
+      "accountId": 2
+    },
+    {
+      "id": 6,
+      "title": "Climate Change and Its Effects",
+      "description": "An analysis of climate change and its global impact.",
+      "image": "/assets/images/SALAD2.jpg",
+      "blogCategoryId": 5,
+      "accountId": 2
+    },
+    {
+      "id": 7,
+      "title": "Guide to Meditation and Mindfulness",
+      "description": "Exploring techniques for mindfulness and achieving mental clarity.",
+      "image": "/assets/images/restaurant1.webp",
+      "blogCategoryId": 6,
+      "accountId": 2
+    },
+    {
+      "id": 8,
+      "title": "The Future of Renewable Energy",
+      "description": "Examining renewable energy sources and their role in sustainability.",
+      "image": "/assets/images/restaurant1.webp",
+      "blogCategoryId": 5,
+      "accountId": 2
+    },
+    {
+      "id": 9,
+      "title": "How to Improve Your Writing Skills",
+      "description": "Tips and techniques to become a more effective writer.",
+      "image": "/assets/images/restaurant1.webp",
+      "blogCategoryId": 7,
+      "accountId": 2
+    },
+    {
+      "id": 10,
+      "title": "The Fundamentals of Blockchain Technology",
+      "description": "An introductory guide to blockchain and its applications.",
+      "image": "/assets/images/SPAGHETTI6.jpg",
+      "blogCategoryId": 3,
+      "accountId": 2
+    }
+  ],
+  "menuItems": []
+}
