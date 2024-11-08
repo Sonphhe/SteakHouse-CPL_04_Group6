@@ -12,12 +12,17 @@ interface SteakHouseType {
   sortOrder: string
   currentPage: number
   totalPages: number
+ 
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
   handlePrevious: () => void
   handleNext: () => void
   getPaginatedItems: () => ProductType[]
+  addProduct: (product: ProductType) => Promise<void>
+  editProduct: (id: number, updatedProduct: Partial<ProductType>) => Promise<void>
+  deleteProduct: (id: number) => Promise<void>
+  filterProducts: (searchTerm: string) => void;
 }
 
 interface AccountType {
@@ -29,7 +34,7 @@ interface AccountType {
 }
 
 interface ProductType {
-  productId: number
+  id: number
   productName: string
   productOldPrice: number
   productPrice: number
@@ -42,10 +47,12 @@ interface ProductCategoryType {
   id: number
   categoryName: string
 }
+
 interface BlogCategoryType {
   id: number
   name: string
 }
+
 interface BlogType {
   id: number
   title: string
@@ -62,18 +69,19 @@ interface SteakHouseProviderProps {
 }
 
 export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children }) => {
+  // State Variables
   const [accounts, setAccounts] = useState<AccountType[]>([])
   const [products, setProducts] = useState<ProductType[]>([])
   const [categories, setCategories] = useState<ProductCategoryType[]>([])
   const [blogCategories, setBlogCategories] = useState<BlogCategoryType[]>([])
   const [blogs, setBlogs] = useState<BlogType[]>([])
-
-  const [filteredItems, setFilteredItems] = useState<ProductType[]>([])
+  const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([])
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<string>('default')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const itemsPerPage = 8
 
+  // Fetch Initial Data
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -82,7 +90,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
 
         const productRes = await axios.get(`${API_ROOT}/product`)
         setProducts(productRes.data)
-        setFilteredItems(productRes.data)
+        setFilteredProducts(productRes.data)
 
         const categoryRes = await axios.get(`${API_ROOT}/productCategory`)
         setCategories(categoryRes.data)
@@ -99,62 +107,94 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     fetchData()
   }, [])
 
-  // Tổng số trang
-  const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
+  // Pagination
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage)
+  const getPaginatedItems = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage
+    const endIndex = startIndex + itemsPerPage
+    return filteredProducts.slice(startIndex, endIndex)
+  }
+  const handlePrevious = () => currentPage > 1 && setCurrentPage(currentPage - 1)
+  const handleNext = () => currentPage < totalPages && setCurrentPage(currentPage + 1)
 
-  // Xử lý lọc theo danh mục
+  // CRUD Operations
+  const addProduct = async (product: ProductType) => {
+    try {
+      const response = await axios.post(`${API_ROOT}/product`, product)
+      setProducts((prev) => [...prev, response.data])
+      setFilteredProducts((prev) => [...prev, response.data])
+    } catch (error) {
+      console.error('Error adding product:', error)
+    }
+  }
+
+  const editProduct = async (id: number, updatedProduct: Partial<ProductType>) => {
+    try {
+      const response = await axios.put(`${API_ROOT}/product/${id}`, updatedProduct)
+      setProducts((prev) =>
+        prev.map((product) => (product.id === id ? { ...product, ...response.data } : product))
+      )
+      setFilteredProducts((prev) =>
+        prev.map((product) => (product.id === id ? { ...product, ...response.data } : product))
+      )
+    } catch (error) {
+      console.error('Error editing product:', error)
+    }
+  }
+
+  const deleteProduct = async (id: number) => {
+    try {
+      await axios.delete(`${API_ROOT}/product/${id}`)
+      setProducts((prev) => prev.filter((product) => product.id !== id))
+      setFilteredProducts((prev) => prev.filter((product) => product.id !== id))
+    } catch (error) {
+      console.error('Error deleting product:', error)
+    }
+  }
+
+  // Filter, Search, and Sort Handlers
   const handleFilter = (category: string) => {
     const items = category === 'All' ? products : products.filter((item) => item.categoryId.toString() === category)
-    setFilteredItems(items)
+    setFilteredProducts(items)
     setCurrentPage(1)
   }
 
-  // Xử lý tìm kiếm
   const handleSearch = (query: string) => {
     setSearchQuery(query)
     const filtered = products.filter((item) => item.productName.toLowerCase().includes(query.toLowerCase()))
-    setFilteredItems(filtered)
+    setFilteredProducts(filtered)
     setCurrentPage(1)
   }
 
-  // Xử lý sắp xếp
   const handleSort = (order: string) => {
     setSortOrder(order)
-    const sortedItems = [...filteredItems].sort((a, b) => {
+    const sortedItems = [...filteredProducts].sort((a, b) => {
       if (order === 'a-z') return a.productName.localeCompare(b.productName)
       if (order === 'asc') return a.productPrice - b.productPrice
       if (order === 'desc') return b.productPrice - a.productPrice
       return 0
     })
-    setFilteredItems(sortedItems)
+    setFilteredProducts(sortedItems)
   }
 
-  // Phân trang sản phẩm
-  const getPaginatedItems = () => {
-    const startIndex = (currentPage - 1) * itemsPerPage
-    const endIndex = startIndex + itemsPerPage
-    return filteredItems.slice(startIndex, endIndex)
-  }
-
-  // Chuyển sang trang trước
-  const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1)
+   // Filter Products
+  // Combined Filter (category + search)
+  const filterProducts = (searchTerm: string) => {
+    if (!searchTerm) {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter((product) =>
+        product.productName.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredProducts(filtered);
     }
-  }
-
-  // Chuyển sang trang kế tiếp
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1)
-    }
-  }
+  };
 
   return (
     <SteakHouseContext.Provider
       value={{
         accounts,
-        products,
+        products: filteredProducts,
         categories,
         blogCategories,
         blogs,
@@ -165,9 +205,14 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         handleFilter,
         handleSearch,
         handleSort,
+    
         handlePrevious,
         handleNext,
-        getPaginatedItems
+        getPaginatedItems,
+        addProduct,
+        editProduct,
+        deleteProduct,
+        filterProducts
       }}
     >
       {children}
