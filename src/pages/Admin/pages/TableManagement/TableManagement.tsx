@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
 import './TableManagement.css';
 import Navbar from '../../components/Navbar/Navbar';
@@ -12,18 +12,25 @@ interface TableData {
 }
 
 const TableManagement: React.FC = () => {
-  const [tables, setTables] = useState<TableData[]>([
-    { id: 1, name: 'Table 1', qrCode: 'QR1', status: true },
-    { id: 2, name: 'Table 2', qrCode: 'QR2', status: false },
-    { id: 3, name: 'Table 3', qrCode: 'QR3', status: true },
-  ]);
+  const [tables, setTables] = useState<TableData[]>([]);
   const [newTableName, setNewTableName] = useState('');
   const [editingTableId, setEditingTableId] = useState<number | null>(null);
   const [editedName, setEditedName] = useState('');
   const [notification, setNotification] = useState('');
   const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null);
 
-  // Add a new table
+  // Lấy dữ liệu từ database.json
+  useEffect(() => {
+    const fetchTables = async () => {
+      const response = await fetch('/database.json'); // Đảm bảo đường dẫn đúng
+      const data = await response.json();
+      setTables(data.tables); // Giả sử dữ liệu trong database.json có dạng { "tables": [...] }
+    };
+    
+    fetchTables();
+  }, []);
+
+  // Thêm bàn mới
   const addTable = () => {
     if (newTableName.trim() === '') return;
     const newTable: TableData = {
@@ -37,13 +44,13 @@ const TableManagement: React.FC = () => {
     showNotification('Table added successfully!');
   };
 
-  // Edit table name
+  // Chỉnh sửa tên bàn
   const editTable = (id: number, name: string) => {
     setEditingTableId(id);
     setEditedName(name);
   };
 
-  // Save edited table name
+  // Lưu thay đổi tên bàn
   const saveEditedTable = () => {
     setTables((prevTables) =>
       prevTables.map((table) =>
@@ -55,7 +62,7 @@ const TableManagement: React.FC = () => {
     showNotification('Table name updated successfully!');
   };
 
-  // Toggle table status (soft delete)
+  // Chuyển đổi trạng thái bàn
   const toggleStatus = (id: number) => {
     setTables((prevTables) =>
       prevTables.map((table) =>
@@ -65,18 +72,18 @@ const TableManagement: React.FC = () => {
     showNotification('Table status changed!');
   };
 
-  // Display notification
+  // Hiển thị thông báo
   const showNotification = (message: string) => {
     setNotification(message);
     setTimeout(() => setNotification(''), 3000);
   };
 
-  // Show confirmation modal
+  // Hiển thị modal xác nhận
   const showConfirmation = (action: () => void) => {
     setConfirmAction(() => action);
   };
 
-  // Handle confirmation
+  // Xử lý xác nhận
   const confirmActionHandler = () => {
     if (confirmAction) confirmAction();
     setConfirmAction(null);
@@ -135,7 +142,13 @@ const TableManagement: React.FC = () => {
                       )}
                     </td>
                     <td>
-                      <FaEye className="icon-view" />
+                      <a
+                        href={`https://quickchart.io/qr?text=http://10.33.15.246:8080/SWP391-SteakHouse/home?idTable=${table.id}&caption=Table${table.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaEye className="icon-view" />
+                      </a>
                     </td>
                     <td>
                       <span className={table.status ? 'status-active' : 'status-inactive'}>
@@ -160,7 +173,7 @@ const TableManagement: React.FC = () => {
               </tbody>
             </table>
           </div>
-          
+
           {confirmAction && (
             <div className="modal-overlay">
               <div className="modal">
@@ -177,3 +190,5 @@ const TableManagement: React.FC = () => {
 };
 
 export default TableManagement;
+
+
