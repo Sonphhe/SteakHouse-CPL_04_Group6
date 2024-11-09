@@ -499,5 +499,32 @@
       "accountId": 2
     }
   ],
+  "tables": [
+    {
+      "id": 1,
+      "name": "Table 1",
+      "qrCode": "QR1",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Table 2",
+      "qrCode": "QR2",
+      "status": false
+    },
+    {
+      "id": 3,
+      "name": "Table 3",
+      "qrCode": "QR3",
+      "status": false
+    }
+    ,
+    {
+      "id": 4,
+      "name": "Table 4",
+      "qrCode": "QR4",
+      "status": true
+    }
+  ],
   "menuItems": []
 }
