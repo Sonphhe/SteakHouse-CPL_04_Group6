@@ -251,6 +251,41 @@
     transition: all 0.2s ease-in-out;
 }
 
+  .table-management-table .icon-column {
+    text-align: left; /* Đặt icon sang bên phải */
+  }
+  
+  .icon-restore {
+    color: green;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .icon-restore:hover {
+    color: darkgreen;
+  }
+  
+  .icon-delete {
+    color: red;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .icon-delete:hover {
+    color: darkred;
+  }
+  
+  .icon-edit {
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .save-btn, .cancel-btn {
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
+  }
+  
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .table-management-header {
