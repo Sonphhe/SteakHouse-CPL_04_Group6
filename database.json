@@ -2,83 +2,86 @@
   "role": [
     {
       "roleId": 1,
-      "roleName": "admin"
+      "roleName": "admin",
+      "id": "5a59"
     },
     {
       "roleId": 2,
-      "roleName": "cashier"
+      "roleName": "cashier",
+      "id": "9178"
     },
     {
       "roleId": 3,
-      "roleName": "customer"
+      "roleName": "customer",
+      "id": "35ea"
     }
   ],
   "account": [
     {
-      "id": 1,
+      "id": "1",
       "username": "sonpham123",
       "password": "123",
       "roleId": 1,
       "image": ""
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "linhnguyen456",
       "password": "456",
       "roleId": 2,
       "image": ""
     },
     {
-      "id": 3,
+      "id": "3",
       "username": "minhtran789",
       "password": "789",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 4,
+      "id": "4",
       "username": "anhle101",
       "password": "101",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 5,
+      "id": "5",
       "username": "phongvo102",
       "password": "102",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 6,
+      "id": "6",
       "username": "hoanganh202",
       "password": "202",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 7,
+      "id": "7",
       "username": "baoquang303",
       "password": "303",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 8,
+      "id": "8",
       "username": "quyenpham404",
       "password": "404",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 9,
+      "id": "9",
       "username": "ngoctran505",
       "password": "505",
       "roleId": 3,
       "image": ""
     },
     {
-      "id": 10,
+      "id": "10",
       "username": "truongle606",
       "password": "606",
       "roleId": 3,
@@ -87,25 +90,25 @@
   ],
   "productCategory": [
     {
-      "id": 1,
+      "id": "1",
       "categoryName": "Steak"
     },
     {
-      "id": 2,
+      "id": "2",
       "categoryName": "Drinks"
     },
     {
-      "id": 3,
+      "id": "3",
       "categoryName": "Spaghetti"
     },
     {
-      "id": 4,
+      "id": "4",
       "categoryName": "Salad"
     }
   ],
   "product": [
     {
-      "id": 1,
+      "id": "1",
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
       "productPrice": 235,
@@ -114,7 +117,7 @@
       "categoryId": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "productName": "USA RIB EYE STEAK",
       "productOldPrice": 120,
       "productPrice": 195,
@@ -123,7 +126,7 @@
       "categoryId": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "productName": "USA TOPBLADE STEAK",
       "productOldPrice": 85,
       "productPrice": 165,
@@ -132,7 +135,7 @@
       "categoryId": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "productName": "VIETNAM BEEFSTEAK",
       "productOldPrice": 95,
       "productPrice": 105,
@@ -141,7 +144,7 @@
       "categoryId": 1
     },
     {
-      "id": 5,
+      "id": "5",
       "productName": "SHAKING BEEF",
       "productOldPrice": 110,
       "productPrice": 95,
@@ -150,7 +153,7 @@
       "categoryId": 1
     },
     {
-      "id": 6,
+      "id": "6",
       "productName": "LAMB STEAK",
       "productOldPrice": 130,
       "productPrice": 125,
@@ -159,7 +162,7 @@
       "categoryId": 1
     },
     {
-      "id": 7,
+      "id": "7",
       "productName": "SHAKEN BEEF WITH PEPPER SAUCE",
       "productOldPrice": 140,
       "productPrice": 95,
@@ -168,7 +171,7 @@
       "categoryId": 1
     },
     {
-      "id": 8,
+      "id": "8",
       "productName": "NORWEGIAN SALMON",
       "productOldPrice": 115,
       "productPrice": 175,
@@ -177,7 +180,7 @@
       "categoryId": 1
     },
     {
-      "id": 9,
+      "id": "9",
       "productName": "SMOKED DUCK BREAST",
       "productOldPrice": 105,
       "productPrice": 100,
@@ -186,7 +189,7 @@
       "categoryId": 1
     },
     {
-      "id": 10,
+      "id": "10",
       "productName": "COOKTAIL FRUIT SEASON",
       "productOldPrice": 70,
       "productPrice": 46,
@@ -195,7 +198,7 @@
       "categoryId": 2
     },
     {
-      "id": 11,
+      "id": "11",
       "productName": "BEACH FRUIT COCKTAIL",
       "productOldPrice": 80,
       "productPrice": 45,
@@ -204,7 +207,7 @@
       "categoryId": 2
     },
     {
-      "id": 12,
+      "id": "12",
       "productName": "MOCKTAIL TORNADOL",
       "productOldPrice": 75,
       "productPrice": 55,
@@ -213,7 +216,7 @@
       "categoryId": 2
     },
     {
-      "id": 13,
+      "id": "13",
       "productName": "GREEN FOREST COCKTAIL",
       "productOldPrice": 85,
       "productPrice": 60,
@@ -222,7 +225,7 @@
       "categoryId": 2
     },
     {
-      "id": 14,
+      "id": "14",
       "productName": "FRUIT SEASON MOCKTAIL",
       "productOldPrice": 90,
       "productPrice": 85,
@@ -231,7 +234,7 @@
       "categoryId": 2
     },
     {
-      "id": 15,
+      "id": "15",
       "productName": "CHILE WINE",
       "productOldPrice": 60,
       "productPrice": 55,
@@ -240,7 +243,7 @@
       "categoryId": 2
     },
     {
-      "id": 16,
+      "id": "16",
       "productName": "SALT LEMON SODA",
       "productOldPrice": 65,
       "productPrice": 60,
@@ -249,7 +252,7 @@
       "categoryId": 2
     },
     {
-      "id": 17,
+      "id": "17",
       "productName": "LEMON JUICE",
       "productOldPrice": 95,
       "productPrice": 90,
@@ -258,7 +261,7 @@
       "categoryId": 2
     },
     {
-      "id": 18,
+      "id": "18",
       "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
       "productOldPrice": 100,
       "productPrice": 165,
@@ -267,7 +270,7 @@
       "categoryId": 3
     },
     {
-      "id": 19,
+      "id": "19",
       "productName": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
       "productOldPrice": 85,
       "productPrice": 180,
@@ -276,7 +279,7 @@
       "categoryId": 3
     },
     {
-      "id": 20,
+      "id": "20",
       "productName": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
       "productOldPrice": 110,
       "productPrice": 105,
@@ -285,7 +288,7 @@
       "categoryId": 3
     },
     {
-      "id": 21,
+      "id": "21",
       "productName": "SALMON PASTA WITH CREAM",
       "productOldPrice": 110,
       "productPrice": 110,
@@ -294,7 +297,7 @@
       "categoryId": 3
     },
     {
-      "id": 22,
+      "id": "22",
       "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
       "productOldPrice": 110,
       "productPrice": 105,
@@ -303,7 +306,7 @@
       "categoryId": 3
     },
     {
-      "id": 23,
+      "id": "23",
       "productName": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
       "productOldPrice": 110,
       "productPrice": 105,
@@ -312,7 +315,7 @@
       "categoryId": 3
     },
     {
-      "id": 24,
+      "id": "24",
       "productName": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
       "productOldPrice": 110,
       "productPrice": 130,
@@ -321,7 +324,7 @@
       "categoryId": 3
     },
     {
-      "id": 25,
+      "id": "25",
       "productName": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
@@ -330,7 +333,7 @@
       "categoryId": 4
     },
     {
-      "id": 26,
+      "id": "26",
       "productName": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
@@ -339,7 +342,7 @@
       "categoryId": 4
     },
     {
-      "id": 27,
+      "id": "27",
       "productName": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
       "productOldPrice": 110,
       "productPrice": 60,
@@ -348,7 +351,7 @@
       "categoryId": 4
     },
     {
-      "id": 28,
+      "id": "28",
       "productName": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
@@ -357,7 +360,7 @@
       "categoryId": 4
     },
     {
-      "id": 29,
+      "id": "29",
       "productName": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
       "productOldPrice": 110,
       "productPrice": 50,
@@ -366,60 +369,69 @@
       "categoryId": 4
     },
     {
-      "id": 30,
+      "id": "30",
       "productName": "MULBERRY SALAD AND ICE CREAM",
       "productOldPrice": 110,
       "productPrice": 60,
       "image": "/assets/images/SALAD6.jpg",
       "description": "MULBERRY SALAD AND ICE CREAM",
       "categoryId": 4
+    },
+    {
+      "id": "1731247242538",
+      "productName": "",
+      "productPrice": 0,
+      "description": "",
+      "image": "",
+      "productOldPrice": 0,
+      "categoryId": 1
     }
   ],
   "blogCategory": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Meat"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Vegetables"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Fruits"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Dairy&Eggs"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Grains&Cereals"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Bakery&Desserts"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Spices&Condiments"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Snacks&Sweets"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Beverages"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Meals"
     }
   ],
   "blog": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
       "image": "/assets/images/steak3.jpg",
@@ -427,7 +439,7 @@
       "accountId": 2
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "The Basics of Machine Learning",
       "description": "An introductory article on machine learning concepts and applications.",
       "image": "/assets/images/beef-wellington-brocolini.webp",
@@ -435,7 +447,7 @@
       "accountId": 2
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "Exploring the Human Brain",
       "description": "Insights into neuroscience and how the brain functions.",
       "image": "/assets/images/regular-steak1.jpg",
@@ -443,7 +455,7 @@
       "accountId": 2
     },
     {
-      "id": 4,
+      "id": "4",
       "title": "History of Ancient Civilizations",
       "description": "A journey through ancient civilizations and their impact on modern society.",
       "image": "/assets/images/steak4.jpeg",
@@ -451,7 +463,7 @@
       "accountId": 2
     },
     {
-      "id": 5,
+      "id": "5",
       "title": "Introduction to Artificial Intelligence",
       "description": "A look at the fundamentals of AI and its impact on the future.",
       "image": "/assets/images/SPAGHETTI6.jpg",
@@ -459,7 +471,7 @@
       "accountId": 2
     },
     {
-      "id": 6,
+      "id": "6",
       "title": "Climate Change and Its Effects",
       "description": "An analysis of climate change and its global impact.",
       "image": "/assets/images/SALAD2.jpg",
@@ -467,7 +479,7 @@
       "accountId": 2
     },
     {
-      "id": 7,
+      "id": "7",
       "title": "Guide to Meditation and Mindfulness",
       "description": "Exploring techniques for mindfulness and achieving mental clarity.",
       "image": "/assets/images/restaurant1.webp",
@@ -475,7 +487,7 @@
       "accountId": 2
     },
     {
-      "id": 8,
+      "id": "8",
       "title": "The Future of Renewable Energy",
       "description": "Examining renewable energy sources and their role in sustainability.",
       "image": "/assets/images/restaurant1.webp",
@@ -483,7 +495,7 @@
       "accountId": 2
     },
     {
-      "id": 9,
+      "id": "9",
       "title": "How to Improve Your Writing Skills",
       "description": "Tips and techniques to become a more effective writer.",
       "image": "/assets/images/restaurant1.webp",
@@ -491,7 +503,7 @@
       "accountId": 2
     },
     {
-      "id": 10,
+      "id": "10",
       "title": "The Fundamentals of Blockchain Technology",
       "description": "An introductory guide to blockchain and its applications.",
       "image": "/assets/images/SPAGHETTI6.jpg",
@@ -501,29 +513,64 @@
   ],
   "tables": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Table 1",
       "qrCode": "QR1",
+      "status": false
+    },
+    {
+      "id": "2",
+      "name": "Table 2",
+      "qrCode": "QR2",
       "status": true
     },
     {
-      "id": 2,
-      "name": "Table 2",
-      "qrCode": "QR2",
-      "status": false
-    },
-    {
-      "id": 3,
+      "id": "3",
       "name": "Table 3",
       "qrCode": "QR3",
-      "status": false
-    }
-    ,
+      "status": true
+    },
     {
-      "id": 4,
+      "id": "4",
       "name": "Table 4",
       "qrCode": "QR4",
       "status": true
+    },
+    {
+      "id": "5",
+      "name": "Table 5",
+      "qrCode": "QR5",
+      "status": false
+    },
+    {
+      "id": "6",
+      "name": "Table 6",
+      "qrCode": "QR6",
+      "status": true
+    },
+    {
+      "id": "7",
+      "name": "Table 7",
+      "qrCode": "QR7",
+      "status": true
+    },
+    {
+      "id": "8",
+      "name": "Table 8",
+      "qrCode": "QR8",
+      "status": true
+    },
+    {
+      "id": "9",
+      "name": "Table 9",
+      "qrCode": "QR9",
+      "status": true
+    },
+    {
+      "id": "10",
+      "name": "Table 10",
+      "qrCode": "QR10",
+      "status": false
     }
   ],
   "menuItems": []
