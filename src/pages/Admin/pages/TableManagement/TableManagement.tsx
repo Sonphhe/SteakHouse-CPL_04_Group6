@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { FaEye, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEye, FaEdit, FaTrashAlt, FaUndoAlt } from 'react-icons/fa';
 import './TableManagement.css';
 import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
 
 interface TableData {
-  id: number;
+  id: string;
   name: string;
   qrCode: string;
   status: boolean;
@@ -14,79 +14,126 @@ interface TableData {
 const TableManagement: React.FC = () => {
   const [tables, setTables] = useState<TableData[]>([]);
   const [newTableName, setNewTableName] = useState('');
-  const [editingTableId, setEditingTableId] = useState<number | null>(null);
+  const [editingTableId, setEditingTableId] = useState<string | null>(null);
   const [editedName, setEditedName] = useState('');
   const [notification, setNotification] = useState('');
-  const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null);
+  const [showEditConfirm, setShowEditConfirm] = useState(false); // Modal xác nhận chỉnh sửa
 
-  // Lấy dữ liệu từ database.json
   useEffect(() => {
     const fetchTables = async () => {
-      const response = await fetch('/database.json'); // Đảm bảo đường dẫn đúng
+      const response = await fetch('http://localhost:9999/tables');
       const data = await response.json();
-      setTables(data.tables); // Giả sử dữ liệu trong database.json có dạng { "tables": [...] }
+      setTables(data);
     };
-    
+
     fetchTables();
   }, []);
 
-  // Thêm bàn mới
-  const addTable = () => {
+  const addTable = async () => {
     if (newTableName.trim() === '') return;
+
     const newTable: TableData = {
-      id: tables.length + 1,
+      id: (tables.length + 1).toString(),
       name: newTableName,
       qrCode: `QR${tables.length + 1}`,
       status: true,
     };
-    setTables([...tables, newTable]);
-    setNewTableName('');
-    showNotification('Table added successfully!');
+
+    const response = await fetch('http://localhost:9999/tables', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newTable),
+    });
+
+    if (response.ok) {
+      const addedTable = await response.json();
+      setTables([...tables, addedTable]);
+      setNewTableName('');
+      showNotification('Table added successfully!');
+    }
   };
 
-  // Chỉnh sửa tên bàn
-  const editTable = (id: number, name: string) => {
+  const editTable = (id: string, name: string) => {
     setEditingTableId(id);
     setEditedName(name);
   };
 
-  // Lưu thay đổi tên bàn
-  const saveEditedTable = () => {
-    setTables((prevTables) =>
-      prevTables.map((table) =>
-        table.id === editingTableId ? { ...table, name: editedName } : table
-      )
-    );
+  const saveEditedTable = async () => {
+    if (editingTableId === null) return;
+
+    const tableToEdit = tables.find((table) => table.id === editingTableId);
+
+    if (tableToEdit) {
+      setShowEditConfirm(true); // Show confirmation before saving
+    }
+  };
+
+  const confirmSaveEdit = async () => {
+    if (editingTableId === null) return;
+
+    const tableToEdit = tables.find((table) => table.id === editingTableId);
+
+    if (tableToEdit) {
+      const updatedTable = {
+        ...tableToEdit,
+        name: editedName,
+      };
+
+      const response = await fetch(`http://localhost:9999/tables/${editingTableId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedTable),
+      });
+
+      if (response.ok) {
+        setTables((prevTables) =>
+          prevTables.map((table) =>
+            table.id === editingTableId ? updatedTable : table
+          )
+        );
+        setEditingTableId(null);
+        setEditedName('');
+        showNotification('Table name updated successfully!');
+        setShowEditConfirm(false); // Close confirmation modal
+      }
+    }
+  };
+
+  const cancelEdit = () => {
     setEditingTableId(null);
     setEditedName('');
-    showNotification('Table name updated successfully!');
+    setShowEditConfirm(false); // Close confirmation modal
   };
 
-  // Chuyển đổi trạng thái bàn
-  const toggleStatus = (id: number) => {
-    setTables((prevTables) =>
-      prevTables.map((table) =>
-        table.id === id ? { ...table, status: !table.status } : table
-      )
-    );
-    showNotification('Table status changed!');
+  const toggleTableStatus = async (id: string) => {
+    const tableToToggle = tables.find((table) => table.id === id);
+
+    if (tableToToggle) {
+      const updatedTable = {
+        ...tableToToggle,
+        status: !tableToToggle.status,
+      };
+
+      const response = await fetch(`http://localhost:9999/tables/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedTable),
+      });
+
+      if (response.ok) {
+        setTables((prevTables) =>
+          prevTables.map((table) =>
+            table.id === id ? updatedTable : table
+          )
+        );
+        showNotification(`Table status updated successfully!`);
+      }
+    }
   };
 
-  // Hiển thị thông báo
   const showNotification = (message: string) => {
     setNotification(message);
     setTimeout(() => setNotification(''), 3000);
-  };
-
-  // Hiển thị modal xác nhận
-  const showConfirmation = (action: () => void) => {
-    setConfirmAction(() => action);
-  };
-
-  // Xử lý xác nhận
-  const confirmActionHandler = () => {
-    if (confirmAction) confirmAction();
-    setConfirmAction(null);
   };
 
   return (
@@ -108,11 +155,10 @@ const TableManagement: React.FC = () => {
               />
               <button
                 className="add-table-btn"
-                onClick={() => showConfirmation(addTable)}
+                onClick={addTable}
               >
                 Add Table
               </button>
-              <input type="text" placeholder="Search" className="search-bar" />
             </div>
 
             <table className="table-management-table">
@@ -129,7 +175,7 @@ const TableManagement: React.FC = () => {
                 {tables.map((table, index) => (
                   <tr key={table.id}>
                     <td>{index + 1}</td>
-                    <td>
+                    <td className="edit-column">
                       {editingTableId === table.id ? (
                         <input
                           type="text"
@@ -155,16 +201,26 @@ const TableManagement: React.FC = () => {
                         {table.status ? '✓' : '✗'}
                       </span>
                     </td>
-                    <td>
+                    <td className="icon-column">
                       {editingTableId === table.id ? (
                         <>
-                          <button className="save-btn" onClick={() => showConfirmation(saveEditedTable)}>Save</button>
-                          <button className="cancel-btn" onClick={() => setEditingTableId(null)}>Cancel</button>
+                          <button className="save-btn" onClick={saveEditedTable}>Save</button>
+                          <button className="cancel-btn" onClick={cancelEdit}>Cancel</button>
                         </>
                       ) : (
                         <>
+                          {table.status ? (
+                            <FaTrashAlt
+                              className="icon-delete"
+                              onClick={() => toggleTableStatus(table.id)}
+                            />
+                          ) : (
+                            <FaUndoAlt
+                              className="icon-restore"
+                              onClick={() => toggleTableStatus(table.id)}
+                            />
+                          )}
                           <FaEdit className="icon-edit" onClick={() => editTable(table.id, table.name)} />
-                          <FaTrash className="icon-delete" onClick={() => showConfirmation(() => toggleStatus(table.id))} />
                         </>
                       )}
                     </td>
@@ -174,12 +230,12 @@ const TableManagement: React.FC = () => {
             </table>
           </div>
 
-          {confirmAction && (
+          {showEditConfirm && (
             <div className="modal-overlay">
               <div className="modal">
-                <p>Are you sure you want to proceed with this action?</p>
-                <button className="confirm-btn" onClick={confirmActionHandler}>Yes</button>
-                <button className="cancel-btn" onClick={() => setConfirmAction(null)}>No</button>
+                <p>Are you sure you want to save this edit?</p>
+                <button className="confirm-btn" onClick={confirmSaveEdit}>Yes</button>
+                <button className="cancel-btn" onClick={cancelEdit}>No</button>
               </div>
             </div>
           )}
@@ -190,5 +246,3 @@ const TableManagement: React.FC = () => {
 };
 
 export default TableManagement;
-
-
