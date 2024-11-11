@@ -65,12 +65,12 @@ const ProductEdit = () => {
   };
 
   return (
-    <div className="admin-dashboard-EditHkc">
+    <div className="admin-dashboard-hung11-11">
       <Navbar />
-      <div className="dashboard-container-EditHkc">
+      <div className="dashboard-container-hung11-11">
         <Sidebar />
-        <main className="dashboard-main-EditHkc">
-          <div className="product-edit-EditHkc">
+        <main className="dashboard-main-hung11-11">
+          <div className="product-edit-hung11-11">
             <h2>Edit Product</h2>
             <div className="form-group">
               <label>Name</label>
@@ -89,6 +89,7 @@ const ProductEdit = () => {
                 name="productPrice"
                 value={editedProduct.productPrice}
                 onChange={handleChange}
+                className="large-input-hung11-11" 
               />
             </div>
             <div className="form-group">
@@ -108,6 +109,7 @@ const ProductEdit = () => {
                 name="image"
                 value={editedProduct.image}
                 onChange={handleChange}
+                className="large-input-hung11-11" 
               />
             </div>
             <div className="form-group">
