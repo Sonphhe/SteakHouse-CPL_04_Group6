@@ -1,0 +1,110 @@
+/* Main Admin Dashboard Layout for Product Edit */
+.admin-dashboard-Edit-hung11-11Edit {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background-color: #f4f7fa;
+  }
+  
+  .dashboard-container-Edit-hung11-11Edit {
+    display: flex;
+    flex: 1;
+    pEditing-top: 60px; /* Account for navbar height */
+  }
+  
+  .dashboard-main-Edit-hung11-11Edit {
+    flex: 1;
+    pEditing: 30px;
+    margin-left: 250px; /* Sidebar width */
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-Edit-container-hung11-11Edit {
+    background-color: #ffffff;
+    pEditing: 30px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+  }
+  
+  .product-Edit-form-hung11-11Edit .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .product-Edit-form-hung11-11Edit label {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  
+  .large-input-hung11-11Edit {
+    width: 100%;
+    pEditing: 12px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: border 0.3s ease;
+    min-height: 50px;
+  }
+  
+  .large-input-hung11-11Edit:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.3);
+  }
+  
+  /* Modal Actions */
+  .modal-actions-hung11-11Edit {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Buttons */
+  .save-btn-hung11-11Edit,
+  .cancel-btn-hung11-11Edit {
+    pEditing: 10px 20px;
+    font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .save-btn-hung11-11Edit {
+    background-color: #28a745;
+    color: white;
+    margin-right: 10px;
+  }
+  
+  .save-btn-hung11-11Edit:hover {
+    background-color: #218838;
+  }
+  
+  .cancel-btn-hung11-11Edit {
+    background-color: #6c757d;
+    color: white;
+  }
+  
+  .cancel-btn-hung11-11Edit:hover {
+    background-color: #5a6268;
+  }
+  
