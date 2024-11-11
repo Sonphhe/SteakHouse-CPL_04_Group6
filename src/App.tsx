@@ -13,6 +13,8 @@ import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
 import Blog from './pages/Blog/Blog'
 import PostDetail from './pages/Blog/blogComponent/PostDetail'
 import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
+import ProductEdit from './pages/Admin/pages/ProductManage/ProductEdit'
+
 import TableManagement from './pages/Admin/pages/TableManagement/TableManagement'
 import { SteakHouseProvider } from './context/SteakHouseContext'
 import { ProductProvider } from './context/ProductContext'
@@ -45,6 +47,18 @@ function App() {
                 </ProductProvider>
               } 
             />
+                   <Route 
+              path='/admin/product-edit/:id' 
+              element={
+                <ProductProvider>
+                  <ProductEdit />
+                </ProductProvider>
+              } 
+            />
+   
+     
+
+    
           </Routes>
         </BrowserRouter>
       </SteakHouseProvider>
