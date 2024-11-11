@@ -59,11 +59,7 @@ interface BlogType {
   accountId: number
 }
 
-<<<<<<< HEAD
-
-=======
 // Create context
->>>>>>> 72cd1523b682d8c640138329095af1b5176ff7b1
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
 interface SteakHouseProviderProps {

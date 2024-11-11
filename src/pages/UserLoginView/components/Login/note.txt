@@ -1,0 +1,45 @@
+const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(`http://localhost:9999/users?username=${username}&password=${password}`);
+      const user = response.data[0];
+      if (user) {
+        login(user.role);
+        navigate('/management');
+      } else {
+        alert('Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Login failed', error);
+    }
+  };
+
+
+
+
+  post 
+
+
+  const handleLogin = async (e: any) => {
+    e.preventDefault()
+    
+    try {
+      const response = await axios.post(API_ROOT + LOGIN_URL, 
+        JSON.stringify({username: newUser, password: pwd}),
+        {
+          headers: {'Content-Type' : 'application/json'},
+          withCredentials: true
+        }
+      )
+      console.log(JSON.stringify(res?.data));
+      // console.log(JSON.stringify(res));
+      const acsessToken = res?.data?.acsessToken
+      const roles = res?.data.roles
+      setAccounts({newUser, pwd, roles, acsessToken})
+      setNewUser('')
+      setPwd('')
+      setSuccess(true)
+    } catch (error) {
+      
+    }
+  }

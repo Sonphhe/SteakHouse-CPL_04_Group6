@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 import { FaUser, FaLock } from 'react-icons/fa'
 import { GoogleLogin } from '@react-oauth/google'
@@ -13,8 +13,7 @@ import axios from 'axios'
 const LOGIN_URL = '/account'
 
 const Login = () => {
-
-  const {setAccounts} = useSteakHouseContext()
+  const { setAccounts } = useSteakHouseContext()
 
   const [user, setUser] = useState({})
   // const accounts = useAccountContext()
@@ -27,31 +26,28 @@ const Login = () => {
   const [errMsg, setErrMsg] = useState('')
   const [success, setSuccess] = useState(false)
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     setErrMsg('')
   }, [user, pwd])
 
-  const handleSubmitForm = async (e: any) => {
+  const handleLogin = async (e: any) => {
     e.preventDefault()
-    
+
     try {
-      const res = await axios.post(API_ROOT + LOGIN_URL, 
-        JSON.stringify({username: newUser, password: pwd}),
-        {
-          headers: {'Content-Type' : 'application/json'},
-          withCredentials: true
-        }
-      )
-      console.log(JSON.stringify(res?.data));
-      // console.log(JSON.stringify(res));
-      const acsessToken = res?.data?.acsessToken
-      const roles = res?.data.roles
-      setAccounts({newUser, pwd, roles, acsessToken})
-      setNewUser('')
-      setPwd('')
-      setSuccess(true)
-    } catch (error) {
+      const response = await axios.get(`http://localhost:9999/account?username=${newUser}&password=${pwd}`)
+      const user = response.data[0]
+      console.log(user);
       
+      if (user) {
+        navigate('/home')
+        
+      } else {
+        alert('Invalid credentials')
+      }
+    } catch (error) {
+      console.error('Login failed', error)
     }
   }
 
@@ -62,7 +58,8 @@ const Login = () => {
           <p ref={errRef} className={errMsg ? 'errMsg' : 'offscreen'} aria-live='assertive'>
             {errMsg}
           </p>
-          <form onSubmit={handleSubmitForm}>
+          <form onSubmit={handleLogin}>
+            {/* <form> */}
             <h1>Login</h1>
             <div className='input-box'>
               <input
@@ -96,23 +93,23 @@ const Login = () => {
               </Link>
             </div>
             {/* <Link to={'/home'}> */}
-              <button type='submit'>Login</button>
-              <div className='google-login'>
-                <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    if (credentialResponse.credential) {
-                      const credentialResponseDecode: {} = jwtDecode(credentialResponse.credential)
-                      console.log(credentialResponseDecode)
-                      setUser(credentialResponseDecode)
-                    } else {
-                      console.log('No credential received')
-                    }
-                  }}
-                  onError={() => {
-                    console.log('Login Failed')
-                  }}
-                />
-              </div>
+            <button type='submit'>Login</button>
+            <div className='google-login'>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  if (credentialResponse.credential) {
+                    const credentialResponseDecode: {} = jwtDecode(credentialResponse.credential)
+                    console.log(credentialResponseDecode)
+                    setUser(credentialResponseDecode)
+                  } else {
+                    console.log('No credential received')
+                  }
+                }}
+                onError={() => {
+                  console.log('Login Failed')
+                }}
+              />
+            </div>
             {/* </Link> */}
 
             <div className='register-link'>
