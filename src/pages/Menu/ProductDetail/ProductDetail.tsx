@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import './ProductDetail.css';
 const ProductDetail: React.FC = () => {
-  const { productId } = useParams();
+  const { id } = useParams();
   const location = useLocation();
   const [productData, setProductData] = useState<any>(null);
   const [quantity, setQuantity] = useState(1);
 
   useEffect(() => {
     const fetchProductData = async () => {
-      if (productId) {
+      if (id) {
         try {
           const response = await fetch('/database.json');
           const data = await response.json();
-          const foundProduct = data.find((item: any) => item.productId === parseInt(productId));
+          const foundProduct = data.find((item: any) => item.id === parseInt(id));
           if (foundProduct) {
             setProductData(foundProduct);
           } else {
@@ -32,7 +32,7 @@ const ProductDetail: React.FC = () => {
       // Nếu có dữ liệu sản phẩm trong state, sử dụng nó
       setProductData(location.state.product);
     }
-  }, [productId, location.state]);
+  }, [id, location.state]);
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);

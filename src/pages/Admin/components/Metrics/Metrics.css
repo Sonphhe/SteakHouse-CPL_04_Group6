@@ -1,0 +1,58 @@
+.metrics-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.col-md-6 {
+    flex: 1 1 45%; /* Two columns on medium screens */
+    display: flex;
+    align-items: stretch;
+}
+
+.widget-small {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    color: #ffffff;
+    flex: 1;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.widget-small .icon {
+    margin-right: 20px;
+}
+
+.widget-small .info h4 {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.widget-small .info p {
+    font-size: 1.1em;
+    margin: 5px 0 0;
+    font-weight: bold;
+}
+
+/* Color Variants */
+.primary {
+    background-color: #007bff;
+}
+
+.warning {
+    background-color: #ffc107;
+}
+
+.success {
+    background-color: #28a745;
+}
+
+.danger {
+    background-color: #dc3545;
+}

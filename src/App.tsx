@@ -15,6 +15,7 @@ import PostDetail from './pages/Blog/blogComponent/PostDetail'
 import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
 import TableManagement from './pages/Admin/pages/TableManagement/TableManagement'
 import { SteakHouseProvider } from './context/SteakHouseContext'
+import { ProductProvider } from './context/ProductContext'
 function App() {
   return (
     <div className='App'>
@@ -31,15 +32,24 @@ function App() {
             <Route path='/about' element={<AboutUs />} />
             <Route path='/contact' element={<ContactUs />} />
             <Route path='/admin/dashboard' element={<AdminDashboard />} />
-            <Route path='/admin/product-manage' element={<ProductManage />} />
             <Route path='/blog' element={<Blog />} />
             <Route path='/blog/postdetail' element={<PostDetail />} />
             <Route path='/admin/table-management' element={<TableManagement />} />
+
+            {/* Wrap only the ProductManage route with ProductProvider */}
+            <Route 
+              path='/admin/product-management' 
+              element={
+                <ProductProvider>
+                  <ProductManage />
+                </ProductProvider>
+              } 
+            />
           </Routes>
         </BrowserRouter>
       </SteakHouseProvider>
     </div>
-  )
+  );
 }
 
 export default App
