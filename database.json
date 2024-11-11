@@ -283,8 +283,7 @@
       "image": "/assets/images/SPAGHETTI3.jpg",
       "description": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
       "categoryId": 3
-    }
-    ,
+    },
     {
       "productId": 21,
       "productName": "SALMON PASTA WITH CREAM",
@@ -338,8 +337,7 @@
       "image": "/assets/images/SALAD2.jpg",
       "description": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
       "categoryId": 4
-    }
-    ,
+    },
     {
       "productId": 27,
       "productName": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
@@ -379,55 +377,54 @@
   ],
   "blogCategory": [
     {
-        "id": 1,
-        "name": "Meat"
-      },
-      {
-        "id": 2,
-        "name": "Vegetables"
-      },
-      {
-        "id": 3,
-        "name": "Fruits"
-      },
-      {
-        "id": 4,
-        "name": "Dairy&Eggs"
-      },
-      {
-        "id": 5,
-        "name": "Grains&Cereals"
-      },
-      {
-        "id": 6,
-        "name": "Bakery&Desserts"
-      },
-      {
-        "id": 7,
-        "name": "Spices&Condiments"
-      },
-      {
-        "id": 8,
-        "name": "Snacks&Sweets"
-      },
-      {
-        "id": 9,
-        "name": "Beverages"
-      },
-      {
-        "id": 10,
-        "name": "Meals"
-      }
+      "id": 1,
+      "name": "Meat"
+    },
+    {
+      "id": 2,
+      "name": "Vegetables"
+    },
+    {
+      "id": 3,
+      "name": "Fruits"
+    },
+    {
+      "id": 4,
+      "name": "Dairy&Eggs"
+    },
+    {
+      "id": 5,
+      "name": "Grains&Cereals"
+    },
+    {
+      "id": 6,
+      "name": "Bakery&Desserts"
+    },
+    {
+      "id": 7,
+      "name": "Spices&Condiments"
+    },
+    {
+      "id": 8,
+      "name": "Snacks&Sweets"
+    },
+    {
+      "id": 9,
+      "name": "Beverages"
+    },
+    {
+      "id": 10,
+      "name": "Meals"
+    }
   ],
-  "blog" : [
-    { 
+  "blog": [
+    {
       "id": 1,
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
       "image": "/assets/images/steak3.jpg",
       "blogCategoryId": 2,
       "accountId": 2
-      
     },
     {
       "id": 2,
@@ -502,8 +499,5 @@
       "accountId": 2
     }
   ],
-  "menuItems": [
-    
-  
-  ]
+  "menuItems": []
 }

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react'
+import React, { createContext, useContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from 'react'
 import { API_ROOT } from '../utils/constants'
 
 interface SteakHouseType {
@@ -12,6 +12,7 @@ interface SteakHouseType {
   sortOrder: string
   currentPage: number
   totalPages: number
+  setAccounts: Dispatch<SetStateAction<AccountType[]>>; 
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
@@ -54,6 +55,7 @@ interface BlogType {
   blogCategoryId: number
   accountId: number
 }
+
 
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -162,6 +164,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         sortOrder,
         currentPage,
         totalPages,
+        setAccounts,
         handleFilter,
         handleSearch,
         handleSort,

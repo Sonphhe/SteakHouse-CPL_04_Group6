@@ -5,9 +5,13 @@ import { MdOutlineRestaurantMenu } from 'react-icons/md'
 import { IoLogoWechat } from 'react-icons/io5'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { FaPhoneVolume } from 'react-icons/fa6'
+import { FaCartArrowDown } from 'react-icons/fa6'
 import { FaBars } from 'react-icons/fa6'
 import { TiTimes } from 'react-icons/ti'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import blank_profile_picture from '../../../assets/images/Blank-Profile-Picture.jpg'
+import DropDownProfile from './DropDownProfile/DropDownProfile'
+import { log } from 'console'
 
 const Navbar = () => {
   const navListItems = [
@@ -40,9 +44,13 @@ const Navbar = () => {
 
   const [closeMenu, setCloseMenu] = useState(true)
 
+  const [openProfile, setOpenProfile] = useState(false)
+
   return (
     <nav className='navbar-items'>
-     <Link style={{textDecoration: 'none'}} to={'/home'}><h1 className='navbar-logo'>SteakHouse</h1></Link> 
+      <Link style={{ textDecoration: 'none' }} to={'/home'}>
+        <h1 className='navbar-logo'>SteakHouse</h1>
+      </Link>
 
       <div className='menu-icons'>
         <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
@@ -51,7 +59,8 @@ const Navbar = () => {
       <ul className={closeMenu ? 'nav-menu' : 'nav-menu active'}>
         {navListItems.map((item, i) => (
           <li className='navlinks' key={i}>
-            <Link to={item.link}
+            <Link
+              to={item.link}
               style={{
                 textDecoration: 'none',
                 color: '#222',
@@ -65,20 +74,18 @@ const Navbar = () => {
             </Link>
           </li>
         ))}
-        <li className='nav-button'>
-          <Link
-            to={'/'}
-            style={{
-              textDecoration: 'none',
-              color: '#222',
-              fontSize: '1.2rem',
-              fontWeight: '600',
-              padding: '0.7rem 1rem',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            Logout
+        <li className='cart-drawer-container'>
+          <Link to='/cart'>
+            <FaCartArrowDown />
+            <div className='shopee-cart-number-badge'>19</div>
           </Link>
+        </li>
+        <li className='nav-button' onClick={() => setOpenProfile(!openProfile)}>
+          <div className='profile-icon'>
+            <img src={blank_profile_picture} alt='' />
+            <h4>sonnphm</h4>
+          </div>
+          {openProfile && <DropDownProfile />}
         </li>
       </ul>
     </nav>
