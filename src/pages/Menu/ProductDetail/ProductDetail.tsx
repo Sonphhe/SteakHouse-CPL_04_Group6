@@ -5,7 +5,7 @@ import { useCartContext } from '../../../context/CartContext'
 import './ProductDetail.css'
 
 const ProductDetail: React.FC = () => {
-  const { id } = useParams()
+   const { id } = useParams()
   const location = useLocation()
   const navigate = useNavigate()
   const { addToCart } = useCartContext() // Import addToCart from context
@@ -29,6 +29,12 @@ const ProductDetail: React.FC = () => {
           console.error('Error fetching product:', error)
         }
       }
+    };
+
+    if (!location.state || !location.state.product) {
+      fetchProductData();
+    } else {
+      setProductData(location.state.product);
     }
 
     if (!location.state || !location.state.product) {
