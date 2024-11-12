@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './Menu.css'
 import Navbar from '../../components/ui/Navbar/Navbar'
@@ -6,6 +6,8 @@ import Hero from '../../components/ui/Hero/Hero'
 import hero_menuImg from '../../assets/images/restaurant1.webp'
 import Footer from '../../components/ui/Footer/Footer'
 import { useSteakHouseContext } from '../../context/SteakHouseContext'
+import 'font-awesome/css/font-awesome.min.css'
+import { useCartContext } from '../../context/CartContext'
 
 const Menu: React.FC = () => {
   const navigate = useNavigate()
@@ -20,22 +22,40 @@ const Menu: React.FC = () => {
     handleSearch,
     handleSort,
     handlePrevious,
-    handleNext,
+    handleNext
   } = useSteakHouseContext()
 
+  const { addToCart } = useCartContext()
+  // State cho modal thông báo
+  const [showModal, setShowModal] = useState(false)
+  const [modalMessage, setModalMessage] = useState('')
+  // Tự động ẩn modal sau 3 giây
+  useEffect(() => {
+    if (showModal) {
+      const timer = setTimeout(() => {
+        setShowModal(false)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [showModal])
   const handleProductClick = (product: any) => {
-    navigate(`/productdetail/${product.productName}`, { state: { product } });
+    navigate(`/productdetail/${product.productName}`, { state: { product } })
   }
-  
+
+  const handleAddToCart = (product: any) => {
+    const productWithValidQuantity = {
+      ...product,
+      quantity: parseInt(product.quantity, 10) || 1 // Ensure quantity is a number, default to 1 if invalid
+    }
+    addToCart(productWithValidQuantity)
+    setModalMessage('Product added to cart!')
+    setShowModal(true)
+  }
+
   return (
     <div>
       <Navbar />
-      <Hero
-        cName='hero'
-        heroImage={hero_menuImg}
-        title='We Here For Your Meal'
-        text='Choose Your Favourite Meal'
-      />
+      <Hero cName='hero' heroImage={hero_menuImg} title='We Here For Your Meal' text='Choose Your Favourite Meal' />
       <div className='menu'>
         <div className='sidebar'>
           <h2>Browse</h2>
@@ -65,14 +85,14 @@ const Menu: React.FC = () => {
           </div>
           <div className='menu-items'>
             {getPaginatedItems().map((product) => (
-              <div
-                className='menu-item'
-                key={product.id}
-                onClick={() => handleProductClick(product)}
-              >
-                <img src={product.image} alt={product.productName} />
+              <div className='menu-item' key={product.id}>
+                <img src={product.image} alt={product.productName} onClick={() => handleProductClick(product)} />
                 <h3>{product.productName}</h3>
                 <p>{product.productPrice}$</p>
+                {/* Nút Add to Cart */}
+                <button className='add-to-cart' onClick={() => handleAddToCart(product)}>
+                  <i className='fa fa-shopping-cart' style={{ marginRight: '8px' }}></i> Add to Cart
+                </button>
               </div>
             ))}
           </div>
@@ -89,6 +109,15 @@ const Menu: React.FC = () => {
           </div>
         </div>
       </div>
+      {/* Modal Thông báo thêm vào giỏ hàng */}
+      {showModal && (
+        <div className='modal-overlay' onClick={() => setShowModal(false)}>
+          <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+            <div className='check-icon'>✔</div>
+            <p>{modalMessage}</p>
+          </div>
+        </div>
+      )}
       <Footer />
     </div>
   )

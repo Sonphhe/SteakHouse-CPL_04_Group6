@@ -18,9 +18,12 @@ import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import TableManagement from './pages/Admin/pages/TableManagement/TableManagement'
 import { SteakHouseProvider } from './context/SteakHouseContext'
 import { ProductProvider } from './context/ProductContext'
+import Cart from './pages/Cart/Cart'
+import { CartProvider } from './context/CartContext'
 function App() {
   return (
     <div className='App'>
+      <CartProvider>
       <SteakHouseProvider>
         <BrowserRouter>
           <Routes>
@@ -37,7 +40,7 @@ function App() {
             <Route path='/blog' element={<Blog />} />
             <Route path='/blog/postdetail' element={<PostDetail />} />
             <Route path='/admin/table-management' element={<TableManagement />} />
-
+            <Route path='/cart' element={<Cart />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 
@@ -69,6 +72,7 @@ function App() {
           </Routes>
         </BrowserRouter>
       </SteakHouseProvider>
+      </CartProvider>
     </div>
   );
 }
