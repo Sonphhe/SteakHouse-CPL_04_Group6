@@ -1,8 +1,9 @@
+/* CSS cho màn hình lớn hơn 768px (Desktop) */
 .menu {
   display: flex;
   background-color: #ffffff;
   min-height: 100vh;
-  padding: 20px; /* Thêm padding cho toàn bộ khu vực menu */
+  padding: 20px;
   margin-top: -10px;
 }
 
@@ -10,13 +11,13 @@
   width: 200px;
   padding: 20px;
   background-color: #f8f8f8;
-  border-radius: 8px; /* Thêm border-radius cho các góc mềm mại hơn */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Thêm hiệu ứng bóng mờ */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .sidebar h2 {
   margin-bottom: 20px;
-  font-size: 1.2em; /* Điều chỉnh kích thước font chữ */
+  font-size: 1.2em;
 }
 
 .sidebar ul {
@@ -25,14 +26,14 @@
 }
 
 .sidebar ul li {
-  margin-bottom: 12px; /* Giảm khoảng cách giữa các mục */
-  font-size: 1em; /* Điều chỉnh kích thước font chữ */
-  cursor: pointer; /* Thêm hiệu ứng con trỏ */
-  transition: color 0.3s ease; /* Thêm hiệu ứng chuyển màu */
+  margin-bottom: 12px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .sidebar ul li:hover {
-  color: #13844E; /* Đổi màu khi di chuột */
+  color: #13844E;
 }
 
 .main-content {
@@ -63,8 +64,8 @@
 
 .menu-items {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 ảnh trên một hàng */
-  gap: 20px; /* Khoảng cách giữa các ảnh */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 .menu-item {
@@ -85,9 +86,9 @@
 }
 
 .menu-item img {
-  width: 90%; /* Đảm bảo ảnh chiếm toàn bộ khung */
+  width: 90%;
   height: auto;
-  border-bottom: 1px solid #ccc; /* Thêm viền dưới cho hình ảnh */
+  border-bottom: 1px solid #ccc;
   border-radius: 8px;
 }
 
@@ -100,7 +101,7 @@
 .menu-item p {
   color: red;
   font-weight: bold;
-  margin-bottom: 10px; /* Thêm khoảng cách dưới chữ */
+  margin-bottom: 10px;
 }
 
 .pagination {
@@ -113,7 +114,7 @@
 
 .pagination button {
   padding: 8px 16px;
-  margin: 0 10px;
+  margin: 0 5px;
   cursor: pointer;
   border: 1px solid #ccc;
   background-color: #f9f9f9;
@@ -137,19 +138,85 @@
 }
 
 .back-button {
-  position: absolute; /* Đặt vị trí tuyệt đối */
-  top: 10px; /* Cách từ trên cùng */
-  left: 10px; /* Cách từ bên trái */
-  padding: 5px 10px; /* Padding nhỏ */
-  background-color: #007bff; /* Màu nền */
-  color: white; /* Màu chữ */
-  border: none; /* Không có đường viền */
-  border-radius: 5px; /* Bo góc */
-  font-size: 14px; /* Kích thước chữ */
-  cursor: pointer; /* Con trỏ chuột khi hover */
-  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .back-button:hover {
-  background-color: #0056b3; /* Màu nền khi hover */
+  background-color: #0056b3;
+}
+
+/* CSS cho màn hình nhỏ hơn 768px (Mobile) */
+@media (max-width: 768px) {
+  .menu {
+    display: block;
+    padding: 10px;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+
+  .sidebar h2 {
+    font-size: 1em;
+    margin-bottom: 15px;
+  }
+
+  .sidebar ul li {
+    font-size: 0.9em;
+  }
+
+  .search-barr {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search-barr input,
+  .search-barr select {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .menu-items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .menu-item {
+    padding: 10px;
+  }
+
+  .menu-item h3 {
+    font-size: 1em;
+  }
+
+  .pagination {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .pagination button {
+    padding: 8px 12px;
+    margin: 0 5px;
+  }
+
+  .back-button {
+    top: 15px;
+    left: 15px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 }
