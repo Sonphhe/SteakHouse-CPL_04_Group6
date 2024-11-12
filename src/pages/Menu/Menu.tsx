@@ -5,7 +5,7 @@ import Navbar from '../../components/ui/Navbar/Navbar'
 import Hero from '../../components/ui/Hero/Hero'
 import hero_menuImg from '../../assets/images/restaurant1.webp'
 import Footer from '../../components/ui/Footer/Footer'
-import { useSteakHouseContext } from '../../context/SteakHouseContext'
+import { useSteakHouseContext } from '../../hooks/useSteakHouseContext' 
 
 const Menu: React.FC = () => {
   const navigate = useNavigate()

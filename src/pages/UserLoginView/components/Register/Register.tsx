@@ -1,15 +1,20 @@
 import './Register.css'
 import { Link } from 'react-router-dom'
-import { CiCircleCheck, CiCircleInfo } from 'react-icons/ci'
-import { LiaTimesCircleSolid } from 'react-icons/lia'
 import { useEffect, useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faInfoCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+import CustomButton from '../../../../components/CustomButton/CustomButton'
+import { useGoogleLogin } from '@react-oauth/google'
+import axios from 'axios'
+import { API_ROOT } from '../../../../utils/constants'
+import profile_pics from '../../../../assets/images/profile-pics.jpg'
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/
 
 //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
+
+const ACCOUNT_URL = '/account'
 
 const Register = () => {
   const userRef = useRef<HTMLInputElement | null>(null)
@@ -47,7 +52,52 @@ const Register = () => {
     setErrMsg('')
   }, [user, pwd, matchPwd])
 
-  const handleSubmit = () => {}
+  const handleSubmit = async (e: any) => {
+    e.preventDefault()
+
+    try {
+      const response = await axios.post(
+        API_ROOT + ACCOUNT_URL,
+        JSON.stringify({ username: user, password: pwd, roleId: 3, imgage: profile_pics }),
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true
+        }
+      )
+      console.log(JSON.stringify(response?.data))
+      // console.log(JSON.stringify(res));
+      // setAccounts({user, pwd, ima})
+      setUser('')
+      setPwd('')
+      setSuccess(true)
+    } catch (error) {}
+  }
+
+  const register = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: {
+            Authorization: `Bearer ${response.access_token}`
+          }
+        })
+        console.log(res.data);
+        const res2 = await axios.post(
+          API_ROOT + ACCOUNT_URL,
+          JSON.stringify({ username: res.data.email, password: res.data.sub, roleId: 3, image:  res.data.picture }),
+          {
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true
+          }
+        )
+        setUser('')
+        setPwd('')
+        setSuccess(true)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  })
 
   return (
     <>
@@ -55,7 +105,7 @@ const Register = () => {
         <section>
           <h1>Success!</h1>
           <p>
-            <a href='#'>Sign In</a>
+            <Link to='/login'>Sign In</Link>
           </p>
         </section>
       ) : (
@@ -123,7 +173,8 @@ const Register = () => {
                     <FontAwesomeIcon icon={faInfoCircle} />
                     8 to 24 characters.
                     <br />
-                    Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character.
+                    Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one
+                    special character.
                     <br />
                     Allowed special characters: <span aria-label='exclamation mark'>!</span>{' '}
                     <span aria-label='at symbol'>@</span> <span aria-label='hashtag'>#</span>{' '}
@@ -183,6 +234,7 @@ const Register = () => {
                 </div>
                 <div className='register-button'>
                   <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                  <CustomButton onClick={() => register()} />
                 </div>
                 <div className='contain-account'>
                   <Link style={{ textDecoration: 'none', fontWeight: '600', color: '#b29a9a' }} to={'/login'}>

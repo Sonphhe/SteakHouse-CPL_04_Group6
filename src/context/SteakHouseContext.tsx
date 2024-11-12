@@ -13,13 +13,14 @@ interface SteakHouseType {
   sortOrder: string
   currentPage: number
   totalPages: number
-  setAccounts: Dispatch<SetStateAction<AccountType[]>>; 
+  currentAccount: CurrentAccount | undefined
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
   handlePrevious: () => void
   handleNext: () => void
   getPaginatedItems: () => ProductType[]
+  setCurrentAccount: Dispatch<SetStateAction<CurrentAccount | undefined>>
 }
 
 interface AccountType {
@@ -59,6 +60,14 @@ interface BlogType {
   accountId: number
 }
 
+interface CurrentAccount {
+  username: string
+  password: string
+  roleId: number
+  image: string
+  id: string
+}
+
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -80,6 +89,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [currentPage, setCurrentPage] = useState<number>(1)
   const itemsPerPage = 8
 
+  const [currentAccount, setCurrentAccount] = useState<CurrentAccount>()
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -90,7 +101,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
           axios.get(`${API_ROOT}/blogCategory`),
           axios.get(`${API_ROOT}/blog`)
         ])
-        
+
         setAccounts(accountRes.data)
         setProducts(productRes.data)
         setOriginalProducts(productRes.data) // Lưu trữ danh sách sản phẩm gốc
@@ -108,18 +119,15 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
 
   const handleFilter = (category: string) => {
-    const items = category === 'All'
-      ? originalProducts
-      : originalProducts.filter((item) => item.categoryId.toString() === category)
+    const items =
+      category === 'All' ? originalProducts : originalProducts.filter((item) => item.categoryId.toString() === category)
     setFilteredItems(items)
     setCurrentPage(1)
   }
 
   const handleSearch = (query: string) => {
     setSearchQuery(query)
-    const filtered = originalProducts.filter((item) =>
-      item.productName.toLowerCase().includes(query.toLowerCase())
-    )
+    const filtered = originalProducts.filter((item) => item.productName.toLowerCase().includes(query.toLowerCase()))
     setFilteredItems(filtered)
     setCurrentPage(1)
   }
@@ -160,7 +168,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         sortOrder,
         currentPage,
         totalPages,
-        setAccounts,
+        currentAccount,
+        setCurrentAccount,
         handleFilter,
         handleSearch,
         handleSort,
@@ -172,12 +181,4 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
       {children}
     </SteakHouseContext.Provider>
   )
-}
-
-export const useSteakHouseContext = () => {
-  const context = useContext(SteakHouseContext)
-  if (!context) {
-    throw new Error('useSteakHouseContext must be used within a SteakHouseProvider')
-  }
-  return context
 }

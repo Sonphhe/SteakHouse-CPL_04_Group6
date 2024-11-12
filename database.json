@@ -18,74 +18,32 @@
   ],
   "account": [
     {
-      "id": "1",
       "username": "sonpham123",
       "password": "123",
       "roleId": 1,
-      "image": ""
+      "image": "/assets/images/profile-pics.jpg",
+      "id": "1"
     },
     {
-      "id": "2",
-      "username": "linhnguyen456",
-      "password": "456",
-      "roleId": 2,
-      "image": ""
-    },
-    {
-      "id": "3",
-      "username": "minhtran789",
-      "password": "789",
+      "username": "sondaigia",
+      "password": "Sondaigia123@",
       "roleId": 3,
-      "image": ""
+      "image": "/assets/images/profile-pics.jpg",
+      "id": "RaksUQw"
     },
     {
-      "id": "4",
-      "username": "anhle101",
-      "password": "101",
+      "username": "2k3sonpham@gmail.com",
+      "password": "116940890875495737382",
       "roleId": 3,
-      "image": ""
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocK6F2KPx0WSHoSqnVg9yV04YKxLp6Tq_KnxtgEZPQENfEKBCP1J=s96-c",
+      "id": "UvmIhuy"
     },
     {
-      "id": "5",
-      "username": "phongvo102",
-      "password": "102",
+      "username": "sonphhe173195@fpt.edu.vn",
+      "password": "105917570415484790918",
       "roleId": 3,
-      "image": ""
-    },
-    {
-      "id": "6",
-      "username": "hoanganh202",
-      "password": "202",
-      "roleId": 3,
-      "image": ""
-    },
-    {
-      "id": "7",
-      "username": "baoquang303",
-      "password": "303",
-      "roleId": 3,
-      "image": ""
-    },
-    {
-      "id": "8",
-      "username": "quyenpham404",
-      "password": "404",
-      "roleId": 3,
-      "image": ""
-    },
-    {
-      "id": "9",
-      "username": "ngoctran505",
-      "password": "505",
-      "roleId": 3,
-      "image": ""
-    },
-    {
-      "id": "10",
-      "username": "truongle606",
-      "password": "606",
-      "roleId": 3,
-      "image": ""
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
+      "id": "8NctxH1"
     }
   ],
   "productCategory": [
@@ -107,15 +65,6 @@
     }
   ],
   "product": [
-    {
-      "id": "1",
-      "productName": "HOKUBEE STEAK",
-      "productOldPrice": 100,
-      "productPrice": 235,
-      "image": "/assets/images/SALAD2.jpg",
-      "description": "Steak Bo Hokubee, sirloin",
-      "categoryId": 1
-    },
     {
       "id": "2",
       "productName": "USA RIB EYE STEAK",
@@ -376,15 +325,6 @@
       "image": "/assets/images/SALAD6.jpg",
       "description": "MULBERRY SALAD AND ICE CREAM",
       "categoryId": 4
-    },
-    {
-      "id": "1731247242538",
-      "productName": "",
-      "productPrice": 0,
-      "description": "",
-      "image": "",
-      "productOldPrice": 0,
-      "categoryId": 1
     }
   ],
   "blogCategory": [
@@ -516,13 +456,13 @@
       "id": "1",
       "name": "Table 1",
       "qrCode": "QR1",
-      "status": false
+      "status": true
     },
     {
       "id": "2",
       "name": "Table 2",
       "qrCode": "QR2",
-      "status": true
+      "status": false
     },
     {
       "id": "3",

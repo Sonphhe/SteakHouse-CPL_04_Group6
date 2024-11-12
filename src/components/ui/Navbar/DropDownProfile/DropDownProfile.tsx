@@ -1,16 +1,46 @@
 import { Link } from 'react-router-dom'
 import './DropDownProfile.css'
+import { ImProfile } from 'react-icons/im'
+import { BsFillCartCheckFill } from 'react-icons/bs'
+import { LuLogOut } from 'react-icons/lu'
+import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 
-const DropDownProfile = () => {
+const DropDownProfile = (props:{name: string}) => {
+
+  const {currentAccount} = useSteakHouseContext()
+
   return (
-    <div className='dropDownProfile'>
-      <ul>
-        <li>Profile</li>
-        <li>Purchase Order</li>
-        <Link to={'/login'}>
-          <li>Logout</li>
+    <div className={props.name}>
+      <div className='sub-menu'>
+        <div className='user-info'>
+          <img src={currentAccount?.image} alt='' />
+          <h3>{currentAccount?.username}</h3>
+        </div>
+        <hr />
+        <Link className='sub-menu-links' to={''}>
+          <i>
+            <ImProfile />
+          </i>
+          <p>Edit Profile</p>
+          <span>{`>`}</span>
         </Link>
-      </ul>
+        <Link className='sub-menu-links' to={''}>
+          <i>
+            <BsFillCartCheckFill />
+          </i>
+
+          <p>Purchase Order</p>
+          <span>{`>`}</span>
+        </Link>
+        <Link className='sub-menu-links' to={'/login'}>
+          <i>
+            <LuLogOut />
+          </i>
+
+          <p>Logout</p>
+          <span>{`>`}</span>
+        </Link>
+      </div>
     </div>
   )
 }

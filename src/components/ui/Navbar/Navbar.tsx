@@ -9,9 +9,10 @@ import { FaCartArrowDown } from 'react-icons/fa6'
 import { FaBars } from 'react-icons/fa6'
 import { TiTimes } from 'react-icons/ti'
 import { useEffect, useState } from 'react'
-import blank_profile_picture from '../../../assets/images/Blank-Profile-Picture.jpg'
+import blank_profile_picture from '../../../assets/images/profile-pics.jpg'
 import DropDownProfile from './DropDownProfile/DropDownProfile'
 import { log } from 'console'
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'
 
 const Navbar = () => {
   const navListItems = [
@@ -46,6 +47,7 @@ const Navbar = () => {
 
   const [openProfile, setOpenProfile] = useState(false)
 
+  const { currentAccount } = useSteakHouseContext()
   return (
     <nav className='navbar-items'>
       <Link style={{ textDecoration: 'none' }} to={'/home'}>
@@ -80,12 +82,11 @@ const Navbar = () => {
             <div className='shopee-cart-number-badge'>19</div>
           </Link>
         </li>
-        <li className='nav-button' onClick={() => setOpenProfile(!openProfile)}>
+        <li className='nav-button'>
           <div className='profile-icon'>
-            <img src={blank_profile_picture} alt='' />
-            <h4>sonnphm</h4>
+            <img onClick={() => setOpenProfile(!openProfile)} src={currentAccount?.image} alt='' />
           </div>
-          {openProfile && <DropDownProfile />}
+          {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
         </li>
       </ul>
     </nav>
