@@ -79,7 +79,7 @@ const Navbar = () => {
         <li className='cart-drawer-container'>
           <Link to='/cart'>
             <FaCartArrowDown />
-            <div className='shopee-cart-number-badge'>19</div>
+            <div className='shopee-cart-number-badge'>4</div> 
           </Link>
         </li>
         <li className='nav-button'>

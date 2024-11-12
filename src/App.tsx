@@ -13,12 +13,17 @@ import AdminDashboard from './pages/Admin/pages/Dashboard/AdminDashboard'
 import Blog from './pages/Blog/Blog'
 import PostDetail from './pages/Blog/blogComponent/PostDetail'
 import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
+import ProductEdit from './pages/Admin/pages/ProductEdit/ProductEdit'
+import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import TableManagement from './pages/Admin/pages/TableManagement/TableManagement'
 import { SteakHouseProvider } from './context/SteakHouseContext'
 import { ProductProvider } from './context/ProductContext'
+import Cart from './pages/Cart/Cart'
+import { CartProvider } from './context/CartContext'
 function App() {
   return (
     <div className='App'>
+      <CartProvider>
       <SteakHouseProvider>
         <BrowserRouter>
           <Routes>
@@ -35,7 +40,7 @@ function App() {
             <Route path='/blog' element={<Blog />} />
             <Route path='/blog/postdetail' element={<PostDetail />} />
             <Route path='/admin/table-management' element={<TableManagement />} />
-
+            <Route path='/cart' element={<Cart />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 
@@ -45,9 +50,29 @@ function App() {
                 </ProductProvider>
               } 
             />
+                   <Route 
+              path='/admin/product-edit/:id' 
+              element={
+                <ProductProvider>
+                  <ProductEdit />
+                </ProductProvider>
+              } 
+            />
+   
+              <Route 
+              path='/admin/product-add' 
+              element={
+                <ProductProvider>
+                  <ProductAdd />
+                </ProductProvider>
+              } 
+            />
+
+    
           </Routes>
         </BrowserRouter>
       </SteakHouseProvider>
+      </CartProvider>
     </div>
   );
 }

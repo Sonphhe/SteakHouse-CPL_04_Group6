@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { API_ROOT } from '../utils/constants';
 
@@ -26,12 +26,13 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [products, setProducts] = useState<ProductType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
 
+  // Fetch products on initial load
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${API_ROOT}/product`);
-        setProducts(response.data);
-        setFilteredProducts(response.data);
+        const { data } = await axios.get(`${API_ROOT}/product`);
+        setProducts(data);
+        setFilteredProducts(data);
       } catch (error) {
         console.error('Error fetching products:', error);
       }
@@ -39,46 +40,46 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     fetchProducts();
   }, []);
 
-  const addProduct = async (product: ProductType) => {
+  // Add a new product
+  const addProduct = useCallback(async (product: ProductType) => {
     try {
-      const response = await axios.post(`${API_ROOT}/product`, product);
-      setProducts((prev) => [...prev, response.data]);
-      setFilteredProducts((prev) => [...prev, response.data]);
+      const { data } = await axios.post(`${API_ROOT}/product`, product);
+      setProducts((prev) => [...prev, data]);
+      setFilteredProducts((prev) => [...prev, data]);
     } catch (error) {
       console.error('Error adding product:', error);
     }
-  };
+  }, []);
 
-  const editProduct = async (id: number, updatedProduct: Partial<ProductType>) => {
+  // Edit an existing product
+  const editProduct = useCallback(async (id: number, updatedProduct: Partial<ProductType>) => {
     try {
-      const response = await axios.put(`${API_ROOT}/product/${id}`, updatedProduct);
+      const { data } = await axios.put(`${API_ROOT}/product/${id}`, updatedProduct);
       setProducts((prev) =>
-        prev.map((product) => (product.id === parseInt(`${id}`, 10) ? { ...product, ...response.data } : product))
+        prev.map((product) => (product.id === id ? { ...product, ...data } : product))
       );
       setFilteredProducts((prev) =>
-        prev.map((product) => (product.id === parseInt(`${id}`, 10) ? { ...product, ...response.data } : product))
+        prev.map((product) => (product.id === id ? { ...product, ...data } : product))
       );
     } catch (error) {
       console.error('Error editing product:', error);
     }
-  };
-
-  const deleteProduct = async (id: number) => {
-    try {
-      // Use id as part of the URL path
-      await axios.delete(`${API_ROOT}/product/${id}`);
+  }, []);
   
-      // Update the local state to reflect the deletion
+
+  // Delete a product by ID
+  const deleteProduct = useCallback(async (id: number) => {
+    try {
+      await axios.delete(`${API_ROOT}/product/${id}`);
       setProducts((prev) => prev.filter((product) => product.id !== id));
       setFilteredProducts((prev) => prev.filter((product) => product.id !== id));
     } catch (error) {
       console.error('Error deleting product:', error);
     }
-  };
-  
-  
+  }, []);
 
-  const filterProducts = (searchTerm: string) => {
+  // Filter products by search term
+  const filterProducts = useCallback((searchTerm: string) => {
     if (!searchTerm) {
       setFilteredProducts(products);
     } else {
@@ -87,7 +88,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
       );
       setFilteredProducts(filtered);
     }
-  };
+  }, [products]);
 
   return (
     <ProductContext.Provider value={{ products: filteredProducts, addProduct, editProduct, deleteProduct, filterProducts }}>
