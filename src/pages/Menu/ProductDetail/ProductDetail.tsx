@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams, useNavigate } from 'react-router-dom';
 import './ProductDetail.css';
+
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   const [productData, setProductData] = useState<any>(null);
   const [quantity, setQuantity] = useState(1);
 
@@ -25,11 +27,9 @@ const ProductDetail: React.FC = () => {
       }
     };
 
-    // Nếu sản phẩm không có trong state (chỉ sử dụng URL params), fetch từ API
     if (!location.state || !location.state.product) {
       fetchProductData();
     } else {
-      // Nếu có dữ liệu sản phẩm trong state, sử dụng nó
       setProductData(location.state.product);
     }
   }, [id, location.state]);
@@ -39,7 +39,7 @@ const ProductDetail: React.FC = () => {
     if (value > 0) {
       setQuantity(value);
     } else {
-      setQuantity(1); // Đảm bảo quantity không nhỏ hơn 1
+      setQuantity(1);
     }
   };
 
@@ -47,15 +47,18 @@ const ProductDetail: React.FC = () => {
     console.log(`Added ${quantity} of ${productData?.productName} to cart.`);
   };
 
+  const handleBack = () => {
+    navigate(-1);
+  };
+
   if (!productData) {
     return <div>Loading...</div>;
   }
 
-  console.log(productData.image);
-  
-
   return (
+    
     <div className="product-detail">
+      <button className="back-button" onClick={handleBack}>Back</button>
       <div className="product-image">
         <img src={productData.image} alt={productData.productName} />
       </div>
