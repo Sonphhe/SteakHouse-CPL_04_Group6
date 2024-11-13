@@ -11,40 +11,23 @@ import { TiTimes } from 'react-icons/ti'
 import { useEffect, useState } from 'react'
 import blank_profile_picture from '../../../assets/images/Blank-Profile-Picture.jpg'
 import DropDownProfile from './DropDownProfile/DropDownProfile'
-import { log } from 'console'
+import { useCartContext } from '../../../context/CartContext' // Import cart context
 
 const Navbar = () => {
   const navListItems = [
-    {
-      text: 'Home',
-      icon: <IoHome />,
-      link: '/home'
-    },
-    {
-      text: 'Menu',
-      icon: <MdOutlineRestaurantMenu />,
-      link: '/menu'
-    },
-    {
-      text: 'Blog',
-      icon: <IoLogoWechat />,
-      link: '/blog'
-    },
-    {
-      text: 'About',
-      icon: <AiFillInfoCircle />,
-      link: '/about'
-    },
-    {
-      text: 'Contact',
-      icon: <FaPhoneVolume />,
-      link: '/contact'
-    }
+    { text: 'Home', icon: <IoHome />, link: '/home' },
+    { text: 'Menu', icon: <MdOutlineRestaurantMenu />, link: '/menu' },
+    { text: 'Blog', icon: <IoLogoWechat />, link: '/blog' },
+    { text: 'About', icon: <AiFillInfoCircle />, link: '/about' },
+    { text: 'Contact', icon: <FaPhoneVolume />, link: '/contact' }
   ]
 
   const [closeMenu, setCloseMenu] = useState(true)
-
   const [openProfile, setOpenProfile] = useState(false)
+  const { cartItems } = useCartContext() // Access cart items from context
+
+  // Calculate total number of items in the cart
+  const totalCartItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   return (
     <nav className='navbar-items'>
@@ -77,9 +60,10 @@ const Navbar = () => {
         <li className='cart-drawer-container'>
           <Link to='/cart'>
             <FaCartArrowDown />
-            <div className='shopee-cart-number-badge'>4</div> 
+            <div className='shopee-cart-number-badge'>{cartItems.length}</div>
           </Link>
         </li>
+
         <li className='nav-button' onClick={() => setOpenProfile(!openProfile)}>
           <div className='profile-icon'>
             <img src={blank_profile_picture} alt='' />
