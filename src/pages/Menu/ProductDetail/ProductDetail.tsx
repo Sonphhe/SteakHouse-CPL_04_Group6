@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useLocation, useParams, useNavigate } from 'react-router-dom'
-import 'font-awesome/css/font-awesome.min.css';
+// import 'font-awesome/css/font-awesome.min.css';
 import { useCartContext } from '../../../context/CartContext'
 import './ProductDetail.css'
 

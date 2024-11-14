@@ -37,6 +37,7 @@ const Menu: React.FC = () => {
       return () => clearTimeout(timer)
     }
   }, [showModal])
+  
   const handleProductClick = (product: any) => {
     navigate(`/productdetail/${product.productName}`, { state: { product } })
   }
@@ -113,7 +114,7 @@ const Menu: React.FC = () => {
         <div className='modal-overlay' onClick={() => setShowModal(false)}>
           <div className='modal-content' onClick={(e) => e.stopPropagation()}>
             <div className='check-icon'>✔</div>
-            <p>{modalMessage}</p>
+            <p>{modalMessage}</p> 
           </div>
         </div>
       )}

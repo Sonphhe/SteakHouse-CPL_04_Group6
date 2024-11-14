@@ -13,6 +13,7 @@ import blank_profile_picture from '../../../assets/images/profile-pics.jpg'
 import DropDownProfile from './DropDownProfile/DropDownProfile'
 import { log } from 'console'
 import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'
+import { useCartContext } from '../../../context/CartContext'
 
 const Navbar = () => {
   const navListItems = [
@@ -48,6 +49,9 @@ const Navbar = () => {
   const [openProfile, setOpenProfile] = useState(false)
 
   const { currentAccount } = useSteakHouseContext()
+
+  const { cartItems} = useCartContext()
+
   return (
     <nav className='navbar-items'>
       <Link style={{ textDecoration: 'none' }} to={'/home'}>
@@ -79,7 +83,7 @@ const Navbar = () => {
         <li className='cart-drawer-container'>
           <Link to='/cart'>
             <FaCartArrowDown />
-            <div className='shopee-cart-number-badge'>4</div> 
+            <div className='shopee-cart-number-badge'>{cartItems.length}</div>
           </Link>
         </li>
         <li className='nav-button'>
