@@ -1,9 +1,9 @@
-/* Giao diện Desktop */
 .product-detail {
   display: flex;
   flex-direction: row;
   max-width: 2000px;
   margin: 20px auto;
+  margin-top: 150px; /* Thêm khoảng cách từ navbar */
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -134,10 +134,11 @@
 /* Giao diện Mobile */
 @media (max-width: 768px) {
   .product-detail {
-    flex-direction: column; /* Xếp dọc cho màn hình nhỏ */
-    max-width: 100%; 
+    flex-direction: column;
+    max-width: 100%;
     padding: 10px;
     box-shadow: none;
+    margin-top: 120px; /* Thêm khoảng cách từ navbar trên mobile */
   }
 
   .product-image {
