@@ -11,42 +11,29 @@ import { TiTimes } from 'react-icons/ti'
 import { useEffect, useState } from 'react'
 import blank_profile_picture from '../../../assets/images/profile-pics.jpg'
 import DropDownProfile from './DropDownProfile/DropDownProfile'
+<<<<<<< HEAD
 import { log } from 'console'
 import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'
 import { useCartContext } from '../../../context/CartContext'
+=======
+import { useCartContext } from '../../../context/CartContext' // Import cart context
+>>>>>>> c1de4c05dcef7d255f054e7a72d9a36af4d3e7b4
 
 const Navbar = () => {
   const navListItems = [
-    {
-      text: 'Home',
-      icon: <IoHome />,
-      link: '/home'
-    },
-    {
-      text: 'Menu',
-      icon: <MdOutlineRestaurantMenu />,
-      link: '/menu'
-    },
-    {
-      text: 'Blog',
-      icon: <IoLogoWechat />,
-      link: '/blog'
-    },
-    {
-      text: 'About',
-      icon: <AiFillInfoCircle />,
-      link: '/about'
-    },
-    {
-      text: 'Contact',
-      icon: <FaPhoneVolume />,
-      link: '/contact'
-    }
+    { text: 'Home', icon: <IoHome />, link: '/home' },
+    { text: 'Menu', icon: <MdOutlineRestaurantMenu />, link: '/menu' },
+    { text: 'Blog', icon: <IoLogoWechat />, link: '/blog' },
+    { text: 'About', icon: <AiFillInfoCircle />, link: '/about' },
+    { text: 'Contact', icon: <FaPhoneVolume />, link: '/contact' }
   ]
 
   const [closeMenu, setCloseMenu] = useState(true)
-
   const [openProfile, setOpenProfile] = useState(false)
+  const { cartItems } = useCartContext() // Access cart items from context
+
+  // Calculate total number of items in the cart
+  const totalCartItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
 
   const { currentAccount } = useSteakHouseContext()
 
