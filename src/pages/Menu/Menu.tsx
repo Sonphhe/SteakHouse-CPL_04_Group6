@@ -23,6 +23,7 @@ const Menu: React.FC = () => {
     handlePrevious,
     handleNext
   } = useSteakHouseContext()
+console.log(categories);
 
   const { addToCart } = useCartContext()
   // State cho modal thông báo

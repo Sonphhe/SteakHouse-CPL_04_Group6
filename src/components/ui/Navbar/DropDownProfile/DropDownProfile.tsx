@@ -1,13 +1,18 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './DropDownProfile.css'
 import { ImProfile } from 'react-icons/im'
 import { BsFillCartCheckFill } from 'react-icons/bs'
 import { LuLogOut } from 'react-icons/lu'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 
-const DropDownProfile = (props:{name: string}) => {
+const DropDownProfile = (props: { name: string }) => {
+  const { currentAccount, logout } = useSteakHouseContext()
+  const navigate = useNavigate()
 
-  const {currentAccount} = useSteakHouseContext()
+  const handleLogout = () => {
+    logout()
+    navigate('/')
+  }
 
   return (
     <div className={props.name}>
@@ -17,7 +22,7 @@ const DropDownProfile = (props:{name: string}) => {
           <h3>{currentAccount?.username}</h3>
         </div>
         <hr />
-        <Link className='sub-menu-links' to={''}>
+        <Link className='sub-menu-links' to={'/user/account/userProfile'}>
           <i>
             <ImProfile />
           </i>
@@ -32,14 +37,16 @@ const DropDownProfile = (props:{name: string}) => {
           <p>Purchase Order</p>
           <span>{`>`}</span>
         </Link>
-        <Link className='sub-menu-links' to={'/login'}>
-          <i>
-            <LuLogOut />
-          </i>
+        <div className='logout-button' onClick={handleLogout}>
+          <Link className='sub-menu-links' to={'/login'}>
+            <i>
+              <LuLogOut />
+            </i>
 
-          <p>Logout</p>
-          <span>{`>`}</span>
-        </Link>
+            <p>Logout</p>
+            <span>{`>`}</span>
+          </Link>
+        </div>
       </div>
     </div>
   )

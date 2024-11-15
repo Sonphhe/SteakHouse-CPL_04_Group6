@@ -16,7 +16,7 @@ const LOGIN_URL = '/account'
 const Login = () => {
   const [user, setUser] = useState({})
 
-  const { setCurrentAccount, currentAccount } = useSteakHouseContext()
+  const { login } = useSteakHouseContext()
 
   const userRef = useRef<HTMLInputElement | null>(null)
   const errRef = useRef<HTMLDivElement | null>(null)
@@ -24,7 +24,7 @@ const Login = () => {
   const [newUser, setNewUser] = useState('')
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false)
+  // const [success, setSuccess] = useState(false)
 
   const navigate = useNavigate()
 
@@ -41,9 +41,8 @@ const Login = () => {
       console.log(user)
 
       if (user) {
-        navigate('/home')
-        setCurrentAccount(user)
-        console.log(currentAccount)
+        login(user)
+        navigate('/management')
       } else {
         alert('Invalid credentials')
       }
@@ -52,7 +51,7 @@ const Login = () => {
     }
   }
 
-  const login = useGoogleLogin({
+  const loginGoogle = useGoogleLogin({
     onSuccess: async (response) => {
       try {
         const res = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
@@ -66,9 +65,8 @@ const Login = () => {
         const user = res2.data[0]
         console.log(user)
         if (user) {
-          navigate('/home')
-          setCurrentAccount(user)
-          console.log(currentAccount)
+          login(user)
+          navigate('/management')
         } else {
           alert('Invalid credentials')
         }
@@ -77,7 +75,6 @@ const Login = () => {
       }
     }
   })
-
 
   return (
     <>
@@ -122,7 +119,7 @@ const Login = () => {
             </div>
             <button type='submit'>Login</button>
             <div className='google-login'>
-              <CustomButton onClick={() => login()} />
+              <CustomButton onClick={() => loginGoogle()} />
             </div>
 
             <div className='register-link'>

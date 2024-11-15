@@ -20,6 +20,8 @@ import { SteakHouseProvider } from './context/SteakHouseContext'
 import { ProductProvider } from './context/ProductContext'
 import Cart from './pages/Cart/Cart'
 import { CartProvider } from './context/CartContext'
+import Management from './pages/Management/Management'
+import UserProfile from './pages/UserProfile/UserProfile'
 function App() {
   return (
     <div className='App'>
@@ -41,6 +43,8 @@ function App() {
             <Route path='/blog/postdetail' element={<PostDetail />} />
             <Route path='/admin/table-management' element={<TableManagement />} />
             <Route path='/cart' element={<Cart />} />
+            <Route path='/management' element={<Management />} />
+            <Route path='/user/account/userProfile' element={<UserProfile />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 

@@ -20,7 +20,8 @@ interface SteakHouseType {
   handlePrevious: () => void
   handleNext: () => void
   getPaginatedItems: () => ProductType[]
-  setCurrentAccount: Dispatch<SetStateAction<CurrentAccount | undefined>>
+  login: (currentAccount: CurrentAccount) => void
+  logout: () => void
 }
 
 interface AccountType {
@@ -89,17 +90,45 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [currentPage, setCurrentPage] = useState<number>(1)
   const itemsPerPage = 8
 
-  const [currentAccount, setCurrentAccount] = useState<CurrentAccount>()
+  const [currentAccount, setCurrentAccount] = useState<CurrentAccount>(() => {
+    const savedAccount = localStorage.getItem('currentAccount')
+    return savedAccount ? JSON.parse(savedAccount) : null
+  })
+
+  useEffect(() => {
+    if (currentAccount) {
+      localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
+    } else {
+      localStorage.removeItem('currentAccount')
+    }
+  }, [currentAccount])
+
+  const login = (currentAccount: CurrentAccount) => {
+    setCurrentAccount(currentAccount)
+  }
+
+  const logout = () => {
+    const resetAccount = {
+      username: '',
+      password: '',
+      roleId: 3,
+      image: '',
+      id: ''
+    }
+    setCurrentAccount(resetAccount)
+    localStorage.removeItem('currentAccount')
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes] = await Promise.all([
+        const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes, currentAccountRes] = await Promise.all([
           axios.get(`${API_ROOT}/account`),
           axios.get(`${API_ROOT}/product`),
           axios.get(`${API_ROOT}/productCategory`),
           axios.get(`${API_ROOT}/blogCategory`),
-          axios.get(`${API_ROOT}/blog`)
+          axios.get(`${API_ROOT}/blog`),
+          axios.get(`${API_ROOT}/currentAccount`)
         ])
 
         setAccounts(accountRes.data)
@@ -109,6 +138,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCategories(categoryRes.data)
         setBlogCategories(blogCategoryRes.data)
         setBlogs(blogRes.data)
+        setCurrentAccount(currentAccountRes.data)
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -169,7 +199,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         currentPage,
         totalPages,
         currentAccount,
-        setCurrentAccount,
+        login,
+        logout,
         handleFilter,
         handleSearch,
         handleSort,
