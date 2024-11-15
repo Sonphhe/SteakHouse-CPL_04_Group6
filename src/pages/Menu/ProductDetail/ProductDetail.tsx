@@ -40,10 +40,8 @@ const ProductDetail: React.FC = () => {
       }
    }, [id, location.state])
 
-   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = parseInt(e.target.value)
-      setQuantity(value > 0 ? value : 1)
-   }
+   const handleIncreaseQuantity = () => setQuantity(prev => prev + 1)
+   const handleDecreaseQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1))
 
    const handleAddToCart = () => {
       if (productData) {
@@ -66,8 +64,7 @@ const ProductDetail: React.FC = () => {
    return (
     <div>
        <Navbar />
-<div className='product-detail'>
-
+       <div className='product-detail'>
          <div className='product-image'>
             <img src={productData.image} alt={productData.productName} />
          </div>
@@ -78,8 +75,18 @@ const ProductDetail: React.FC = () => {
 
             <div className='quantity-container'>
                <label htmlFor='quantity'>Quantity:</label>
-               <input type='number' id='quantity' value={quantity} onChange={handleQuantityChange} min='1' />
+               <div className='quantity-controls'>
+                  <button onClick={handleDecreaseQuantity} className='quantity-btn'>-</button>
+                  <input 
+                     type='text' 
+                     id='quantity' 
+                     value={quantity} 
+                     readOnly 
+                  />
+                  <button onClick={handleIncreaseQuantity} className='quantity-btn'>+</button>
+               </div>
             </div>
+
             <button className='add-to-cart' onClick={handleAddToCart}>
                <i className='fa fa-shopping-cart' style={{ marginRight: '8px' }}></i> Add to Cart
             </button>
@@ -109,9 +116,7 @@ const ProductDetail: React.FC = () => {
       </div>
       <Footer />
     </div>
-      
    )
-   
 }
 
 export default ProductDetail
