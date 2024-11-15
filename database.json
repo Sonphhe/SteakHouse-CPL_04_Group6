@@ -349,8 +349,7 @@
       "image": "/assets/images/SALAD3.jpg",
       "description": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
       "categoryId": 4
-    }
-    ,
+    },
     {
       "id": "28",
       "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
@@ -565,5 +564,6 @@
       "status": false
     }
   ],
-  "menuItems": []
+  "menuItems": [],
+  "cartItems": []
 }
