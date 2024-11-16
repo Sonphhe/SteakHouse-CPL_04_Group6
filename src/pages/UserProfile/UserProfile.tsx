@@ -23,7 +23,7 @@ const UserProfile = () => {
               <img src={currentAccount?.image} alt='' />
               <div className='user-profile-top-info'>
                 <h4>{currentAccount?.username}</h4>
-                <Link className='Kytn1s' to='/user/account/profile'>
+                <Link className='Kytn1s' to='/user/account/userProfile'>
                   <i><FaPencil/></i>
                   Edit profile
                 </Link>

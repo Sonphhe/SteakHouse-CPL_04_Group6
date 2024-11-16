@@ -73,6 +73,15 @@
   ],
   "product": [
     {
+      "id": "1",
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 235,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Steak Bo Hokubee, sirloin",
+      "categoryId": 1
+    },
+    {
       "id": "2",
       "productName": "USA RIB EYE STEAK",
       "productOldPrice": 120,
@@ -290,45 +299,46 @@
     },
     {
       "id": "26",
-      "productName": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE",
+      "productName": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
       "productOldPrice": 110,
-      "productPrice": "66",
+      "productPrice": 60,
       "image": "/assets/images/SALAD2.jpg",
-      "description": "BEEF / CHICKEN / TUNA SALAD MIXED WITH BBQ SAUCE ",
+      "description": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
       "categoryId": 4
     },
     {
       "id": "27",
-      "productName": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+      "productName": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
       "productOldPrice": 110,
-      "productPrice": "360",
-      "image": "/assets/images/steak-thumbnail.jpg",
-      "description": "BEEF / TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+      "productPrice": 65,
+      "image": "/assets/images/SALAD3.jpg",
+      "description": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
       "categoryId": 4
-    },
+    }
+    ,
     {
       "id": "28",
-      "productName": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+      "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
       "productOldPrice": 110,
       "productPrice": 65,
       "image": "/assets/images/SALAD4.png",
-      "description": "BEEF / TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+      "description": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
       "categoryId": 4
     },
     {
       "id": "29",
-      "productName": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
+      "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
       "productOldPrice": 110,
-      "productPrice": 50,
+      "productPrice": 65,
       "image": "/assets/images/SALAD5.jpg",
-      "description": "SAUSAGE / BACON SALAD WITH CHEESE SAUCE",
+      "description": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
       "categoryId": 4
     },
     {
       "id": "30",
       "productName": "MULBERRY SALAD AND ICE CREAM",
       "productOldPrice": 110,
-      "productPrice": 60,
+      "productPrice": 65,
       "image": "/assets/images/SALAD6.jpg",
       "description": "MULBERRY SALAD AND ICE CREAM",
       "categoryId": 4

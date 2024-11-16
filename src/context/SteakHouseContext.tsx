@@ -122,13 +122,12 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes, currentAccountRes] = await Promise.all([
+        const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes] = await Promise.all([
           axios.get(`${API_ROOT}/account`),
           axios.get(`${API_ROOT}/product`),
           axios.get(`${API_ROOT}/productCategory`),
           axios.get(`${API_ROOT}/blogCategory`),
           axios.get(`${API_ROOT}/blog`),
-          axios.get(`${API_ROOT}/currentAccount`)
         ])
 
         setAccounts(accountRes.data)
@@ -138,7 +137,6 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCategories(categoryRes.data)
         setBlogCategories(blogCategoryRes.data)
         setBlogs(blogRes.data)
-        setCurrentAccount(currentAccountRes.data)
       } catch (error) {
         console.error('Error fetching data:', error)
       }

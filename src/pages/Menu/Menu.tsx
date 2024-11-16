@@ -86,8 +86,8 @@ console.log(categories);
           </div>
           <div className='menu-items'>
             {getPaginatedItems().map((product) => (
-              <div className='menu-item' key={product.id}>
-                <img src={product.image} alt={product.productName} onClick={() => handleProductClick(product)} />
+              <div onClick={() => handleProductClick(product)} className='menu-item' key={product.id}>
+                <img src={product.image} alt={product.productName} />
                 <h3>{product.productName}</h3>
                 <p>{product.productPrice}$</p>
                 {/* Nút Add to Cart */}
