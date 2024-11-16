@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import axios from 'axios';
 
 interface CartItem {
   id: number;
@@ -19,41 +20,64 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  // Khởi tạo giỏ hàng từ localStorage (nếu có)
-  const [cartItems, setCartItems] = useState<CartItem[]>(() => {
-    const storedCartItems = localStorage.getItem('cartItems');
-    return storedCartItems ? JSON.parse(storedCartItems) : [];
-  });
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Lưu giỏ hàng vào localStorage khi cartItems thay đổi
+  // Load cart items from the JSON server on component mount
   useEffect(() => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  const addToCart = (product: CartItem) => {
-    setCartItems((prevItems) => {
-      const existingItem = prevItems.find((item) => item.id === product.id);
-      if (existingItem) {
-        return prevItems.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity + product.quantity }
-            : item
-        );
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get<CartItem[]>('http://localhost:9999/cartItems');
+        setCartItems(response.data);
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
       }
-      return [...prevItems, product];
-    });
+    };
+    fetchCartItems();
+  }, []);
+
+  const addToCart = async (product: CartItem) => {
+    try {
+      const existingItem = cartItems.find((item) => item.id === product.id);
+      if (existingItem) {
+        // Update the quantity if the item already exists
+        const updatedItem = { ...existingItem, quantity: existingItem.quantity + product.quantity };
+        await axios.put(`http://localhost:9999/cartItems/${existingItem.id}`, updatedItem);
+        setCartItems((prevItems) =>
+          prevItems.map((item) => (item.id === product.id ? updatedItem : item))
+        );
+      } else {
+        // Add new item to the cart
+        const response = await axios.post('http://localhost:9999/cartItems', product);
+        setCartItems((prevItems) => [...prevItems, response.data]);
+      }
+    } catch (error) {
+      console.error('Error adding item to cart:', error);
+    }
   };
 
-  const removeFromCart = (id: number) => {
-    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  const removeFromCart = async (id: number) => {
+    try {
+      await axios.delete(`http://localhost:9999/cartItems/${id}`);
+      setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error('Error removing item from cart:', error);
+    }
   };
 
-  const updateQuantity = (id: number, quantity: number) => {
-    setCartItems((prevItems) =>
-      prevItems.map((item) =>
+  const updateQuantity = async (id: number, quantity: number) => {
+    try {
+      const updatedItems = cartItems.map((item) =>
         item.id === id ? { ...item, quantity: Math.max(quantity, 1) } : item
-      )
-    );
+      );
+      setCartItems(updatedItems);
+
+      const updatedItem = updatedItems.find((item) => item.id === id);
+      if (updatedItem) {
+        await axios.put(`http://localhost:9999/cartItems/${id}`, updatedItem);
+      }
+    } catch (error) {
+      console.error('Error updating item quantity:', error);
+    }
   };
 
   return (

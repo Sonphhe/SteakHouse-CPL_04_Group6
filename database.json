@@ -79,7 +79,21 @@
       "productPrice": 235,
       "image": "/assets/images/steak1.jpg",
       "description": "Steak Bo Hokubee, sirloin",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "John Doe",
+          "rating": 5,
+          "comment": "Delicious steak with great flavor!",
+          "date": "2024-11-15"
+        },
+        {
+          "userName": "Jane Smith",
+          "rating": 4,
+          "comment": "Tasty, but a bit too salty for my taste.",
+          "date": "2024-11-14"
+        }
+      ]
     },
     {
       "id": "2",
@@ -88,7 +102,15 @@
       "productPrice": 195,
       "image": "/assets/images/steak2.jpg",
       "description": "USA RIB EYE STEAK",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Alice Johnson",
+          "rating": 5,
+          "comment": "The best rib-eye I've ever had!",
+          "date": "2024-11-13"
+        }
+      ]
     },
     {
       "id": "3",
@@ -97,7 +119,8 @@
       "productPrice": 165,
       "image": "/assets/images/steak3.jpg",
       "description": "USA Topblade steak",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": []
     },
     {
       "id": "4",
@@ -106,7 +129,15 @@
       "productPrice": 105,
       "image": "/assets/images/steak4.jpeg",
       "description": "Vietnamese Beefsteak, from beef tenderloin",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Mark Lee",
+          "rating": 3,
+          "comment": "It was okay, but I prefer other options.",
+          "date": "2024-11-12"
+        }
+      ]
     },
     {
       "id": "5",
@@ -115,7 +146,8 @@
       "productPrice": 95,
       "image": "/assets/images/steak5.jpg",
       "description": "SHAKING BEEF",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": []
     },
     {
       "id": "6",
@@ -124,7 +156,15 @@
       "productPrice": 125,
       "image": "/assets/images/steak6.jpg",
       "description": "Imported Australian lamb, loin",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Tom Harris",
+          "rating": 4,
+          "comment": "Tender and flavorful lamb, great experience.",
+          "date": "2024-11-11"
+        }
+      ]
     },
     {
       "id": "7",
@@ -133,7 +173,8 @@
       "productPrice": 95,
       "image": "/assets/images/steak7.jpg",
       "description": "SHAKEN BEEF WITH PEPPER SAUCE",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": []
     },
     {
       "id": "8",
@@ -142,7 +183,8 @@
       "productPrice": 175,
       "image": "/assets/images/steak8.jpg",
       "description": "NORWEGIAN SALMON",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": []
     },
     {
       "id": "9",
@@ -151,7 +193,8 @@
       "productPrice": 100,
       "image": "/assets/images/steak9.jpg",
       "description": "SMOKED DUCK BREAST",
-      "categoryId": 1
+      "categoryId": 1,
+      "reviews": []
     },
     {
       "id": "10",
@@ -160,25 +203,18 @@
       "productPrice": 46,
       "image": "/assets/images/DRINKS1.jpeg",
       "description": "COOKTAIL FRUIT SEASON",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
-      "id": "11",
-      "productName": "BEACH FRUIT COCKTAIL",
-      "productOldPrice": 80,
-      "productPrice": 45,
-      "image": "/assets/images/DRINKS2.jpg",
-      "description": "BEACH FRUIT COCKTAIL",
-      "categoryId": 2
-    },
-    {
-      "id": "12",
+    "id": "12",
       "productName": "MOCKTAIL TORNADOL",
       "productOldPrice": 75,
       "productPrice": 55,
       "image": "/assets/images/DRINKS3.jpeg",
       "description": "MOCKTAIL TORNADOL",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
       "id": "13",
@@ -187,7 +223,8 @@
       "productPrice": 60,
       "image": "/assets/images/DRINKS4.jpg",
       "description": "GREEN FOREST COCKTAIL",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
       "id": "14",
@@ -196,7 +233,8 @@
       "productPrice": 85,
       "image": "/assets/images/DRINKS5.jpeg",
       "description": "FRUIT SEASON MOCKTAIL",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
       "id": "15",
@@ -205,7 +243,8 @@
       "productPrice": 55,
       "image": "/assets/images/DRINKS6.jpeg",
       "description": "CHILE WINE",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
       "id": "16",
@@ -214,7 +253,8 @@
       "productPrice": 60,
       "image": "/assets/images/DRINKS7.jpg",
       "description": "SALT LEMON SODA",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
       "id": "17",
@@ -223,7 +263,8 @@
       "productPrice": 90,
       "image": "/assets/images/DRINKS8.jpg",
       "description": "LEMON JUICE",
-      "categoryId": 2
+      "categoryId": 2,
+      "reviews": []
     },
     {
       "id": "18",
@@ -232,7 +273,8 @@
       "productPrice": 165,
       "image": "/assets/images/SPAGHETTI1.jpeg",
       "description": "SEAFOOD PASTA WITH TOMYUM SAUCE",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
       "id": "19",
@@ -241,7 +283,8 @@
       "productPrice": 180,
       "image": "/assets/images/SPAGHETTI2.jpeg",
       "description": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
       "id": "20",
@@ -250,16 +293,18 @@
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI3.jpg",
       "description": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
-      "id": "21",
+     "id": "21",
       "productName": "SALMON PASTA WITH CREAM",
       "productOldPrice": 110,
       "productPrice": 110,
       "image": "/assets/images/SPAGHETTI4.jpg",
       "description": "SALMON PASTA WITH CREAM",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
       "id": "22",
@@ -268,7 +313,8 @@
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI5.jpeg",
       "description": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
       "id": "23",
@@ -277,7 +323,8 @@
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI6.jpg",
       "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
       "id": "24",
@@ -286,7 +333,8 @@
       "productPrice": 130,
       "image": "/assets/images/SPAGHETTI7.jpg",
       "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
-      "categoryId": 3
+      "categoryId": 3,
+      "reviews": []
     },
     {
       "id": "25",
@@ -295,7 +343,8 @@
       "productPrice": 65,
       "image": "/assets/images/SALAD1.jpeg",
       "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
-      "categoryId": 4
+      "categoryId": 4,
+      "reviews": []
     },
     {
       "id": "26",
@@ -304,7 +353,8 @@
       "productPrice": 60,
       "image": "/assets/images/SALAD2.jpg",
       "description": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
-      "categoryId": 4
+      "categoryId": 4,
+      "reviews": []
     },
     {
       "id": "27",
@@ -313,9 +363,9 @@
       "productPrice": 65,
       "image": "/assets/images/SALAD3.jpg",
       "description": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
-      "categoryId": 4
-    }
-    ,
+      "categoryId": 4,
+      "reviews": []
+    },
     {
       "id": "28",
       "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
@@ -323,7 +373,8 @@
       "productPrice": 65,
       "image": "/assets/images/SALAD4.png",
       "description": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
-      "categoryId": 4
+      "categoryId": 4,
+      "reviews": []
     },
     {
       "id": "29",
@@ -332,7 +383,8 @@
       "productPrice": 65,
       "image": "/assets/images/SALAD5.jpg",
       "description": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
-      "categoryId": 4
+      "categoryId": 4,
+      "reviews": []
     },
     {
       "id": "30",
@@ -341,7 +393,8 @@
       "productPrice": 65,
       "image": "/assets/images/SALAD6.jpg",
       "description": "MULBERRY SALAD AND ICE CREAM",
-      "categoryId": 4
+      "categoryId": 4,
+      "reviews": []
     }
   ],
   "blogCategory": [
@@ -530,6 +583,11 @@
       "status": false
     }
   ],
+<<<<<<< HEAD
   "menuItems": []
   
+=======
+  "menuItems": [],
+  "cartItems": []
+>>>>>>> 99f059aa6a818ec939c8c0e043930ec62b1d0390
 }
