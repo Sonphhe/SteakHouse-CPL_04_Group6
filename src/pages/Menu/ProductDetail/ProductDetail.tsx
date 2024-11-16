@@ -1,20 +1,10 @@
-<<<<<<< HEAD
-import React, { useState, useEffect } from 'react'
-import { useLocation, useParams, useNavigate } from 'react-router-dom'
-// import 'font-awesome/css/font-awesome.min.css';
-import { useCartContext } from '../../../context/CartContext'
-import './ProductDetail.css'
-import Navbar from '../../../components/ui/Navbar/Navbar'
-import Footer from '../../../components/ui/Footer/Footer'
-=======
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams, useNavigate } from 'react-router-dom';
-import 'font-awesome/css/font-awesome.min.css';
 import { useCartContext } from '../../../context/CartContext';
 import './ProductDetail.css';
 import Navbar from '../../../components/ui/Navbar/Navbar';
 import Footer from '../../../components/ui/Footer/Footer';
->>>>>>> 99f059aa6a818ec939c8c0e043930ec62b1d0390
+import '@fortawesome/fontawesome-svg-core'
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams();

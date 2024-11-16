@@ -109,6 +109,12 @@
           "rating": 5,
           "comment": "The best rib-eye I've ever had!",
           "date": "2024-11-13"
+        },
+        {
+          "userName": "Pham Hung Son",
+          "rating": 4,
+          "comment": "asd",
+          "date": "2024-11-16"
         }
       ]
     },
@@ -207,7 +213,7 @@
       "reviews": []
     },
     {
-    "id": "12",
+      "id": "12",
       "productName": "MOCKTAIL TORNADOL",
       "productOldPrice": 75,
       "productPrice": 55,
@@ -297,7 +303,7 @@
       "reviews": []
     },
     {
-     "id": "21",
+      "id": "21",
       "productName": "SALMON PASTA WITH CREAM",
       "productOldPrice": 110,
       "productPrice": 110,
@@ -583,11 +589,69 @@
       "status": false
     }
   ],
-<<<<<<< HEAD
-  "menuItems": []
-  
-=======
   "menuItems": [],
-  "cartItems": []
->>>>>>> 99f059aa6a818ec939c8c0e043930ec62b1d0390
+  "cartItems": [
+    {
+      "id": "4",
+      "productName": "VIETNAM BEEFSTEAK",
+      "productOldPrice": 95,
+      "productPrice": 105,
+      "image": "/assets/images/steak4.jpeg",
+      "description": "Vietnamese Beefsteak, from beef tenderloin",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Mark Lee",
+          "rating": 3,
+          "comment": "It was okay, but I prefer other options.",
+          "date": "2024-11-12"
+        }
+      ],
+      "quantity": 6
+    },
+    {
+      "id": "5",
+      "productName": "SHAKING BEEF",
+      "productOldPrice": 110,
+      "productPrice": 95,
+      "image": "/assets/images/steak5.jpg",
+      "description": "SHAKING BEEF",
+      "categoryId": 1,
+      "reviews": [],
+      "quantity": 1
+    },
+    {
+      "id": "17",
+      "productName": "LEMON JUICE",
+      "productOldPrice": 95,
+      "productPrice": 90,
+      "image": "/assets/images/DRINKS8.jpg",
+      "description": "LEMON JUICE",
+      "categoryId": 2,
+      "reviews": [],
+      "quantity": 1
+    },
+    {
+      "id": "16",
+      "productName": "SALT LEMON SODA",
+      "productOldPrice": 65,
+      "productPrice": 60,
+      "image": "/assets/images/DRINKS7.jpg",
+      "description": "SALT LEMON SODA",
+      "categoryId": 2,
+      "reviews": [],
+      "quantity": 1
+    },
+    {
+      "id": "15",
+      "productName": "CHILE WINE",
+      "productOldPrice": 60,
+      "productPrice": 55,
+      "image": "/assets/images/DRINKS6.jpeg",
+      "description": "CHILE WINE",
+      "categoryId": 2,
+      "reviews": [],
+      "quantity": 1
+    }
+  ]
 }

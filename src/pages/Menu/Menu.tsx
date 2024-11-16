@@ -86,10 +86,13 @@ console.log(categories);
           </div>
           <div className='menu-items'>
             {getPaginatedItems().map((product) => (
-              <div onClick={() => handleProductClick(product)} className='menu-item' key={product.id}>
-                <img src={product.image} alt={product.productName} />
+              <div className='menu-item' key={product.id}>
+                <div onClick={() => handleProductClick(product)} >
+                  <img src={product.image} alt={product.productName} />
                 <h3>{product.productName}</h3>
                 <p>{product.productPrice}$</p>
+                </div>
+                
                 {/* Nút Add to Cart */}
                 <button className='add-to-cart' onClick={() => handleAddToCart(product)}>
                   <i className='fa fa-shopping-cart' style={{ marginRight: '8px' }}></i> Add to Cart

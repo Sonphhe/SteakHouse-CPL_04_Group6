@@ -22,6 +22,7 @@ import Cart from './pages/Cart/Cart'
 import { CartProvider } from './context/CartContext'
 import Management from './pages/Management/Management'
 import UserProfile from './pages/UserProfile/UserProfile'
+import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 function App() {
   return (
     <div className='App'>
@@ -45,6 +46,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/management' element={<Management />} />
             <Route path='/user/account/userProfile' element={<UserProfile />} />
+            <Route path='/newCartStyle' element={<NewCartStyle />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useCartContext } from '../../context/CartContext';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css';
+import Navbar from '../../components/ui/Navbar/Navbar';
 
 const Cart: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCartContext();
@@ -42,6 +43,9 @@ const Cart: React.FC = () => {
 
   return (
     <div className="cart-container">
+
+      <Navbar/>
+
       <div className="step-indicator">
         <div className="step active">01 SHOPPING CART</div>
         <div className="step">02 CHECKOUT DETAILS</div>

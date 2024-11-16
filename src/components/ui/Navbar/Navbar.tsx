@@ -60,7 +60,7 @@ const Navbar = () => {
           </li>
         ))}
         <li className='cart-drawer-container'>
-          <Link to='/cart'>
+          <Link to='/newCartStyle'>
             <FaCartArrowDown />
             <div className='shopee-cart-number-badge'>{cartItems.length}</div>
           </Link>

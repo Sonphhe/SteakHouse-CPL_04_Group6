@@ -1,5 +1,7 @@
 const CashierDashBoard = () => {
-  return <div>CashierDashBoard</div>
+  return <div>
+    
+  </div>
 }
 
 export default CashierDashBoard
