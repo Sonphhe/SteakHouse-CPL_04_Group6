@@ -84,50 +84,56 @@ const ProductDetail: React.FC = () => {
 
   // Thêm bình luận
   const handleAddComment = async () => {
-   if (commentText && userName) {
-     const newComment = {
-       userName,
-       rating,
-       comment: commentText, // Chú ý dùng 'comment' thay vì 'text'
-       date: new Date().toISOString(), // Đảm bảo định dạng ngày chính xác
-     };
+    if (!commentText || !userName) {
+      alert('Please provide your name and comment.');
+      return;
+    }
+  
+    const newComment = {
+      userName,
+      rating,
+      comment: commentText,
+      date: new Date().toISOString().split('T')[0], // Định dạng ngày
+    };
+  
+    try {
+      // Tạo đường dẫn PATCH
+      const response = await fetch(`http://localhost:9999/product/${productData?.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          reviews: [...(productData?.reviews || []), newComment], // Gộp bình luận mới
+        }),
+      });
+  
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Error updating product reviews:', errorText);
+        return;
+      }
+  
+      console.log('Comment added successfully');
+      // Cập nhật lại state với bình luận mới
+      const updatedProduct = { ...productData, reviews: [...(productData?.reviews || []), newComment] };
+      setProductData(updatedProduct);
+      setComments(updatedProduct.reviews);
+      setCommentText('');
+      setUserName('');
+      setRating(0);
+    } catch (error) {
+      console.error('Error submitting comment:', error);
+    }
+  };
+  
  
-     try {
-       // Cập nhật bình luận mới vào sản phẩm
-       const response = await fetch(`http://localhost:9999/products/${productData.id}`, {
-         method: 'PATCH',
-         headers: {
-           'Content-Type': 'application/json',
-         },
-         body: JSON.stringify({
-           reviews: [...productData.reviews, newComment], // Thêm bình luận vào mảng reviews
-         }),
-       });
- 
-       if (response.ok) {
-         console.log('Comment added successfully');
-         // Cập nhật lại state của comments sau khi thêm thành công
-         const updatedProductData = { ...productData, reviews: [...productData.reviews, newComment] };
-         setProductData(updatedProductData); // Cập nhật lại state của sản phẩm
-         setComments(updatedProductData.reviews); // Cập nhật lại comments
-       } else {
-         const errorText = await response.text();
-         console.error('Error updating product reviews:', errorText);
-       }
-     } catch (error) {
-       console.error('Error submitting comment:', error);
-     }
- 
-     // Xóa nội dung trong form sau khi gửi bình luận
-     setCommentText('');
-     setUserName('');
-     setRating(0);
-   } else {
-     alert('Please provide your name and comment.');
-   }
- };
- 
- 
+  const generateStars = (rating: number) => {
+    const fullStars = '★'.repeat(rating);  // Sao đầy đủ
+    const emptyStars = '☆'.repeat(5 - rating);  // Sao rỗng
+    return fullStars + emptyStars;  // Kết hợp sao đầy đủ và sao rỗng
+  };
+  
  
  
 
@@ -175,14 +181,15 @@ const ProductDetail: React.FC = () => {
     <ul>
       {comments.map((review, index) => (
         <li key={index}>
-          <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toLocaleString()}</em></p>
+          <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
           <p>{review.comment}</p>
-          <p>Rating: {review.rating} stars</p>
+          <p>Rating: {generateStars(review.rating)}</p>
         </li>
       ))}
     </ul>
   )}
 </div>
+
 
 
           <div className='comment-form'>
@@ -229,6 +236,7 @@ const ProductDetail: React.FC = () => {
       <Footer />
     </div>
   );
+  
 };
 
 export default ProductDetail;
