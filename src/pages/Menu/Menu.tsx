@@ -5,8 +5,7 @@ import Navbar from '../../components/ui/Navbar/Navbar'
 import Hero from '../../components/ui/Hero/Hero'
 import hero_menuImg from '../../assets/images/restaurant1.webp'
 import Footer from '../../components/ui/Footer/Footer'
-import { useSteakHouseContext } from '../../context/SteakHouseContext'
-import 'font-awesome/css/font-awesome.min.css'
+import { useSteakHouseContext } from '../../hooks/useSteakHouseContext' 
 import { useCartContext } from '../../context/CartContext'
 
 const Menu: React.FC = () => {
@@ -24,6 +23,7 @@ const Menu: React.FC = () => {
     handlePrevious,
     handleNext
   } = useSteakHouseContext()
+console.log(categories);
 
   const { addToCart } = useCartContext()
   // State cho modal thông báo
@@ -38,6 +38,7 @@ const Menu: React.FC = () => {
       return () => clearTimeout(timer)
     }
   }, [showModal])
+  
   const handleProductClick = (product: any) => {
     navigate(`/productdetail/${product.productName}`, { state: { product } })
   }
@@ -86,9 +87,12 @@ const Menu: React.FC = () => {
           <div className='menu-items'>
             {getPaginatedItems().map((product) => (
               <div className='menu-item' key={product.id}>
-                <img src={product.image} alt={product.productName} onClick={() => handleProductClick(product)} />
+                <div onClick={() => handleProductClick(product)} >
+                  <img src={product.image} alt={product.productName} />
                 <h3>{product.productName}</h3>
                 <p>{product.productPrice}$</p>
+                </div>
+                
                 {/* Nút Add to Cart */}
                 <button className='add-to-cart' onClick={() => handleAddToCart(product)}>
                   <i className='fa fa-shopping-cart' style={{ marginRight: '8px' }}></i> Add to Cart
@@ -114,7 +118,7 @@ const Menu: React.FC = () => {
         <div className='modal-overlay' onClick={() => setShowModal(false)}>
           <div className='modal-content' onClick={(e) => e.stopPropagation()}>
             <div className='check-icon'>✔</div>
-            <p>{modalMessage}</p>
+            <p>{modalMessage}</p> 
           </div>
         </div>
       )}

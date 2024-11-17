@@ -9,9 +9,9 @@ import { FaCartArrowDown } from 'react-icons/fa6'
 import { FaBars } from 'react-icons/fa6'
 import { TiTimes } from 'react-icons/ti'
 import { useEffect, useState } from 'react'
-import blank_profile_picture from '../../../assets/images/Blank-Profile-Picture.jpg'
 import DropDownProfile from './DropDownProfile/DropDownProfile'
-import { useCartContext } from '../../../context/CartContext' // Import cart context
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'
+import { useCartContext } from '../../../context/CartContext'
 
 const Navbar = () => {
   const navListItems = [
@@ -28,6 +28,8 @@ const Navbar = () => {
 
   // Calculate total number of items in the cart
   const totalCartItems = cartItems.reduce((sum, item) => sum + item.quantity, 0)
+
+  const { currentAccount } = useSteakHouseContext()
 
   return (
     <nav className='navbar-items'>
@@ -58,18 +60,16 @@ const Navbar = () => {
           </li>
         ))}
         <li className='cart-drawer-container'>
-          <Link to='/cart'>
+          <Link to='/newCartStyle'>
             <FaCartArrowDown />
             <div className='shopee-cart-number-badge'>{cartItems.length}</div>
           </Link>
         </li>
-
-        <li className='nav-button' onClick={() => setOpenProfile(!openProfile)}>
-          <div className='profile-icon'>
-            <img src={blank_profile_picture} alt='' />
-            <h4>sonnphm</h4>
+        <li className='nav-button'>
+          <div onClick={() => setOpenProfile(!openProfile)} className='profile-icon'>
+            <img src={currentAccount?.image} alt='' />
           </div>
-          {openProfile && <DropDownProfile />}
+          {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
         </li>
       </ul>
     </nav>

@@ -63,6 +63,7 @@
   display: flex;
   justify-self: center;
   margin: 10px;
+  gap: 10px;
 }
 .register-button button {
   width: 150px;
@@ -72,7 +73,6 @@
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  margin-bottom: 10px;
 }
 .register-button button:hover {
   background: #dad0d0;

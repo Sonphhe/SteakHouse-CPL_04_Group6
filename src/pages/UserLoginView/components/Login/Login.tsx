@@ -1,22 +1,22 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './Login.css'
 import { FaUser, FaLock } from 'react-icons/fa'
-import { GoogleLogin } from '@react-oauth/google'
+import { GoogleLogin, useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google'
 import { jwtDecode } from 'jwt-decode'
 import { useEffect, useRef, useState } from 'react'
-import { useSteakHouseContext } from '../../../../context/SteakHouseContext'
 import { API_ROOT } from '../../../../utils/constants'
 
 import axios from 'axios'
+import CustomButton from '../../../../components/CustomButton/CustomButton'
+import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 //696973079249-64hrr1rgokst2im55kjbbprpt3sjard5.apps.googleusercontent.com - clientID
 
 const LOGIN_URL = '/account'
 
 const Login = () => {
-  const { setAccounts } = useSteakHouseContext()
-
   const [user, setUser] = useState({})
-  // const accounts = useAccountContext()
+
+  const { login } = useSteakHouseContext()
 
   const userRef = useRef<HTMLInputElement | null>(null)
   const errRef = useRef<HTMLDivElement | null>(null)
@@ -24,7 +24,7 @@ const Login = () => {
   const [newUser, setNewUser] = useState('')
   const [pwd, setPwd] = useState('')
   const [errMsg, setErrMsg] = useState('')
-  const [success, setSuccess] = useState(false)
+  // const [success, setSuccess] = useState(false)
 
   const navigate = useNavigate()
 
@@ -38,11 +38,11 @@ const Login = () => {
     try {
       const response = await axios.get(`http://localhost:9999/account?username=${newUser}&password=${pwd}`)
       const user = response.data[0]
-      console.log(user);
-      
+      console.log(user)
+
       if (user) {
-        navigate('/home')
-        
+        login(user)
+        navigate('/management')
       } else {
         alert('Invalid credentials')
       }
@@ -50,6 +50,31 @@ const Login = () => {
       console.error('Login failed', error)
     }
   }
+
+  const loginGoogle = useGoogleLogin({
+    onSuccess: async (response) => {
+      try {
+        const res = await axios.get('https://www.googleapis.com/oauth2/v3/userinfo', {
+          headers: {
+            Authorization: `Bearer ${response.access_token}`
+          }
+        })
+        const res2 = await axios.get(
+          `http://localhost:9999/account?username=${res.data.email}&password=${res.data.sub}`
+        )
+        const user = res2.data[0]
+        console.log(user)
+        if (user) {
+          login(user)
+          navigate('/management')
+        } else {
+          alert('Invalid credentials')
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  })
 
   return (
     <>
@@ -92,25 +117,10 @@ const Login = () => {
                 <a href='#'>Forgot password?</a>
               </Link>
             </div>
-            {/* <Link to={'/home'}> */}
             <button type='submit'>Login</button>
             <div className='google-login'>
-              <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  if (credentialResponse.credential) {
-                    const credentialResponseDecode: {} = jwtDecode(credentialResponse.credential)
-                    console.log(credentialResponseDecode)
-                    setUser(credentialResponseDecode)
-                  } else {
-                    console.log('No credential received')
-                  }
-                }}
-                onError={() => {
-                  console.log('Login Failed')
-                }}
-              />
+              <CustomButton onClick={() => loginGoogle()} />
             </div>
-            {/* </Link> */}
 
             <div className='register-link'>
               <p>

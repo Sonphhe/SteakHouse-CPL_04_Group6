@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useSteakHouseContext } from '../../../context/SteakHouseContext'
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext' 
 
 const BlogFooter = () => {
   const { blogCategories } = useSteakHouseContext()
