@@ -135,83 +135,149 @@
 }
 /* Styling for Comments and Rating */
 .product-comments {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+}
+
+.product-comments h3 {
+  margin-bottom: 15px;
+}
+
+.product-comments ul {
+  list-style: none;
+  padding: 0;
+}
+
+.product-comments li {
+  margin-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 10px;
+}
+
+.rating-container {
+  margin: 5px 0;
+}
+/* Phần nhận xét (Reviews & Comments) */
+.product-comments {
   margin-top: 30px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .product-comments h3 {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 15px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
 .product-comments ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
 }
 
-.product-comments ul li {
+.product-comments li {
+  margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
-  padding: 10px 0;
+  padding-bottom: 15px;
 }
 
-.product-comments ul li p {
+.product-comments li:last-child {
+  border-bottom: none;
+}
+
+.product-comments p {
   margin: 5px 0;
 }
 
+.product-comments strong {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.product-comments .rating-container {
+  margin: 10px 0;
+  color: #ffa500;
+}
+
+.product-comments .rating-container i {
+  margin-right: 5px;
+}
+
+/* Phần form nhận xét */
+/* Phần form nhận xét */
 .comment-form {
-  margin-top: 40px;
-  background-color: #f9f9f9;
+  margin-top: 30px;
   padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .comment-form h4 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.rating {
+.comment-form .rating {
+  display: flex;
+  gap: 5px; 
   margin-bottom: 15px;
 }
 
-.rating button {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #f1c40f;
+.comment-form .rating span {
+  font-size: 30px;
   cursor: pointer;
-  transition: color 0.3s ease;
+  color: transparent;
+  text-shadow: 0 0 1px #000;
 }
 
-.rating button.rated {
-  color: #f39c12;
+.comment-form .rating .star-filled {
+  color: #ffcc00;
+  text-shadow: 0 0 5px #ffcc00;
 }
 
+.comment-form .rating .star-empty {
+  color: transparent;
+  text-shadow: 0 0 1px #747474;
+}
+
+.comment-form .rating-stars {
+  display: inline-flex; 
+  gap: 2px;
+}
+
+.comment-form .rating-stars .star-empty {
+  color: #ccc; /* Màu xám cho sao rỗng */
+  font-size: 16px;
+}
+
+.comment-form input,
 .comment-form textarea {
   width: 100%;
   padding: 10px;
-  height: 120px;
+  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  resize: none;
-  margin-bottom: 15px;
   font-size: 1rem;
   font-family: Arial, sans-serif;
-}
-
-.comment-form input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
   outline: none;
   transition: border-color 0.3s ease;
 }
 
+.comment-form textarea {
+  height: 120px;
+  resize: none;
+}
 
 .comment-form button {
   background-color: #db3934;
@@ -223,9 +289,7 @@
   border-radius: 5px;
 }
 
-.comment-form button:hover {
-  background-color: #2980b9;
-}
+
 
 
 /* Giao diện Mobile */
