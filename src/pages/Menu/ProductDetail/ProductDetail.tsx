@@ -88,16 +88,15 @@ const ProductDetail: React.FC = () => {
       alert('Please provide your name and comment.');
       return;
     }
-  
+
     const newComment = {
       userName,
       rating,
       comment: commentText,
       date: new Date().toISOString().split('T')[0], // Định dạng ngày
     };
-  
+
     try {
-      // Tạo đường dẫn PATCH
       const response = await fetch(`http://localhost:9999/product/${productData?.id}`, {
         method: 'PATCH',
         headers: {
@@ -107,15 +106,14 @@ const ProductDetail: React.FC = () => {
           reviews: [...(productData?.reviews || []), newComment], // Gộp bình luận mới
         }),
       });
-  
+
       if (!response.ok) {
         const errorText = await response.text();
         console.error('Error updating product reviews:', errorText);
         return;
       }
-  
+
       console.log('Comment added successfully');
-      // Cập nhật lại state với bình luận mới
       const updatedProduct = { ...productData, reviews: [...(productData?.reviews || []), newComment] };
       setProductData(updatedProduct);
       setComments(updatedProduct.reviews);
@@ -126,16 +124,18 @@ const ProductDetail: React.FC = () => {
       console.error('Error submitting comment:', error);
     }
   };
-  
- 
+
   const generateStars = (rating: number) => {
-    const fullStars = '★'.repeat(rating);  // Sao đầy đủ
-    const emptyStars = '☆'.repeat(5 - rating);  // Sao rỗng
-    return fullStars + emptyStars;  // Kết hợp sao đầy đủ và sao rỗng
+    return (
+      <span className="rating-stars">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <span key={star} className={star <= rating ? "star-filled" : "star-empty"}>
+            ★
+          </span>
+        ))}
+      </span>
+    );
   };
-  
- 
- 
 
   if (!productData) {
     return <div>Loading...</div>;
@@ -144,67 +144,68 @@ const ProductDetail: React.FC = () => {
   return (
     <div>
       <Navbar />
-      <div className='product-detail'>
-        <div className='product-image'>
+      <div className="product-detail">
+        <div className="product-image">
           <img src={productData.image} alt={productData.productName} />
         </div>
 
-        <div className='product-info'>
+        <div className="product-info">
           <h2>{productData.productName}</h2>
-          <p className='product-price'>Price: ${productData.productPrice}</p>
+          <p className="product-price">Price: ${productData.productPrice}</p>
 
-          <div className='quantity-container'>
-            <label htmlFor='quantity'>Quantity:</label>
-            <div className='quantity-controls'>
-              <button onClick={handleDecreaseQuantity} className='quantity-btn'>-</button>
-              <input type='text' id='quantity' value={quantity} readOnly />
-              <button onClick={handleIncreaseQuantity} className='quantity-btn'>+</button>
+          <div className="quantity-container">
+            <label htmlFor="quantity">Quantity:</label>
+            <div className="quantity-controls">
+              <button onClick={handleDecreaseQuantity} className="quantity-btn">-</button>
+              <input type="text" id="quantity" value={quantity} readOnly />
+              <button onClick={handleIncreaseQuantity} className="quantity-btn">+</button>
             </div>
           </div>
 
-          <button className='add-to-cart' onClick={handleAddToCart}>
-            <i className='fa fa-shopping-cart' style={{ marginRight: '8px' }}></i> Add to Cart
+          <button className="add-to-cart" onClick={handleAddToCart}>
+            <i className="fa fa-shopping-cart" style={{ marginRight: '8px' }}></i> Add to Cart
           </button>
           <br />
-          <button className='add-to-cart' onClick={handleBackToMenu}>
+          <button className="add-to-cart" onClick={handleBackToMenu}>
             Back to Menu
           </button>
 
           <h3>Description</h3>
-          <p className='product-description'>{productData.description}</p>
+          <p className="product-description">{productData.description}</p>
 
           <div className="product-comments">
-  <h3>Reviews & Comments</h3>
-  {comments.length === 0 ? (
-    <p>No reviews yet. Be the first to comment!</p>
-  ) : (
-    <ul>
-      {comments.map((review, index) => (
-        <li key={index}>
-          <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
-          <p>{review.comment}</p>
-          <p>Rating: {generateStars(review.rating)}</p>
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
+            <h3>Reviews & Comments</h3>
+            {comments.length === 0 ? (
+              <p>No reviews yet. Be the first to comment!</p>
+            ) : (
+              <ul>
+                {comments.map((review, index) => (
+                  <li key={index}>
+                    <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
+                    <div className="rating-container">
+                      <i>Rating:</i> {generateStars(review.rating)}
+                    </div>
+                    <p>{review.comment}</p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
 
-
-
-          <div className='comment-form'>
+          <div className="comment-form">
             <h4>Leave a Review</h4>
-            <div className='rating'>
-              <label>Rating:</label>
-              {[1, 2, 3, 4, 5].map(star => (
-                <button
+            <div className="rating">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <span
                   key={star}
                   onClick={() => setRating(star)}
-                  className={rating >= star ? 'rated' : ''}>
+                  className={rating >= star ? "star-filled" : "star-empty"}
+                >
                   ★
-                </button>
+                </span>
               ))}
             </div>
+
             <input
               type="text"
               placeholder="Your Name"
@@ -221,11 +222,11 @@ const ProductDetail: React.FC = () => {
         </div>
 
         {isModalOpen && (
-          <div className='modal'>
-            <div className='modal-content'>
+          <div className="modal">
+            <div className="modal-content">
               <h3>Product added to cart!</h3>
               <p>Do you want to view your cart or continue shopping?</p>
-              <div className='modal-buttons'>
+              <div className="modal-buttons">
                 <button onClick={handleViewCart}>View Cart</button>
                 <button onClick={handleCloseModal}>Continue Shopping</button>
               </div>
@@ -236,7 +237,6 @@ const ProductDetail: React.FC = () => {
       <Footer />
     </div>
   );
-  
 };
 
 export default ProductDetail;
