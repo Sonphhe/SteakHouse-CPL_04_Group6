@@ -22,10 +22,15 @@ import Cart from './pages/Cart/Cart'
 import { CartProvider } from './context/CartContext'
 import Management from './pages/Management/Management'
 import UserProfile from './pages/UserProfile/UserProfile'
-import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
+import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
+import { BlogProvider } from './context/BlogContext'
+import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
+import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
+// import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 function App() {
   return (
     <div className='App'>
+      
       <CartProvider>
       <SteakHouseProvider>
         <BrowserRouter>
@@ -46,7 +51,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/management' element={<Management />} />
             <Route path='/user/account/userProfile' element={<UserProfile />} />
-            <Route path='/newCartStyle' element={<NewCartStyle />} />
+            {/* <Route path='/newCartStyle' element={<NewCartStyle />} /> */}
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 
@@ -64,7 +69,7 @@ function App() {
                 </ProductProvider>
               } 
             />
-   
+            
               <Route 
               path='/admin/product-add' 
               element={
@@ -73,10 +78,19 @@ function App() {
                 </ProductProvider>
               } 
             />
+             <Route 
+              path='/admin/blog-management' 
+              element={
+                <BlogProvider>
+                  <BlogManage />
+                </BlogProvider>
+              } 
+            />
+   
 
-    
           </Routes>
         </BrowserRouter>
+
       </SteakHouseProvider>
       </CartProvider>
     </div>
