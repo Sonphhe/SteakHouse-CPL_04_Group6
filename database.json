@@ -174,11 +174,11 @@
     },
     {
       "id": "7",
-      "productName": "SHAKEN BEEF WITH PEPPER SAUCE",
+      "productName": "BEEF WITH PEPPER SAUCE",
       "productOldPrice": 140,
       "productPrice": 95,
       "image": "/assets/images/steak7.jpg",
-      "description": "SHAKEN BEEF WITH PEPPER SAUCE",
+      "description": "BEEF WITH PEPPER SAUCE",
       "categoryId": 1,
       "reviews": []
     },
@@ -294,31 +294,31 @@
     },
     {
       "id": "20",
-      "productName": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
+      "productName": "FRESH PASTA WITH  BEEF SAUCE TOMATOES",
       "productOldPrice": 110,
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI3.jpg",
-      "description": "FRESH PASTA WITH GROUND BEEF SAUCE RICH IN TOMATOES",
+      "description": "FRESH PASTA WITH  BEEF SAUCE TOMATOES",
       "categoryId": 3,
       "reviews": []
     },
     {
       "id": "21",
-      "productName": "SALMON PASTA WITH CREAM",
+      "productName": "FRESH PASTA WITH SALMON AND CREAM",
       "productOldPrice": 110,
       "productPrice": 110,
       "image": "/assets/images/SPAGHETTI4.jpg",
-      "description": "SALMON PASTA WITH CREAM",
+      "description": "FRESH PASTA WITH SALMON AND CREAM",
       "categoryId": 3,
       "reviews": []
     },
     {
       "id": "22",
-      "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
+      "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE",
       "productOldPrice": 110,
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI5.jpeg",
-      "description": "FRESH PASTA WITH BACON, CHEESE SAUCE & MUSHROOMS",
+      "description": "FRESH PASTA WITH BACON, CHEESE SAUCE",
       "categoryId": 3,
       "reviews": []
     },
