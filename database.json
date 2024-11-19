@@ -607,29 +607,7 @@
           "date": "2024-11-12"
         }
       ],
-      "quantity": 6
-    },
-    {
-      "id": "5",
-      "productName": "SHAKING BEEF",
-      "productOldPrice": 110,
-      "productPrice": 95,
-      "image": "/assets/images/steak5.jpg",
-      "description": "SHAKING BEEF",
-      "categoryId": 1,
-      "reviews": [],
-      "quantity": 1
-    },
-    {
-      "id": "17",
-      "productName": "LEMON JUICE",
-      "productOldPrice": 95,
-      "productPrice": 90,
-      "image": "/assets/images/DRINKS8.jpg",
-      "description": "LEMON JUICE",
-      "categoryId": 2,
-      "reviews": [],
-      "quantity": 1
+      "quantity": 7
     },
     {
       "id": "16",
@@ -640,17 +618,94 @@
       "description": "SALT LEMON SODA",
       "categoryId": 2,
       "reviews": [],
+      "quantity": 12
+    },
+    {
+      "id": "2",
+      "productName": "USA RIB EYE STEAK",
+      "productOldPrice": 120,
+      "productPrice": 195,
+      "image": "/assets/images/steak2.jpg",
+      "description": "USA RIB EYE STEAK",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Alice Johnson",
+          "rating": 5,
+          "comment": "The best rib-eye I've ever had!",
+          "date": "2024-11-13"
+        },
+        {
+          "userName": "Pham Hung Son",
+          "rating": 4,
+          "comment": "asd",
+          "date": "2024-11-16"
+        }
+      ],
       "quantity": 1
     },
     {
-      "id": "15",
-      "productName": "CHILE WINE",
-      "productOldPrice": 60,
-      "productPrice": 55,
-      "image": "/assets/images/DRINKS6.jpeg",
-      "description": "CHILE WINE",
-      "categoryId": 2,
+      "id": "20",
+      "productName": "FRESH PASTA WITH  BEEF SAUCE TOMATOES",
+      "productOldPrice": 110,
+      "productPrice": 105,
+      "image": "/assets/images/SPAGHETTI3.jpg",
+      "description": "FRESH PASTA WITH  BEEF SAUCE TOMATOES",
+      "categoryId": 3,
       "reviews": [],
+      "quantity": 1
+    },
+    {
+      "id": "18",
+      "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+      "productOldPrice": 100,
+      "productPrice": 165,
+      "image": "/assets/images/SPAGHETTI1.jpeg",
+      "description": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+      "categoryId": 3,
+      "reviews": [],
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 235,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Steak Bo Hokubee, sirloin",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "John Doe",
+          "rating": 5,
+          "comment": "Delicious steak with great flavor!",
+          "date": "2024-11-15"
+        },
+        {
+          "userName": "Jane Smith",
+          "rating": 4,
+          "comment": "Tasty, but a bit too salty for my taste.",
+          "date": "2024-11-14"
+        }
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "6",
+      "productName": "LAMB STEAK",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "/assets/images/steak6.jpg",
+      "description": "Imported Australian lamb, loin",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Tom Harris",
+          "rating": 4,
+          "comment": "Tender and flavorful lamb, great experience.",
+          "date": "2024-11-11"
+        }
+      ],
       "quantity": 1
     }
   ]

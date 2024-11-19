@@ -37,10 +37,6 @@ const Navbar = () => {
         <h1 className='navbar-logo'>SteakHouse</h1>
       </Link>
 
-      <div className='menu-icons'>
-        <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
-      </div>
-
       <ul className={closeMenu ? 'nav-menu' : 'nav-menu active'}>
         {navListItems.map((item, i) => (
           <li className='navlinks' key={i}>
@@ -65,13 +61,16 @@ const Navbar = () => {
             <div className='shopee-cart-number-badge'>{cartItems.length}</div>
           </Link>
         </li>
-        <li className='nav-button'>
-          <div onClick={() => setOpenProfile(!openProfile)} className='profile-icon'>
-            <img src={currentAccount?.image} alt='' />
-          </div>
-          {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
-        </li>
       </ul>
+      <div className='rightside-options'>
+        <div className='menu-icons'>
+          <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
+        </div>
+        <div onClick={() => setOpenProfile(!openProfile)} className='profile-icon'>
+          <img src={currentAccount?.image} alt='' />
+        </div>
+        {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
+      </div>
     </nav>
   )
 }

@@ -14,6 +14,12 @@
     transform: translate(-50%);
     z-index: 9999;
 }
+.rightside-options{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .navbar-logo{
     color: #222;
     font-size: 2rem;
@@ -34,9 +40,6 @@
     color: #fff;
     border-radius: 5px;
     transition: all 0.2s ease-in-out;
-}
-.nav-button{
-    cursor: pointer;
 }
 .menu-icons span{
     cursor: pointer;
@@ -66,6 +69,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 .profile-icon img{
     width: 100%;
@@ -100,6 +104,7 @@
         margin: 0;
         transition: 0.3s all ease-in-out;
         border-radius: 13px;
+        gap: 5px;
     }
     .nav-menu.active{
         left: 0;
@@ -113,30 +118,6 @@
         border-radius: 4px;
         transition: all 0.2 ease-in-out;
     }
-    .nav-button:hover{
-        background: #01959a;
-        transition: none;
-    }
-    .nav-button{
-        display: block;
-        align-items: center;
-        padding: 1.5rem;
-        margin: auto;
-        border-radius: 4px;
-        width: 80%;
-        background: #01959a;
-        text-decoration: none;
-        color: #fff;
-        font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: 2px;
-    }
-    .nav-button a{
-        background: #01959a;
-    }
-    .nav-button a:hover{
-        background-color: #01959a;
-    }
     .nav-menu li{
         padding: 20px 0;
     }
@@ -146,5 +127,27 @@
     .menu-icons{
         font-size: 1.2rem;
         color: #222;
+    }
+    .shopee-cart-number-badge{
+        margin-top: 60vh;
+        margin-left: 51%;
+    }
+    .profile-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+    .profile-icon img{
+        width: 100%;
+        height: 5vh;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+    .profile-icon h4{
+        margin-left: 5px;
+        font-size: 15px;
+        font-weight: 400;
     }
 }

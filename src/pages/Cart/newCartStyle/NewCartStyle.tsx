@@ -74,7 +74,7 @@ const NewCartStyle = () => {
         </div>
       </div>
       <div className='newCart-product-list'>
-        <table>
+        <table className='newCart-item-table'>
           <thead>
             <tr>
               <th className='product-name' colSpan={3}>
@@ -152,9 +152,9 @@ const NewCartStyle = () => {
           </table>
 
           <div>
-            <a href='' className='checkout-button'>
-              Proceed to checkout
-            </a>
+            <button className='checkout-button'>
+              Process to checkout
+            </button>
           </div>
         </div>
       </div>

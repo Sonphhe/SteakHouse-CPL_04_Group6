@@ -4,12 +4,10 @@ import './Blog.css'
 import BlogCard from './blogComponent/BlogCard'
 import { Link } from 'react-router-dom'
 import BlogFooter from './blogComponent/BlogFooter'
-import { useSteakHouseContext } from '../../hooks/useSteakHouseContext' 
-
+import { useSteakHouseContext } from '../../hooks/useSteakHouseContext'
 
 const Blog = () => {
-
-  const {blogs} = useSteakHouseContext()
+  const { blogs } = useSteakHouseContext()
 
   return (
     <div>

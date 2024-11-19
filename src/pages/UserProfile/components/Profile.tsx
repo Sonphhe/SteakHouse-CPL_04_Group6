@@ -1,7 +1,24 @@
 import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'
 
 const Profile = () => {
-  const { currentAccount } = useSteakHouseContext()
+  const { currentAccount, setCurrentAccount } = useSteakHouseContext()
+
+  const handleChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onloadend = () => {
+        setCurrentAccount({
+          username: currentAccount?.username as string,
+          password: currentAccount?.password as string,
+          roleId: currentAccount?.roleId as number,
+          image: reader.result as string,
+          id: currentAccount?.id as string
+        })
+      }
+      reader.readAsDataURL(file)
+    }
+  }
 
   return (
     <div>
@@ -34,7 +51,15 @@ const Profile = () => {
         </div>
         <div className='profile-detail-img'>
           <img src={currentAccount?.image} alt='' />
-          <button>Choose Image</button>
+          <input
+            className='choose-image'
+            type='file'
+            accept='image/jpeg, image/png'
+            onChange={handleChangeImage}
+            // style={{ display: 'none' }}
+            id='image-upload'
+          />
+          <button onClick={() => document.getElementById('image-upload')?.click()}>Choose Image</button>
           <div>
             <p>Maximum file size 1 MB.</p>
             <p>Format:. JPEG, .PNG</p>

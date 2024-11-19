@@ -150,6 +150,27 @@
   background-color: #a71e1e;
   color: white;
 }
-.newCart-footer{
-    margin-top: 10%;
+.newCart-footer {
+  margin-top: 10%;
+}
+@media screen and (max-width: 850px) {
+  .newCart-product-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .newCart-product-list tr{
+    border: none;
+  }
+  .newCart-item-table tr{
+    border-bottom: 2px solid #ececec;
+  }
+  .newCart-product-list table {
+    width: 100%;
+  }
+  .newCart-order-steps {
+    margin-top: 16vh;
+  }
+  .shop_table tr:nth-child(1){
+    border-bottom: 2px solid #ececec;
+  }
 }
