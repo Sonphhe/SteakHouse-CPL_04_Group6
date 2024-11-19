@@ -614,6 +614,35 @@
         }
       ],
       "quantity": 1
+    },
+    {
+      "id": "3",
+      "productName": "USA TOPBLADE STEAK",
+      "productOldPrice": 85,
+      "productPrice": 165,
+      "image": "/assets/images/steak3.jpg",
+      "description": "USA Topblade steak",
+      "categoryId": 1,
+      "reviews": [],
+      "quantity": 1
+    },
+    {
+      "id": "4",
+      "productName": "VIETNAM BEEFSTEAK",
+      "productOldPrice": 95,
+      "productPrice": 105,
+      "image": "/assets/images/steak4.jpeg",
+      "description": "Vietnamese Beefsteak, from beef tenderloin",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Mark Lee",
+          "rating": 3,
+          "comment": "It was okay, but I prefer other options.",
+          "date": "2024-11-12"
+        }
+      ],
+      "quantity": 1
     }
   ]
 }
