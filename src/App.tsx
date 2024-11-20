@@ -24,8 +24,9 @@ import Management from './pages/Management/Management'
 import UserProfile from './pages/UserProfile/UserProfile'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
-import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
+
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
+import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 function App() {
   return (
@@ -86,8 +87,24 @@ function App() {
                 </BlogProvider>
               } 
             />
-   
 
+<Route 
+              path='/admin/blog-add' 
+              element={
+                <BlogProvider>
+                  <BlogAdd />
+                </BlogProvider>
+              } 
+            />
+
+<Route
+  path="/admin/blog-edit/:id"
+  element={
+    <BlogProvider>
+      <BlogEdit />
+    </BlogProvider>
+  }
+/>
           </Routes>
         </BrowserRouter>
 

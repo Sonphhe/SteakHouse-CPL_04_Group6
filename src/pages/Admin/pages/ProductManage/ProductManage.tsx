@@ -1,4 +1,3 @@
-// src/pages/Admin/pages/ProductManage/ProductManage.tsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
@@ -10,26 +9,22 @@ import { useProductContext } from '../../../../context/ProductContext';
 
 const ProductManage = () => {
   const { products, addProduct, deleteProduct, filterProducts } = useProductContext();
-  const [newProduct, setNewProduct] = useState({ productName: '', productPrice: 0, description: '', image: '' });
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  const handleAddProduct = () => {
-    addProduct({
-      ...newProduct,
-      id: Date.now(),
-      productOldPrice: newProduct.productPrice,
-      categoryId: 1,
-    });
-    setNewProduct({ productName: '', productPrice: 0, description: '', image: '' });
-  };
+  const categories = [
+    { id: 1, name: 'Steak' },
+    { id: 2, name: 'Drinks' },
+    { id: 3, name: 'Spaghetti' },
+    { id: 4, name: 'Salad' },
+  ];
+
   const handleEditProduct = (id: number) => {
     const productToEdit = products.find((product) => product.id === id);
     if (productToEdit) {
       navigate(`/admin/product-edit/${id}`, { state: { product: productToEdit } });
     }
   };
-  
 
   const handleDeleteProduct = (id: number) => {
     deleteProduct(id);
@@ -40,7 +35,6 @@ const ProductManage = () => {
     setSearchTerm(searchValue);
     filterProducts(searchValue);
   };
-
 
   const handleNavigateToAddProduct = () => {
     navigate('/admin/product-add');
@@ -54,7 +48,7 @@ const ProductManage = () => {
         <main className="dashboard-main-hungkc">
           <div className="product-manage-hungkc">
             <div className="product-manage-header-hungkc">
-            <button className="add-product-btn-hungkc" onClick={handleNavigateToAddProduct}>
+              <button className="add-product-btn-hungkc" onClick={handleNavigateToAddProduct}>
                 Add Product
               </button>
               <input
@@ -74,33 +68,43 @@ const ProductManage = () => {
                   <th>Image</th>
                   <th>Price</th>
                   <th>Description</th>
+                  <th>Category</th> {/* New column */}
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {products.map((product, index) => (
-                  <tr key={product.id}>
-                    <td>{index + 1}</td>
-                    <td>{product.productName}</td>
-                    <td><img src={product.image} className="product-image-hungkc" /></td>
-                    <td>{product.productPrice}</td>
-                    <td>{product.description}</td>
-                    <td>{product.categoryId ? <FontAwesomeIcon icon={faCheck} className="status-icon-hungkc" /> : ''}</td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={faEdit}
-                        className="action-icon-hungkc edit-icon-hungkc"
-                        onClick={() => handleEditProduct(product.id)}
-                      />
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        className="action-icon-hungkc delete-icon-hungkc"
-                        onClick={() => handleDeleteProduct(product.id)}
-                      />
-                    </td>
-                  </tr>
-                ))}
+                {products.map((product, index) => {
+                  // Find category name based on categoryId
+                  const categoryName = categories.find((cat) => cat.id === product.categoryId)?.name || 'Unknown';
+                  return (
+                    <tr key={product.id}>
+                      <td>{index + 1}</td>
+                      <td>{product.productName}</td>
+                      <td>
+                        <img src={product.image} alt={product.productName} className="product-image-hungkc" />
+                      </td>
+                      <td>{product.productPrice}</td>
+                      <td>{product.description}</td>
+                      <td>{categoryName}</td> {/* Display category name */}
+                      <td>
+                        {product.categoryId ? <FontAwesomeIcon icon={faCheck} className="status-icon-hungkc" /> : ''}
+                      </td>
+                      <td>
+                        <FontAwesomeIcon
+                          icon={faEdit}
+                          className="action-icon-hungkc edit-icon-hungkc"
+                          onClick={() => handleEditProduct(product.id)}
+                        />
+                        <FontAwesomeIcon
+                          icon={faTrash}
+                          className="action-icon-hungkc delete-icon-hungkc"
+                          onClick={() => handleDeleteProduct(product.id)}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

@@ -80,7 +80,7 @@ const ProductAdd = () => {
                 />
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label>Old Price:</label>
                 <input
                   type="number"
@@ -89,7 +89,7 @@ const ProductAdd = () => {
                   onChange={handleInputChange}
                   className="large-input-hung11-11Add"
                 />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <label>Description:</label>

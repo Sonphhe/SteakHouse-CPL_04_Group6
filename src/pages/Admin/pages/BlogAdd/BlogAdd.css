@@ -1,5 +1,4 @@
-.blog-add-hungkc,
-.blog-edit-hungkc {
+.blog-add-hungkc {
   background-color: #ffffff;
   padding: 20px;
   border-radius: 8px;
@@ -8,32 +7,45 @@
   margin: auto;
 }
 
-.blog-add-hungkc h2,
-.blog-edit-hungkc h2 {
+.blog-add-hungkc h2 {
   margin-bottom: 20px;
 }
 
-.blog-add-hungkc form,
-.blog-edit-hungkc form {
+.blog-add-hungkc form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.blog-add-hungkc label,
-.blog-edit-hungkc label {
+.blog-add-hungkc label {
   font-weight: bold;
+  color: #555;
 }
 
 .blog-add-hungkc input,
-.blog-edit-hungkc input,
 .blog-add-hungkc textarea,
-.blog-edit-hungkc textarea,
-.blog-add-hungkc select,
-.blog-edit-hungkc select {
+.blog-add-hungkc select {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+}
+
+.blog-add-hungkc input:focus,
+.blog-add-hungkc textarea:focus,
+.blog-add-hungkc select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.3);
+}
+
+.error-message {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.loading-message {
+  color: #007bff;
+  font-weight: bold;
 }
 
 .actions {
@@ -47,6 +59,7 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .actions button:first-child {
@@ -54,7 +67,15 @@
   color: white;
 }
 
+.actions button:first-child:hover {
+  background-color: #45a049;
+}
+
 .actions button:last-child {
   background-color: #f44336;
   color: white;
+}
+
+.actions button:last-child:hover {
+  background-color: #d32f2f;
 }
