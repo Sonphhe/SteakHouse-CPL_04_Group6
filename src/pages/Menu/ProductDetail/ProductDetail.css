@@ -1,12 +1,14 @@
 .product-detail {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 20px; /* Space between grid items */
-  padding: 30px;
-  margin: 50px auto; /* Center horizontally */
+  grid-template-columns: 1fr 1.5fr; /* Điều chỉnh tỉ lệ giữa ảnh và thông tin sản phẩm */
+  gap: 15px; /* Giảm khoảng cách giữa các phần tử */
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 1150px; /* Giới hạn chiều rộng tối đa */
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: #f9f9f9; /* Lighter background for a clean look */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ nhẹ */
+  background-color: #f9f9f9;
+  transition: all 0.3s ease; /* Thêm hiệu ứng chuyển động */
 }
 .product-description-container {
   display: flex;
@@ -14,14 +16,18 @@
   align-items: center;
 }
 .product-image {
-  margin-right: 20px;
+  border: 2px solid #ddd; /* Thêm viền cho hình ảnh */
+  border-radius: 8px; /* Bo tròn góc viền */
+  padding: 5px; /* Khoảng cách giữa viền và ảnh */
+  background-color: #fff; /* Màu nền trắng cho viền */
 }
 
+
 .product-image img {
-  max-width: 80%;
+  max-width: 100%; /* Đảm bảo ảnh không vượt quá giới hạn */
   height: auto;
-  border-radius: 8px;
-  transition: transform 0.3s;
+  border-radius: 6px; /* Bo tròn góc ảnh */
+  transition: transform 0.3s ease; /* Thêm hiệu ứng zoom */
 }
 
 .product-image img:hover {
@@ -36,7 +42,7 @@
 }
 
 .product-info h2 {
-  font-size: 2.5rem; /* Large heading for the product name */
+  font-size: 2rem; /* Large heading for the product name */
   font-weight: bold;
   color: #333;
   margin-bottom: 15px;
@@ -125,6 +131,14 @@
   border-top: 1px solid #e0e0e0;
   padding-top: 15px;
 }
+
+.product-comments-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;  /* Căn giữa theo chiều dọc */
+  width: 100%;              /* Đảm bảo chiều rộng là 100% */
+}
+
 .product-comments {
   margin-top: 20px;
   padding: 15px;
@@ -278,6 +292,41 @@
   border-radius: 5px;
 }
 
+/* Phân trang bình luận */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.pagination-controls button {
+  background-color: #f8f9fa;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 0 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #ddd;
+}
+
+.pagination-controls button:disabled {
+  background-color: #e9ecef;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  font-size: 16px;
+  color: #333;
+  margin: 0 10px;
+}
 
 
 @media (max-width: 768px) {
