@@ -5,31 +5,11 @@ import Navbar from '../../components/ui/Navbar/Navbar';
 import Hero from '../../components/ui/Hero/Hero';
 import hero_menuImg from '../../assets/images/restaurant1.webp';
 import Footer from '../../components/ui/Footer/Footer';
+import Breadcrumb from '../../pages/Breadcrumb/Breadcrumb';
 import { useSteakHouseContext } from '../../hooks/useSteakHouseContext';
 import { useCartContext } from '../../context/CartContext';
-
-// Breadcrumb Component
-const Breadcrumb: React.FC<{ paths: { name: string; path: string }[] }> = ({ paths }) => {
-  return (
-    <nav className="breadcrumb">
-      {paths.map((item, index) => (
-        <span key={index}>
-          {index !== paths.length - 1 ? (
-            <>
-              <a href={item.path} className="breadcrumb-link">
-                {item.name}
-              </a>
-              <span className="breadcrumb-separator"> &gt; </span>
-            </>
-          ) : (
-            <span className="breadcrumb-current">{item.name}</span>
-          )}
-        </span>
-      ))}
-    </nav>
-  );
-};
-
+import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'; 
+import Chat from '../../components/Chat/Chat';
 const Menu: React.FC = () => {
   const navigate = useNavigate();
   const {
@@ -45,13 +25,45 @@ const Menu: React.FC = () => {
     handlePrevious,
     handleNext,
   } = useSteakHouseContext();
-  console.log(categories);
 
   const { addToCart } = useCartContext();
 
+  const [breadcrumbPaths, setBreadcrumbPaths] = useState([
+    { name: 'Home', path: '/home' },
+    { name: 'Menu', path: '/menu' },
+    { name: 'All', path: '/menu' },
+  ]);
+
+  // Cập nhật Breadcrumb theo danh mục
+  const updateBreadcrumb = (categoryName: string) => {
+    setBreadcrumbPaths([
+      { name: 'Home', path: '/home' },
+      { name: 'Menu', path: '/menu' },
+      { name: categoryName, path: `/menu?category=${categoryName}` },
+    ]);
+  };
+
+  const handleCategoryClick = (category: any) => {
+    handleFilter(category.id.toString());
+    updateBreadcrumb(category.categoryName);
+  };
+
+  const handleAllClick = () => {
+    handleFilter('All');
+    setBreadcrumbPaths([
+      { name: 'Home', path: '/home' },
+      { name: 'Menu', path: '/menu' },
+      { name: 'All', path: '/menu' },
+    ]);
+  };
+
+  const handleProductClick = (product: any) => {
+    navigate(`/productdetail/${product.productName}`, { state: { product } });
+  };
+
   const [showModal, setShowModal] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
-  
+
   useEffect(() => {
     if (showModal) {
       const timer = setTimeout(() => {
@@ -61,46 +73,38 @@ const Menu: React.FC = () => {
     }
   }, [showModal]);
 
-  const handleProductClick = (product: any) => {
-    navigate(`/productdetail/${product.productName}`, { state: { product } });
-  };
-
   const handleAddToCart = (product: any) => {
     const productWithValidQuantity = {
       ...product,
-      quantity: parseInt(product.quantity, 10) || 1, // Ensure quantity is a number, default to 1 if invalid
+      quantity: parseInt(product.quantity, 10) || 1,
     };
     addToCart(productWithValidQuantity);
     setModalMessage('Product added to cart!');
     setShowModal(true);
   };
 
-  const breadcrumbPaths = [
-    { name: 'Home', path: '/home' },
-    { name: 'Menu', path: '/menu' },
-  ];
-  
-  <Breadcrumb paths={breadcrumbPaths} />
-
   return (
-    <div> 
+    <div>
       <Navbar />
       <Hero cName="hero" heroImage={hero_menuImg} title="We Here For Your Meal" text="Choose Your Favourite Meal" />
       <div className="menu">
-
+        {/* Sidebar */}
         <div className="sidebar">
-        <Breadcrumb paths={breadcrumbPaths} />
+          <Breadcrumb paths={breadcrumbPaths} />
           <h2>Browse</h2>
           <ul>
-            <li onClick={() => handleFilter('All')}>All</li>
+            <li onClick={handleAllClick}>All</li>
             {categories.map((category) => (
-              <li key={category.id} onClick={() => handleFilter(category.id.toString())}>
+              <li key={category.id} onClick={() => handleCategoryClick(category)}>
                 {category.categoryName}
               </li>
             ))}
           </ul>
         </div>
+
+        {/* Main Content */}
         <div className="main-content">
+          {/* Tìm kiếm và sắp xếp */}
           <div className="search-barr">
             <input
               type="text"
@@ -115,6 +119,8 @@ const Menu: React.FC = () => {
               <option value="asc">Ascending</option>
             </select>
           </div>
+
+          {/* Danh sách sản phẩm */}
           <div className="menu-items">
             {getPaginatedItems().map((product) => (
               <div className="menu-item" key={product.id}>
@@ -129,6 +135,8 @@ const Menu: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {/* Phân trang */}
           <div className="pagination">
             <button onClick={handlePrevious} disabled={currentPage === 1}>
               Previous
@@ -142,15 +150,20 @@ const Menu: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Modal thêm vào giỏ hàng */}
       {showModal && (
         <div className="modal-overlay" onClick={() => setShowModal(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <div className='check-icon'>✔</div>
+            <div className="check-icon">✔</div>
             <p>{modalMessage}</p>
           </div>
         </div>
       )}
+    <Chat />
       <Footer />
+      <GoToTopButton /> {/* Nút Go to Top */}
+      
     </div>
   );
 };
