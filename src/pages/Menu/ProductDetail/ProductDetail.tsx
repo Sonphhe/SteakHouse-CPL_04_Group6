@@ -5,6 +5,8 @@ import './ProductDetail.css';
 import Navbar from '../../../components/ui/Navbar/Navbar';
 import Footer from '../../../components/ui/Footer/Footer';
 import Breadcrumb from '../../../pages/Breadcrumb/Breadcrumb'; 
+import 'font-awesome/css/font-awesome.min.css';
+import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton'; 
 
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
@@ -19,6 +21,18 @@ const ProductDetail: React.FC = () => {
   const [rating, setRating] = useState<number>(0);
   const [commentText, setCommentText] = useState<string>('');
   const [userName, setUserName] = useState<string>('');
+
+  // Phân trang bình luận
+  const [currentPage, setCurrentPage] = useState(1);
+  const commentsPerPage = 2; // Số bình luận hiển thị trên mỗi trang
+
+  // Tính toán các bình luận hiển thị trên trang hiện tại
+  const indexOfLastComment = currentPage * commentsPerPage;
+  const indexOfFirstComment = indexOfLastComment - commentsPerPage;
+  const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
+
+  const totalPages = Math.ceil(comments.length / commentsPerPage);
+
   // Fetch dữ liệu sản phẩm
   useEffect(() => {
     const fetchProductData = async () => {
@@ -75,9 +89,6 @@ const ProductDetail: React.FC = () => {
     navigate('/cart');
   };
 
-  // Trở lại menu
-  // const handleBackToMenu = () => navigate('/menu');
-
   // Thêm bình luận
   const handleAddComment = async () => {
     if (!commentText || !userName) {
@@ -133,6 +144,18 @@ const ProductDetail: React.FC = () => {
     );
   };
 
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(prev => prev + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1);
+    }
+  };
+
   if (!productData) {
     return <div>Loading...</div>;
   }
@@ -141,17 +164,12 @@ const ProductDetail: React.FC = () => {
     <div>
       <Navbar />
       <Breadcrumb 
-        paths={[
-          { name: 'Home', path: '/home' },
-          { name: 'Menu', path: '/menu' },
-          { name: productData.productName, path: '#' }
-        ]}
+        paths={[{ name: 'Home', path: '/home' }, { name: 'Menu', path: '/menu' }, { name: productData.productName, path: '#' }]} 
       />
       <div className="product-detail">
         <div className="product-image">
           <img src={productData.image} alt={productData.productName} />
-          <h3>Description</h3>
-          <p className="product-description">{productData.description}</p>
+          <p className="product-description"><h3>Description</h3> { productData.description }</p>
         </div>
 
         <div className="product-info">
@@ -168,63 +186,9 @@ const ProductDetail: React.FC = () => {
           </div>
 
           <button className="add-to-cart" onClick={handleAddToCart}>
-            <i className="fa fa-shopping-cart" style={{ marginRight: '8px' }}></i> Add to Cart
+                <i className="fa fa-shopping-cart cart-icon" style={{ marginRight: '8px' }}></i> Add to Cart
           </button>
-          <br />
-          {/* <button className="add-to-cart" onClick={handleBackToMenu}>
-            Back to Menu
-          </button> */}
 
-          
-        </div>
-
-        <div>
-        <div className="product-comments">
-          <h3>Reviews & Comments</h3>
-          {comments.length === 0 ? (
-            <p>No reviews yet. Be the first to comment!</p>
-          ) : (
-            <ul>
-              {comments.map((review, index) => (
-                <li key={index}>
-                  <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
-                  <div className="rating-container">
-                    <i>Rating:</i> {generateStars(review.rating)}
-                  </div>
-                  <p>{review.comment}</p>
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-
-        <div className="comment-form">
-          <h4>Leave a Review</h4>
-          <div className="rating">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                onClick={() => setRating(star)}
-                className={rating >= star ? "star-filled" : "star-empty"}
-              >
-                ★
-              </span>
-            ))}
-          </div>
-
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={userName}
-            onChange={e => setUserName(e.target.value)}
-          />
-          <textarea
-            value={commentText}
-            onChange={e => setCommentText(e.target.value)}
-            placeholder="Write your comment here..."
-          />
-          <button onClick={handleAddComment}>Submit Comment</button>
-        </div>
         </div>
 
         {isModalOpen && (
@@ -240,9 +204,67 @@ const ProductDetail: React.FC = () => {
           </div>
         )}
       </div>
+
+      <div className="product-comments-container">
+        <div className="product-comments">
+          <h3>Reviews & Comments</h3>
+          {comments.length === 0 ? (
+            <p>No reviews yet. Be the first to comment!</p>
+          ) : (
+            <ul>
+              {currentComments.map((review, index) => (
+                <li key={index}>
+                  <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
+                  <div className="rating-container">
+                    <i>Rating:</i> {generateStars(review.rating)}
+                  </div>
+                  <p>{review.comment}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+            <div className="pagination-controls">
+          <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+          <span>{currentPage} / {totalPages}</span>
+          <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+        </div>
+        </div>
+
+      
+
+        <div className="comment-form">
+          <h4>Leave a Review</h4>
+          <div className="rating">
+            {[1, 2, 3, 4, 5].map((star) => (
+              <span
+                key={star}
+                onClick={() => setRating(star)}
+                className={rating >= star ? "star-filled" : "star-empty"}
+              >
+                ★
+              </span>
+            ))}
+          </div>
+          <textarea
+            placeholder="Your comment..."
+            value={commentText}
+            onChange={(e) => setCommentText(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Your name"
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <button onClick={handleAddComment}>Submit Review</button>
+        </div>
+      </div>
       <Footer />
+      <GoToTopButton /> {/* Nút Go to Top */}
     </div>
+    
   );
+ 
 };
 
 export default ProductDetail;
