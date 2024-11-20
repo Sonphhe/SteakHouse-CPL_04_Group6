@@ -184,7 +184,47 @@ const Register = () => {
                   Letters, numbers, underscores, hyphens allowed.
                 </p>
               </div>
-
+              <div className='input-box'>
+                <label htmlFor='email'>
+                  Email:
+                  <FontAwesomeIcon icon={faCheck} className={validName ? 'valid' : 'hide'} />
+                  <FontAwesomeIcon icon={faTimes} className={validName || !user ? 'hide' : 'invalid'} />
+                </label>
+                <input
+                  type='text'
+                  id='username'
+                  ref={userRef}
+                  autoComplete='off'
+                  onChange={(e) => setUser(e.target.value)}
+                  value={user}
+                  required
+                  aria-invalid={validName ? 'false' : 'true'}
+                  aria-describedby='uidnote'
+                  onFocus={() => setUserFocus(true)}
+                  onBlur={() => setUserFocus(false)}
+                />
+                <p id='uidnote' className={userFocus && user && !validName ? 'instructions' : 'offscreen'}>
+                  <FontAwesomeIcon icon={faInfoCircle} />
+                  4 to 24 characters.
+                  <br />
+                  Must begin with a letter.
+                  <br />
+                  Letters, numbers, underscores, hyphens allowed.
+                </p>
+              </div>
+              <div className='input-box'>
+                <label htmlFor='phoneNumber'>
+                  Phone:
+                  <FontAwesomeIcon icon={faCheck} className={validName ? 'valid' : 'hide'} />
+                  <FontAwesomeIcon icon={faTimes} className={validName || !user ? 'hide' : 'invalid'} />
+                </label>
+                <input
+                  type='number'
+                  id='phoneNumber'
+                  autoComplete='off'
+                  required
+                />
+              </div>
               <div className='input-box'>
                 <label htmlFor='password'>
                   Password:

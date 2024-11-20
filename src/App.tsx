@@ -27,6 +27,7 @@ import { BlogProvider } from './context/BlogContext'
 // import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
 import NewCartStyle from './pages/Cart/newCartStyle/NewCartStyle'
+import LoginRegis from './components/ui/LoginRegis/LoginRegis'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 function App() {
   return (
@@ -36,9 +37,9 @@ function App() {
       <SteakHouseProvider>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<UserLoginView />} />
+            {/* <Route path='/' element={<UserLoginView />} /> */}
             <Route path='/login' element={<Login />} />
-            <Route path='/home' element={<Home />} />
+            <Route path='/' element={<Home />} />
             <Route path='/register' element={<Register />} />
             <Route path='/forgotpass' element={<ForgotPassword />} />
             <Route path='/menu' element={<Menu />} />
@@ -53,6 +54,8 @@ function App() {
             <Route path='/management' element={<Management />} />
             <Route path='/user/account/userProfile' element={<UserProfile />} />
             <Route path='/newCartStyle' element={<NewCartStyle />} />
+            {/* <Route path='/loginRegis' element={<LoginRegis />} /> */}
+
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 

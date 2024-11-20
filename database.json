@@ -6,11 +6,6 @@
       "id": "5a59"
     },
     {
-      "roleId": 2,
-      "roleName": "cashier",
-      "id": "9178"
-    },
-    {
       "roleId": 3,
       "roleName": "customer",
       "id": "35ea"
@@ -20,37 +15,18 @@
     {
       "username": "sonpham123",
       "password": "123",
+      "phoneNumber": "0357663145",
+      "fullName": "Pham Hung Son",
       "roleId": 1,
       "image": "/assets/images/profile-pics.jpg",
       "id": "1"
-    },
-    {
-      "username": "sondaigia",
-      "password": "Sondaigia123@",
-      "roleId": 3,
-      "image": "/assets/images/profile-pics.jpg",
-      "id": "RaksUQw"
     },
     {
       "username": "2k3sonpham@gmail.com",
       "password": "116940890875495737382",
       "roleId": 3,
       "image": "https://lh3.googleusercontent.com/a/ACg8ocK6F2KPx0WSHoSqnVg9yV04YKxLp6Tq_KnxtgEZPQENfEKBCP1J=s96-c",
-      "id": "UvmIhuy"
-    },
-    {
-      "username": "sondaigia223",
-      "password": "Sondaigia123@",
-      "roleId": 3,
-      "image": "/src/assets/images/profile-pics.jpg",
-      "id": "3Lo4Ulj"
-    },
-    {
-      "username": "sonphhe173195@fpt.edu.vn",
-      "password": "105917570415484790918",
-      "roleId": 3,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
-      "id": "588tNWj"
+      "id": "7gV5Fax"
     }
   ],
   "productCategory": [
@@ -642,7 +618,7 @@
           "date": "2024-11-16"
         }
       ],
-      "quantity": 1
+      "quantity": 2
     },
     {
       "id": "20",
@@ -707,6 +683,35 @@
         }
       ],
       "quantity": 1
+    },
+    {
+      "id": "3",
+      "productName": "USA TOPBLADE STEAK",
+      "productOldPrice": 85,
+      "productPrice": 165,
+      "image": "/assets/images/steak3.jpg",
+      "description": "USA Topblade steak",
+      "categoryId": 1,
+      "reviews": [],
+      "quantity": 1
+    }
+  ],
+  "searchHistory": [
+    {
+      "title" : "Regular Steak",
+      "searchTimes" : 2
+    },
+    {
+      "title" : "Regular Steak",
+      "searchTimes" : 2
+    },
+    {
+      "title" : "Regular Steak",
+      "searchTimes" : 2
+    },
+    {
+      "title" : "Regular Steak",
+      "searchTimes" : 2
     }
   ]
 }
