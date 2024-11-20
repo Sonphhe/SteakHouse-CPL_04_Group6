@@ -21,7 +21,8 @@ interface SteakHouseType {
   handleNext: () => void
   getPaginatedItems: () => ProductType[]
   login: (currentAccount: CurrentAccount) => void
-  logout: () => void
+  logout: () => void,
+  setCurrentAccount: Dispatch<CurrentAccount>
 }
 
 interface AccountType {
@@ -204,7 +205,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         handleSort,
         handlePrevious,
         handleNext,
-        getPaginatedItems
+        getPaginatedItems,
+        setCurrentAccount
       }}
     >
       {children}

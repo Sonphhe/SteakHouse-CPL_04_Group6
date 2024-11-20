@@ -592,6 +592,41 @@
   "menuItems": [],
   "cartItems": [
     {
+      "id": "1",
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 235,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Steak Bo Hokubee, sirloin",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "John Doe",
+          "rating": 5,
+          "comment": "Delicious steak with great flavor!",
+          "date": "2024-11-15"
+        },
+        {
+          "userName": "Jane Smith",
+          "rating": 4,
+          "comment": "Tasty, but a bit too salty for my taste.",
+          "date": "2024-11-14"
+        }
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "3",
+      "productName": "USA TOPBLADE STEAK",
+      "productOldPrice": 85,
+      "productPrice": 165,
+      "image": "/assets/images/steak3.jpg",
+      "description": "USA Topblade steak",
+      "categoryId": 1,
+      "reviews": [],
+      "quantity": 1
+    },
+    {
       "id": "4",
       "productName": "VIETNAM BEEFSTEAK",
       "productOldPrice": 95,
@@ -607,50 +642,6 @@
           "date": "2024-11-12"
         }
       ],
-      "quantity": 6
-    },
-    {
-      "id": "5",
-      "productName": "SHAKING BEEF",
-      "productOldPrice": 110,
-      "productPrice": 95,
-      "image": "/assets/images/steak5.jpg",
-      "description": "SHAKING BEEF",
-      "categoryId": 1,
-      "reviews": [],
-      "quantity": 1
-    },
-    {
-      "id": "17",
-      "productName": "LEMON JUICE",
-      "productOldPrice": 95,
-      "productPrice": 90,
-      "image": "/assets/images/DRINKS8.jpg",
-      "description": "LEMON JUICE",
-      "categoryId": 2,
-      "reviews": [],
-      "quantity": 1
-    },
-    {
-      "id": "16",
-      "productName": "SALT LEMON SODA",
-      "productOldPrice": 65,
-      "productPrice": 60,
-      "image": "/assets/images/DRINKS7.jpg",
-      "description": "SALT LEMON SODA",
-      "categoryId": 2,
-      "reviews": [],
-      "quantity": 1
-    },
-    {
-      "id": "15",
-      "productName": "CHILE WINE",
-      "productOldPrice": 60,
-      "productPrice": 55,
-      "image": "/assets/images/DRINKS6.jpeg",
-      "description": "CHILE WINE",
-      "categoryId": 2,
-      "reviews": [],
       "quantity": 1
     }
   ]

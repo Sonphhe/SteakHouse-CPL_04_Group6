@@ -25,9 +25,13 @@ import UserProfile from './pages/UserProfile/UserProfile'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 
+
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
+
+
+
 function App() {
   return (
     <div className='App'>
@@ -52,7 +56,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
             <Route path='/management' element={<Management />} />
             <Route path='/user/account/userProfile' element={<UserProfile />} />
-            {/* <Route path='/newCartStyle' element={<NewCartStyle />} /> */}
+            <Route path='/cart' element={<Cart />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route 
               path='/admin/product-management' 

@@ -1,15 +1,37 @@
-import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './Menu.css'
-import Navbar from '../../components/ui/Navbar/Navbar'
-import Hero from '../../components/ui/Hero/Hero'
-import hero_menuImg from '../../assets/images/restaurant1.webp'
-import Footer from '../../components/ui/Footer/Footer'
-import { useSteakHouseContext } from '../../hooks/useSteakHouseContext' 
-import { useCartContext } from '../../context/CartContext'
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Menu.css';
+import Navbar from '../../components/ui/Navbar/Navbar';
+import Hero from '../../components/ui/Hero/Hero';
+import hero_menuImg from '../../assets/images/restaurant1.webp';
+import Footer from '../../components/ui/Footer/Footer';
+import { useSteakHouseContext } from '../../hooks/useSteakHouseContext';
+import { useCartContext } from '../../context/CartContext';
+
+// Breadcrumb Component
+const Breadcrumb: React.FC<{ paths: { name: string; path: string }[] }> = ({ paths }) => {
+  return (
+    <nav className="breadcrumb">
+      {paths.map((item, index) => (
+        <span key={index}>
+          {index !== paths.length - 1 ? (
+            <>
+              <a href={item.path} className="breadcrumb-link">
+                {item.name}
+              </a>
+              <span className="breadcrumb-separator"> &gt; </span>
+            </>
+          ) : (
+            <span className="breadcrumb-current">{item.name}</span>
+          )}
+        </span>
+      ))}
+    </nav>
+  );
+};
 
 const Menu: React.FC = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {
     categories,
     getPaginatedItems,
@@ -21,44 +43,53 @@ const Menu: React.FC = () => {
     handleSearch,
     handleSort,
     handlePrevious,
-    handleNext
-  } = useSteakHouseContext()
-console.log(categories);
+    handleNext,
+  } = useSteakHouseContext();
+  console.log(categories);
 
-  const { addToCart } = useCartContext()
-  // State cho modal thông báo
-  const [showModal, setShowModal] = useState(false)
-  const [modalMessage, setModalMessage] = useState('')
-  // Tự động ẩn modal sau 3 giây
+  const { addToCart } = useCartContext();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState('');
+  
   useEffect(() => {
     if (showModal) {
       const timer = setTimeout(() => {
-        setShowModal(false)
-      }, 3000)
-      return () => clearTimeout(timer)
+        setShowModal(false);
+      }, 3000);
+      return () => clearTimeout(timer);
     }
-  }, [showModal])
-  
+  }, [showModal]);
+
   const handleProductClick = (product: any) => {
-    navigate(`/productdetail/${product.productName}`, { state: { product } })
-  }
+    navigate(`/productdetail/${product.productName}`, { state: { product } });
+  };
 
   const handleAddToCart = (product: any) => {
     const productWithValidQuantity = {
       ...product,
-      quantity: parseInt(product.quantity, 10) || 1 // Ensure quantity is a number, default to 1 if invalid
-    }
-    addToCart(productWithValidQuantity)
-    setModalMessage('Product added to cart!')
-    setShowModal(true)
-  }
+      quantity: parseInt(product.quantity, 10) || 1, // Ensure quantity is a number, default to 1 if invalid
+    };
+    addToCart(productWithValidQuantity);
+    setModalMessage('Product added to cart!');
+    setShowModal(true);
+  };
+
+  const breadcrumbPaths = [
+    { name: 'Home', path: '/home' },
+    { name: 'Menu', path: '/menu' },
+  ];
+  
+  <Breadcrumb paths={breadcrumbPaths} />
 
   return (
-    <div>
+    <div> 
       <Navbar />
-      <Hero cName='hero' heroImage={hero_menuImg} title='We Here For Your Meal' text='Choose Your Favourite Meal' />
-      <div className='menu'>
-        <div className='sidebar'>
+      <Hero cName="hero" heroImage={hero_menuImg} title="We Here For Your Meal" text="Choose Your Favourite Meal" />
+      <div className="menu">
+
+        <div className="sidebar">
+        <Breadcrumb paths={breadcrumbPaths} />
           <h2>Browse</h2>
           <ul>
             <li onClick={() => handleFilter('All')}>All</li>
@@ -69,38 +100,36 @@ console.log(categories);
             ))}
           </ul>
         </div>
-        <div className='main-content'>
-          <div className='search-barr'>
+        <div className="main-content">
+          <div className="search-barr">
             <input
-              type='text'
-              placeholder='Search'
+              type="text"
+              placeholder="Search"
               value={searchQuery}
               onChange={(e) => handleSearch(e.target.value)}
             />
             <select value={sortOrder} onChange={(e) => handleSort(e.target.value)}>
-              <option value='default'>Default</option>
-              <option value='a-z'>From a - z</option>
-              <option value='desc'>Descending</option>
-              <option value='asc'>Ascending</option>
+              <option value="default">Default</option>
+              <option value="a-z">From a - z</option>
+              <option value="desc">Descending</option>
+              <option value="asc">Ascending</option>
             </select>
           </div>
-          <div className='menu-items'>
+          <div className="menu-items">
             {getPaginatedItems().map((product) => (
-              <div className='menu-item' key={product.id}>
-                <div onClick={() => handleProductClick(product)} >
+              <div className="menu-item" key={product.id}>
+                <div onClick={() => handleProductClick(product)}>
                   <img src={product.image} alt={product.productName} />
-                <h3>{product.productName}</h3>
-                <p>{product.productPrice}$</p>
+                  <h3>{product.productName}</h3>
+                  <p>{product.productPrice}$</p>
                 </div>
-                
-                {/* Nút Add to Cart */}
-                <button className='add-to-cart' onClick={() => handleAddToCart(product)}>
-                  <i className='fa fa-shopping-cart' style={{ marginRight: '8px' }}></i> Add to Cart
+                <button className="add-to-cart" onClick={() => handleAddToCart(product)}>
+                  <i className="fa fa-shopping-cart" style={{ marginRight: '8px' }}></i> Add to Cart
                 </button>
               </div>
             ))}
           </div>
-          <div className='pagination'>
+          <div className="pagination">
             <button onClick={handlePrevious} disabled={currentPage === 1}>
               Previous
             </button>
@@ -113,18 +142,17 @@ console.log(categories);
           </div>
         </div>
       </div>
-      {/* Modal Thông báo thêm vào giỏ hàng */}
       {showModal && (
-        <div className='modal-overlay' onClick={() => setShowModal(false)}>
-          <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+        <div className="modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className='check-icon'>✔</div>
-            <p>{modalMessage}</p> 
+            <p>{modalMessage}</p>
           </div>
         </div>
       )}
       <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

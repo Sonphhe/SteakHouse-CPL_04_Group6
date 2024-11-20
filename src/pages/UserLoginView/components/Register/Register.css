@@ -3,6 +3,9 @@
   background-repeat: no-repeat;
   min-height: 120vh;
   background: url('../../../../assets/images/background.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .wrapper-register {
   width: 450px;
@@ -12,10 +15,6 @@
   color: #fff;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  position: absolute;
-  right: 33%;
-  left: 33%;
-  top: 2%;
 }
 
 .register-header {
