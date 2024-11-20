@@ -35,8 +35,13 @@
 }
 
 .sidebar ul li:hover {
-  color: #ff6347; /* Highlighted color */
+  background-color: #ffefeb; /* MÃ u ná»n nháº¹ khi hover */
+  color: #e5533d; /* MÃ u chá»¯ ná»•i báº­t */
+  padding-left: 10px; /* Hiá»‡u á»©ng di chuyá»ƒn nháº¹ */
+  border-radius: 5px;
+  cursor: pointer;
 }
+
 
 .main-content {
   flex: 3;
@@ -70,20 +75,20 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 items per row */
   gap: 20px;
-  align-items: stretch; /* Đảm bảo các mục có chiều cao đều */
+  align-items: stretch; /* Äáº£m báº£o cÃ¡c má»¥c cÃ³ chiá»u cao Ä‘á»u */
 }
 
 .menu-item {
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Dãn đều nội dung trên dưới */
+  justify-content: space-between; /* DÃ£n Ä‘á»u ná»™i dung trÃªn dÆ°á»›i */
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   text-align: center;
   padding: 15px;
-  min-height: 300px; /* Chiều cao tối thiểu của mục */
+  min-height: 300px; /* Chiá»u cao tá»‘i thiá»ƒu cá»§a má»¥c */
 }
 
 .menu-item img {
@@ -98,14 +103,20 @@
 .menu-item h3 {
   font-size: 1.2rem;
   color: #333333;
-  margin: 10px 0; /* Khoảng cách với phần text bên dưới */
-  flex-grow: 1; /* Đẩy nội dung phía dưới xuống */
+  margin: 10px 0; /* Khoáº£ng cÃ¡ch vá»›i pháº§n text bÃªn dÆ°á»›i */
+  flex-grow: 1; /* Äáº©y ná»™i dung phÃ­a dÆ°á»›i xuá»‘ng */
 }
 
 .menu-item p {
   font-size: 1rem;
   color: #e5533d;
 }
+.menu-item:hover {
+  transform: scale(1.05); /* PhÃ³ng to nháº¹ */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* TÄƒng Ä‘á»™ ná»•i báº­t */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 
 .add-to-cart {
   margin-top: 10px;
@@ -120,7 +131,9 @@
 }
 
 .add-to-cart:hover {
-  background-color: #e5533d;
+  background-color: #e5533d; /* MÃ u tá»‘i hÆ¡n khi hover */
+  color: white; /* Äá»•i mÃ u chá»¯ */
+  cursor: pointer;
 }
 
 .pagination {
@@ -150,6 +163,12 @@
   cursor: not-allowed;
 }
 
+.pagination button:hover {
+  background-color: #ff8377; /* Hiá»‡u á»©ng hover cho nÃºt */
+  cursor: pointer;
+}
+
+
 /* Modal Styles */
 .modal-overlay {
   position: fixed;
@@ -176,6 +195,7 @@
   color: #4caf50;
   margin-bottom: 10px;
 }
+
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
