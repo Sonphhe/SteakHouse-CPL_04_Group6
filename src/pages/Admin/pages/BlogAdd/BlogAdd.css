@@ -79,3 +79,10 @@
 .actions button:last-child:hover {
   background-color: #d32f2f;
 }
+
+/* Đảm bảo input file được hiển thị rõ ràng */
+input[type="file"].file-input-HKC {
+  display: block; /* Đảm bảo hiển thị */
+  visibility: visible; /* Đảm bảo không bị ẩn */
+  cursor: pointer; /* Thay đổi con trỏ khi di chuột */
+}

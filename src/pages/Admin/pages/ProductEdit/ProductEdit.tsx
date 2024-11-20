@@ -126,12 +126,14 @@ const ProductEdit = () => {
                 readOnly
               />
 
-              <label>Choose Image:</label>
-              <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-              />
+<label>Choose Image:</label>
+<input
+  id="fileInput-HKC" // Thêm id với hậu tố HKC
+  className="file-input-HKC" // Thêm className với hậu tố HKC
+  type="file"
+  accept="image/*"
+  onChange={handleImageChange}
+/>
 
               <label>Category:</label>
               <select

@@ -77,7 +77,7 @@
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
       "productPrice": 235,
-      "image": "/assets/images/steak1.jpg",
+      "image": "/assets/images/steak3.jpg",
       "description": "Steak Bo Hokubee, sirloin",
       "categoryId": 1,
       "reviews": [
@@ -447,12 +447,11 @@
   ],
   "blog": [
     {
-      "id": "1",
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
       "image": "/assets/images/steak3.jpg",
-      "blogCategoryId": 2,
-      "accountId": 2
+      "blogCategoryId": "1",
+      "id": "1"
     },
     {
       "id": "2",
