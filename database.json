@@ -76,7 +76,7 @@
       "id": "1",
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
-      "productPrice": 235,
+      "productPrice": 233,
       "image": "/assets/images/steak1.jpg",
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
       "categoryId": 1,
@@ -447,15 +447,16 @@
   ],
   "blog": [
     {
+      "id": "1",
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
       "image": "/assets/images/steak3.jpg",
-      "blogCategoryId": "1",
-      "id": "1"
+      "blogCategoryId": 3,
+      "accountId": 2
     },
     {
       "id": "2",
-      "title": "The Basics of Machine Learning",
+      "title": "The Basics of Machine Learning test hung",
       "description": "An introductory article on machine learning concepts and applications.",
       "image": "/assets/images/beef-wellington-brocolini.webp",
       "blogCategoryId": 3,

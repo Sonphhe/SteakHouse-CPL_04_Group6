@@ -1,0 +1,87 @@
+.account-edit-container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .account-edit-container h2 {
+    margin-bottom: 20px;
+  }
+  
+  .account-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .account-edit-form label {
+    font-weight: bold;
+    color: #555;
+  }
+  
+  .account-edit-form input,
+  .account-edit-form select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .account-edit-form input:focus,
+  .account-edit-form select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.3);
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .actions button:first-child {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .actions button:first-child:hover {
+    background-color: #45a049;
+  }
+  
+  .actions button:last-child {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .actions button:last-child:hover {
+    background-color: #d32f2f;
+  }
+  
+  .loading-message {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .error-message {
+    color: #f44336;
+    font-weight: bold;
+  }
+  
+  /* Ensure input file visibility */
+  input[type="file"].file-input-HKC {
+    display: block;
+    visibility: visible;
+    cursor: pointer;
+  }
+  

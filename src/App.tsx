@@ -28,6 +28,10 @@ import { BlogProvider } from './context/BlogContext'
 
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
+import AccountManage from './pages/Admin/pages/AccountManage/AccountManage'
+import { AccountProvider } from './context/AccountContext'
+import AccountAdd from './pages/Admin/pages/AccountAdd/AccountAdd'
+import AccountEdit from './pages/Admin/pages/AccountEdit/AccountEdit'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 
 
@@ -100,7 +104,6 @@ function App() {
                 </BlogProvider>
               } 
             />
-
 <Route
   path="/admin/blog-edit/:id"
   element={
@@ -109,7 +112,37 @@ function App() {
     </BlogProvider>
   }
 />
+<Route 
+              path='/admin/account-management' 
+              element={
+                <AccountProvider>
+                  <AccountManage />
+                </AccountProvider>
+              } 
+            />
+        
+          <Route 
+              path='/admin/account-add' 
+              element={
+                <AccountProvider>
+                  <AccountAdd />
+                </AccountProvider>
+              } 
+            />
+
+ 
+<Route 
+              path='/admin/account-edit' 
+              element={
+                <AccountProvider>
+                  <AccountEdit />
+                </AccountProvider>
+              } 
+            />
+
+
           </Routes>
+
         </BrowserRouter>
 
       </SteakHouseProvider>
