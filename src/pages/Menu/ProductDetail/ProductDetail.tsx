@@ -7,7 +7,7 @@ import Footer from '../../../components/ui/Footer/Footer';
 import Breadcrumb from '../../../pages/Breadcrumb/Breadcrumb';
 import 'font-awesome/css/font-awesome.min.css';
 import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton';
-import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
+// import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -32,7 +32,7 @@ const ProductDetail: React.FC = () => {
   const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
 
   const totalPages = Math.ceil(comments.length / commentsPerPage);
-  const handleFilter = useSteakHouseContext();
+  // const handleFilter = useSteakHouseContext();
   // Fetch dữ liệu sản phẩm
   useEffect(() => {
     const fetchProductData = async () => {
@@ -197,15 +197,15 @@ const ProductDetail: React.FC = () => {
                 <h4>Hot Sale: </h4>
                 <li>
                   <i className="fa fa-truck" style={{ marginRight: '8px', color: '#4CAF50' }}></i>
-                  Shipping promotion with orders over 200k
+                  Shipping promotion with orders over 200$
                 </li>
                 <li>
                   <i className="fa fa-gift" style={{ marginRight: '8px', color: '#FFA500' }}></i>
-                  GiffCard up to 100k
+                  GiffCard up to 100$
                 </li>
                 <li>
                   <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
-                  50k voucher
+                  50$ voucher
                 </li>
               </div>
 
