@@ -85,14 +85,14 @@
   width: 50px;
   text-align: center;
   border: none;
-  background-color: #fff;
+  background-color: #F9F9F9;
   font-size: 18px;
 }
 .add-to-cart {
   display: inline-block;
   padding: 12px 20px;
   font-size: 18px;
-  background-color: #e53935;
+  background-color: #ff6347;
   color: #ffffff;
   font-weight: bold;
   text-align: center;
@@ -246,6 +246,7 @@
   display: flex;
   gap: 5px; 
   margin-bottom: 15px;
+  justify-content: center;
 }
 
 .comment-form .rating span {
@@ -294,13 +295,18 @@
 }
 
 .comment-form button {
-  background-color: #db3934;
+  background-color: #ff6347;
   color: white;
   padding: 10px 20px;
   border: none;
   cursor: pointer;
   font-size: 1rem;
   border-radius: 5px;
+}
+
+.comment-form button:hover{
+  background-color: #c62828;
+  transform: translateY(-2px);
 }
 
 /* Phân trang bình luận */
