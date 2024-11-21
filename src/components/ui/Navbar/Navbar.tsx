@@ -40,41 +40,66 @@ const Navbar = () => {
     setValue(e.target.value)
   }
 
+  // const onSearch = (searchTerm) => {
+
+  // }
+
   const [openSearchDoropdown, setopenSearchDoropdown] = useState(false)
 
   const locateCart = () => {
     navigate('/cart')
   }
+  const locateHome = () => {
+    navigate('/')
+  }
+
+  const handleOpenProfile = () => {
+    if(currentAccount?.id === ''){
+      navigate('/login')
+    }else{
+      setOpenProfile(!openProfile)
+    }
+  }
+
   return (
-    <nav className='navbar-items'>
-      <Link style={{ textDecoration: 'none' }} to={'/home'}>
-        <h1 className='navbar-logo'>SteakHouse</h1>
-      </Link>
+    <div>
+      <nav className='navbar-items'>
+        <h1 onClick={locateHome} className='navbar-logo'>
+          SteakHouse
+        </h1>
 
-      <div className='navbar-search'>
-        <input className='search_input' value={value} onClick={() => setopenSearchDoropdown(!openSearchDoropdown)} onChange={handleChangeSearch} type='text' placeholder='Search' />
-        {openSearchDoropdown?<SearchDropDown/>:<></>}
-      </div>
+        <div className='navbar-search'>
+          <input
+            className='search_input'
+            value={value}
+            onClick={() => setopenSearchDoropdown(!openSearchDoropdown)}
+            onChange={handleChangeSearch}
+            type='text'
+            placeholder='Search'
+          />
+          {openSearchDoropdown ? <SearchDropDown value={value} action={setopenSearchDoropdown} /> : <></>}
+        </div>
 
-      <div className='rightside-options'>
-        <div className='menu-icons'>
-          <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
+        <div className='rightside-options'>
+          <div className='menu-icons'>
+            <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
+          </div>
+          <div onClick={handleOpenProfile} className='profile-icon'>
+            <i>
+              <FaRegUser />
+            </i>
+          </div>
+          <div className='navbar-cart' onClick={locateCart}>
+            <i>
+              <FaCartArrowDown />
+            </i>{' '}
+            <h4>Cart Items</h4>
+            <div className='shopee-cart-number-badge'>{cartItems.length}</div>
+          </div>
+          {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
         </div>
-        <div onClick={() => setOpenProfile(!openProfile)} className='profile-icon'>
-          <i>
-            <FaRegUser />
-          </i>
-        </div>
-        <div className='navbar-cart' onClick={locateCart}>
-          <i>
-            <FaCartArrowDown />
-          </i>{' '}
-          <h4>Cart Items</h4>
-          <div className='shopee-cart-number-badge'>{cartItems.length}</div>
-        </div>
-        {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
-      </div>
-    </nav>
+      </nav>
+    </div>
   )
 }
 

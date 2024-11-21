@@ -27,77 +27,78 @@ import { BlogProvider } from './context/BlogContext'
 // import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
 import LoginRegis from './components/ui/LoginRegis/LoginRegis'
+import VerifyNum from './pages/UserProfile/components/VerifyNum/VerifyNum'
+
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 function App() {
   return (
     <div className='App'>
-      
       <CartProvider>
-      <SteakHouseProvider>
-        <BrowserRouter>
-          <Routes>
-            {/* <Route path='/' element={<UserLoginView />} /> */}
-            <Route path='/login' element={<Login />} />
-            <Route path='/' element={<Home />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/forgotpass' element={<ForgotPassword />} />
-            <Route path='/menu' element={<Menu />} />
-            <Route path='/productdetail/:productName' element={<ProductDetail />} />
-            <Route path='/about' element={<AboutUs />} />
-            <Route path='/contact' element={<ContactUs />} />
-            <Route path='/admin/dashboard' element={<AdminDashboard />} />
-            <Route path='/blog' element={<Blog />} />
-            <Route path='/blog/postdetail' element={<PostDetail />} />
-            <Route path='/admin/table-management' element={<TableManagement />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/management' element={<Management />} />
-            <Route path='/user/account/userProfile' element={<UserProfile />} />
-            {/* <Route path='/loginRegis' element={<LoginRegis />} /> */}
+        <SteakHouseProvider>
+          <BrowserRouter>
+            <Routes>
+              {/* <Route path='/' element={<UserLoginView />} /> */}
+              <Route path='/login' element={<Login />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/forgotpass' element={<ForgotPassword />} />
+              <Route path='/menu' element={<Menu />} />
+              <Route path='/productdetail/:productName' element={<ProductDetail />} />
+              <Route path='/about' element={<AboutUs />} />
+              <Route path='/contact' element={<ContactUs />} />
+              <Route path='/admin/dashboard' element={<AdminDashboard />} />
+              <Route path='/blog' element={<Blog />} />
+              <Route path='/blog/postdetail' element={<PostDetail />} />
+              <Route path='/admin/table-management' element={<TableManagement />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/management' element={<Management />} />
+              <Route path='/user/account/userProfile' element={<UserProfile />} />
+              {/* <Route path='/loginRegis' element={<LoginRegis />} /> */}
 
-            <Route path='/cart' element={<Cart />} />
-            {/* Wrap only the ProductManage route with ProductProvider */}
-            <Route 
-              path='/admin/product-management' 
-              element={
-                <ProductProvider>
-                  <ProductManage />
-                </ProductProvider>
-              } 
-            />
-                   <Route 
-              path='/admin/product-edit/:id' 
-              element={
-                <ProductProvider>
-                  <ProductEdit />
-                </ProductProvider>
-              } 
-            />
-            
-              <Route 
-              path='/admin/product-add' 
-              element={
-                <ProductProvider>
-                  <ProductAdd />
-                </ProductProvider>
-              } 
-            />
-             <Route 
-              path='/admin/blog-management' 
-              element={
-                <BlogProvider>
-                  <BlogManage />
-                </BlogProvider>
-              } 
-            />
-   
+              <Route path='/cart' element={<Cart />} />
+              {/* Wrap only the ProductManage route with ProductProvider */}
+              <Route
+                path='/admin/product-management'
+                element={
+                  <ProductProvider>
+                    <ProductManage />
+                  </ProductProvider>
+                }
+              />
+              <Route
+                path='/admin/product-edit/:id'
+                element={
+                  <ProductProvider>
+                    <ProductEdit />
+                  </ProductProvider>
+                }
+              />
 
-          </Routes>
-        </BrowserRouter>
-
-      </SteakHouseProvider>
+              <Route
+                path='/admin/product-add'
+                element={
+                  <ProductProvider>
+                    <ProductAdd />
+                  </ProductProvider>
+                }
+              />
+              <Route
+                path='/admin/blog-management'
+                element={
+                  <BlogProvider>
+                    <BlogManage />
+                  </BlogProvider>
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </SteakHouseProvider>
       </CartProvider>
     </div>
-  );
+    // <div>
+    //   <VerifyNum/>
+    // </div>
+  )
 }
 
 export default App

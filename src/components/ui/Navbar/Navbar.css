@@ -111,8 +111,16 @@
   text-transform: uppercase;
   letter-spacing: 1.5px;
 }
-.search_input:hover,
-:focus {
+.search_input:hover {
+  padding: 12px 0;
+  padding-left: 12px;
+  outline: 0;
+  border: 1px solid transparent;
+  border-bottom: 1px solid #575756;
+  border-radius: 0;
+  background-position: 100% center;
+}
+.search_input:focus {
   padding: 12px 0;
   padding-left: 12px;
   outline: 0;

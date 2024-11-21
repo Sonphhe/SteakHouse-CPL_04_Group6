@@ -21,16 +21,24 @@ interface SteakHouseType {
   handleNext: () => void
   getPaginatedItems: () => ProductType[]
   login: (currentAccount: CurrentAccount) => void
-  logout: () => void,
+  logout: () => void
   setCurrentAccount: Dispatch<CurrentAccount>
 }
 
 interface AccountType {
-  id: number
   username: string
   password: string
-  roleId: number
+  phoneNumber: string
+  fullName: string
+  roleId: string
   image: string
+  id: string
+  location: {
+    province: string
+    district: string
+    commune: string
+    detailLocation: string
+  }
 }
 
 interface ProductType {
@@ -65,9 +73,17 @@ interface BlogType {
 interface CurrentAccount {
   username: string
   password: string
-  roleId: number
+  phoneNumber: string
+  fullName: string
+  roleId: string
   image: string
   id: string
+  location: {
+    province: string
+    district: string
+    commune: string
+    detailLocation: string
+  }
 }
 
 // Create context
@@ -112,9 +128,17 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     const resetAccount = {
       username: '',
       password: '',
-      roleId: 3,
+      phoneNumber: '',
+      fullName: '',
+      roleId: '',
       image: '',
-      id: ''
+      id: '',
+      location: {
+        province: '',
+        district: '',
+        commune: '',
+        detailLocation: ''
+      }
     }
     setCurrentAccount(resetAccount)
     localStorage.removeItem('currentAccount')
@@ -128,7 +152,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
           axios.get(`${API_ROOT}/product`),
           axios.get(`${API_ROOT}/productCategory`),
           axios.get(`${API_ROOT}/blogCategory`),
-          axios.get(`${API_ROOT}/blog`),
+          axios.get(`${API_ROOT}/blog`)
         ])
 
         setAccounts(accountRes.data)

@@ -11,19 +11,17 @@ const DropDownProfile = (props: { name: string }) => {
 
   const handleLogout = () => {
     logout()
-    navigate('/')
+    navigate('/login')
   }
 
   return (
-
-    
     <div className={props.name}>
       <div className='sub-menu'>
-        {/* <div className='user-info'>
+        <div className='user-info'>
           <img src={currentAccount?.image} alt='' />
           <h3>{currentAccount?.username}</h3>
         </div>
-        <hr /> */}
+        <hr />
         <Link className='sub-menu-links' to={'/user/account/userProfile'}>
           <i>
             <ImProfile />
