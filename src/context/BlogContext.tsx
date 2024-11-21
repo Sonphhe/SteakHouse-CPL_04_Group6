@@ -3,19 +3,22 @@ import axios from 'axios';
 import { API_ROOT } from '../utils/constants';
 
 interface BlogType {
-  id: string;
+  id: number;
   title: string;
   description: string;
   image: string;
   blogCategoryId: number;
+  accountId: number; // ID người tạo blog
 }
 
 interface BlogContextType {
   blogs: BlogType[];
-  addBlog: (blog: BlogType) => Promise<void>;
-  editBlog: (id: string, updatedBlog: Partial<BlogType>) => Promise<void>;
-  deleteBlog: (id: string) => Promise<void>;
+  addBlog: (blog: Omit<BlogType, 'id'>) => Promise<void>; // Không cần truyền `id` khi thêm blog
+  editBlog: (id: number, updatedBlog: Partial<BlogType>) => Promise<void>;
+  deleteBlog: (id: number) => Promise<void>;
   filterBlogs: (searchTerm: string) => void;
+  loading: boolean;
+  error: string | null;
 }
 
 const BlogContext = createContext<BlogContextType | undefined>(undefined);
@@ -23,31 +26,46 @@ const BlogContext = createContext<BlogContextType | undefined>(undefined);
 export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [blogs, setBlogs] = useState<BlogType[]>([]);
   const [filteredBlogs, setFilteredBlogs] = useState<BlogType[]>([]);
+  const [loading, setLoading] = useState(false); // Trạng thái tải
+  const [error, setError] = useState<string | null>(null); // Trạng thái lỗi
 
+  // Fetch blogs on mount
   useEffect(() => {
     const fetchBlogs = async () => {
+      setLoading(true);
+      setError(null);
       try {
         const response = await axios.get(`${API_ROOT}/blog`);
         setBlogs(response.data);
         setFilteredBlogs(response.data);
-      } catch (error) {
-        console.error('Error fetching blogs:', error);
+      } catch (err) {
+        console.error('Error fetching blogs:', err);
+        setError('Failed to fetch blogs.');
+      } finally {
+        setLoading(false);
       }
     };
     fetchBlogs();
   }, []);
 
-  const addBlog = async (blog: BlogType) => {
+  const addBlog = async (blog: Omit<BlogType, 'id'>) => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await axios.post(`${API_ROOT}/blog`, blog);
       setBlogs((prev) => [...prev, response.data]);
       setFilteredBlogs((prev) => [...prev, response.data]);
-    } catch (error) {
-      console.error('Error adding blog:', error);
+    } catch (err) {
+      console.error('Error adding blog:', err);
+      setError('Failed to add blog.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const editBlog = async (id: string, updatedBlog: Partial<BlogType>) => {
+  const editBlog = async (id: number, updatedBlog: Partial<BlogType>) => {
+    setLoading(true);
+    setError(null);
     try {
       const response = await axios.put(`${API_ROOT}/blog/${id}`, updatedBlog);
       setBlogs((prev) =>
@@ -56,18 +74,26 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setFilteredBlogs((prev) =>
         prev.map((blog) => (blog.id === id ? { ...blog, ...response.data } : blog))
       );
-    } catch (error) {
-      console.error('Error editing blog:', error);
+    } catch (err) {
+      console.error('Error editing blog:', err);
+      setError('Failed to edit blog.');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const deleteBlog = async (id: string) => {
+  const deleteBlog = async (id: number) => {
+    setLoading(true);
+    setError(null);
     try {
       await axios.delete(`${API_ROOT}/blog/${id}`);
       setBlogs((prev) => prev.filter((blog) => blog.id !== id));
       setFilteredBlogs((prev) => prev.filter((blog) => blog.id !== id));
-    } catch (error) {
-      console.error('Error deleting blog:', error);
+    } catch (err) {
+      console.error('Error deleting blog:', err);
+      setError('Failed to delete blog.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -75,8 +101,10 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     if (!searchTerm) {
       setFilteredBlogs(blogs);
     } else {
-      const filtered = blogs.filter((blog) =>
-        blog.title.toLowerCase().includes(searchTerm.toLowerCase())
+      const filtered = blogs.filter(
+        (blog) =>
+          blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          blog.description.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredBlogs(filtered);
     }
@@ -84,7 +112,15 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   return (
     <BlogContext.Provider
-      value={{ blogs: filteredBlogs, addBlog, editBlog, deleteBlog, filterBlogs }}
+      value={{
+        blogs: filteredBlogs,
+        addBlog,
+        editBlog,
+        deleteBlog,
+        filterBlogs,
+        loading,
+        error,
+      }}
     >
       {children}
     </BlogContext.Provider>

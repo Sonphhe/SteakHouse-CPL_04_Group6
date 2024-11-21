@@ -3,9 +3,9 @@ import Navbar from '../../components/ui/Navbar/Navbar'
 import { useCartContext } from '../../context/CartContext'
 import './Cart.css'
 import { CiCircleMinus, CiCirclePlus, CiTrash } from 'react-icons/ci'
-import { RiCoupon2Fill } from 'react-icons/ri'
 import { useState } from 'react'
 import Footer from '../../components/ui/Footer/Footer'
+import BannerCarousel from '../../components/ui/BannerCoupon/BannerCarousel'
 
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCartContext()
@@ -13,6 +13,8 @@ const Cart = () => {
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false) // Modal cho xoá tất cả
   const [itemToDelete, setItemToDelete] = useState<number | null>(null)
   const [selectedItems, setSelectedItems] = useState<number[]>([])
+  
+  
   const navigate = useNavigate()
 
   const totalAmount = selectedItems.reduce((sum, itemId) => {
@@ -80,6 +82,7 @@ const Cart = () => {
   return (
     <div className='newCart'>
       <Navbar />
+      <BannerCarousel />
       <div className='newCart-section'>
         <div className='newCart-product-list'>
           <div className='select-all'>
@@ -128,9 +131,9 @@ const Cart = () => {
 
         <div className='cart_totals'>
           <h2 className='order-info'>Order Information</h2>
-          <div className='discount-section'>
-            <RiCoupon2Fill className='discount-icon' />
-            <span>Select or Enter Discount</span>
+          <div className='coupon-code-section'>
+            <input type='text' className='coupon-input' placeholder='Coupon Code' />
+            <button className='apply-coupon-button'>Apply</button>
           </div>
 
           <table>
@@ -140,7 +143,7 @@ const Cart = () => {
                 <td>{totalAmount}₫</td>
               </tr>
               <tr>
-                <th>Voucher Discount</th>
+                <th>Discount</th>
                 <td></td>
               </tr>
               <tr>

@@ -24,12 +24,9 @@ import Management from './pages/Management/Management'
 import UserProfile from './pages/UserProfile/UserProfile'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
-// import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
-import LoginRegis from './components/ui/LoginRegis/LoginRegis'
-import VerifyNum from './pages/UserProfile/components/VerifyNum/VerifyNum'
+import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 
-// import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 function App() {
   return (
     <div className='App'>
@@ -37,9 +34,9 @@ function App() {
         <SteakHouseProvider>
           <BrowserRouter>
             <Routes>
-              {/* <Route path='/' element={<UserLoginView />} /> */}
+              <Route path='/' element={<UserLoginView />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/' element={<Home />} />
+              <Route path='/home' element={<Home />} />
               <Route path='/register' element={<Register />} />
               <Route path='/forgotpass' element={<ForgotPassword />} />
               <Route path='/menu' element={<Menu />} />
@@ -53,10 +50,8 @@ function App() {
               <Route path='/cart' element={<Cart />} />
               <Route path='/management' element={<Management />} />
               <Route path='/user/account/userProfile' element={<UserProfile />} />
-              {/* <Route path='/loginRegis' element={<LoginRegis />} /> */}
 
-              <Route path='/cart' element={<Cart />} />
-              {/* Wrap only the ProductManage route with ProductProvider */}
+              {/* Product Management Routes with ProductProvider */}
               <Route
                 path='/admin/product-management'
                 element={
@@ -73,7 +68,6 @@ function App() {
                   </ProductProvider>
                 }
               />
-
               <Route
                 path='/admin/product-add'
                 element={
@@ -82,6 +76,8 @@ function App() {
                   </ProductProvider>
                 }
               />
+
+              {/* Blog Management Routes with BlogProvider */}
               <Route
                 path='/admin/blog-management'
                 element={
@@ -90,14 +86,27 @@ function App() {
                   </BlogProvider>
                 }
               />
+              <Route
+                path='/admin/blog-add'
+                element={
+                  <BlogProvider>
+                    <BlogAdd />
+                  </BlogProvider>
+                }
+              />
+              <Route
+                path='/admin/blog-edit/:id'
+                element={
+                  <BlogProvider>
+                    <BlogEdit />
+                  </BlogProvider>
+                }
+              />
             </Routes>
           </BrowserRouter>
         </SteakHouseProvider>
       </CartProvider>
     </div>
-    // <div>
-    //   <VerifyNum/>
-    // </div>
   )
 }
 

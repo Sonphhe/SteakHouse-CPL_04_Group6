@@ -11,36 +11,32 @@ const ProductEdit = () => {
   const { editProduct } = useProductContext();
   const product = location.state?.product;
 
-  const categories = [
-    { id: 1, name: "Steak" },
-    { id: 2, name: "Drinks" },
-    { id: 3, name: "Spaghetti" },
-    { id: 4, name: "Salad" },
-  ];
-
   const [editedProduct, setEditedProduct] = useState({
     productName: product?.productName || '',
     productPrice: product?.productPrice || 0,
     description: product?.description || '',
     image: product?.image || '',
-    categoryId: product?.categoryId || categories[0].id,
+    categoryId: product?.categoryId || '',
     id: product?.id || 0,
   });
 
-  useEffect(() => {
-    if (product) {
-      setEditedProduct({
-        productName: product.productName,
-        productPrice: product.productPrice,
-        description: product.description,
-        image: product.image,
-        categoryId: product.categoryId,
-        id: product.id,
-      });
-    }
-  }, [product]);
+  const categories = [
+    { id: 1, name: 'Steak' },
+    { id: 2, name: 'Drinks' },
+    { id: 3, name: 'Spaghetti' },
+    { id: 4, name: 'Salad' },
+  ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!product) {
+      navigate('/admin/product-management');
+    }
+  }, [product, navigate]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setEditedProduct((prev) => ({
       ...prev,
@@ -51,111 +47,116 @@ const ProductEdit = () => {
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const fileName = file.name;
-      const imagePath = `/assets/images/${fileName}`;
-      setEditedProduct((prev) => ({ ...prev, image: imagePath }));
+      const fileName = file.name; // Lấy tên file
+      const imagePath = `/assets/images/${fileName}`; // Tạo đường dẫn tạm thời
+      setEditedProduct((prev) => ({ ...prev, image: imagePath })); // Cập nhật state
     }
   };
 
   const handleSave = async () => {
-    await editProduct(editedProduct.id, {
-      ...product,
-      ...editedProduct,
-    });
-    navigate('/admin/product-management');
+    if (!editedProduct.productName.trim() || editedProduct.productPrice <= 0) {
+      setError('Please fill in all required fields.');
+      return;
+    }
+    setLoading(true);
+    setError(null);
+    try {
+      await editProduct(editedProduct.id, {
+        ...product,
+        ...editedProduct,
+      });
+      navigate('/admin/product-management');
+    } catch (err) {
+      setError('Failed to save changes. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleCancel = () => {
+    if (window.confirm('Are you sure you want to cancel? Changes will not be saved.')) {
+      navigate('/admin/product-management');
+    }
   };
 
   return (
-    <div className="admin-dashboard-Edit-hung11-11Edit">
+    <div className="admin-dashboard">
       <Navbar />
-      <div className="dashboard-container-Edit-hung11-11Edit">
+      <div className="dashboard-container">
         <Sidebar />
-        <main className="dashboard-main-Edit-hung11-11Edit">
-          <div className="product-Edit-container-hung11-11Edit">
+        <main className="dashboard-main">
+          <div className="product-edit-container">
             <h2>Edit Product</h2>
-            <div className="product-Edit-form-hung11-11Edit">
-              <div className="form-group">
-                <label>Product Name:</label>
-                <input
-                  type="text"
-                  name="productName"
-                  value={editedProduct.productName}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Edit"
-                />
-              </div>
+            <form className="product-edit-form">
+              {error && <p className="error-message">{error}</p>}
+              {loading && <p className="loading-message">Saving changes...</p>}
 
-              <div className="form-group">
-                <label>Price:</label>
-                <input
-                  type="number"
-                  name="productPrice"
-                  value={editedProduct.productPrice}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Edit"
-                />
-              </div>
+              <label>Product Name:</label>
+              <input
+                type="text"
+                name="productName"
+                value={editedProduct.productName}
+                onChange={handleInputChange}
+                required
+              />
 
-              <div className="form-group">
-                <label>Description:</label>
-                <textarea
-                  name="description"
-                  value={editedProduct.description}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Edit"
-                  rows={3} 
-                />
-              </div>
+              <label>Price:</label>
+              <input
+                type="number"
+                name="productPrice"
+                value={editedProduct.productPrice}
+                onChange={handleInputChange}
+                required
+              />
 
-              <div className="form-group">
-                <label>Image URL:</label>
-                <input
-                  type="text"
-                  name="image"
-                  value={editedProduct.image}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Edit"
-                />
-              </div>
+              <label>Description:</label>
+              <textarea
+                name="description"
+                value={editedProduct.description}
+                onChange={handleInputChange}
+                rows={3}
+              ></textarea>
 
-              <div className="form-group">
-                <label>Choose Image:</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  className="large-input-hung11-11Edit"
-                />
-              </div>
+              <label>Image URL:</label>
+              <input
+                type="text"
+                name="image"
+                value={editedProduct.image}
+                onChange={handleInputChange}
+                readOnly
+              />
 
-              <div className="form-group">
-                <label>Category:</label>
-                <select
-                  name="categoryId"
-                  value={editedProduct.categoryId}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Edit"
-                >
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+<label>Choose Image:</label>
+<input
+  id="fileInput-HKC" // Thêm id với hậu tố HKC
+  className="file-input-HKC" // Thêm className với hậu tố HKC
+  type="file"
+  accept="image/*"
+  onChange={handleImageChange}
+/>
 
-              <div className="modal-actions-hung11-11Edit">
-                <button className="save-btn-hung11-11Edit" onClick={handleSave}>
-                  Save
+              <label>Category:</label>
+              <select
+                name="categoryId"
+                value={editedProduct.categoryId}
+                onChange={handleInputChange}
+              >
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                ))}
+              </select>
+
+              <div className="actions">
+                <button type="button" onClick={handleSave} disabled={loading}>
+                  Save Changes
                 </button>
-                <button
-                  className="cancel-btn-hung11-11Edit"
-                  onClick={() => navigate('/admin/product-management')}
-                >
+                <button type="button" onClick={handleCancel}>
                   Cancel
                 </button>
               </div>
-            </div>
+            </form>
           </div>
         </main>
       </div>

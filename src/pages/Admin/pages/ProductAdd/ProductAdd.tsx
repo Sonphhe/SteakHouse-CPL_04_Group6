@@ -80,7 +80,7 @@ const ProductAdd = () => {
                 />
               </div>
 
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label>Old Price:</label>
                 <input
                   type="number"
@@ -89,7 +89,7 @@ const ProductAdd = () => {
                   onChange={handleInputChange}
                   className="large-input-hung11-11Add"
                 />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <label>Description:</label>
@@ -114,12 +114,15 @@ const ProductAdd = () => {
               </div>
 
               <div className="form-group">
-                <label>Choose Image:</label>
-                <input 
-                  type="file" 
-                  accept="image/*" 
-                  onChange={handleImageChange} 
-                />
+              <label>Choose Image:</label>
+<input
+  id="fileInput-HKC" // Thêm id với hậu tố HKC
+  className="file-input-HKC" // Thêm className với hậu tố HKC
+  type="file"
+  accept="image/*"
+  onChange={handleImageChange}
+/>
+
               </div>
 
               <div className="form-group">

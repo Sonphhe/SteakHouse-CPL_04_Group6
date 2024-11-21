@@ -1,4 +1,3 @@
-// src/pages/Admin/pages/BlogEdit/BlogEdit.tsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
@@ -23,6 +22,15 @@ const BlogEdit = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setEditedBlog((prev: any) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const fileName = file.name; // Lấy tên file
+      const imagePath = `/assets/images/${fileName}`; // Tạo đường dẫn tạm thời
+      setEditedBlog((prev: any) => ({ ...prev, image: imagePath })); // Cập nhật state
+    }
   };
 
   const handleEditBlog = () => {
@@ -65,7 +73,17 @@ const BlogEdit = () => {
                 name="image"
                 value={editedBlog.image}
                 onChange={handleInputChange}
+                readOnly
               />
+
+<label>Choose Image:</label>
+<input
+  id="fileInput-HKC" // Thêm id với hậu tố HKC
+  className="file-input-HKC" // Thêm className với hậu tố HKC
+  type="file"
+  accept="image/*"
+  onChange={handleImageChange}
+/>
 
               <label>Category:</label>
               <select
