@@ -129,7 +129,7 @@ const Menu: React.FC = () => {
                   <h3>{product.productName}</h3>
                   <p>{product.productPrice}$</p>
                 </div>
-                <button className="add-to-cart" onClick={() => handleAddToCart(product)}>
+                <button className="add-to-cartt" onClick={() => handleAddToCart(product)}>
                   <i className="fa fa-shopping-cart" style={{ marginRight: '8px' }}></i> Add to Cart
                 </button>
               </div>
