@@ -1,7 +1,7 @@
 .product-detail {
   display: grid;
   grid-template-columns: 1fr 1.5fr; /* Điều chỉnh tỉ lệ giữa ảnh và thông tin sản phẩm */
-  gap: 15px; /* Giảm khoảng cách giữa các phần tử */
+  gap: 60px; /* Giảm khoảng cách giữa các phần tử */
   padding: 20px;
   margin: 30px auto;
   max-width: 1150px; /* Giới hạn chiều rộng tối đa */
@@ -36,9 +36,10 @@
 .product-info {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+  text-align: start;
   padding: 20px;
   font-family: 'Roboto', sans-serif; /* Choose a font you like */
+  margin-left: 40px;
 }
 
 .product-info h2 {
@@ -99,6 +100,7 @@
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
+  width: 250px;
   margin: 20px 0;
 }
 
@@ -130,6 +132,15 @@
   color: #555555;
   border-top: 1px solid #e0e0e0;
   padding-top: 15px;
+  text-align: start;
+}
+
+.product-description h3{
+  text-align: center;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+  color: #747474;
 }
 
 .product-comments-container {
@@ -328,6 +339,35 @@
   margin: 0 10px;
 }
 
+.product-sale {
+  background-color: #fef5e7; /* Màu nền nhẹ nhàng để nổi bật nội dung */
+  border: 1px solid #f0d78c; /* Viền nhẹ để tạo điểm nhấn */
+  border-radius: 8px; /* Bo tròn các góc */
+  padding: 16px; /* Khoảng cách bên trong */
+  margin-bottom: 20px;
+  width: 80%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hiệu ứng nổi */
+}
+
+.product-sale h4 {
+  font-size: 20px; /* Kích thước tiêu đề */
+  font-weight: bold; /* In đậm tiêu đề */
+  color: #d35400; /* Màu sắc nổi bật */
+  margin-bottom: 12px; /* Khoảng cách dưới tiêu đề */
+}
+
+.product-sale li {
+  font-size: 16px; /* Kích thước chữ trong danh sách */
+  color: #5d4037; /* Màu chữ dễ nhìn */
+  line-height: 1.6; /* Khoảng cách giữa các dòng */
+  margin-bottom: 8px; /* Khoảng cách giữa các mục */
+  list-style: none; /* Ký hiệu gạch đầu dòng */
+  
+}
+
+.product-sale li:last-child {
+  margin-bottom: 0; /* Loại bỏ khoảng cách cho mục cuối */
+}
 
 @media (max-width: 768px) {
   .product-detail {
