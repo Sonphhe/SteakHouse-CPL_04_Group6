@@ -12,14 +12,19 @@ const AccountManage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const navigate = useNavigate();
 
-  const handleEditAccount = (id: number) => {
+  const handleEditAccount = (id: string) => {
     const accountToEdit = accounts.find((account) => account.id === id);
+    console.log('Account to Edit:', accountToEdit); // Debug
     if (accountToEdit) {
       navigate(`/admin/account-edit/${id}`, { state: { account: accountToEdit } });
+    } else {
+      alert('Account not found! Please refresh the page.');
     }
   };
+  
+  
 
-  const handleDeleteAccount = (id: number) => {
+  const handleDeleteAccount = (id: string) => {
     if (window.confirm('Are you sure you want to delete this account?')) {
       deleteAccount(id);
     }
@@ -66,35 +71,43 @@ const AccountManage = () => {
                 </tr>
               </thead>
               <tbody>
-                {accounts.map((account, index) => {
-                  const roleName = roles.find((role) => role.roleId === account.roleId)?.roleName || 'Unknown';
-                  return (
-                    <tr key={account.id}>
-                      <td>{index + 1}</td>
-                      <td>{account.username}</td>
-                      <td>{roleName}</td>
-                      <td>
-                        <img
-                          src={account.image}
-                          alt={account.username}
-                          className="account-image-hungkc"
-                        />
-                      </td>
-                      <td>
-                        <FontAwesomeIcon
-                          icon={faEdit}
-                          className="action-icon-hungkc edit-icon-hungkc"
-                          onClick={() => handleEditAccount(account.id)}
-                        />
-                        <FontAwesomeIcon
-                          icon={faTrash}
-                          className="action-icon-hungkc delete-icon-hungkc"
-                          onClick={() => handleDeleteAccount(account.id)}
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
+                {accounts.length > 0 ? (
+                  accounts.map((account, index) => {
+                    const roleName = roles.find((role) => role.roleId === account.roleId)?.roleName || 'Unknown';
+                    return (
+                      <tr key={account.id}>
+                        <td>{index + 1}</td>
+                        <td>{account.username}</td>
+                        <td>{roleName}</td>
+                        <td>
+                          <img
+                            src={account.image || '/assets/images/default-avatar.jpg'}
+                            alt={account.username}
+                            className="account-image-hungkc"
+                          />
+                        </td>
+                        <td>
+                          <FontAwesomeIcon
+                            icon={faEdit}
+                            className="action-icon-hungkc edit-icon-hungkc"
+                            onClick={() => handleEditAccount(account.id)}
+                          />
+                          <FontAwesomeIcon
+                            icon={faTrash}
+                            className="action-icon-hungkc delete-icon-hungkc"
+                            onClick={() => handleDeleteAccount(account.id)}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan={5} className="no-data-hungkc">
+                      No accounts found.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

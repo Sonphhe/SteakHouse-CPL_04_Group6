@@ -16,17 +16,26 @@ const AccountEdit = () => {
     password: account?.password || '',
     roleId: account?.roleId || roles[0]?.roleId || 1, // Default role
     image: account?.image || '',
-    id: account?.id || 0,
+    id: account?.id || '', // Updated to string
   });
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    if (!account) {
-      navigate('/admin/account-management');
-    }
-  }, [account, navigate]);
+
+
+useEffect(() => {
+  if (!account) {
+    alert('No account data received! Redirecting...');
+    navigate('/admin/account-management');
+  } else {
+    console.log('Account data:', account); // Debug
+  }
+}, [account, navigate]);
+
+if (!account) {
+  return <p>Loading...</p>; // Dự phòng nếu không có dữ liệu
+}
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;

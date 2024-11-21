@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
 import Sidebar from '../../components/Sidebar/Sidebar';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../../../context/ProductContext';
 import './ProductAdd.css';
 
 const ProductAdd = () => {
-  const { addProduct } = useProductContext();
+  const { addProduct, products } = useProductContext(); // Access products from context
   const navigate = useNavigate();
-  // Sample category list (replace with actual data if available)
+
   const categories = [
     { id: 1, name: "Steak" },
     { id: 2, name: "Drinks" },
@@ -23,13 +23,19 @@ const ProductAdd = () => {
     description: '',
     image: '',
     categoryId: categories[0].id, // Set default category
+    reviews: [], // Default empty reviews
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setProductData((prev) => ({
       ...prev,
-      [name]: name === 'productPrice' || name === 'productOldPrice' ? parseFloat(value) : value,
+      [name]:
+        name === 'productPrice' || name === 'productOldPrice'
+          ? parseFloat(value)
+          : value,
     }));
   };
 
@@ -42,11 +48,31 @@ const ProductAdd = () => {
     }
   };
 
+  const calculateMaxId = () => {
+    let maxId = 0;
+    for (const product of products) {
+      maxId +=1;
+    }
+    return maxId;
+  };
+
   const handleAddNewProduct = () => {
-    const newProduct = { ...productData, id: Date.now() };
+    const maxId = calculateMaxId(); // Call the function to calculate maxId
+    const newId = (maxId + 1).toString(); // Increment and convert to string
+
+    // Create new product
+    const newProduct = { ...productData, id: newId, reviews: [] };
+
+    // Add the product
     addProduct(newProduct);
-    // Optionally navigate back to the product management page after adding
+
+    // Navigate to product management page
     navigate('/admin/product-management');
+  };
+
+  const handleCalculateMaxId = () => {
+    const maxId = calculateMaxId();
+    console.log("Max ID (calculated):", maxId);
   };
 
   return (
@@ -80,24 +106,12 @@ const ProductAdd = () => {
                 />
               </div>
 
-              {/* <div className="form-group">
-                <label>Old Price:</label>
-                <input
-                  type="number"
-                  name="productOldPrice"
-                  value={productData.productOldPrice}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Add"
-                />
-              </div> */}
-
               <div className="form-group">
                 <label>Description:</label>
                 <textarea
                   name="description"
                   value={productData.description}
                   onChange={handleInputChange}
-                 
                   className="large-input-hung11-11Add"
                 />
               </div>
@@ -114,15 +128,14 @@ const ProductAdd = () => {
               </div>
 
               <div className="form-group">
-              <label>Choose Image:</label>
-<input
-  id="fileInput-HKC" // Thêm id với hậu tố HKC
-  className="file-input-HKC" // Thêm className với hậu tố HKC
-  type="file"
-  accept="image/*"
-  onChange={handleImageChange}
-/>
-
+                <label>Choose Image:</label>
+                <input
+                  id="fileInput-HKC"
+                  className="file-input-HKC"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                />
               </div>
 
               <div className="form-group">
@@ -142,11 +155,23 @@ const ProductAdd = () => {
               </div>
 
               <div className="modal-actions-hung11-11Add">
-                <button className="save-btn-hung11-11Add" onClick={handleAddNewProduct}>
+                <button
+                  className="save-btn-hung11-11Add"
+                  onClick={handleAddNewProduct}
+                >
                   Add Product
                 </button>
-                <button className="cancel-btn" onClick={() => navigate('/admin/product-management')}>
+                <button
+                  className="cancel-btn"
+                  onClick={() => navigate('/admin/product-management')}
+                >
                   Cancel
+                </button>
+                <button
+                  className="calculate-max-id-btn"
+                  onClick={handleCalculateMaxId}
+                >
+                  Calculate Max ID
                 </button>
               </div>
             </div>

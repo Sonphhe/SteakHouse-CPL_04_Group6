@@ -5,11 +5,11 @@ import { API_ROOT } from '../utils/constants';
 interface RoleType {
   roleId: number;
   roleName: string;
-  id: number; // Chuyển `id` thành kiểu `number`
+  id: string; // `id` là kiểu `string`
 }
 
 interface AccountType {
-  id: number; // Chuyển `id` thành kiểu `number`
+  id: string; // `id` là kiểu `string`
   username: string;
   password: string;
   roleId: number;
@@ -20,8 +20,8 @@ interface AccountContextType {
   accounts: AccountType[];
   roles: RoleType[];
   addAccount: (account: Omit<AccountType, 'id'>) => Promise<void>;
-  editAccount: (id: number, updatedAccount: Partial<AccountType>) => Promise<void>;
-  deleteAccount: (id: number) => Promise<void>;
+  editAccount: (id: string, updatedAccount: Partial<AccountType>) => Promise<void>;
+  deleteAccount: (id: string) => Promise<void>;
   filterAccounts: (searchTerm: string) => void;
 }
 
@@ -68,7 +68,7 @@ export const AccountProvider: React.FC<{ children: ReactNode }> = ({ children })
   }, []);
 
   // Edit an existing account
-  const editAccount = useCallback(async (id: number, updatedAccount: Partial<AccountType>) => {
+  const editAccount = useCallback(async (id: string, updatedAccount: Partial<AccountType>) => {
     try {
       const response = await axios.put(`${API_ROOT}/account/${id}`, updatedAccount);
       setAccounts((prev) =>
@@ -84,7 +84,7 @@ export const AccountProvider: React.FC<{ children: ReactNode }> = ({ children })
   }, []);
 
   // Delete an account by ID
-  const deleteAccount = useCallback(async (id: number) => {
+  const deleteAccount = useCallback(async (id: string) => {
     try {
       await axios.delete(`${API_ROOT}/account/${id}`);
       setAccounts((prev) => prev.filter((account) => account.id !== id));

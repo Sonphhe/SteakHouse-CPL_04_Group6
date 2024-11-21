@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_ROOT } from '../utils/constants';
 
 interface ProductType {
-  id: number;
+  id: string; // Changed to string
   productName: string;
   productOldPrice: number;
   productPrice: number;
@@ -15,9 +15,11 @@ interface ProductType {
 interface ProductContextType {
   products: ProductType[];
   addProduct: (product: ProductType) => Promise<void>;
-  editProduct: (id: number, updatedProduct: Partial<ProductType>) => Promise<void>;
-  deleteProduct: (id: number) => Promise<void>;
+  editProduct: (id: string, updatedProduct: Partial<ProductType>) => Promise<void>;
+  deleteProduct: (id: string) => Promise<void>;
   filterProducts: (searchTerm: string) => void;
+  error: string | null; // Error state
+  clearError: () => void; // Function to clear error
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -25,6 +27,7 @@ const ProductContext = createContext<ProductContextType | undefined>(undefined);
 export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
+  const [error, setError] = useState<string | null>(null); // Error state
 
   // Fetch products on initial load
   useEffect(() => {
@@ -33,8 +36,9 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
         const { data } = await axios.get(`${API_ROOT}/product`);
         setProducts(data);
         setFilteredProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
+      } catch (err) {
+        console.error('Error fetching products:', err);
+        setError('Failed to fetch products. Please try again.');
       }
     };
     fetchProducts();
@@ -43,16 +47,18 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   // Add a new product
   const addProduct = useCallback(async (product: ProductType) => {
     try {
-      const { data } = await axios.post(`${API_ROOT}/product`, product);
+      const { data } = await axios.post(`${API_ROOT}/product`, product); // Sử dụng id từ product
       setProducts((prev) => [...prev, data]);
       setFilteredProducts((prev) => [...prev, data]);
-    } catch (error) {
-      console.error('Error adding product:', error);
+    } catch (err) {
+      console.error('Error adding product:', err);
+      setError('Failed to add product. Please try again.');
     }
   }, []);
+  
 
   // Edit an existing product
-  const editProduct = useCallback(async (id: number, updatedProduct: Partial<ProductType>) => {
+  const editProduct = useCallback(async (id: string, updatedProduct: Partial<ProductType>) => {
     try {
       const { data } = await axios.put(`${API_ROOT}/product/${id}`, updatedProduct);
       setProducts((prev) =>
@@ -61,20 +67,21 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
       setFilteredProducts((prev) =>
         prev.map((product) => (product.id === id ? { ...product, ...data } : product))
       );
-    } catch (error) {
-      console.error('Error editing product:', error);
+    } catch (err) {
+      console.error('Error editing product:', err);
+      setError('Failed to edit product. Please try again.');
     }
   }, []);
-  
 
   // Delete a product by ID
-  const deleteProduct = useCallback(async (id: number) => {
+  const deleteProduct = useCallback(async (id: string) => {
     try {
       await axios.delete(`${API_ROOT}/product/${id}`);
       setProducts((prev) => prev.filter((product) => product.id !== id));
       setFilteredProducts((prev) => prev.filter((product) => product.id !== id));
-    } catch (error) {
-      console.error('Error deleting product:', error);
+    } catch (err) {
+      console.error('Error deleting product:', err);
+      setError('Failed to delete product. Please try again.');
     }
   }, []);
 
@@ -90,8 +97,21 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     }
   }, [products]);
 
+  // Clear error
+  const clearError = useCallback(() => setError(null), []);
+
   return (
-    <ProductContext.Provider value={{ products: filteredProducts, addProduct, editProduct, deleteProduct, filterProducts }}>
+    <ProductContext.Provider
+      value={{
+        products: filteredProducts,
+        addProduct,
+        editProduct,
+        deleteProduct,
+        filterProducts,
+        error,
+        clearError,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );

@@ -131,14 +131,15 @@ function App() {
             />
 
  
-<Route 
-              path='/admin/account-edit' 
-              element={
-                <AccountProvider>
-                  <AccountEdit />
-                </AccountProvider>
-              } 
-            />
+<Route
+  path="/admin/account-edit/:id"
+  element={
+    <AccountProvider>
+      <AccountEdit />
+    </AccountProvider>
+  }
+/>
+
 
 
           </Routes>
