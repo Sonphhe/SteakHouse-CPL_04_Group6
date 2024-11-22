@@ -284,14 +284,17 @@ const ProductDetail: React.FC = () => {
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
               />
-              <input
-                type="text"
-                placeholder="Your name"
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-              />
-              <button onClick={handleAddComment}>Submit Review</button>
+              <div className="name-and-button">
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+                <button onClick={handleAddComment}>Submit Review</button>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
