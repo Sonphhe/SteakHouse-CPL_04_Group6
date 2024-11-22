@@ -643,6 +643,24 @@
         }
       ],
       "quantity": 1
+    },
+    {
+      "id": "6",
+      "productName": "LAMB STEAK",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "/assets/images/steak6.jpg",
+      "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Tom Harris",
+          "rating": 4,
+          "comment": "Tender and flavorful lamb, great experience.",
+          "date": "2024-11-11"
+        }
+      ],
+      "quantity": 1
     }
   ]
 }

@@ -1,60 +1,53 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import './BannerCarousel.css'
+import "./BannerCarousel.css";
 
 const banners = [
-  { image: 'assets/images/banner1.jpg', alt: 'Banner 1' },
-  { image: 'assets/images/banner2.jpg', alt: 'Banner 2' },
-  { image: 'assets/images/banner3.jpg', alt: 'Banner 3' },
-  { image: 'assets/images/banner4.jpg', alt: 'Banner 4' },
-  { image: 'assets/images/banner5.jpg', alt: 'Banner 5' }
-]
+  { image: "assets/images/banner1.jpg", alt: "Banner 1" },
+  { image: "assets/images/banner2.jpg", alt: "Banner 2" },
+  { image: "assets/images/banner3.jpg", alt: "Banner 3" },
+  { image: "assets/images/banner4.jpg", alt: "Banner 4" },
+  { image: "assets/images/banner5.jpg", alt: "Banner 5" },
+];
 
 const BannerCarousel: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Tự động chuyển ảnh
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3000); // Chuyển sau mỗi 3 giây
+
+    return () => clearInterval(interval); // Cleanup khi component unmount
+  }, [currentIndex]);
 
   const handleNext = () => {
-    if (currentIndex + 2 < banners.length) {
-      setCurrentIndex(currentIndex + 1)
-    }
-  }
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length);
+  };
 
   const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
-    }
-  }
-
-  const getVisibleBanners = () => {
-    const visibleBanners = banners.slice(currentIndex, currentIndex + 2)
-    if (visibleBanners.length < 2) {
-      return [...visibleBanners, ...banners.slice(0, 2 - visibleBanners.length)]
-    }
-    return visibleBanners
-  }
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? banners.length - 1 : prevIndex - 1
+    );
+  };
 
   return (
-    <div className='carousel'>
-      {currentIndex > 0 && (
-        <button className='prev-btn' onClick={handlePrev}>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-      )}
-      <div className='carousel-track'>
-        {getVisibleBanners().map((banner, index) => (
-          <div key={index} className='carousel-item'>
-            <img src={banner.image} alt={banner.alt} className='carousel-image' />
-          </div>
-        ))}
-      </div>
-      {currentIndex + 2 < banners.length && (
-        <button className='next-btn' onClick={handleNext}>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
-      )}
+    <div className="full-width-carousel">
+      <button className="control-btn prev-btn" onClick={handlePrev}>
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </button>
+      <img
+        src={banners[currentIndex].image}
+        alt={banners[currentIndex].alt}
+        className="full-width-image"
+      />
+      <button className="control-btn next-btn" onClick={handleNext}>
+        <FontAwesomeIcon icon={faChevronRight} />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default BannerCarousel
+export default BannerCarousel;
