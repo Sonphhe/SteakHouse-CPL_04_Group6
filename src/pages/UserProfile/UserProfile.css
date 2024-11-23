@@ -21,14 +21,6 @@
 .user-profile-center {
   margin-top: 1rem;
 }
-.user-profile-center ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
 .user-profile-center li {
   cursor: pointer;
 }

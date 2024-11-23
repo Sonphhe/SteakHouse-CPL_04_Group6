@@ -1,0 +1,42 @@
+.userprofile-container{
+    width: 270px;
+    height: fit-content;
+    border: 0 solid #e5e7eb;
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; 
+    border-radius: 10px;
+    display: flex;
+    padding: 20px 10px;
+}
+.profile-info{
+    display: flex;
+}
+.profile-info .image image{
+    width: 100%;
+    height: 40px;
+}
+.profile-info .user-name{
+    text-align: left;
+    margin-left: 10px;
+    width: 70%;
+}
+.profile-info .user-name h4{
+    font-size: 15px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+}
+.profile-info .user-name p{
+    font-size: 13px;
+    font-weight: 400;
+}
+.userprofile-container .detail-profile{
+    display: flex;
+    justify-content: end;
+    align-items: flex-end;
+}
+.userprofile-container .detail-profile p{
+    font-size: 13px;
+    font-weight: 600;
+    color: #007aff;
+    cursor: pointer;
+}

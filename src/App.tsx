@@ -26,17 +26,21 @@ import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
+import Chat from './components/Chat/Chat'
+import ValidationNum from './pages/UserProfile/components/ValidationNum/ValidationNum'
+
 
 function App() {
   return (
     <div className='App'>
+      <Chat />
       <CartProvider>
         <SteakHouseProvider>
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<UserLoginView />} />
+              {/* <Route path='/' element={<UserLoginView />} /> */}
               <Route path='/login' element={<Login />} />
-              <Route path='/home' element={<Home />} />
+              <Route path='/' element={<Home />} />
               <Route path='/register' element={<Register />} />
               <Route path='/forgotpass' element={<ForgotPassword />} />
               <Route path='/menu' element={<Menu />} />
@@ -50,6 +54,7 @@ function App() {
               <Route path='/cart' element={<Cart />} />
               <Route path='/management' element={<Management />} />
               <Route path='/user/account/userProfile' element={<UserProfile />} />
+              {/* <Route path='/user/account/test' element={<ValidationNum/>} /> */}
 
               {/* Product Management Routes with ProductProvider */}
               <Route

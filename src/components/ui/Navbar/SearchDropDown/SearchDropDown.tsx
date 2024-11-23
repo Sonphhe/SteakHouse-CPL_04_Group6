@@ -3,12 +3,14 @@ import { MdHistory } from 'react-icons/md'
 import { FaTimes } from 'react-icons/fa'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 import SearchBox from '../../SearchBox/SearchBox'
+import { useNavigate } from 'react-router-dom'
 
 const SearchDropDown = (props: { value: string; action: Function }) => {
   const { products, categories } = useSteakHouseContext()
+  const navigate = useNavigate()
 
-  const onSearch = (searchTerm: string) => {
-    console.log('search', searchTerm)
+  const onSearch = (searchTerm: any) => {
+    navigate(`/productdetail/${searchTerm.id}`, { state: { searchTerm } });
   }
 
   return (
@@ -23,7 +25,7 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
                 return searchTerm && itemName.startsWith(searchTerm)
               })
               .map((item) => (
-                <li onClick={() => onSearch(item.productName)} key={item.id}>
+                <li onClick={() => onSearch(item)} key={item.id}>
                   {item.productName}
                 </li>
               ))}

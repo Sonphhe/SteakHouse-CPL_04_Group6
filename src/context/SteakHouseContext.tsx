@@ -14,6 +14,8 @@ interface SteakHouseType {
   currentPage: number
   totalPages: number
   currentAccount: CurrentAccount | undefined
+  phoneNumberValidation: string
+  setPhoneNumberValidation: Dispatch<string>
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
@@ -111,6 +113,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     const savedAccount = localStorage.getItem('currentAccount')
     return savedAccount ? JSON.parse(savedAccount) : null
   })
+
+  const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
 
   useEffect(() => {
     if (currentAccount) {
@@ -222,6 +226,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         currentPage,
         totalPages,
         currentAccount,
+        phoneNumberValidation,
+        setPhoneNumberValidation,
         login,
         logout,
         handleFilter,
