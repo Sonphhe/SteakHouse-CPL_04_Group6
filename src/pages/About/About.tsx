@@ -5,7 +5,8 @@ import intro3 from '../../assets/images/intro3.jpg'
 import intro4 from '../../assets/images/intro4.jpg'
 import Navbar from '../../components/ui/Navbar/Navbar'
 import Footer from '../../components/ui/Footer/Footer'
-
+import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
+import Chat from '../../components/Chat/Chat'
 const AboutUs: React.FC = () => {
   return (
     <div>
@@ -45,6 +46,8 @@ const AboutUs: React.FC = () => {
           <img src={intro4} alt='Special dishes at The World of Steak' className='intro-image' />
         </section>
       </div>
+      <Chat />
+      <GoToTopButton />
       <Footer />
     </div>
   )

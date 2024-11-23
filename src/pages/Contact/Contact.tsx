@@ -2,7 +2,8 @@ import './Contact.css'
 import contactImage from '../../assets/images/contact.jpg'
 import Footer from '../../components/ui/Footer/Footer'
 import Navbar from '../../components/ui/Navbar/Navbar'
-
+import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
+import Chat from '../../components/Chat/Chat'
 const ContactUs: React.FC = () => {
   return (
     <div>
@@ -27,6 +28,8 @@ const ContactUs: React.FC = () => {
           <button type='submit'>Send</button>
         </form>
       </div>
+      <Chat />
+      <GoToTopButton />
       <Footer />
     </div>
   )

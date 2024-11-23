@@ -197,7 +197,7 @@ const ProductDetail: React.FC = () => {
                 <h4>Hot Sale: </h4>
                 <li>
                   <i className="fa fa-truck" style={{ marginRight: '8px', color: '#4CAF50' }}></i>
-                  Shipping promotion with orders over 200$
+                  Shipping promotion with orders over 500$
                 </li>
                 <li>
                   <i className="fa fa-gift" style={{ marginRight: '8px', color: '#FFA500' }}></i>
@@ -205,7 +205,7 @@ const ProductDetail: React.FC = () => {
                 </li>
                 <li>
                   <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
-                  50$ voucher
+                  $50 voucher discount for bill from $350
                 </li>
               </div>
 
