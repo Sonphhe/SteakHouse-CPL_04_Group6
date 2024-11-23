@@ -4,10 +4,10 @@ import { useCartContext } from '../../../context/CartContext';
 import './ProductDetail.css';
 import Navbar from '../../../components/ui/Navbar/Navbar';
 import Footer from '../../../components/ui/Footer/Footer';
-import Breadcrumb from '../../../pages/Breadcrumb/Breadcrumb'; 
+import Breadcrumb from '../../../pages/Breadcrumb/Breadcrumb';
 import 'font-awesome/css/font-awesome.min.css';
-import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton'; 
-
+import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton';
+// import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -32,7 +32,7 @@ const ProductDetail: React.FC = () => {
   const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
 
   const totalPages = Math.ceil(comments.length / commentsPerPage);
-
+  // const handleFilter = useSteakHouseContext();
   // Fetch dữ liệu sản phẩm
   useEffect(() => {
     const fetchProductData = async () => {
@@ -135,7 +135,7 @@ const ProductDetail: React.FC = () => {
   const generateStars = (rating: number) => {
     return (
       <span className="rating-stars">
-        {[1 , 2, 3, 4, 5].map((star) => (
+        {[1, 2, 3, 4, 5].map((star) => (
           <span key={star} className={star <= rating ? "star-filled" : "star-empty"}>
             ★
           </span>
@@ -160,111 +160,149 @@ const ProductDetail: React.FC = () => {
     return <div>Loading...</div>;
   }
 
+
   return (
     <div>
       <Navbar />
-      <Breadcrumb 
-        paths={[{ name: 'Home', path: '/home' }, { name: 'Menu', path: '/menu' }, { name: productData.productName, path: '#' }]} 
+      <Breadcrumb
+        paths={[{ name: 'Home', path: '/home' }, { name: 'Menu', path: '/menu' }, { name: productData.productName, path: '#' }]}
       />
-      <div className="product-detail">
-        <div className="product-image">
-          <img src={productData.image} alt={productData.productName} />
-          <p className="product-description"><h3>Description</h3> { productData.description }</p>
-        </div>
-
-        <div className="product-info">
-          <h2>{productData.productName}</h2>
-          <p className="product-price">Price: ${productData.productPrice}</p>
-
-          <div className="quantity-container">
-            <label htmlFor="quantity">Quantity:</label>
-            <div className="quantity-controls">
-              <button onClick={handleDecreaseQuantity} className="quantity-btn">-</button>
-              <input type="text" id="quantity" value={quantity} readOnly />
-              <button onClick={handleIncreaseQuantity} className="quantity-btn">+</button>
-            </div>
-          </div>
-
-          <button className="add-to-cart" onClick={handleAddToCart}>
-                <i className="fa fa-shopping-cart cart-icon" style={{ marginRight: '8px' }}></i> Add to Cart
-          </button>
-
-        </div>
-
-        {isModalOpen && (
-          <div className="modal">
-            <div className="modal-content">
-              <h3>Product added to cart!</h3>
-              <p>Do you want to view your cart or continue shopping?</p>
-              <div className="modal-buttons">
-                <button onClick={handleViewCart}>View Cart</button>
-                <button onClick={handleCloseModal}>Continue Shopping</button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      <div className="product-comments-container">
-        <div className="product-comments">
-          <h3>Reviews & Comments</h3>
-          {comments.length === 0 ? (
-            <p>No reviews yet. Be the first to comment!</p>
-          ) : (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div>
+          {/* <div className="sidebar">
+            <Breadcrumb paths={breadcrumbPaths} />
+            <h2>Browse</h2>
             <ul>
-              {currentComments.map((review, index) => (
-                <li key={index}>
-                  <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
-                  <div className="rating-container">
-                    <i>Rating:</i> {generateStars(review.rating)}
-                  </div>
-                  <p>{review.comment}</p>
+              <li onClick={handleAllClick}>All</li>
+              {categories.map((category) => (
+                <li key={category.id} onClick={() => handleCategoryClick(category)}>
+                  {category.categoryName}
                 </li>
               ))}
             </ul>
-          )}
-            <div className="pagination-controls">
-          <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
-          <span>{currentPage} / {totalPages}</span>
-          <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+          </div> */}
         </div>
-        </div>
+        <div>
+          <div className="product-detail">
 
-      
+            <div className="product-image">
+              <img src={productData.image} alt={productData.productName} />
+              <p className="product-description"><h3>Description</h3> {productData.description}</p>
+            </div>
 
-        <div className="comment-form">
-          <h4>Leave a Review</h4>
-          <div className="rating">
-            {[1, 2, 3, 4, 5].map((star) => (
-              <span
-                key={star}
-                onClick={() => setRating(star)}
-                className={rating >= star ? "star-filled" : "star-empty"}
-              >
-                ★
-              </span>
-            ))}
+            <div className="product-info">
+              <h2>{productData.productName}</h2>
+              <p className="product-price">Price: ${productData.productPrice}</p>
+              <div className="product-sale">
+                <h4>Hot Sale: </h4>
+                <li>
+                  <i className="fa fa-truck" style={{ marginRight: '8px', color: '#4CAF50' }}></i>
+                  Shipping promotion with orders over 500$
+                </li>
+                <li>
+                  <i className="fa fa-gift" style={{ marginRight: '8px', color: '#FFA500' }}></i>
+                  GiffCard up to 100$
+                </li>
+                <li>
+                  <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
+                  $50 voucher discount for bill from $350
+                </li>
+              </div>
+
+
+              <div className="quantity-container">
+                <label htmlFor="quantity">Quantity:</label>
+                <div className="quantity-controls">
+                  <button onClick={handleDecreaseQuantity} className="quantity-btn">-</button>
+                  <input type="text" id="quantity" value={quantity} readOnly />
+                  <button onClick={handleIncreaseQuantity} className="quantity-btn">+</button>
+                </div>
+              </div>
+
+              <button className="add-to-cart" onClick={handleAddToCart}>
+                <i className="fa fa-shopping-cart cart-icon" style={{ marginRight: '8px' }}></i> Add to Cart
+              </button>
+
+            </div>
+
+            {isModalOpen && (
+              <div className="modal">
+                <div className="modal-content">
+                  <h3>Product added to cart!</h3>
+                  <p>Do you want to view your cart or continue shopping?</p>
+                  <div className="modal-buttons">
+                    <button onClick={handleViewCart}>View Cart</button>
+                    <button onClick={handleCloseModal}>Continue Shopping</button>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          <textarea
-            placeholder="Your comment..."
-            value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Your name"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <button onClick={handleAddComment}>Submit Review</button>
+
+          <div className="product-comments-container">
+            <div className="product-comments">
+              <h3>Reviews & Comments</h3>
+              {comments.length === 0 ? (
+                <p>No reviews yet. Be the first to comment!</p>
+              ) : (
+                <ul>
+                  {currentComments.map((review, index) => (
+                    <li key={index}>
+                      <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
+                      <div className="rating-container">
+                        <i>Rating:</i> {generateStars(review.rating)}
+                      </div>
+                      <p>{review.comment}</p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              <div className="pagination-controls">
+                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                <span>{currentPage} / {totalPages}</span>
+                <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+              </div>
+            </div>
+
+
+
+            <div className="comment-form">
+              <h4>Leave a Review</h4>
+              <div className="rating">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span
+                    key={star}
+                    onClick={() => setRating(star)}
+                    className={rating >= star ? "star-filled" : "star-empty"}
+                  >
+                    ★
+                  </span>
+                ))}
+              </div>
+              <textarea
+                placeholder="Your comment..."
+                value={commentText}
+                onChange={(e) => setCommentText(e.target.value)}
+              />
+              <div className="name-and-button">
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                />
+                <button onClick={handleAddComment}>Submit Review</button>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
       <Footer />
       <GoToTopButton /> {/* Nút Go to Top */}
     </div>
-    
   );
- 
+
 };
 
 export default ProductDetail;

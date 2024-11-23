@@ -66,9 +66,9 @@
       "id": "1",
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
-      "productPrice": 235,
-      "image": "/assets/images/steak3.jpg",
-      "description": "Steak Bo Hokubee, sirloin",
+      "productPrice": 233,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
       "categoryId": 1,
       "reviews": [
         {
@@ -91,7 +91,7 @@
       "productOldPrice": 120,
       "productPrice": 195,
       "image": "/assets/images/steak2.jpg",
-      "description": "USA RIB EYE STEAK",
+      "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
       "categoryId": 1,
       "reviews": [
         {
@@ -114,7 +114,7 @@
       "productOldPrice": 85,
       "productPrice": 165,
       "image": "/assets/images/steak3.jpg",
-      "description": "USA Topblade steak",
+      "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
       "reviews": []
     },
@@ -124,7 +124,7 @@
       "productOldPrice": 95,
       "productPrice": 105,
       "image": "/assets/images/steak4.jpeg",
-      "description": "Vietnamese Beefsteak, from beef tenderloin",
+      "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
       "categoryId": 1,
       "reviews": [
         {
@@ -141,7 +141,7 @@
       "productOldPrice": 110,
       "productPrice": 95,
       "image": "/assets/images/steak5.jpg",
-      "description": "SHAKING BEEF",
+      "description": "Tender cuts of beef, typically sirloin or tenderloin, marinated and stir-fried to perfection. The beef is diced into cubes, which are quickly seared at high heat, creating a crispy outer layer while retaining juiciness inside.",
       "categoryId": 1,
       "reviews": []
     },
@@ -151,7 +151,7 @@
       "productOldPrice": 130,
       "productPrice": 125,
       "image": "/assets/images/steak6.jpg",
-      "description": "Imported Australian lamb, loin",
+      "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
       "categoryId": 1,
       "reviews": [
         {
@@ -168,7 +168,7 @@
       "productOldPrice": 140,
       "productPrice": 95,
       "image": "/assets/images/steak7.jpg",
-      "description": "BEEF WITH PEPPER SAUCE",
+      "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
       "categoryId": 1,
       "reviews": []
     },
@@ -178,7 +178,7 @@
       "productOldPrice": 115,
       "productPrice": 175,
       "image": "/assets/images/steak8.jpg",
-      "description": "NORWEGIAN SALMON",
+      "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
       "categoryId": 1,
       "reviews": []
     },
@@ -188,7 +188,7 @@
       "productOldPrice": 105,
       "productPrice": 100,
       "image": "/assets/images/steak9.jpg",
-      "description": "SMOKED DUCK BREAST",
+      "description": "Premium duck breast, carefully smoked to perfection to enhance its natural flavor. The smoking process imparts a rich, savory aroma and a tender texture that melts in the mouth.",
       "categoryId": 1,
       "reviews": []
     },
@@ -198,7 +198,7 @@
       "productOldPrice": 70,
       "productPrice": 46,
       "image": "/assets/images/DRINKS1.jpeg",
-      "description": "COOKTAIL FRUIT SEASON",
+      "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
       "categoryId": 2,
       "reviews": []
     },
@@ -208,7 +208,7 @@
       "productOldPrice": 75,
       "productPrice": 55,
       "image": "/assets/images/DRINKS3.jpeg",
-      "description": "MOCKTAIL TORNADOL",
+      "description": "A refreshing, non-alcoholic mocktail that combines vibrant tropical flavors with a zesty twist. The Tornadol is a creative blend of fruit juices, soda, and a hint of spice, delivering a fun and fizzy experience for any occasion.",
       "categoryId": 2,
       "reviews": []
     },
@@ -218,7 +218,7 @@
       "productOldPrice": 85,
       "productPrice": 60,
       "image": "/assets/images/DRINKS4.jpg",
-      "description": "GREEN FOREST COCKTAIL",
+      "description": "A vibrant, refreshing cocktail featuring a blend of green fruits and herbs, designed to evoke the freshness and tranquility of a forest. This cocktail offers a harmonious mix of fruity sweetness and herbal zest, with a delightful green hue.",
       "categoryId": 2,
       "reviews": []
     },
@@ -228,7 +228,7 @@
       "productOldPrice": 90,
       "productPrice": 85,
       "image": "/assets/images/DRINKS5.jpeg",
-      "description": "FRUIT SEASON MOCKTAIL",
+      "description": "A delightful, non-alcoholic mocktail that captures the essence of the freshest fruits in season. This refreshing beverage combines a variety of sweet, tangy, and juicy fruits, offering a burst of natural flavors with every sip.",
       "categoryId": 2,
       "reviews": []
     },
@@ -238,7 +238,7 @@
       "productOldPrice": 60,
       "productPrice": 55,
       "image": "/assets/images/DRINKS6.jpeg",
-      "description": "CHILE WINE",
+      "description": "A high-quality wine from the renowned wine regions of Chile, celebrated for its rich, bold flavors and exceptional balance. Chile is known for producing a wide range of red, white, and sparkling wines, with favorable climates that enhance the development of complex flavors and aromas.",
       "categoryId": 2,
       "reviews": []
     },
@@ -248,7 +248,7 @@
       "productOldPrice": 65,
       "productPrice": 60,
       "image": "/assets/images/DRINKS7.jpg",
-      "description": "SALT LEMON SODA",
+      "description": "A refreshing and tangy non-alcoholic drink made from the zesty combination of fresh lemon juice, a pinch of salt, and sparkling soda water. Salt Lemon Soda is a perfect thirst-quencher with a unique balance of salty and sour, making it an ideal drink for hot days or to accompany meals.",
       "categoryId": 2,
       "reviews": []
     },
@@ -258,7 +258,7 @@
       "productOldPrice": 95,
       "productPrice": 90,
       "image": "/assets/images/DRINKS8.jpg",
-      "description": "LEMON JUICE",
+      "description": "Freshly squeezed or bottled lemon juice, renowned for its bright, tangy flavor. It is a versatile ingredient used in both cooking and beverages, offering a refreshing, citrusy punch to a variety of dishes and drinks.",
       "categoryId": 2,
       "reviews": []
     },
@@ -268,7 +268,7 @@
       "productOldPrice": 100,
       "productPrice": 165,
       "image": "/assets/images/SPAGHETTI1.jpeg",
-      "description": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+      "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
       "categoryId": 3,
       "reviews": []
     },
@@ -278,7 +278,7 @@
       "productOldPrice": 85,
       "productPrice": 180,
       "image": "/assets/images/SPAGHETTI2.jpeg",
-      "description": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
+      "description": " A rich and indulgent seafood pasta dish featuring a savory salted egg sauce that coats the pasta and seafood with a creamy, umami flavor. This fusion dish combines the richness of salted egg with the natural sweetness of seafood, creating a unique and satisfying meal.",
       "categoryId": 3,
       "reviews": []
     },
@@ -288,7 +288,7 @@
       "productOldPrice": 110,
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI3.jpg",
-      "description": "FRESH PASTA WITH  BEEF SAUCE TOMATOES",
+      "description": "A classic Italian-inspired pasta dish featuring fresh, handmade pasta paired with a rich, savory beef tomato sauce. The hearty beef sauce is simmered with ripe tomatoes and aromatic herbs, creating a comforting and satisfying meal.",
       "categoryId": 3,
       "reviews": []
     },
@@ -298,7 +298,7 @@
       "productOldPrice": 110,
       "productPrice": 110,
       "image": "/assets/images/SPAGHETTI4.jpg",
-      "description": "FRESH PASTA WITH SALMON AND CREAM",
+      "description": "A creamy, indulgent pasta dish featuring fresh, handmade pasta paired with tender salmon in a rich, velvety cream sauce. The sauce is delicately flavored with herbs and a hint of lemon, creating a perfect balance to complement the richness of the salmon and the fresh pasta.",
       "categoryId": 3,
       "reviews": []
     },
@@ -308,7 +308,7 @@
       "productOldPrice": 110,
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI5.jpeg",
-      "description": "FRESH PASTA WITH BACON, CHEESE SAUCE",
+      "description": "A creamy and indulgent pasta dish featuring fresh, handmade pasta paired with crispy bacon and a rich, velvety cheese sauce. The bacon adds a savory, smoky flavor that complements the creamy cheese sauce, making for a comforting and satisfying meal.",
       "categoryId": 3,
       "reviews": []
     },
@@ -318,7 +318,7 @@
       "productOldPrice": 110,
       "productPrice": 105,
       "image": "/assets/images/SPAGHETTI6.jpg",
-      "description": "FRESH PASTA WITH CREAMY SAUSAGE & VEGETABLES",
+      "description": "A flavorful and hearty pasta dish featuring fresh, handmade pasta paired with a creamy sauce made from savory sausage and colorful, tender vegetables. The rich cream sauce balances the flavors of the sausage, while the vegetables add freshness and texture.",
       "categoryId": 3,
       "reviews": []
     },
@@ -328,7 +328,7 @@
       "productOldPrice": 110,
       "productPrice": 130,
       "image": "/assets/images/SPAGHETTI7.jpg",
-      "description": "SPINACH WITH BLACK PEPPER SAUCE & VEGETABLES",
+      "description": "A simple yet flavorful vegetable dish featuring fresh spinach sautéed with a black pepper sauce and complemented by a medley of colorful vegetables. The rich and aromatic black pepper sauce enhances the freshness of the spinach, while the vegetables add texture and sweetness.",
       "categoryId": 3,
       "reviews": []
     },
@@ -338,7 +338,7 @@
       "productOldPrice": 110,
       "productPrice": 65,
       "image": "/assets/images/SALAD1.jpeg",
-      "description": "SMOKED GOOSE LOOKING SALAD WITH ROASTED SESAME SAUCE",
+      "description": "A sophisticated and flavorful salad featuring tender smoked goose meat paired with crisp fresh greens and vegetables, all tossed in a rich, nutty roasted sesame sauce. The smokiness of the goose contrasts beautifully with the refreshing vegetables, while the sesame sauce adds a deep, earthy flavor.",
       "categoryId": 4,
       "reviews": []
     },
@@ -348,7 +348,7 @@
       "productOldPrice": 110,
       "productPrice": 60,
       "image": "/assets/images/SALAD2.jpg",
-      "description": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
+      "description": "A hearty and protein-packed salad combining tender beef, succulent chicken, and flavorful tuna, all tossed with a smoky BBQ sauce and fresh vegetables. This dish offers a variety of textures and flavors, with the savory meats paired perfectly with the bold, tangy BBQ sauce.",
       "categoryId": 4,
       "reviews": []
     },
@@ -358,7 +358,7 @@
       "productOldPrice": 110,
       "productPrice": 65,
       "image": "/assets/images/SALAD3.jpg",
-      "description": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+      "description": "A vibrant, flavorful salad featuring a combination of tender beef and tuna, tossed with a zesty spicy and sour sauce. The mix of protein-rich beef and tuna pairs perfectly with the tangy and spicy dressing, making this a bold and satisfying dish.",
       "categoryId": 4,
       "reviews": []
     },
@@ -368,7 +368,7 @@
       "productOldPrice": 110,
       "productPrice": 65,
       "image": "/assets/images/SALAD4.png",
-      "description": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+      "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
       "categoryId": 4,
       "reviews": []
     },
@@ -378,7 +378,7 @@
       "productOldPrice": 110,
       "productPrice": 65,
       "image": "/assets/images/SALAD5.jpg",
-      "description": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+      "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
       "categoryId": 4,
       "reviews": []
     },
@@ -388,7 +388,7 @@
       "productOldPrice": 110,
       "productPrice": 65,
       "image": "/assets/images/SALAD6.jpg",
-      "description": "MULBERRY SALAD AND ICE CREAM",
+      "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
       "categoryId": 4,
       "reviews": []
     }
@@ -437,15 +437,16 @@
   ],
   "blog": [
     {
+      "id": "1",
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
       "image": "/assets/images/steak3.jpg",
-      "blogCategoryId": "1",
-      "id": "1"
+      "blogCategoryId": 3,
+      "accountId": 2
     },
     {
       "id": "2",
-      "title": "The Basics of Machine Learning",
+      "title": "The Basics of Machine Learning test hung",
       "description": "An introductory article on machine learning concepts and applications.",
       "image": "/assets/images/beef-wellington-brocolini.webp",
       "blogCategoryId": 3,
@@ -600,6 +601,24 @@
           "rating": 4,
           "comment": "asd",
           "date": "2024-11-16"
+        }
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "6",
+      "productName": "LAMB STEAK",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "/assets/images/steak6.jpg",
+      "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Tom Harris",
+          "rating": 4,
+          "comment": "Tender and flavorful lamb, great experience.",
+          "date": "2024-11-11"
         }
       ],
       "quantity": 1

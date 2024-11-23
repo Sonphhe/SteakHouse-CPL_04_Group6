@@ -5,7 +5,8 @@ import BlogCard from './blogComponent/BlogCard'
 import { Link } from 'react-router-dom'
 import BlogFooter from './blogComponent/BlogFooter'
 import { useSteakHouseContext } from '../../hooks/useSteakHouseContext'
-
+import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
+import Chat from '../../components/Chat/Chat'
 const Blog = () => {
   const { blogs } = useSteakHouseContext()
 
@@ -30,6 +31,8 @@ const Blog = () => {
           ))}
         </div>
       </div>
+      <Chat />
+      <GoToTopButton />
       <BlogFooter />
     </div>
   )

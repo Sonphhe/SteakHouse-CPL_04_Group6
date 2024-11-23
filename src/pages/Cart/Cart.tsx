@@ -6,7 +6,8 @@ import { CiCircleMinus, CiCirclePlus, CiTrash } from 'react-icons/ci'
 import { useState } from 'react'
 import Footer from '../../components/ui/Footer/Footer'
 import BannerCarousel from '../../components/ui/BannerCoupon/BannerCarousel'
-
+import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
+import Chat from '../../components/Chat/Chat'
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCartContext()
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
@@ -189,6 +190,8 @@ const Cart = () => {
           </div>
         </div>
       )}
+      <Chat />
+      <GoToTopButton />
     </div>
   )
 }

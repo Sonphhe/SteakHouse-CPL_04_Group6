@@ -118,7 +118,7 @@
 }
 
 
-.add-to-cart {
+.add-to-cartt {
   margin-top: 10px;
   padding: 10px 20px;
   background-color: #ff6347;
@@ -130,7 +130,7 @@
   transition: background-color 0.3s ease-in-out;
 }
 
-.add-to-cart:hover {
+.add-to-cartt:hover {
   background-color: #e5533d; /* MÃ u tá»‘i hÆ¡n khi hover */
   color: white; /* Äá»•i mÃ u chá»¯ */
   cursor: pointer;

@@ -5,7 +5,8 @@ import './HomePage.css'
 import FavouriteFood from "./homeComponents/FavouriteFood/FavouriteFood"
 import Colaborator from "./homeComponents/Colaborator/Colaborator"
 import Footer from "../../components/ui/Footer/Footer"
-
+import Chat from '../../components/Chat/Chat'
+import GoToTopButton from "../../components/GoToTopButton/GoToTopButton"
 const Home = () => {
     return (
       <div className='homepage-container'>
@@ -18,7 +19,9 @@ const Home = () => {
         />
         <FavouriteFood/>
         <Colaborator/>
+        <Chat />
         <Footer/>
+        <GoToTopButton/>
       </div>
     )
   }

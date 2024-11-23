@@ -6,7 +6,7 @@ const GoToTopButton: React.FC = () => {
 
   // Kiểm tra khi người dùng cuộn trang
   const checkScrollPosition = () => {
-    if (window.scrollY > 300) { // Hiển thị nút khi cuộn xuống 300px
+    if (window.scrollY > 150) { // Hiển thị nút khi cuộn xuống 300px
       setIsVisible(true);
     } else {
       setIsVisible(false);
