@@ -78,11 +78,11 @@ if (!account) {
   };
 
   return (
-    <div className="admin-dashboard">
+    <div className="admin-dashboard-accEdit">
       <Navbar />
-      <div className="dashboard-container">
+      <div className="dashboard-container-accEdit">
         <Sidebar />
-        <main className="dashboard-main">
+        <main className="dashboard-main-accEdit">
           <div className="account-edit-container">
             <h2>Edit Account</h2>
             <form className="account-edit-form">

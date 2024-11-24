@@ -67,7 +67,7 @@ const AdminDashboard = () => {
             <Navbar />
             <div className="dashboard-container">
                 <Sidebar />
-                <main className="dashboard-main">
+                <main className="dashboard-mainTMHKC">
                     {/* Cards Section */}
                     <div className="dashboard-cards">
                         <div className="card">

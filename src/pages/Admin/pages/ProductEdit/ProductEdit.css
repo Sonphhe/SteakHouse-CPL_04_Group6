@@ -1,3 +1,27 @@
+.admin-dashboard-proEdit {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f7fa;
+}
+
+.dashboard-container-proEdit {
+  display: flex;
+  flex: 1;
+  padding-top: 60px; /* Account for navbar height */
+}
+
+.dashboard-main-proEdit {
+  flex: 1;
+  padding: 30px;
+  margin-left: 30px; /* Sidebar width */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+
 .product-edit-container {
   background-color: #ffffff;
   padding: 20px;

@@ -141,7 +141,7 @@ const TableManagement: React.FC = () => {
       <Navbar />
       <div className="dashboard-container">
         <Sidebar />
-        <main className="dashboard-main">
+        <main className="dashboard-mainTMHKC">
           <div className="table-management">
             {notification && <div className="notification show">{notification}</div>}
 

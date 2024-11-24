@@ -80,11 +80,11 @@ const ProductEdit = () => {
   };
 
   return (
-    <div className="admin-dashboard">
+    <div className="admin-dashboard-proEdit">
       <Navbar />
-      <div className="dashboard-container">
+      <div className="dashboard-container-proEdit">
         <Sidebar />
-        <main className="dashboard-main">
+        <main className="dashboard-main-proEdit">
           <div className="product-edit-container">
             <h2>Edit Product</h2>
             <form className="product-edit-form">

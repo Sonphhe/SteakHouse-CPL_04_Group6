@@ -13,10 +13,10 @@
     padding-top: 60px; /* Account for navbar height */
 }
 
-.dashboard-main-hungkc {
+.dashboard-mainPM-hungkc {
     flex: 1;
     padding: 30px;
-    margin-left: 250px; /* Width of sidebar */
+    margin-left: 30px; /* Width of sidebar */
     background-color: #ffffff;
 }
 
@@ -37,7 +37,7 @@
 
 .add-product-btn-hungkc {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
@@ -46,7 +46,7 @@
 }
 
 .add-product-btn-hungkc:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 .search-bar-hungkc {

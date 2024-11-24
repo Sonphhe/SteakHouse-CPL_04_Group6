@@ -45,7 +45,7 @@ const AccountManage = () => {
       <Navbar />
       <div className="dashboard-container-hungkc">
         <Sidebar />
-        <main className="dashboard-main-hungkc">
+        <main className="dashboard-mainAM-hungkc">
           <div className="account-manage-hungkc">
             <div className="account-manage-header-hungkc">
               <button className="add-account-btn-hungkc" onClick={handleNavigateToAddAccount}>

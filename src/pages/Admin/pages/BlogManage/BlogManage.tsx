@@ -42,7 +42,7 @@ const BlogManage = () => {
       <Navbar />
       <div className="dashboard-container-hungkc">
         <Sidebar />
-        <main className="dashboard-main-hungkc">
+        <main className="dashboard-mainTMHKC">
           <div className="blog-manage-hungkc">
             <div className="blog-manage-header-hungkc">
               <button className="add-blog-btn-hungkc" onClick={handleAddBlog}>

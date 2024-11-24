@@ -17,7 +17,7 @@
   .dashboard-main-add-hung11-11Add {
     flex: 1;
     padding: 30px;
-    margin-left: 250px; /* Sidebar width */
+    margin-left: 30px; /* Sidebar width */
     background-color: #ffffff;
   }
   
@@ -75,7 +75,7 @@
 .dashboard-main-add-hung11-11Add {
   flex: 1;
   padding: 30px;
-  margin-left: 250px;
+  margin-left: 30px;
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);

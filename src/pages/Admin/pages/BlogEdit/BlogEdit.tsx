@@ -42,11 +42,11 @@ const BlogEdit = () => {
   };
 
   return (
-    <div className="admin-dashboard-hungkc">
+    <div className="admin-dashboard-blogEdit">
       <Navbar />
-      <div className="dashboard-container-hungkc">
+      <div className="dashboard-container-blogEdit">
         <Sidebar />
-        <main className="dashboard-main-hungkc">
+        <main className="dashboard-main-blogEdit">
           <div className="blog-edit-hungkc">
             <h2>Edit Blog</h2>
             <form>

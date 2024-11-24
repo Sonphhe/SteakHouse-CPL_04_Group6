@@ -49,11 +49,11 @@ const BlogAdd = () => {
   };
 
   return (
-    <div className="admin-dashboard-hungkc">
+    <div className="admin-dashboard-blogAdd">
       <Navbar />
-      <div className="dashboard-container-hungkc">
+      <div className="dashboard-container-blogAdd">
         <Sidebar />
-        <main className="dashboard-main-hungkc">
+        <main className="dashboard-main-blogAdd">
           <div className="blog-add-hungkc">
             <h2>Add New Blog</h2>
             <form>
