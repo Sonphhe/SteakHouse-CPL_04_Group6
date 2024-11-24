@@ -23,26 +23,18 @@ const DropDownProfile = (props: { name: string }) => {
         </div>
         <hr />
         <Link className='sub-menu-links' to={'/user/account/userProfile'}>
-          <i>
-            <ImProfile />
-          </i>
+          <ImProfile size={20}/>
           <p>Edit Profile</p>
           <span>{`>`}</span>
         </Link>
         <Link className='sub-menu-links' to={''}>
-          <i>
-            <BsFillCartCheckFill />
-          </i>
-
-          <p>Purchase Order</p>
+          <BsFillCartCheckFill size={20}/>
+          <p>My Orders</p>
           <span>{`>`}</span>
         </Link>
         <div className='logout-button' onClick={handleLogout}>
           <Link className='sub-menu-links' to={'/login'}>
-            <i>
-              <LuLogOut />
-            </i>
-
+            <LuLogOut size={20}/>
             <p>Logout</p>
             <span>{`>`}</span>
           </Link>

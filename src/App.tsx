@@ -32,7 +32,10 @@ import AccountManage from './pages/Admin/pages/AccountManage/AccountManage'
 import { AccountProvider } from './context/AccountContext'
 import AccountAdd from './pages/Admin/pages/AccountAdd/AccountAdd'
 import AccountEdit from './pages/Admin/pages/AccountEdit/AccountEdit'
+import Checkout from './pages/Cart/Checkout/Checkout'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
+import sampleImg from '/assets/images/SALAD1.jpeg'
+import Orderer from './pages/Cart/Checkout/Component/Orderer/Orderer'
 
 function App() {
   return (
@@ -58,7 +61,8 @@ function App() {
               <Route path='/cart' element={<Cart />} />
               <Route path='/management' element={<Management />} />
               <Route path='/user/account/userProfile' element={<UserProfile />} />
-              {/* <Route path='/user/account/test' element={<ValidationNum/>} /> */}
+              <Route path='/checkout' element={<Checkout />} />
+              <Route path='/user/account/test' element={<Orderer/>} />
 
               <Route
                 path='/admin/blog-add'

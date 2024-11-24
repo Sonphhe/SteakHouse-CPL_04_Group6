@@ -14,6 +14,24 @@
   transform: translate(-50%);
   z-index: 9999;
 }
+.headerNav {
+  display: flex;
+  gap: 15px;
+}
+.headerNav button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background-color: #7d161c;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
 .rightside-options {
   display: flex;
   justify-content: center;
@@ -41,15 +59,20 @@
 .menu-icons {
   display: none;
 }
-.navbar-cart {
-  display: flex;
-  gap: 10px;
-  color: #fff;
-  background: black;
-  padding: 0.625rem 1rem;
+.navbar-cart button {
+  padding: 10px 20px;
   cursor: pointer;
-  border-radius: 1.5rem;
-  font-weight: 500;
+  border-radius: 20px;
+  border: none;
+  background-color: black;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
 }
 .navbar-cart i {
   font-size: larger;
@@ -62,7 +85,7 @@
   font-size: 8px;
   position: absolute;
   top: 18px;
-  margin-left: 13px;
+  margin-left: 40px;
 }
 
 .profile-icon {

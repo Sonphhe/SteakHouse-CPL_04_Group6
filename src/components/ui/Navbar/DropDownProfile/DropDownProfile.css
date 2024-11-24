@@ -39,6 +39,7 @@
 .sub-menu-links{
     display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: #525252;
     margin: 12px 0;

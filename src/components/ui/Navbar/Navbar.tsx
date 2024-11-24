@@ -16,6 +16,7 @@ import { CgProfile } from 'react-icons/cg'
 import { FaRegUser } from 'react-icons/fa'
 import Login from '../../../pages/UserLoginView/components/Login/Login'
 import SearchDropDown from './SearchDropDown/SearchDropDown'
+import { HiOutlineMenuAlt1 } from "react-icons/hi";
 
 const Navbar = () => {
   const navListItems = [
@@ -54,9 +55,9 @@ const Navbar = () => {
   }
 
   const handleOpenProfile = () => {
-    if(currentAccount?.id === ''){
+    if (currentAccount?.id === '') {
       navigate('/login')
-    }else{
+    } else {
       setOpenProfile(!openProfile)
     }
   }
@@ -64,9 +65,12 @@ const Navbar = () => {
   return (
     <div>
       <nav className='navbar-items'>
-        <h1 onClick={locateHome} className='navbar-logo'>
-          SteakHouse
-        </h1>
+        <div className='headerNav'>
+          <h1 onClick={locateHome} className='navbar-logo'>
+            SteakHouse
+          </h1>
+          <button onClick={() => navigate('/menu')}><HiOutlineMenuAlt1 size={25}/> Menu</button>
+        </div>
 
         <div className='navbar-search'>
           <input
@@ -90,10 +94,7 @@ const Navbar = () => {
             </i>
           </div>
           <div className='navbar-cart' onClick={locateCart}>
-            <i>
-              <FaCartArrowDown />
-            </i>{' '}
-            <h4>Cart Items</h4>
+            <button><FaCartArrowDown size={25} /> Cart Items</button>
             <div className='shopee-cart-number-badge'>{cartItems.length}</div>
           </div>
           {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}

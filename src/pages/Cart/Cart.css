@@ -98,10 +98,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 74px;
   height: 350px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: fit-content;
 }
 
 .cart_totals h2 {
