@@ -33,23 +33,24 @@ const PostDetail = () => {
 
   // Log dữ liệu bài viết khi đã được cập nhật
   
-  if (loading) return <div>Đang tải bài viết...</div>
-  if (error) return <div>Có lỗi xảy ra: {error}</div>
-  if (!post) return <div>Bài viết không tồn tại.</div>
+  if (loading) return <div>Loading...</div>
+  if (error) return <div>Error: {error}</div>
+  if (!post) return <div>Post cancel.</div>
 
   return (
     <div className='post-detail-firstdiv'>
       <Navbar />
       <div className='post-detail'>
         <div className='post-detail-container'>
-          <div className='post-detail-header'>
-            <PostAuthor profile_image={post.image} authorId={post.accountId} />
-          </div>
+          
           <h1>{post.title}</h1>
           <div className='post-detail-thumbnail'>
             <img src={post.image} alt={post.title} style={{ width: '100%', objectFit: 'cover' }} />
           </div>
           <p>{post.description}</p>
+          <div className='post-detail-header'>
+            <PostAuthor profile_image={post.image} authorId={post.accountId} />
+          </div>
         </div>
       </div>
       <BlogFooter />
