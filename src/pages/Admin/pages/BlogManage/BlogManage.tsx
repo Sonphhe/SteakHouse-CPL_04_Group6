@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './BlogManage.css';
@@ -39,9 +38,7 @@ const BlogManage = () => {
 
   return (
     <div className="admin-dashboard-hungkc">
-      <Navbar />
       <div className="dashboard-container-hungkc">
-        <Sidebar />
         <main className="dashboard-mainTMHKC">
           <div className="blog-manage-hungkc">
             <div className="blog-manage-header-hungkc">

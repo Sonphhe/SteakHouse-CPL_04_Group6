@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './ProductManage.css';
@@ -51,9 +50,9 @@ const ProductManage = () => {
 
   return (
     <div className="admin-dashboard-hungkc">
-      <Navbar />
+     
       <div className="dashboard-container-hungkc">
-        <Sidebar />
+     
         <main className="dashboard-mainPM-hungkc">
           <div className="product-manage-hungkc">
             <div className="product-manage-header-hungkc">

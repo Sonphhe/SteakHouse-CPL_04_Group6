@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 import { useAccountContext } from '../../../../context/AccountContext';
 import './AccountAdd.css';
@@ -65,9 +63,7 @@ const AccountAdd = () => {
 
   return (
     <div className="admin-dashboard-add">
-      <Navbar />
       <div className="dashboard-container-add">
-        <Sidebar />
         <main className="dashboard-main-add">
           <div className="add-container">
             <h2>Add New Account</h2>

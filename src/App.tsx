@@ -25,8 +25,8 @@ import UserProfile from './pages/UserProfile/UserProfile'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 
-
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
+import AdminLayout from './pages/Admin/pages/Dashboard/AdminLayout'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import AccountManage from './pages/Admin/pages/AccountManage/AccountManage'
 import { AccountProvider } from './context/AccountContext'
@@ -62,83 +62,107 @@ function App() {
             <Route path='/user/account/userProfile' element={<UserProfile />} />
             <Route path='/cart' element={<Cart />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
-            <Route 
-              path='/admin/product-management' 
-              element={
-                <ProductProvider>
-                  <ProductManage />
-                </ProductProvider>
-              } 
-            />
-                   <Route 
-              path='/admin/product-edit/:id' 
-              element={
-                <ProductProvider>
-                  <ProductEdit />
-                </ProductProvider>
-              } 
-            />
-            
+            <Route path='/admin/dashboard' element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+              <Route path='/admin/table-management' element={<AdminLayout><TableManagement /></AdminLayout>} />
+              
               <Route 
-              path='/admin/product-add' 
-              element={
-                <ProductProvider>
-                  <ProductAdd />
-                </ProductProvider>
-              } 
-            />
-             <Route 
-              path='/admin/blog-management' 
-              element={
-                <BlogProvider>
-                  <BlogManage />
-                </BlogProvider>
-              } 
-            />
+                path='/admin/product-management' 
+                element={
+                  <ProductProvider>
+                    <AdminLayout>
+                      <ProductManage />
+                    </AdminLayout>
+                  </ProductProvider>
+                } 
+              />
+              
+              <Route 
+                path='/admin/product-edit/:id' 
+                element={
+                  <ProductProvider>
+                    <AdminLayout>
+                      <ProductEdit />
+                    </AdminLayout>
+                  </ProductProvider>
+                } 
+              />
+              
+              <Route 
+                path='/admin/product-add' 
+                element={
+                  <ProductProvider>
+                    <AdminLayout>
+                      <ProductAdd />
+                    </AdminLayout>
+                  </ProductProvider>
+                } 
+              />
+              
+              <Route 
+                path='/admin/blog-management' 
+                element={
+                  <BlogProvider>
+                    <AdminLayout>
+                      <BlogManage />
+                    </AdminLayout>
+                  </BlogProvider>
+                } 
+              />
 
-<Route 
-              path='/admin/blog-add' 
-              element={
-                <BlogProvider>
-                  <BlogAdd />
-                </BlogProvider>
-              } 
-            />
-<Route
-  path="/admin/blog-edit/:id"
-  element={
-    <BlogProvider>
-      <BlogEdit />
-    </BlogProvider>
-  }
-/>
-<Route 
-              path='/admin/account-management' 
-              element={
-                <AccountProvider>
-                  <AccountManage />
-                </AccountProvider>
-              } 
-            />
-        
-          <Route 
-              path='/admin/account-add' 
-              element={
-                <AccountProvider>
-                  <AccountAdd />
-                </AccountProvider>
-              } 
-            />
+              <Route 
+                path='/admin/blog-add' 
+                element={
+                  <BlogProvider>
+                    <AdminLayout>
+                      <BlogAdd />
+                    </AdminLayout>
+                  </BlogProvider>
+                } 
+              />
 
- 
-<Route
-  path="/admin/account-edit/:id"
-  element={
-    <AccountProvider>
-      <AccountEdit />
-    </AccountProvider>
-  }
-/>
+              <Route
+                path="/admin/blog-edit/:id"
+                element={
+                  <BlogProvider>
+                    <AdminLayout>
+                      <BlogEdit />
+                    </AdminLayout>
+                  </BlogProvider>
+                }
+              />
+
+              <Route 
+                path='/admin/account-management' 
+                element={
+                  <AccountProvider>
+                    <AdminLayout>
+                      <AccountManage />
+                    </AdminLayout>
+                  </AccountProvider>
+                } 
+              />
+              
+              <Route 
+                path='/admin/account-add' 
+                element={
+                  <AccountProvider>
+                    <AdminLayout>
+                      <AccountAdd />
+                    </AdminLayout>
+                  </AccountProvider>
+                } 
+              />
+
+              <Route
+                path="/admin/account-edit/:id"
+                element={
+                  <AccountProvider>
+                    <AdminLayout>
+                      <AccountEdit />
+                    </AdminLayout>
+                  </AccountProvider>
+                }
+              />
 
 
 
