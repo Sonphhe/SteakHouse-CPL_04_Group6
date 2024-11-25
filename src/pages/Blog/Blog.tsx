@@ -19,7 +19,7 @@ const Blog = () => {
         </div>
         <div className='blog-container'>
           {blogs.map((item) => (
-            <Link key={item.id} to={`/blog/postdetail`}>
+            <Link key={item.id} to={`/blog/postdetail/${item.id}`}>
               <BlogCard
                 thumbnail={item.image}
                 category={item.blogCategoryId}
