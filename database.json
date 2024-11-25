@@ -67,7 +67,11 @@
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
       "productPrice": 233,
-      "image": "/assets/images/steak1.jpg",
+      "image": [
+        {
+
+        }
+      ],
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
       "categoryId": 1,
       "reviews": [
@@ -603,7 +607,7 @@
           "date": "2024-11-16"
         }
       ],
-      "quantity": 1
+      "quantity": 2
     },
     {
       "id": "6",
@@ -646,6 +650,24 @@
         }
       ],
       "quantity": 2
+    },
+    {
+      "id": "4",
+      "productName": "VIETNAM BEEFSTEAK",
+      "productOldPrice": 95,
+      "productPrice": 105,
+      "image": "/assets/images/steak4.jpeg",
+      "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Mark Lee",
+          "rating": 3,
+          "comment": "It was okay, but I prefer other options.",
+          "date": "2024-11-12"
+        }
+      ],
+      "quantity": 1
     }
   ],
   "searchHistory": [
@@ -713,5 +735,23 @@
         }
       ]
     }
+  ],
+  "discountTicket": [
+    {
+      "title":"Welcome new user ticket",
+      "discountValue": 30,
+      "backGroundIcon": ""
+    },
+    {
+      "title":"Discount 15% of total payment",
+      "discountValue": 15,
+      "backGroundIcon": ""
+    },
+    {
+      "title":"Discount 20% of total payment",
+      "discountValue": 30,
+      "backGroundIcon": ""
+    }
   ]
+
 }

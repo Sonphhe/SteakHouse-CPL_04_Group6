@@ -11,6 +11,7 @@ import { useCartContext } from '../../context/CartContext';
 import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'; 
 import Chat from '../../components/Chat/Chat';
 const Menu: React.FC = () => {
+
   const navigate = useNavigate();
   const {
     categories,

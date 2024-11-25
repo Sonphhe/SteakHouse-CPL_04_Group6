@@ -52,9 +52,8 @@ function App() {
         <SteakHouseProvider>
           <BrowserRouter>
             <Routes>
-              <Route path='/' element={<UserLoginView />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/home' element={<Home />} />
+              <Route path='/' element={<Home />} />
               <Route path='/register' element={<Register />} />
               <Route path='/forgotpass' element={<ForgotPassword />} />
               <Route path='/menu' element={<Menu />} />
@@ -69,6 +68,7 @@ function App() {
               <Route path='/management' element={<Management />} />
               <Route path='/user/account/userProfile' element={<UserProfile />} />
               <Route path='/cart' element={<Cart />} />
+              <Route path='/checkout' element={<Checkout />} />
               {/* Wrap only the ProductManage route with ProductProvider */}
               <Route
                 path='/admin/dashboard'

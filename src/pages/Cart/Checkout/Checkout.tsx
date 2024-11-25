@@ -6,6 +6,7 @@ import Orderer from './Component/Orderer/Orderer'
 import Navbar from '../../../components/ui/Navbar/Navbar'
 import ReceiveLocation from './Component/ReceiveLocation/ReceiveLocation'
 import Footer from '../../../components/ui/Footer/Footer'
+import ConfirmOrder from './Component/ConfirmOrder/ConfirmOrder'
 
 const Checkout = () => {
   const navigate = useNavigate()
@@ -26,38 +27,7 @@ const Checkout = () => {
             <ReceiveLocation />
           </div>
           <div className='right-handside'>
-            <div className='cart_totals'>
-              <h2 className='order-info'>Order Information</h2>
-              <div className='coupon-code-section'>
-                <input type='text' className='coupon-input' placeholder='Coupon Code' />
-                <button className='apply-coupon-button'>Apply</button>
-              </div>
-
-              <table>
-                <tbody>
-                  <tr>
-                    <th>Subtotal</th>
-                    <td>₫</td>
-                  </tr>
-                  <tr>
-                    <th>Discount</th>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <th>Shipping Fee</th>
-                    <td>Free</td>
-                  </tr>
-                  <tr className='order-total'>
-                    <th>Total Amount</th>
-                    <td>₫</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <button className='checkout-button' onClick={() => navigate('/checkout')}>
-                Confirm Order
-              </button>
-            </div>
+            <ConfirmOrder/>
           </div>
         </div>
       </div>

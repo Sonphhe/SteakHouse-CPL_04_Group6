@@ -1,6 +1,6 @@
 import './ProductInCart.css'
 const ProductInCart = () => {
-  const array = [1, 2, 3, 4, 5]
+  const array = [1]
 
   return (
     <div className='productInCart'>
@@ -14,7 +14,7 @@ const ProductInCart = () => {
               <div className='image'>
                 <img src='https://i.pinimg.com/736x/12/f5/49/12f5490c7a96b67377850ae3490d9f86.jpg' alt='' />
               </div>
-              <p>Máy tính xách tay HP 14-em0086AU R5 7520U/16GB/512GB/14''FHD/AMD Radeon Graphics/Win11_Bạc_835T9PA</p>
+              <p>T-bone steak is a unique cut of beef with two steaks in one. </p>
             </div>
             <div className='price'>
               <p className='new-price'>12.465.123₫</p>
