@@ -1,56 +1,55 @@
-import { Link } from 'react-router-dom'
-import PostAuthor from './PostAuthor'
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import Navbar from '../../../components/ui/Navbar/Navbar'
 import BlogFooter from './BlogFooter'
-import profile_image from '../../../assets/images/profile-image.jpg'
+import PostAuthor from './PostAuthor'
+import axios from 'axios'
+import { API_ROOT } from '../../../utils/constants'
 
 const PostDetail = () => {
+  const { id } = useParams() // Lấy id từ URL
+  const [post, setPost] = useState(null) // Lưu thông tin bài viết
+  const [loading, setLoading] = useState(true) // Trạng thái tải dữ liệu
+  const [error, setError] = useState(null) // Lưu lỗi nếu có
+
+  useEffect(() => {
+    // Gửi yêu cầu API để lấy bài viết
+    const fetchPost = async () => {
+      try {
+        const response = await axios.get(`${API_ROOT}/blog/${id}`) // URL API cho bài viết
+        console.log('API Response:', response.data) // Log dữ liệu trả về từ API
+        setPost(response.data) // Cập nhật dữ liệu bài viết
+        setLoading(false) // Hoàn tất tải dữ liệu
+        console.log('Current Post Data:', post)
+      } catch (err) {
+        console.error('Error fetching post:', err) // Log lỗi nếu xảy ra
+        setError(err.message) // Lưu lỗi
+        setLoading(false)
+      }
+    }
+
+    fetchPost()
+  }, [id])
+
+  // Log dữ liệu bài viết khi đã được cập nhật
+  
+  if (loading) return <div>Đang tải bài viết...</div>
+  if (error) return <div>Có lỗi xảy ra: {error}</div>
+  if (!post) return <div>Bài viết không tồn tại.</div>
+
   return (
     <div className='post-detail-firstdiv'>
       <Navbar />
       <div className='post-detail'>
         <div className='post-detail-container'>
           <div className='post-detail-header'>
-            <PostAuthor profile_image={profile_image} authorId={1} />
-            <div className='post-detail-button'>
-              <Link className='edit' to={'/blog/edit'}>
-                Edit
-              </Link>
-              <Link to={''} className='delete' onClick={() => alert('Do you want to delete this!')}>
-                Delete
-              </Link>
-            </div>
+            <PostAuthor profile_image={post.image} authorId={post.accountId} />
           </div>
-          <h1>This is post title</h1>
+          <h1>{post.title}</h1>
           <div className='post-detail-thumbnail'>
-            <img src='https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AA1tpJNU.img?w=768&h=507&m=6' alt='' />
+            <img src={post.image} alt={post.title} style={{ width: '100%', objectFit: 'cover' }} />
           </div>
-          <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nam natus ullam porro rerum, illo, nemo quia
-            commodi fugit architecto totam alias. Voluptas quia fuga voluptatem accusantium, magnam fugiat nesciunt
-            reiciendis debitis sint iure ex ut autem vel necessitatibus nostrum natus?
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam aliquam obcaecati minus similique!
-            Praesentium qui recusandae excepturi, dolorum impedit similique aperiam adipisci neque quidem enim, debitis
-            voluptatibus eaque esse at illum magni! Blanditiis quaerat pariatur accusamus id corporis est dicta neque
-            architecto, cum officiis repellendus maiores minima eligendi similique quia maxime laboriosam modi, non
-            dolorem.
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Est nihil eligendi error minima doloremque eius
-            voluptate ipsum, quaerat adipisci, veritatis explicabo. Culpa, non? Doloremque quas fuga, temporibus
-            mollitia quibusdam neque, iure a aut pariatur illo quidem voluptas possimus impedit deserunt, dolor eius
-            beatae consectetur reiciendis nisi veritatis sunt qui numquam praesentium eaque? Incidunt nostrum error
-            adipisci nam! Amet vitae, iusto velit veniam libero officiis eum eius saepe, perferendis numquam aperiam
-            placeat nam neque, id impedit ducimus expedita laboriosam cum ea nemo. Nostrum aspernatur similique nam
-            beatae tenetur neque autem voluptatum mollitia ullam odit, recusandae non dolor perspiciatis necessitatibus
-            sapiente. Facere neque facilis eligendi corporis doloribus vel, animi ipsam non deleniti hic?
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique dolore odit alias ratione deserunt
-            voluptatum aperiam voluptatem aut, asperiores autem.
-          </p>
+          <p>{post.description}</p>
         </div>
       </div>
       <BlogFooter />

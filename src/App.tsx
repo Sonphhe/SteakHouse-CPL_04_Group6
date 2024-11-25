@@ -62,7 +62,7 @@ function App() {
               <Route path='/contact' element={<ContactUs />} />
               <Route path='/admin/dashboard' element={<AdminDashboard />} />
               <Route path='/blog' element={<Blog />} />
-              <Route path='/blog/postdetail' element={<PostDetail />} />
+              <Route path='/blog/postdetail/:id' element={<PostDetail />} />
               <Route path='/admin/table-management' element={<TableManagement />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/management' element={<Management />} />
