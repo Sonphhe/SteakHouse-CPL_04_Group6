@@ -7,14 +7,13 @@ import Footer from '../../components/ui/Footer/Footer'
 import BannerCarousel from '../../components/ui/BannerCoupon/BannerCarousel'
 import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
 import Chat from '../../components/Chat/Chat'
+import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder'
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCartContext()
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false) // Modal cho xoá tất cả
   const [itemToDelete, setItemToDelete] = useState<number | null>(null)
   const [selectedItems, setSelectedItems] = useState<number[]>([])
-  
-  
 
   const handleDeleteClick = (id: number) => {
     setItemToDelete(id)
@@ -122,6 +121,7 @@ const Cart = () => {
             </div>
           ))}
         </div>
+        <ConfirmOrder selectedItems={selectedItems} cartItems={cartItems} />
       </div>
       <Footer />
       {isDeleteModalOpen && (

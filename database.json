@@ -68,9 +68,7 @@
       "productOldPrice": 100,
       "productPrice": 233,
       "image": [
-        {
-
-        }
+        {}
       ],
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
       "categoryId": 1,
@@ -607,7 +605,7 @@
           "date": "2024-11-16"
         }
       ],
-      "quantity": 2
+      "quantity": 1
     },
     {
       "id": "6",
@@ -649,7 +647,7 @@
           "date": "2024-11-14"
         }
       ],
-      "quantity": 2
+      "quantity": 1
     },
     {
       "id": "4",
@@ -673,19 +671,23 @@
   "searchHistory": [
     {
       "title": "Regular Steak",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "eb36"
     },
     {
       "title": "MULBERRY SALAD AND ICE CREAM",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "334c"
     },
     {
       "title": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "6be2"
     },
     {
       "title": "BEEF WITH PEPPER SAUCE",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "5f20"
     }
   ],
   "ownCart": [
@@ -738,20 +740,22 @@
   ],
   "discountTicket": [
     {
-      "title":"Welcome new user ticket",
+      "title": "Welcome new user ticket",
       "discountValue": 30,
-      "backGroundIcon": ""
+      "backGroundIcon": "",
+      "id": "06ef"
     },
     {
-      "title":"Discount 15% of total payment",
+      "title": "Discount 15% of total payment",
       "discountValue": 15,
-      "backGroundIcon": ""
+      "backGroundIcon": "",
+      "id": "74db"
     },
     {
-      "title":"Discount 20% of total payment",
+      "title": "Discount 20% of total payment",
       "discountValue": 30,
-      "backGroundIcon": ""
+      "backGroundIcon": "",
+      "id": "7019"
     }
   ]
-
 }
