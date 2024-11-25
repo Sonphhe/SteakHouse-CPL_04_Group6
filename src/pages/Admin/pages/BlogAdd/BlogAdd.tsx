@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import { useBlogContext } from '../../../../context/BlogContext';
 import './BlogAdd.css';
 
@@ -49,11 +48,9 @@ const BlogAdd = () => {
   };
 
   return (
-    <div className="admin-dashboard-hungkc">
-      <Navbar />
-      <div className="dashboard-container-hungkc">
-        <Sidebar />
-        <main className="dashboard-main-hungkc">
+    <div className="admin-dashboard-blogAdd">
+      <div className="dashboard-container-blogAdd">
+        <main className="dashboard-main-blogAdd">
           <div className="blog-add-hungkc">
             <h2>Add New Blog</h2>
             <form>

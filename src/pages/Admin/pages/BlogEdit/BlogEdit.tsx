@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import { useBlogContext } from '../../../../context/BlogContext';
 import './BlogEdit.css';
 
@@ -42,11 +41,9 @@ const BlogEdit = () => {
   };
 
   return (
-    <div className="admin-dashboard-hungkc">
-      <Navbar />
-      <div className="dashboard-container-hungkc">
-        <Sidebar />
-        <main className="dashboard-main-hungkc">
+    <div className="admin-dashboard-blogEdit">
+      <div className="dashboard-container-blogEdit">
+        <main className="dashboard-main-blogEdit">
           <div className="blog-edit-hungkc">
             <h2>Edit Blog</h2>
             <form>

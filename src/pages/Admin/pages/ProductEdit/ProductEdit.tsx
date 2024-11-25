@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
 import './ProductEdit.css';
 import { useProductContext } from '../../../../context/ProductContext';
 
@@ -80,11 +78,11 @@ const ProductEdit = () => {
   };
 
   return (
-    <div className="admin-dashboard">
-      <Navbar />
-      <div className="dashboard-container">
-        <Sidebar />
-        <main className="dashboard-main">
+    <div className="admin-dashboard-proEdit">
+     
+      <div className="dashboard-container-proEdit">
+      
+        <main className="dashboard-main-proEdit">
           <div className="product-edit-container">
             <h2>Edit Product</h2>
             <form className="product-edit-form">

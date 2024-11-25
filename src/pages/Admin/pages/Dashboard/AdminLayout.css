@@ -1,0 +1,79 @@
+.admin-dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .dashboard-container {
+    display: flex;
+    flex: 1;
+    padding-top: 64px; /* Height of the Navbar */
+  }
+  
+  .dashboard-main {
+    flex: 1;
+    padding: 2rem;
+    margin-left: 72px; /* Width of collapsed sidebar */
+    transition: margin-left 0.2s;
+    background-color: #fff;
+    min-height: calc(100vh - 64px);
+  }
+  
+  /* When sidebar is open */
+  .dashboard-main.sidebar-open {
+    margin-left: 240px; /* Width of expanded sidebar */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .dashboard-main {
+      margin-left: 0;
+      padding: 1rem;
+    }
+    
+    .dashboard-main.sidebar-open {
+      margin-left: 240px;
+    }
+  }
+  
+  .admin-dashboard-container-1 {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Chiều cao toàn màn hình */
+    background-color: #1a202c; /* bg-gray-900 */
+    color: #ffffff; /* Màu chữ trắng */
+    text-align: center;
+  }
+  
+  .admin-dashboard-message-1 {
+    color: #fbbf24; /* Màu chữ vàng */
+    font-size: 1.8rem; /* text-xl */
+    font-weight: bold; /* font-bold */
+    margin-bottom: 1rem; /* Khoảng cách dưới */
+  }
+  
+  .admin-dashboard-container-1 h2:last-child {
+    font-size: 1.2rem; /* text-lg */
+    margin-bottom: 1.5rem; /* Khoảng cách dưới */
+    color: #d1d5db; /* Màu chữ xám nhạt */
+  }
+  
+  .admin-dashboard-container-1 button {
+    margin-top: 10px;
+    padding: 0.5rem 1.5rem; /* Padding nút */
+    font-size: 1rem; /* text-base */
+    font-weight: bold;
+    color: #ffffff; /* Màu chữ trắng */
+    background-color: #2563eb; /* Màu xanh dương (hover) */
+    border: none;
+    border-radius: 0.5rem; /* Bo tròn góc */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Hiệu ứng mượt khi hover */
+  }
+  
+  .admin-dashboard-container-1 button:hover {
+    background-color: #1d4ed8; /* Màu xanh đậm hơn khi hover */
+  }
+  

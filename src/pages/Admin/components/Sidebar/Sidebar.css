@@ -1,26 +1,15 @@
-.menu-SidebarHKC li {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
 }
 
-.menu-SidebarHKC li a {
-    display: flex;
-    align-items: center;
-    padding: 12px 15px;
-    color: #333;
-    text-decoration: none;
-    font-size: 1.1em;
-    border-radius: 8px;
-    transition: background-color 0.3s, color 0.3s;
+.link {
+  text-decoration: none;
 }
 
-.icon-SidebarHKC {
-    margin-right: 10px;
-    font-size: 1.2em;
-}
-
-.menu-SidebarHKC li a:hover {
-    background-color: #ffffff;
-    color: #2e89ce;
+.drawerPaper {
+  width: 240px;
+  transition: all 0.3s;
 }

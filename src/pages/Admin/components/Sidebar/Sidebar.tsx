@@ -1,32 +1,122 @@
-import { Link } from 'react-router-dom';
-import './Sidebar.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faCogs, faUsers, faTable, faBlog } from '@fortawesome/free-solid-svg-icons';
+import React from 'react';
+import { styled, useTheme } from '@mui/material/styles';
+import {
+  Box,
+  Drawer,
+  List,
+  Divider,
+  IconButton,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+  useMediaQuery
+} from '@mui/material';
+import {
+  ChevronLeft as ChevronLeftIcon,
+  ChevronRight as ChevronRightIcon,
+  Home as HomeIcon,
+  Settings as SettingsIcon,
+  People as PeopleIcon,
+  Article as ArticleIcon,
+  TableChart as TableChartIcon
+} from '@mui/icons-material';
+
+const drawerWidth = 240;
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
 
 const menuItems = [
-    { label: 'Dashboard', path: '/admin/dashboard', icon: faHome },
-    { label: 'Product Management', path: '/admin/product-management', icon: faCogs },
-    { label: 'Account Management', path: '/admin/account-management', icon: faUsers },
-    { label: 'Blog Management', path: '/admin/blog-management', icon: faBlog },
-    { label: 'Table Management', path: '/admin/table-management', icon: faTable },
+  { label: 'Dashboard', path: '/admin/dashboard', icon: HomeIcon },
+  { label: 'Product Management', path: '/admin/product-management', icon: SettingsIcon },
+  { label: 'Account Management', path: '/admin/account-management', icon: PeopleIcon },
+  { label: 'Blog Management', path: '/admin/blog-management', icon: ArticleIcon },
+  { label: 'Table Management', path: '/admin/table-management', icon: TableChartIcon },
 ];
 
-const Sidebar = () => {
-    return (
-        <aside className="sidebar-SidebarHKC">
-            <h2>Menu</h2>
-            <ul className="menu-SidebarHKC">
-                {menuItems.map((item, index) => (
-                    <li key={index}>
-                        <Link to={item.path}>
-                            <FontAwesomeIcon icon={item.icon} className="icon-SidebarHKC" />
-                            {item.label}
-                        </Link>
-                    </li>
-                ))}
-            </ul>
-        </aside>
-    );
+interface SidebarProps {
+  open: boolean;
+  onToggle: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ open, onToggle }) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+
+  return (
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        '& .MuiDrawer-paper': {
+          width: open ? drawerWidth : 72,
+          boxSizing: 'border-box',
+          transition: theme.transitions.create('width', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.enteringScreen,
+          }),
+          overflowX: 'hidden',
+          backgroundColor: theme.palette.background.default,
+          borderRight: `1px solid ${theme.palette.divider}`,
+          position: 'relative',
+          height: '100%',
+          marginTop: 0,
+        },
+      }}
+      open={open}
+    >
+      <DrawerHeader>
+        <IconButton onClick={onToggle}>
+          {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
+      </DrawerHeader>
+      <Divider />
+      <List>
+        {menuItems.map((item, index) => {
+          const Icon = item.icon;
+          return (
+            <ListItem key={item.path} disablePadding>
+              <ListItemButton
+                component="a"
+                href={item.path}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 2 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Icon />
+                </ListItemIcon>
+                <ListItemText 
+                  primary={item.label}
+                  sx={{ 
+                    opacity: open ? 1 : 0,
+                    transition: theme.transitions.create('opacity', {
+                      duration: theme.transitions.duration.shortest,
+                    }),
+                  }} 
+                />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
+    </Drawer>
+  );
 };
 
 export default Sidebar;

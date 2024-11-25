@@ -25,6 +25,7 @@ import UserProfile from './pages/UserProfile/UserProfile'
 // import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
+import AdminLayout from './pages/Admin/pages/Dashboard/AdminLayout'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import Chat from './components/Chat/Chat'
 // import ValidationNum from './pages/UserProfile/components/ValidationNum/ValidationNum'
@@ -36,6 +37,12 @@ import Checkout from './pages/Cart/Checkout/Checkout'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 import sampleImg from '/assets/images/SALAD1.jpeg'
 import Orderer from './pages/Cart/Checkout/Component/Orderer/Orderer'
+import UserLoginView from './pages/UserLoginView/UserLoginView'
+import { ProductProvider } from './context/ProductContext'
+import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
+import ProductEdit from './pages/Admin/pages/ProductEdit/ProductEdit'
+import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
+import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 
 function App() {
   return (
@@ -45,9 +52,9 @@ function App() {
         <SteakHouseProvider>
           <BrowserRouter>
             <Routes>
-              {/* <Route path='/' element={<UserLoginView />} /> */}
+              <Route path='/' element={<UserLoginView />} />
               <Route path='/login' element={<Login />} />
-              <Route path='/' element={<Home />} />
+              <Route path='/home' element={<Home />} />
               <Route path='/register' element={<Register />} />
               <Route path='/forgotpass' element={<ForgotPassword />} />
               <Route path='/menu' element={<Menu />} />
@@ -61,30 +68,98 @@ function App() {
               <Route path='/cart' element={<Cart />} />
               <Route path='/management' element={<Management />} />
               <Route path='/user/account/userProfile' element={<UserProfile />} />
-              <Route path='/checkout' element={<Checkout />} />
-              <Route path='/user/account/test' element={<Orderer/>} />
+              <Route path='/cart' element={<Cart />} />
+              {/* Wrap only the ProductManage route with ProductProvider */}
+              <Route
+                path='/admin/dashboard'
+                element={
+                  <AdminLayout>
+                    <AdminDashboard />
+                  </AdminLayout>
+                }
+              />
+              <Route
+                path='/admin/table-management'
+                element={
+                  <AdminLayout>
+                    <TableManagement />
+                  </AdminLayout>
+                }
+              />
+
+              <Route
+                path='/admin/product-management'
+                element={
+                  <ProductProvider>
+                    <AdminLayout>
+                      <ProductManage />
+                    </AdminLayout>
+                  </ProductProvider>
+                }
+              />
+
+              <Route
+                path='/admin/product-edit/:id'
+                element={
+                  <ProductProvider>
+                    <AdminLayout>
+                      <ProductEdit />
+                    </AdminLayout>
+                  </ProductProvider>
+                }
+              />
+
+              <Route
+                path='/admin/product-add'
+                element={
+                  <ProductProvider>
+                    <AdminLayout>
+                      <ProductAdd />
+                    </AdminLayout>
+                  </ProductProvider>
+                }
+              />
+
+              <Route
+                path='/admin/blog-management'
+                element={
+                  <BlogProvider>
+                    <AdminLayout>
+                      <BlogManage />
+                    </AdminLayout>
+                  </BlogProvider>
+                }
+              />
 
               <Route
                 path='/admin/blog-add'
                 element={
                   <BlogProvider>
-                    <BlogAdd />
+                    <AdminLayout>
+                      <BlogAdd />
+                    </AdminLayout>
                   </BlogProvider>
                 }
               />
+
               <Route
                 path='/admin/blog-edit/:id'
                 element={
                   <BlogProvider>
-                    <BlogEdit />
+                    <AdminLayout>
+                      <BlogEdit />
+                    </AdminLayout>
                   </BlogProvider>
                 }
               />
+
               <Route
                 path='/admin/account-management'
                 element={
                   <AccountProvider>
-                    <AccountManage />
+                    <AdminLayout>
+                      <AccountManage />
+                    </AdminLayout>
                   </AccountProvider>
                 }
               />
@@ -93,7 +168,20 @@ function App() {
                 path='/admin/account-add'
                 element={
                   <AccountProvider>
-                    <AccountAdd />
+                    <AdminLayout>
+                      <AccountAdd />
+                    </AdminLayout>
+                  </AccountProvider>
+                }
+              />
+
+              <Route
+                path='/admin/account-edit/:id'
+                element={
+                  <AccountProvider>
+                    <AdminLayout>
+                      <AccountEdit />
+                    </AdminLayout>
                   </AccountProvider>
                 }
               />

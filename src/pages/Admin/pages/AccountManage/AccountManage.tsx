@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import './AccountManage.css';
@@ -42,10 +41,8 @@ const AccountManage = () => {
 
   return (
     <div className="admin-dashboard-hungkc">
-      <Navbar />
       <div className="dashboard-container-hungkc">
-        <Sidebar />
-        <main className="dashboard-main-hungkc">
+        <main className="dashboard-mainAM-hungkc">
           <div className="account-manage-hungkc">
             <div className="account-manage-header-hungkc">
               <button className="add-account-btn-hungkc" onClick={handleNavigateToAddAccount}>

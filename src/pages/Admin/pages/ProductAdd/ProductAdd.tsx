@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../../../context/ProductContext';
 import './ProductAdd.css';
@@ -77,9 +76,7 @@ const ProductAdd = () => {
 
   return (
     <div className="admin-dashboard-add-hung11-11Add">
-      <Navbar />
       <div className="dashboard-container-add-hung11-11Add">
-        <Sidebar />
         <main className="dashboard-main-add-hung11-11Add">
           <div className="product-add-container-hung11-11Add">
             <h2>Add New Product</h2>

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaEye, FaEdit, FaTrashAlt, FaUndoAlt } from 'react-icons/fa';
 import './TableManagement.css';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 
 interface TableData {
   id: string;
@@ -138,10 +137,8 @@ const TableManagement: React.FC = () => {
 
   return (
     <div className="admin-dashboard">
-      <Navbar />
       <div className="dashboard-container">
-        <Sidebar />
-        <main className="dashboard-main">
+        <main className="dashboard-mainTMHKC">
           <div className="table-management">
             {notification && <div className="notification show">{notification}</div>}
 

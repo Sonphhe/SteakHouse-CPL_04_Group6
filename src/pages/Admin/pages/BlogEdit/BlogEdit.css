@@ -1,3 +1,25 @@
+.admin-dashboard-blogEdit {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f2f5;
+}
+
+.dashboard-container-blogEdit {
+  display: flex;
+  flex: 1;
+  padding-top: 60px; /* Account for navbar height */
+}
+
+.dashboard-main-blogEdit {
+  flex: 1;
+  padding: 30px;
+  margin-left: 30px; /* Width of sidebar */
+  background-color: #ffffff;
+}
+
+
 .blog-add-hungkc,
 .blog-edit-hungkc {
   background-color: #ffffff;

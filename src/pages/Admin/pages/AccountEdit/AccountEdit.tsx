@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import Sidebar from '../../components/Sidebar/Sidebar';
+
 import './AccountEdit.css';
 import { useAccountContext } from '../../../../context/AccountContext';
 
@@ -78,11 +77,9 @@ if (!account) {
   };
 
   return (
-    <div className="admin-dashboard">
-      <Navbar />
-      <div className="dashboard-container">
-        <Sidebar />
-        <main className="dashboard-main">
+    <div className="admin-dashboard-accEdit">
+      <div className="dashboard-container-accEdit">
+        <main className="dashboard-main-accEdit">
           <div className="account-edit-container">
             <h2>Edit Account</h2>
             <form className="account-edit-form">

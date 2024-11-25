@@ -19,7 +19,7 @@ interface AccountType {
 interface AccountContextType {
   accounts: AccountType[];
   roles: RoleType[];
-  addAccount: (account: Omit<AccountType, 'id'>) => Promise<void>;
+  addAccount: (account: AccountType) => Promise<void>;
   editAccount: (id: string, updatedAccount: Partial<AccountType>) => Promise<void>;
   deleteAccount: (id: string) => Promise<void>;
   filterAccounts: (searchTerm: string) => void;
