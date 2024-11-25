@@ -1,5 +1,5 @@
-import './Checkout.css'
-const ProductInCart = (props: { image: string; productName: string; oldPrice: string; newPrice: string }) => {
+import './ProductInCart.css'
+const ProductInCart = () => {
   const array = [1, 2, 3, 4, 5]
 
   return (
@@ -12,13 +12,13 @@ const ProductInCart = (props: { image: string; productName: string; oldPrice: st
           <div key={i} className='product'>
             <div className='left-side'>
               <div className='image'>
-                <img src={props.image} alt='' />
+                <img src='https://i.pinimg.com/736x/12/f5/49/12f5490c7a96b67377850ae3490d9f86.jpg' alt='' />
               </div>
-              <p>{props.productName}</p>
+              <p>Máy tính xách tay HP 14-em0086AU R5 7520U/16GB/512GB/14''FHD/AMD Radeon Graphics/Win11_Bạc_835T9PA</p>
             </div>
             <div className='price'>
-              <p className='new-price'>{props.newPrice} ₫</p>
-              <p className='old-price'>{props.oldPrice} ₫</p>
+              <p className='new-price'>12.465.123₫</p>
+              <p className='old-price'>11.234.231₫</p>
             </div>
           </div>
         ))}

@@ -622,6 +622,30 @@
         }
       ],
       "quantity": 1
+    },
+    {
+      "id": "1",
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 233,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "John Doe",
+          "rating": 5,
+          "comment": "Delicious steak with great flavor!",
+          "date": "2024-11-15"
+        },
+        {
+          "userName": "Jane Smith",
+          "rating": 4,
+          "comment": "Tasty, but a bit too salty for my taste.",
+          "date": "2024-11-14"
+        }
+      ],
+      "quantity": 2
     }
   ],
   "searchHistory": [

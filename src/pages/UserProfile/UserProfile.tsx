@@ -25,9 +25,7 @@ const UserProfile = () => {
   return (
     <div>
       <div className='user-profile'>
-        <div className='navbar'>
-          <Navbar />
-        </div>
+        <Navbar />
         <div className='user-profile-content'>
           <div className='user-profile-left'>
             <div className='user-profile-top'>
@@ -48,7 +46,7 @@ const UserProfile = () => {
         </div>
       </div>
       {showVerify ? <VerifyNum set={setShowVerify} setShowValidNum={setShowValidNum} /> : <></>}
-      {showValidNum ? <ValidationNum setShowValidNum={setShowValidNum}  /> : <></>}
+      {showValidNum ? <ValidationNum setShowValidNum={setShowValidNum} /> : <></>}
     </div>
   )
 }

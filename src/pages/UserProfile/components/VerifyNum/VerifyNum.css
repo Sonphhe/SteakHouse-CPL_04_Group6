@@ -40,11 +40,10 @@
 .verify-number-container .input-number h4 {
   font-size: 14px;
   font-weight: 300;
+  margin-bottom: 10px;
 }
-.verify-number-container .input-number input {
-  margin: 0 50px;
-  height: 30px;
-  font-size: larger;
+.flag-dropdown {
+  margin-left: 25px;
 }
 .verify-number-container .receive-type button {
   width: 70%;
