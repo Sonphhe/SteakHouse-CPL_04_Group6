@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import Navbar from '../../components/ui/Navbar/Navbar'
 import { useCartContext } from '../../context/CartContext'
 import './Cart.css'
@@ -16,12 +15,6 @@ const Cart = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([])
   
   
-  const navigate = useNavigate()
-
-  const totalAmount = selectedItems.reduce((sum, itemId) => {
-    const item = cartItems.find((item) => item.id === itemId)
-    return sum + (item ? item.productPrice * item.quantity : 0)
-  }, 0)
 
   const handleDeleteClick = (id: number) => {
     setItemToDelete(id)
@@ -128,39 +121,6 @@ const Cart = () => {
               <CiTrash onClick={() => handleDeleteClick(item.id)} className='delete-item' />
             </div>
           ))}
-        </div>
-
-        <div className='cart_totals'>
-          <h2 className='order-info'>Order Information</h2>
-          <div className='coupon-code-section'>
-            <input type='text' className='coupon-input' placeholder='Coupon Code' />
-            <button className='apply-coupon-button'>Apply</button>
-          </div>
-
-          <table>
-            <tbody>
-              <tr>
-                <th>Subtotal</th>
-                <td>{totalAmount}₫</td>
-              </tr>
-              <tr>
-                <th>Discount</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Shipping Fee</th>
-                <td>Free</td>
-              </tr>
-              <tr className='order-total'>
-                <th>Total Amount</th>
-                <td>{totalAmount}₫</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <button className='checkout-button' onClick={() => navigate('/checkout')}>
-            Confirm Order
-          </button>
         </div>
       </div>
       <Footer />
