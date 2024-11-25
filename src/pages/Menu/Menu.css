@@ -35,9 +35,9 @@
 }
 
 .sidebar ul li:hover {
-  background-color: #ffefeb; /* MÃ u ná»n nháº¹ khi hover */
-  color: #e5533d; /* MÃ u chá»¯ ná»•i báº­t */
-  padding-left: 10px; /* Hiá»‡u á»©ng di chuyá»ƒn nháº¹ */
+  background-color: #ffefeb;
+  color: #e5533d; 
+  padding-left: 10px; 
   border-radius: 5px;
   cursor: pointer;
 }

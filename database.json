@@ -41,6 +41,13 @@
         "commune": "",
         "detailLocation": ""
       }
+    },
+    {
+      "username": "long123",
+      "password": "123",
+      "roleId": "3",
+      "image": "/assets/images/image-baklava-thumbnail.jpg",
+      "id": "8"
     }
   ],
   "productCategory": [
@@ -90,7 +97,7 @@
       "productName": "USA RIB EYE STEAK",
       "productOldPrice": 120,
       "productPrice": 195,
-      "image": "/assets/images/steak2.jpg",
+      "image": "/assets/images/steak2_test.jpg",
       "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
       "categoryId": 1,
       "reviews": [
@@ -113,7 +120,7 @@
       "productName": "USA TOPBLADE STEAK",
       "productOldPrice": 85,
       "productPrice": 165,
-      "image": "/assets/images/steak3.jpg",
+      "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
       "reviews": []
@@ -123,7 +130,7 @@
       "productName": "VIETNAM BEEFSTEAK",
       "productOldPrice": 95,
       "productPrice": 105,
-      "image": "/assets/images/steak4.jpeg",
+      "image": "/assets/images/steak4_test.webp",
       "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
       "categoryId": 1,
       "reviews": [
@@ -159,6 +166,12 @@
           "rating": 4,
           "comment": "Tender and flavorful lamb, great experience.",
           "date": "2024-11-11"
+        },
+        {
+          "userName": "s",
+          "rating": 4,
+          "comment": "s",
+          "date": "2024-11-25"
         }
       ]
     },
@@ -167,7 +180,7 @@
       "productName": "BEEF WITH PEPPER SAUCE",
       "productOldPrice": 140,
       "productPrice": 95,
-      "image": "/assets/images/steak7.jpg",
+      "image": "/assets/images/steak7_test.jpg",
       "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
       "categoryId": 1,
       "reviews": []
@@ -177,7 +190,7 @@
       "productName": "NORWEGIAN SALMON",
       "productOldPrice": 115,
       "productPrice": 175,
-      "image": "/assets/images/steak8.jpg",
+      "image": "/assets/images/steak8_test.webp",
       "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
       "categoryId": 1,
       "reviews": []
@@ -645,25 +658,29 @@
           "date": "2024-11-14"
         }
       ],
-      "quantity": 2
+      "quantity": 3
     }
   ],
   "searchHistory": [
     {
       "title": "Regular Steak",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "a5d9"
     },
     {
       "title": "MULBERRY SALAD AND ICE CREAM",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "5555"
     },
     {
       "title": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "3857"
     },
     {
       "title": "BEEF WITH PEPPER SAUCE",
-      "searchTimes": 2
+      "searchTimes": 2,
+      "id": "3958"
     }
   ],
   "ownCart": [
