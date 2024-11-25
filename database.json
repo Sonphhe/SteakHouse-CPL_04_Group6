@@ -753,7 +753,7 @@
     },
     {
       "title": "Discount 20% of total payment",
-      "discountValue": 30,
+      "discountValue": 20,
       "backGroundIcon": "",
       "id": "7019"
     }
