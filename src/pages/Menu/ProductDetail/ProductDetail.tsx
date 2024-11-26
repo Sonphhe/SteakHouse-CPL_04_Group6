@@ -7,7 +7,7 @@ import Footer from '../../../components/ui/Footer/Footer';
 import Breadcrumb from '../../../pages/Breadcrumb/Breadcrumb';
 import 'font-awesome/css/font-awesome.min.css';
 import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton';
-// import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -32,6 +32,7 @@ const ProductDetail: React.FC = () => {
   const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
 
   const totalPages = Math.ceil(comments.length / commentsPerPage);
+  const { currentAccount } = useSteakHouseContext()
   // const handleFilter = useSteakHouseContext();
   // Fetch dữ liệu sản phẩm
   useEffect(() => {
@@ -91,45 +92,51 @@ const ProductDetail: React.FC = () => {
 
   // Thêm bình luận
   const handleAddComment = async () => {
-    if (!commentText || !userName) {
-      alert('Please provide your name and comment.');
-      return;
-    }
-
-    const newComment = {
-      userName,
-      rating,
-      comment: commentText,
-      date: new Date().toISOString().split('T')[0], // Định dạng ngày
-    };
-
-    try {
-      const response = await fetch(`http://localhost:9999/product/${productData?.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          reviews: [...(productData?.reviews || []), newComment], // Gộp bình luận mới
-        }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error updating product reviews:', errorText);
+    if (currentAccount?.id === '') {
+      alert('You need to login to Comment and Rate.');
+    } else {
+      if (!commentText || !userName) {
+        alert('Please provide your name and comment.');
         return;
       }
-
-      console.log('Comment added successfully');
-      const updatedProduct = { ...productData, reviews: [...(productData?.reviews || []), newComment] };
-      setProductData(updatedProduct);
-      setComments(updatedProduct.reviews);
-      setCommentText('');
-      setUserName('');
-      setRating(0);
-    } catch (error) {
-      console.error('Error submitting comment:', error);
+  
+      const newComment = {
+        userName,
+        rating,
+        comment: commentText,
+        date: new Date().toISOString().split('T')[0], // Định dạng ngày
+      };
+  
+      try {
+        const response = await fetch(`http://localhost:9999/product/${productData?.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            reviews: [...(productData?.reviews || []), newComment], // Gộp bình luận mới
+          }),
+        });
+  
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Error updating product reviews:', errorText);
+          return;
+        }
+  
+        console.log('Comment added successfully');
+        const updatedProduct = { ...productData, reviews: [...(productData?.reviews || []), newComment] };
+        setProductData(updatedProduct);
+        setComments(updatedProduct.reviews);
+        setCommentText('');
+        setUserName('');
+        setRating(0);
+      } catch (error) {
+        console.error('Error submitting comment:', error);
+      }
     }
+
+    
   };
 
   const generateStars = (rating: number) => {
@@ -165,23 +172,14 @@ const ProductDetail: React.FC = () => {
     <div>
       <Navbar />
       <Breadcrumb
-        paths={[{ name: 'Home', path: '/home' }, { name: 'Menu', path: '/menu' }, { name: productData.productName, path: '#' }]}
-      />
+        paths={[
+          { name: 'Home', path: '/home' },
+          { name: 'Menu', path: '/menu' },
+          { name: productData.productName, path: '#' }
+        ]}
+  />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          {/* <div className="sidebar">
-            <Breadcrumb paths={breadcrumbPaths} />
-            <h2>Browse</h2>
-            <ul>
-              <li onClick={handleAllClick}>All</li>
-              {categories.map((category) => (
-                <li key={category.id} onClick={() => handleCategoryClick(category)}>
-                  {category.categoryName}
-                </li>
-              ))}
-            </ul>
-          </div> */}
-        </div>
+      
         <div>
           <div className="product-detail">
 
@@ -192,7 +190,7 @@ const ProductDetail: React.FC = () => {
 
             <div className="product-info">
               <h2>{productData.productName}</h2>
-              <p className="product-price">Price: ${productData.productPrice}</p>
+              <p className="product-price">Price: {productData.productPrice}$</p>
               <div className="product-sale">
                 <h4>Hot Sale: </h4>
                 <li>
@@ -205,7 +203,7 @@ const ProductDetail: React.FC = () => {
                 </li>
                 <li>
                   <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
-                  $50 voucher discount for bill from $350
+                  50$ voucher discount for bill from $350
                 </li>
               </div>
 
