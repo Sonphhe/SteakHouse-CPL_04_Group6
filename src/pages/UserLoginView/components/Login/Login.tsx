@@ -132,7 +132,7 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <Link className='without-login-btn' to={'/'}>
+        <Link className='without-login-btn' to={'/home'}>
           Countinue Shopping
         </Link>
       </div>

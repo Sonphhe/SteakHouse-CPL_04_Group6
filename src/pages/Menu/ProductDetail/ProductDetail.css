@@ -15,6 +15,7 @@
   flex-direction: row;
   align-items: center;
 }
+
 .product-image {
   border: 2px solid #ddd; /* Thêm viền cho hình ảnh */
   border-radius: 8px; /* Bo tròn góc viền */
