@@ -604,8 +604,63 @@
       "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
-      "reviews": [],
-      "quantity": 3
+      "reviews": [
+        {
+          "userName": "Alice Johnson",
+          "rating": 5,
+          "comment": "The best rib-eye I've ever had!",
+          "date": "2024-11-13"
+        },
+        {
+          "userName": "Pham Hung Son",
+          "rating": 4,
+          "comment": "asd",
+          "date": "2024-11-16"
+        }
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "6",
+      "productName": "LAMB STEAK",
+      "productOldPrice": 130,
+      "productPrice": 125,
+      "image": "/assets/images/steak6.jpg",
+      "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Tom Harris",
+          "rating": 4,
+          "comment": "Tender and flavorful lamb, great experience.",
+          "date": "2024-11-11"
+        }
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 233,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "John Doe",
+          "rating": 5,
+          "comment": "Delicious steak with great flavor!",
+          "date": "2024-11-15"
+        },
+        {
+          "userName": "Jane Smith",
+          "rating": 4,
+          "comment": "Tasty, but a bit too salty for my taste.",
+          "date": "2024-11-14"
+        }
+      ],
+      "quantity": 1
     },
     {
       "id": "4",
@@ -630,22 +685,22 @@
     {
       "title": "Regular Steak",
       "searchTimes": 2,
-      "id": "a5d9"
+      "id": "eb36"
     },
     {
       "title": "MULBERRY SALAD AND ICE CREAM",
       "searchTimes": 2,
-      "id": "5555"
+      "id": "334c"
     },
     {
       "title": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
       "searchTimes": 2,
-      "id": "3857"
+      "id": "6be2"
     },
     {
       "title": "BEEF WITH PEPPER SAUCE",
       "searchTimes": 2,
-      "id": "3958"
+      "id": "5f20"
     }
   ],
   "ownCart": [
@@ -716,17 +771,20 @@
     {
       "title": "Welcome new user ticket",
       "discountValue": 30,
-      "backGroundIcon": ""
+      "backGroundIcon": "",
+      "id": "06ef"
     },
     {
       "title": "Discount 15% of total payment",
       "discountValue": 15,
-      "backGroundIcon": ""
+      "backGroundIcon": "",
+      "id": "74db"
     },
     {
       "title": "Discount 20% of total payment",
-      "discountValue": 30,
-      "backGroundIcon": ""
+      "discountValue": 20,
+      "backGroundIcon": "",
+      "id": "7019"
     }
   ]
 }

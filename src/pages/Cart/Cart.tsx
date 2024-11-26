@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import Navbar from '../../components/ui/Navbar/Navbar'
 import { useCartContext } from '../../context/CartContext'
 import './Cart.css'
@@ -15,14 +14,6 @@ const Cart = () => {
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false) // Modal cho xoá tất cả
   const [itemToDelete, setItemToDelete] = useState<number | null>(null)
   const [selectedItems, setSelectedItems] = useState<number[]>([])
-  
-  
-  const navigate = useNavigate()
-
-  const totalAmount = selectedItems.reduce((sum, itemId) => {
-    const item = cartItems.find((item) => item.id === itemId)
-    return sum + (item ? item.productPrice * item.quantity : 0)
-  }, 0)
 
   const handleDeleteClick = (id: number) => {
     setItemToDelete(id)
@@ -130,8 +121,7 @@ const Cart = () => {
             </div>
           ))}
         </div>
-
-        <ConfirmOrder redirect='checkout'/>
+        <ConfirmOrder selectedItems={selectedItems} cartItems={cartItems} />
       </div>
       <Footer />
       {isDeleteModalOpen && (

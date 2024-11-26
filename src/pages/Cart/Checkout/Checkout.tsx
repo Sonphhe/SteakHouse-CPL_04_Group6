@@ -27,7 +27,7 @@ const Checkout = () => {
             <ReceiveLocation />
           </div>
           <div className='right-handside'>
-            <ConfirmOrder redirect=''/>
+            <ConfirmOrder/>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 .confirm-order-container {
-  width: 100%;
-  height: fit-content;
+  margin-top: 20px;
+  width: 450px;
+  height: 320px;
   background-color: #fff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -20,7 +21,7 @@
   cursor: pointer;
 }
 .confirm-order-container .discount-ticket p {
-  font-size: 13px;
+  font-size: 14px;
 }
 .confirm-order-container .cf-content {
   padding-bottom: 10px;
@@ -38,14 +39,14 @@
   align-items: center;
 }
 .confirm-order-container .cf-content li p.title {
-  font-size: 13px;
+  font-size: 16px;
   color: #4a4f63;
 }
 .confirm-order-container .cf-content li p.price {
-  font-size: 13px;
+  font-size: 16px;
 }
 .confirm-order-container .cf-content li p.price-discount {
-  font-size: 13px;
+  font-size: 16px;
   color: #f79009;
 }
 .cf-offer {
@@ -59,18 +60,18 @@
   align-items: center;
 }
 .cf-offer div p.title {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
 }
 .cf-offer div p.money {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   color: #7d161c;
 }
 .cf-offer button {
   border: none;
   padding: 10px;
-  font-size: 14px;
+  font-size: 20px;
   color: #fff;
   background: #92373c;
   border-radius: 10px;
