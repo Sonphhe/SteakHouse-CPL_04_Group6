@@ -57,6 +57,7 @@ function App() {
               <Route path='/register' element={<Register />} />
               <Route path='/forgotpass' element={<ForgotPassword />} />
               <Route path='/menu' element={<Menu />} />
+              <Route path="/menu/:categoryId" element={<Menu />} />
               <Route path='/productdetail/:productName' element={<ProductDetail />} />
               <Route path='/about' element={<AboutUs />} />
               <Route path='/contact' element={<ContactUs />} />

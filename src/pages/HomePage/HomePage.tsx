@@ -7,16 +7,19 @@ import Colaborator from "./homeComponents/Colaborator/Colaborator"
 import Footer from "../../components/ui/Footer/Footer"
 import Chat from '../../components/Chat/Chat'
 import GoToTopButton from "../../components/GoToTopButton/GoToTopButton"
+import CardGrid from "../../components/ui/CardGrid/CardGrid"
 const Home = () => {
     return (
       <div className='homepage-container'>
         <Navbar/>
+        
         <Hero
           cName = 'hero'
           heroImage = {hero_homeImg}
           title = 'We Here For Your Meal'
           text = 'Choose Your Favourite Meal'
         />
+        <CardGrid/>
         <FavouriteFood/>
         <Colaborator/>
         <Chat />
