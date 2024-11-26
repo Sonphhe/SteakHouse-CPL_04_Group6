@@ -25,7 +25,6 @@ const ProductDetail: React.FC = () => {
   // Phân trang bình luận
   const [currentPage, setCurrentPage] = useState(1);
   const commentsPerPage = 2; // Số bình luận hiển thị trên mỗi trang
-
   // Tính toán các bình luận hiển thị trên trang hiện tại
   const indexOfLastComment = currentPage * commentsPerPage;
   const indexOfFirstComment = indexOfLastComment - commentsPerPage;
