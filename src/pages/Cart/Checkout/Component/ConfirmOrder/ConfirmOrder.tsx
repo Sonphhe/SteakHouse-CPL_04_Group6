@@ -1,7 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import './ConfirmOrder.css'
 import { IoIosArrowForward } from 'react-icons/io'
 
-const ConfirmOrder = () => {
+const ConfirmOrder = (props: {redirect: string}) => {
+
+  const navigate = useNavigate()
+
   return (
     <div className='confirm-order'>
       <div className='confirm-order-container'>
@@ -30,7 +34,7 @@ const ConfirmOrder = () => {
             <p className='title'>Money</p>
             <p className='money'>164.000đ</p>
           </div>
-          <button>Confirm Order</button>
+          <button onClick={() => navigate(`/${props.redirect}`)}>Confirm Order</button>
         </div>
       </div>
       <div className='decor-tailer'></div>

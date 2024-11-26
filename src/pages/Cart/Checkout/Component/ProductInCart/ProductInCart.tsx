@@ -1,28 +1,71 @@
+import { useCartContext } from '../../../../../context/CartContext'
+import { useSteakHouseContext } from '../../../../../hooks/useSteakHouseContext'
 import './ProductInCart.css'
+
 const ProductInCart = () => {
-  const array = [1]
+  const { currentOwnCart, currentAccount } = useSteakHouseContext()
+  const { cartItems } = useCartContext()
+
+  console.log(cartItems)
+  console.log(currentAccount)
 
   return (
     <div className='productInCart'>
-      <div className='productInCart-container'>
-        <div className='title'>
-          <p>Products in a cart (1)</p>
-        </div>
-        {array.map((i) => (
-          <div key={i} className='product'>
-            <div className='left-side'>
-              <div className='image'>
-                <img src='https://i.pinimg.com/736x/12/f5/49/12f5490c7a96b67377850ae3490d9f86.jpg' alt='' />
-              </div>
-              <p>T-bone steak is a unique cut of beef with two steaks in one. </p>
-            </div>
-            <div className='price'>
-              <p className='new-price'>12.465.123₫</p>
-              <p className='old-price'>11.234.231₫</p>
-            </div>
+      {currentAccount?.id === '' ? (
+        <div className='productInCart-container'>
+          <div className='title'>
+            {/* Dynamic count of items */}
+            <p>Products in a cart ({cartItems.length || 0})</p>
           </div>
-        ))}
-      </div>
+          {/* Check if cart has items */}
+          {cartItems.length > 0 ? (
+            cartItems.map((item) => (
+              <div key={item.id} className='product'>
+                <div className='left-side'>
+                  <div className='image'>
+                    <img src={item.image} alt={item.productName} />
+                  </div>
+                  <p>{item.productName}</p>
+                </div>
+                <div className='price'>
+                  <p className='new-price'>{item.productPrice}₫</p>
+                  <p className='old-price'>{item.productPrice}₫</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            // Fallback if no items in the cart
+            <p>No items in the cart</p>
+          )}
+        </div>
+      ) : (
+        <div className='productInCart-container'>
+          <div className='title'>
+            {/* Dynamic count of items */}
+            <p>Products in a cart ({currentOwnCart.cartItem?.length || 0})</p>
+          </div>
+          {/* Check if cart has items */}
+          {currentOwnCart.cartItem?.length > 0 ? (
+            currentOwnCart.cartItem.map((item) => (
+              <div key={item.id} className='product'>
+                <div className='left-side'>
+                  <div className='image'>
+                    <img src={item.image} alt={item.productName} />
+                  </div>
+                  <p>{item.productName}</p>
+                </div>
+                <div className='price'>
+                  <p className='new-price'>{item.productPrice}₫</p>
+                  <p className='old-price'>{item.productOldPrice}₫</p>
+                </div>
+              </div>
+            ))
+          ) : (
+            // Fallback if no items in the cart
+            <p>No items in the cart</p>
+          )}
+        </div>
+      )}
     </div>
   )
 }

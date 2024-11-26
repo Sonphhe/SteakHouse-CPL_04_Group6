@@ -8,6 +8,7 @@ import Footer from '../../components/ui/Footer/Footer'
 import BannerCarousel from '../../components/ui/BannerCoupon/BannerCarousel'
 import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
 import Chat from '../../components/Chat/Chat'
+import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder'
 const Cart = () => {
   const { cartItems, removeFromCart, updateQuantity } = useCartContext()
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
@@ -130,38 +131,7 @@ const Cart = () => {
           ))}
         </div>
 
-        <div className='cart_totals'>
-          <h2 className='order-info'>Order Information</h2>
-          <div className='coupon-code-section'>
-            <input type='text' className='coupon-input' placeholder='Coupon Code' />
-            <button className='apply-coupon-button'>Apply</button>
-          </div>
-
-          <table>
-            <tbody>
-              <tr>
-                <th>Subtotal</th>
-                <td>{totalAmount}₫</td>
-              </tr>
-              <tr>
-                <th>Discount</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Shipping Fee</th>
-                <td>Free</td>
-              </tr>
-              <tr className='order-total'>
-                <th>Total Amount</th>
-                <td>{totalAmount}₫</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <button className='checkout-button' onClick={() => navigate('/checkout')}>
-            Confirm Order
-          </button>
-        </div>
+        <ConfirmOrder redirect='checkout'/>
       </div>
       <Footer />
       {isDeleteModalOpen && (

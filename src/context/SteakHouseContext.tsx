@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { createContext, useContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from 'react'
 import { API_ROOT } from '../utils/constants'
+import { uniq } from 'lodash'
 
 // Types for the various entities managed by the context
 interface SteakHouseType {
@@ -15,6 +16,8 @@ interface SteakHouseType {
   totalPages: number
   currentAccount: CurrentAccount | undefined
   phoneNumberValidation: string
+  ownCart: OwnCart,
+  currentOwnCart: OwnCart,
   setPhoneNumberValidation: Dispatch<string>
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
@@ -88,6 +91,20 @@ interface CurrentAccount {
   }
 }
 
+interface OwnCart {
+  id: string
+  userId: string
+  cartItem: {
+    id: string
+    productName: string
+    productOldPrice: string
+    productPrice: string
+    image: string
+    description: string
+    categoryId: string
+  }[] // This defines cartItem as an array, not a tuple
+}
+
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -115,6 +132,29 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   })
 
   const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
+
+  const [ownCart, setOwnCart] = useState<OwnCart>({
+    id: '',
+    userId: '',
+    cartItem: [] // Now this matches the updated type
+  })
+
+  const currentOwnCart = ownCart
+  console.log(currentOwnCart);
+  
+  useEffect(() => {
+    // Define an async function inside useEffect
+    const fetchOwnCart = async () => {
+      try {
+        const ownCartRes = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount.id}`)
+        setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] }) // Provide a fallback structure
+      } catch (error) {
+        console.error('Error fetching ownCart:', error)
+      }
+    }
+
+    fetchOwnCart() // Call the async function
+  }, [currentAccount])
 
   useEffect(() => {
     if (currentAccount) {
@@ -166,6 +206,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCategories(categoryRes.data)
         setBlogCategories(blogCategoryRes.data)
         setBlogs(blogRes.data)
+        // setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] })
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -227,6 +268,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         totalPages,
         currentAccount,
         phoneNumberValidation,
+        ownCart,
+        currentOwnCart,
         setPhoneNumberValidation,
         login,
         logout,

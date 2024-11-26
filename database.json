@@ -75,9 +75,7 @@
       "productOldPrice": 100,
       "productPrice": 233,
       "image": [
-        {
-
-        }
+        {}
       ],
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
       "categoryId": 1,
@@ -599,70 +597,33 @@
   "menuItems": [],
   "cartItems": [
     {
-      "id": "2",
-      "productName": "USA RIB EYE STEAK",
-      "productOldPrice": 120,
-      "productPrice": 195,
-      "image": "/assets/images/steak2.jpg",
-      "description": "USA RIB EYE STEAK",
+      "id": "3",
+      "productName": "USA TOPBLADE STEAK",
+      "productOldPrice": 85,
+      "productPrice": 165,
+      "image": "/assets/images/steak3_test.webp",
+      "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
-      "reviews": [
-        {
-          "userName": "Alice Johnson",
-          "rating": 5,
-          "comment": "The best rib-eye I've ever had!",
-          "date": "2024-11-13"
-        },
-        {
-          "userName": "Pham Hung Son",
-          "rating": 4,
-          "comment": "asd",
-          "date": "2024-11-16"
-        }
-      ],
-      "quantity": 2
+      "reviews": [],
+      "quantity": 3
     },
     {
-      "id": "6",
-      "productName": "LAMB STEAK",
-      "productOldPrice": 130,
-      "productPrice": 125,
-      "image": "/assets/images/steak6.jpg",
-      "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
+      "id": "4",
+      "productName": "VIETNAM BEEFSTEAK",
+      "productOldPrice": 95,
+      "productPrice": 105,
+      "image": "/assets/images/steak4_test.webp",
+      "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
       "categoryId": 1,
       "reviews": [
         {
-          "userName": "Tom Harris",
-          "rating": 4,
-          "comment": "Tender and flavorful lamb, great experience.",
-          "date": "2024-11-11"
+          "userName": "Mark Lee",
+          "rating": 3,
+          "comment": "It was okay, but I prefer other options.",
+          "date": "2024-11-12"
         }
       ],
       "quantity": 1
-    },
-    {
-      "id": "1",
-      "productName": "HOKUBEE STEAK",
-      "productOldPrice": 100,
-      "productPrice": 233,
-      "image": "/assets/images/steak1.jpg",
-      "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-      "categoryId": 1,
-      "reviews": [
-        {
-          "userName": "John Doe",
-          "rating": 5,
-          "comment": "Delicious steak with great flavor!",
-          "date": "2024-11-15"
-        },
-        {
-          "userName": "Jane Smith",
-          "rating": 4,
-          "comment": "Tasty, but a bit too salty for my taste.",
-          "date": "2024-11-14"
-        }
-      ],
-      "quantity": 3
     }
   ],
   "searchHistory": [
@@ -689,7 +650,7 @@
   ],
   "ownCart": [
     {
-      "id": "1",
+      "id": "2",
       "userId": "7gV5Fax",
       "cartItem": [
         {
@@ -733,24 +694,39 @@
           "reviews": []
         }
       ]
+    },
+    {
+      "id": "1",
+      "userId": "8",
+      "cartItem": [
+        {
+          "id": "18",
+          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+          "productOldPrice": 100,
+          "productPrice": 165,
+          "image": "/assets/images/SPAGHETTI1.jpeg",
+          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
+          "categoryId": 3,
+          "reviews": []
+        }
+      ]
     }
   ],
   "discountTicket": [
     {
-      "title":"Welcome new user ticket",
+      "title": "Welcome new user ticket",
       "discountValue": 30,
       "backGroundIcon": ""
     },
     {
-      "title":"Discount 15% of total payment",
+      "title": "Discount 15% of total payment",
       "discountValue": 15,
       "backGroundIcon": ""
     },
     {
-      "title":"Discount 20% of total payment",
+      "title": "Discount 20% of total payment",
       "discountValue": 30,
       "backGroundIcon": ""
     }
   ]
-
 }
