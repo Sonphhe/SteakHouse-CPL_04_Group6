@@ -74,9 +74,7 @@
       "productName": "HOKUBEE STEAK",
       "productOldPrice": 100,
       "productPrice": 233,
-      "image": [
-        {}
-      ],
+      "image": "/assets/images/steak1.jpg",
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
       "categoryId": 1,
       "reviews": [
@@ -597,30 +595,6 @@
   "menuItems": [],
   "cartItems": [
     {
-      "id": "2",
-      "productName": "USA RIB EYE STEAK",
-      "productOldPrice": 120,
-      "productPrice": 195,
-      "image": "/assets/images/steak2.jpg",
-      "description": "USA RIB EYE STEAK",
-      "categoryId": 1,
-      "reviews": [
-        {
-          "userName": "Alice Johnson",
-          "rating": 5,
-          "comment": "The best rib-eye I've ever had!",
-          "date": "2024-11-13"
-        },
-        {
-          "userName": "Pham Hung Son",
-          "rating": 4,
-          "comment": "asd",
-          "date": "2024-11-16"
-        }
-      ],
-      "quantity": 1
-    },
-    {
       "id": "6",
       "productName": "LAMB STEAK",
       "productOldPrice": 130,
@@ -660,7 +634,7 @@
           "date": "2024-11-14"
         }
       ],
-      "quantity": 1
+      "quantity": 2
     },
     {
       "id": "4",

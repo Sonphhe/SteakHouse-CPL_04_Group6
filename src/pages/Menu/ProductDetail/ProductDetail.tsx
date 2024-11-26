@@ -20,7 +20,7 @@ const ProductDetail: React.FC = () => {
   const [comments, setComments] = useState<any[]>([]);
   const [rating, setRating] = useState<number>(0);
   const [commentText, setCommentText] = useState<string>('');
-  const [userName, setUserName] = useState<string>('');
+  const [userName, setUserName] = useState<string | null>(null); // Khởi tạo userName với giá trị null
 
   // Phân trang bình luận
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,6 +64,12 @@ const ProductDetail: React.FC = () => {
     }
   }, [id, location.state]);
 
+  useEffect(() => {
+    if (currentAccount) {
+      setUserName(currentAccount.fullName); // Gán tên người dùng từ currentAccount
+    }
+  }, [currentAccount]); // Chạy khi currentAccount thay đổi
+  
   const calculateAverageRating = (reviews: any[]) => {
     return reviews && reviews.length > 0
       ? reviews.reduce((acc: number, review: any) => acc + review.rating, 0) / reviews.length
@@ -94,7 +100,7 @@ const ProductDetail: React.FC = () => {
     if (currentAccount?.id === '') {
       alert('You need to login to Comment and Rate.');
     } else {
-      if (!commentText || !userName) {
+      if (!commentText) {
         alert('Please provide your name and comment.');
         return;
       }
@@ -281,15 +287,17 @@ const ProductDetail: React.FC = () => {
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
               />
-              <div className="name-and-button">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-                <button onClick={handleAddComment}>Submit Review</button>
-              </div>
+             <div className="name-and-button">
+  <input
+    type="text"
+    placeholder="Your name"
+    value={userName || currentAccount?.fullName || ""} // Hiển thị userName hoặc fullName từ currentAccount
+    onChange={(e) => setUserName(e.target.value)} // Cập nhật userName khi người dùng nhập
+  />
+  <button onClick={handleAddComment}>Submit Review</button>
+</div>
+
+
             </div>
 
           </div>
