@@ -7,6 +7,7 @@ import Navbar from '../../../components/ui/Navbar/Navbar'
 import ReceiveLocation from './Component/ReceiveLocation/ReceiveLocation'
 import Footer from '../../../components/ui/Footer/Footer'
 import ConfirmOrder from './Component/ConfirmOrder/ConfirmOrder'
+import PaymentMethod from './Component/PaymentMethod/PaymentMethod'
 
 const Checkout = () => {
   const navigate = useNavigate()
@@ -26,6 +27,7 @@ const Checkout = () => {
               <ProductInCart />
               <Orderer />
               <ReceiveLocation />
+              <PaymentMethod />
             </div>
             <div className='right-handside'>
               <ConfirmOrder cartItems={[]} selectedItems={[]} />

@@ -1,11 +1,12 @@
 .confirm-order-container {
   margin-top: 20px;
-  width: 450px;
-  height: 320px;
+  width: 560px;
+  height: 350px;
   background-color: #fff;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   padding: 10px;
+  margin-top: 55.5px;
   display: flex;
   flex-direction: column;
   gap: 10px;

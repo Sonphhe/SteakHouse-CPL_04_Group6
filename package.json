@@ -39,6 +39,7 @@
     "jwt-decode": "^4.0.0",
     "lodash": "^4.17.21",
     "lucide-react": "^0.460.0",
+    "qrcode.react": "^4.1.0",
     "react": "^18.3.1",
     "react-apexcharts": "^1.6.0",
     "react-chartjs-2": "^5.2.0",
@@ -49,6 +50,7 @@
     "react-phone-input-2": "^2.15.1",
     "react-router-dom": "^6.27.0",
     "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.14.5",
     "swiper": "^9.0.3"
   },
   "devDependencies": {
