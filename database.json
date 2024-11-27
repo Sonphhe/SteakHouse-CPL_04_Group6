@@ -448,88 +448,99 @@
       "name": "Meals"
     }
   ],
-  "blog": [
-    {
-      "id": "1",
-      "title": "Understanding Quantum Mechanics",
-      "description": "A beginner-friendly guide to quantum mechanics.",
-      "image": "/assets/images/steak3.jpg",
-      "blogCategoryId": "3",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "2",
-      "title": "The Basics of Machine Learning test hung",
-      "description": "An introductory article on machine learning concepts and applications.",
-      "image": "/assets/images/beef-wellington-brocolini.webp",
-      "blogCategoryId": "3",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "3",
-      "title": "Exploring the Human Brain",
-      "description": "Insights into neuroscience and how the brain functions.",
-      "image": "/assets/images/regular-steak1.jpg",
-      "blogCategoryId": "4",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "4",
-      "title": "History of Ancient Civilizations",
-      "description": "A journey through ancient civilizations and their impact on modern society.",
-      "image": "/assets/images/steak4.jpeg",
-      "blogCategoryId": "1",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "5",
-      "title": "Introduction to Artificial Intelligence",
-      "description": "A look at the fundamentals of AI and its impact on the future.",
-      "image": "/assets/images/SPAGHETTI6.jpg",
-      "blogCategoryId": "3",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "6",
-      "title": "Climate Change and Its Effects",
-      "description": "An analysis of climate change and its global impact.",
-      "image": "/assets/images/SALAD2.jpg",
-      "blogCategoryId": "5",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "7",
-      "title": "Guide to Meditation and Mindfulness",
-      "description": "Exploring techniques for mindfulness and achieving mental clarity.",
-      "image": "/assets/images/restaurant1.webp",
-      "blogCategoryId": "6",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "8",
-      "title": "The Future of Renewable Energy",
-      "description": "Examining renewable energy sources and their role in sustainability.",
-      "image": "/assets/images/restaurant1.webp",
-      "blogCategoryId": "5",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "9",
-      "title": "How to Improve Your Writing Skills",
-      "description": "Tips and techniques to become a more effective writer.",
-      "image": "/assets/images/restaurant1.webp",
-      "blogCategoryId": "7",
-      "accountId": "7gV5Fax"
-    },
-    {
-      "id": "10",
-      "title": "The Fundamentals of Blockchain Technology",
-      "description": "An introductory guide to blockchain and its applications.",
-      "image": "/assets/images/SPAGHETTI6.jpg",
-      "blogCategoryId": "3",
-      "accountId": "7gV5Fax"
-    }
-  ],
+"blog": [
+  {
+    "id": "1",
+    "title": "Understanding Quantum Mechanics",
+    "description": "A beginner-friendly guide to quantum mechanics.",
+    "image": "/assets/images/steak3.jpg",
+    "blogCategoryId": "3",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "2",
+    "title": "The Basics of Machine Learning test hung",
+    "description": "An introductory article on machine learning concepts and applications.",
+    "image": "/assets/images/beef-wellington-brocolini.webp",
+    "blogCategoryId": "3",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "3",
+    "title": "Exploring the Human Brain",
+    "description": "Insights into neuroscience and how the brain functions.",
+    "image": "/assets/images/regular-steak1.jpg",
+    "blogCategoryId": "4",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "4",
+    "title": "History of Ancient Civilizations",
+    "description": "A journey through ancient civilizations and their impact on modern society.",
+    "image": "/assets/images/steak4.jpeg",
+    "blogCategoryId": "1",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "5",
+    "title": "Introduction to Artificial Intelligence",
+    "description": "A look at the fundamentals of AI and its impact on the future.",
+    "image": "/assets/images/SPAGHETTI6.jpg",
+    "blogCategoryId": "3",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "6",
+    "title": "Climate Change and Its Effects",
+    "description": "An analysis of climate change and its global impact.",
+    "image": "/assets/images/SALAD2.jpg",
+    "blogCategoryId": "5",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "7",
+    "title": "Guide to Meditation and Mindfulness",
+    "description": "Exploring techniques for mindfulness and achieving mental clarity.",
+    "image": "/assets/images/restaurant1.webp",
+    "blogCategoryId": "6",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "8",
+    "title": "The Future of Renewable Energy",
+    "description": "Examining renewable energy sources and their role in sustainability.",
+    "image": "/assets/images/restaurant1.webp",
+    "blogCategoryId": "5",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "9",
+    "title": "How to Improve Your Writing Skills",
+    "description": "Tips and techniques to become a more effective writer.",
+    "image": "/assets/images/restaurant1.webp",
+    "blogCategoryId": "7",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  },
+  {
+    "id": "10",
+    "title": "The Fundamentals of Blockchain Technology",
+    "description": "An introductory guide to blockchain and its applications.",
+    "image": "/assets/images/SPAGHETTI6.jpg",
+    "blogCategoryId": "3",
+    "accountId": "7gV5Fax",
+    "publishDate": "2024-11-27"
+  }
+],
+
   "tables": [
     {
       "id": "1",

@@ -3,7 +3,7 @@ import profile_image from '../../../assets/images/profile-image.jpg'
 import PostAuthor from './PostAuthor';
 import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 
-const BlogCard = (props: { thumbnail: string; category: number; title: string; des: string; authorId: string }) => {
+const BlogCard = (props: { thumbnail: string; category: number; title: string; des: string; authorId: string; publishDate: string }) => {
 
   const { getCategoryName } = useSteakHouseContext();
   return (
@@ -18,7 +18,7 @@ const BlogCard = (props: { thumbnail: string; category: number; title: string; d
         <p>{props.des}</p>
       </div>
       <div className='post-footer'>
-        <PostAuthor profile_image={profile_image} authorId={props.authorId} />
+        <PostAuthor authorId={props.authorId} publishDate={props.publishDate}/>
         <Link to={`/blog/categories/${props.category}`}>{getCategoryName(props.category)}</Link>
       </div>
     </div>

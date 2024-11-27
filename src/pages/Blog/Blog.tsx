@@ -9,7 +9,7 @@ import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
 import Chat from '../../components/Chat/Chat'
 const Blog = () => {
   const { blogs } = useSteakHouseContext()
-
+  
   return (
     <div>
       <Navbar />
@@ -19,6 +19,7 @@ const Blog = () => {
         </div>
         <div className='blog-container'>
           {blogs.map((item) => (
+                        
             <Link key={item.id} to={`/blog/postdetail/${item.id}`}>
               <BlogCard
                 thumbnail={item.image}
@@ -26,8 +27,10 @@ const Blog = () => {
                 title={item.title}
                 des={item.description}
                 authorId={item.accountId}
+                publishDate={item.publishDate}
               />
             </Link>
+           
           ))}
         </div>
       </div>

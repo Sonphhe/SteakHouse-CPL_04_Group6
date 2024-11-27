@@ -29,6 +29,7 @@ interface SteakHouseType {
   logout: () => void
   setCurrentAccount: Dispatch<CurrentAccount>
   getAuthorName: (authorId: string) => string;
+  getAuthorImg: (authorId: string) => string;
   getCategoryName: (categoryId: number) => string;
 }
 
@@ -75,6 +76,7 @@ interface BlogType {
   image: string
   blogCategoryId: number
   accountId: string
+  publishDate: Date
 }
 
 interface CurrentAccount {
@@ -261,19 +263,16 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         return author ? author.fullName : 'Unknown Author';
   };
   
-  const getCategoryName = (categoryId: number) => {
-    console.log('Category ID:', categoryId, 'Type:', typeof categoryId);
-console.log('Blog Categories:', blogCategories);
-  
-    if (!blogCategories || blogCategories.length === 0) {
-      console.warn('Categories list is empty or undefined.');
-      return 'Unknown Category';
-    }
-  
-    const category = blogCategories.find((cat) => cat.id === categoryId.toString());
-    console.log('Found Category:', category);
-    return category ? category.name : 'Unknown Category';
+  const getCategoryName = (categoryId: number) => {   
+      const category = blogCategories.find((cat) => cat.id === categoryId.toString());
+      return category ? category.name : 'Unknown Category';
   };
+
+  const getAuthorImg = (authorId: string) => { 
+    const author = accounts.find((account) => account.id === authorId);
+      return author ? author.image : 'Unknown Author';
+};
+
 
   return (
     <SteakHouseContext.Provider
@@ -303,7 +302,8 @@ console.log('Blog Categories:', blogCategories);
         getPaginatedItems,
         setCurrentAccount,
         getAuthorName,
-        getCategoryName
+        getCategoryName,
+        getAuthorImg
       }}
     >
       {children}
