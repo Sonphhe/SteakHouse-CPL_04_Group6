@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom'
 import profile_image from '../../../assets/images/profile-image.jpg'
 import PostAuthor from './PostAuthor';
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 
-const BlogCard = (props: { thumbnail: string; category: number; title: string; des: string; authorId: number }) => {
+const BlogCard = (props: { thumbnail: string; category: number; title: string; des: string; authorId: string }) => {
+
+  const { getCategoryName } = useSteakHouseContext();
   return (
     <div className='blog-card'>
       <div className='post-thumbnail'>
@@ -16,7 +19,7 @@ const BlogCard = (props: { thumbnail: string; category: number; title: string; d
       </div>
       <div className='post-footer'>
         <PostAuthor profile_image={profile_image} authorId={props.authorId} />
-        <Link to={`/blog/categories/${props.category}`}>{props.category}</Link>
+        <Link to={`/blog/categories/${props.category}`}>{getCategoryName(props.category)}</Link>
       </div>
     </div>
   )

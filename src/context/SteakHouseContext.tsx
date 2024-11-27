@@ -28,6 +28,8 @@ interface SteakHouseType {
   login: (currentAccount: CurrentAccount) => void
   logout: () => void
   setCurrentAccount: Dispatch<CurrentAccount>
+  getAuthorName: (authorId: string) => string;
+  getCategoryName: (categoryId: number) => string;
 }
 
 interface AccountType {
@@ -62,7 +64,7 @@ interface ProductCategoryType {
 }
 
 interface BlogCategoryType {
-  id: number
+  id: string
   name: string
 }
 
@@ -72,7 +74,7 @@ interface BlogType {
   description: string
   image: string
   blogCategoryId: number
-  accountId: number
+  accountId: string
 }
 
 interface CurrentAccount {
@@ -254,6 +256,25 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
+  const getAuthorName = (authorId: string) => { 
+      const author = accounts.find((account) => account.id === authorId);
+        return author ? author.fullName : 'Unknown Author';
+  };
+  
+  const getCategoryName = (categoryId: number) => {
+    console.log('Category ID:', categoryId, 'Type:', typeof categoryId);
+console.log('Blog Categories:', blogCategories);
+  
+    if (!blogCategories || blogCategories.length === 0) {
+      console.warn('Categories list is empty or undefined.');
+      return 'Unknown Category';
+    }
+  
+    const category = blogCategories.find((cat) => cat.id === categoryId.toString());
+    console.log('Found Category:', category);
+    return category ? category.name : 'Unknown Category';
+  };
+
   return (
     <SteakHouseContext.Provider
       value={{
@@ -264,6 +285,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         blogs,
         searchQuery,
         sortOrder,
+
         currentPage,
         totalPages,
         currentAccount,
@@ -279,7 +301,9 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         handlePrevious,
         handleNext,
         getPaginatedItems,
-        setCurrentAccount
+        setCurrentAccount,
+        getAuthorName,
+        getCategoryName
       }}
     >
       {children}
