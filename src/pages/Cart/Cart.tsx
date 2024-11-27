@@ -8,7 +8,9 @@ import BannerCarousel from '../../components/ui/BannerCoupon/BannerCarousel'
 import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
 import Chat from '../../components/Chat/Chat'
 import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder'
+import { useNavigate } from 'react-router-dom'
 const Cart = () => {
+  const navigate = useNavigate()
   const { cartItems, removeFromCart, updateQuantity } = useCartContext()
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false) // Modal cho xoá tất cả
@@ -18,6 +20,9 @@ const Cart = () => {
   const handleDeleteClick = (id: number) => {
     setItemToDelete(id)
     setIsDeleteModalOpen(true)
+  }
+  const handleProductClick = (product: any) => {
+    navigate(`/productdetail/${product.id}`, { state: { product } })
   }
 
   const handleConfirmDelete = () => {
@@ -100,9 +105,16 @@ const Cart = () => {
                 checked={selectedItems.includes(item.id)}
                 onChange={() => handleCheckboxChange(item.id)}
               />
-              <img src={item.image} alt={item.productName} />
+              <img
+                src={item.image}
+                alt={item.productName}
+                onClick={() => handleProductClick(item)}
+                style={{ cursor: 'pointer' }}
+              />
               <div className='product-info'>
-                <h4>{item.productName}</h4>
+                <h4 onClick={() => handleProductClick(item)} style={{ cursor: 'pointer'}}>
+                  {item.productName}
+                </h4>
               </div>
               <div className='price'>{item.productPrice}₫</div>
               <div className='item-quantity'>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import './Menu.css';
 import Navbar from '../../components/ui/Navbar/Navbar';
 import Hero from '../../components/ui/Hero/Hero';
@@ -8,11 +8,14 @@ import Footer from '../../components/ui/Footer/Footer';
 import Breadcrumb from '../../pages/Breadcrumb/Breadcrumb';
 import { useSteakHouseContext } from '../../hooks/useSteakHouseContext';
 import { useCartContext } from '../../context/CartContext';
-import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'; 
+import GoToTopButton from '../../components/GoToTopButton/GoToTopButton';
 import Chat from '../../components/Chat/Chat';
-const Menu: React.FC = () => {
 
+const Menu: React.FC = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const initialCategory = searchParams.get('category') || 'All';
+  console.log('Current Category:', initialCategory);  // Kiểm tra giá trị của category
   const {
     categories,
     getPaginatedItems,
@@ -32,7 +35,7 @@ const Menu: React.FC = () => {
   const [breadcrumbPaths, setBreadcrumbPaths] = useState([
     { name: 'Home', path: '/home' },
     { name: 'Menu', path: '/menu' },
-    { name: 'All', path: '/menu' },
+    { name: initialCategory, path: `/menu?category=${initialCategory}` },
   ]);
 
   // Cập nhật Breadcrumb theo danh mục
@@ -44,19 +47,31 @@ const Menu: React.FC = () => {
     ]);
   };
 
+  // Xử lý chọn category
   const handleCategoryClick = (category: any) => {
-    handleFilter(category.id.toString());
-    updateBreadcrumb(category.categoryName);
+    updateBreadcrumb(category.categoryName); // Cập nhật breadcrumb
+    handleFilter(category.id); // Lọc sản phẩm ngay lập tức
+    navigate(`/menu?category=${category.categoryName}`); // Điều hướng URL
   };
+  
 
+  // Xử lý chọn "All"
   const handleAllClick = () => {
-    handleFilter('All');
+    navigate('/menu'); // Reset URL về /menu
+    handleFilter('All'); // Xóa bộ lọc
     setBreadcrumbPaths([
-      { name: 'Home', path: '/home' },
+      // { name: 'Home', path: '/' },
       { name: 'Menu', path: '/menu' },
       { name: 'All', path: '/menu' },
     ]);
   };
+
+  // Lắng nghe sự thay đổi của tham số URL
+  useEffect(() => {
+    updateBreadcrumb(initialCategory); // Chỉ cần cập nhật breadcrumb từ URL
+  }, [initialCategory]);
+  
+  
 
   const handleProductClick = (product: any) => {
     navigate(`/productdetail/${product.productName}`, { state: { product } });
@@ -84,6 +99,7 @@ const Menu: React.FC = () => {
     setShowModal(true);
   };
 
+  
   return (
     <div>
       <Navbar />
@@ -93,15 +109,24 @@ const Menu: React.FC = () => {
         <div className="sidebar">
           <Breadcrumb paths={breadcrumbPaths} />
           <h2>Browse</h2>
-          <ul>
-            <li onClick={handleAllClick}>All</li>
+          <ul> 
+            {/* Nút hiển thị tất cả sản phẩm */}
+            <li onClick={handleAllClick} className={initialCategory === 'All' ? 'active' : ''}>
+              All
+            </li>
+            {/* Hiển thị danh sách các category */}
             {categories.map((category) => (
-              <li key={category.id} onClick={() => handleCategoryClick(category)}>
+              <li
+                key={category.id}
+                onClick={() => handleCategoryClick(category)}
+                className={initialCategory === category.categoryName ? 'active' : ''}
+              >
                 {category.categoryName}
               </li>
             ))}
           </ul>
         </div>
+
 
         {/* Main Content */}
         <div className="main-content">
@@ -161,10 +186,9 @@ const Menu: React.FC = () => {
           </div>
         </div>
       )}
-    <Chat />
+      <Chat />
       <Footer />
       <GoToTopButton /> {/* Nút Go to Top */}
-      
     </div>
   );
 };
