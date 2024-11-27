@@ -1,9 +1,11 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './DropDownProfile.css'
 import { ImProfile } from 'react-icons/im'
-import { BsFillCartCheckFill } from 'react-icons/bs'
+import { BsBoxSeam } from 'react-icons/bs'
 import { LuLogOut } from 'react-icons/lu'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
+import { SlLocationPin } from 'react-icons/sl'
+import { FaRegHeart } from 'react-icons/fa'
 
 const DropDownProfile = (props: { name: string }) => {
   const { currentAccount, logout } = useSteakHouseContext()
@@ -28,8 +30,18 @@ const DropDownProfile = (props: { name: string }) => {
           <span>{`>`}</span>
         </Link>
         <Link className='sub-menu-links' to={''}>
-          <BsFillCartCheckFill size={20}/>
+          <BsBoxSeam size={20}/>
           <p>My Orders</p>
+          <span>{`>`}</span>
+        </Link>
+        <Link className='sub-menu-links' to={''}>
+          <SlLocationPin size={20}/>
+          <p>My Location</p>
+          <span>{`>`}</span>
+        </Link>
+        <Link className='sub-menu-links' to={''}>
+          <FaRegHeart size={20}/>
+          <p>Favourite</p>
           <span>{`>`}</span>
         </Link>
         <div className='logout-button' onClick={handleLogout}>

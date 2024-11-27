@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './Orderer.css'
 import { BsFillQuestionCircleFill } from 'react-icons/bs'
+import { CiUser } from 'react-icons/ci'
 
 const Orderer = () => {
   const [name, setName] = useState('')
@@ -21,6 +22,7 @@ const Orderer = () => {
     <div className='orderer'>
       <div className='orderer-container'>
         <div className='title'>
+          <CiUser size={20} color='#7d161c' />
           <p>Orderer</p>
         </div>
         <div className='input-info'>

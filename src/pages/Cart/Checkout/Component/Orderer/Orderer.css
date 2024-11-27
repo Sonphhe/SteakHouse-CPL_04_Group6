@@ -12,6 +12,11 @@
     rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     background-color: #fff;
 }
+.orderer-container .title{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
 .orderer-container .title p {
   font-weight: 600;
   font-size: 16px;

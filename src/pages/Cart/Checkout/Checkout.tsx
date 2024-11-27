@@ -12,29 +12,31 @@ const Checkout = () => {
   const navigate = useNavigate()
 
   return (
-    <div className='checkout'>
-      <div className='navbar'>
-        <Navbar />
-      </div>
-      <div className='checkout-container'>
-        <div className='back-cart'>
-          <IoChevronBack /> <p onClick={() => navigate('/cart')}>Back to cart</p>
+    <>
+      <div className='checkout'>
+        <div className='navbar'>
+          <Navbar />
         </div>
-        <div className='content'>
-          <div className='left-handside'>
-            <ProductInCart />
-            <Orderer />
-            <ReceiveLocation />
+        <div className='checkout-container'>
+          <div className='back-cart'>
+            <IoChevronBack /> <p onClick={() => navigate('/cart')}>Back to cart</p>
           </div>
-          <div className='right-handside'>
-            <ConfirmOrder/>
+          <div className='content'>
+            <div className='left-handside'>
+              <ProductInCart />
+              <Orderer />
+              <ReceiveLocation />
+            </div>
+            <div className='right-handside'>
+              <ConfirmOrder cartItems={[]} selectedItems={[]} />
+            </div>
           </div>
         </div>
+        <div className='footer'>
+          <Footer />
+        </div>
       </div>
-      <div className='footer'>
-        <Footer />
-      </div>
-    </div>
+    </>
   )
 }
 

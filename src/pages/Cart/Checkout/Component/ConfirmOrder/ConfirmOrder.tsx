@@ -88,7 +88,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems })
               {finalAmount.toLocaleString()}đ
             </p>
           </div>
-          <button>Confirm Order</button>
+          <button onClick={() => navigate(`/checkout`)}>Confirm Order</button>
         </div>
       </div>
 

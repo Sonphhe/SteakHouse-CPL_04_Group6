@@ -30,9 +30,13 @@
   flex-direction: column;
   gap: 10px;
 }
-.receive-location-container .content-1 div {
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
+.receive-location-container .content-1 .current-location{
+  display: flex;
+  flex-direction: column;
+}
+.current-location-content{
+  padding-left: 0.75rem ;
+  padding-right: 0.75rem ;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -40,6 +44,54 @@
   border: 1px solid rgb(209 213 219/ 1);
   border-radius: 0.5rem;
   height: 3rem;
+}
+.current-location .expand{
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 5px;
+  border-radius: 5px;
+}
+.current-location .expand .expand-search{
+  display: flex;
+}
+.current-location .expand .expand-search .search-icon{
+  position: absolute;
+  left: 6%;
+}
+.current-location .expand .expand-search .search-icon-times{
+  position: absolute;
+  left: 62%;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.current-location .expand .expand-search input{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  font-size: 15px;
+  padding-left: 10%;
+  border: 1px solid rgb(209 213 219/ 1) ;
+  border-radius: 5px;
+}
+.current-location .expand .search-value ul{
+  list-style: none;
+  max-height: 165px;
+  overflow: auto;
+  padding: 5px;
+  padding-right: 0;
+}
+.current-location .expand .search-value li{
+  text-align: left;
+  padding: 5px 10px;
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+.current-location .expand .search-value li:hover{
+  background-color: #e5e9ec;
 }
 .receive-location-container .content-1 div span {
   font-size: 12px;
