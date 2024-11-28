@@ -106,6 +106,7 @@
   color: #333333;
   margin: 10px 0; /* Khoáº£ng cÃ¡ch vá»›i pháº§n text bÃªn dÆ°á»›i */
   flex-grow: 1; /* Äáº©y ná»™i dung phÃ­a dÆ°á»›i xuá»‘ng */
+  cursor: pointer;
 }
 .image-container {
   position: relative;
@@ -117,8 +118,10 @@
   border-bottom: 1px solid #ddd;
 }
 .menu-item p {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   color: #e5533d;
+  cursor: pointer;
 }
 .menu-item:hover {
   transform: scale(1.05); /* PhÃ³ng to nháº¹ */

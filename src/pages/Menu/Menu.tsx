@@ -157,7 +157,6 @@ const Menu: React.FC = () => {
           <div className="menu-items">
             {getPaginatedItems().map((product) => (
              <div className="menu-item" key={product.id}>
-              <div onClick={() => handleProductClick(product)}>
               <div className="image-container">
                <img src={product.image} alt={product.productName} />
                <button
@@ -166,7 +165,6 @@ const Menu: React.FC = () => {
                >
                  <i className={favorites[product.id] ? 'fa fa-heart' : 'fa fa-heart-o'}></i>
                </button>
-             </div>
               </div>
            
              <div onClick={() => handleProductClick(product)}>

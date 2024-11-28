@@ -36,6 +36,7 @@ const ProductDetail: React.FC = () => {
   // Fetch dữ liệu sản phẩm
   const { getPaginatedItems } = useSteakHouseContext();
   const handleProductClick = (product: any) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     navigate(`/productdetail/${product.productName}`, { state: { product } });
   };
   // const [showModal, setShowModal] = useState(false);
@@ -104,10 +105,10 @@ const ProductDetail: React.FC = () => {
   // Thêm bình luận
   const handleAddComment = async () => {
     if (currentAccount?.id === '') {
-      alert('You need to login to Comment and Rate.');
+      alert('You need to login to comment and rate the product.');
     } else {
       if (!commentText) {
-        alert('Please provide your name and comment.');
+        alert('Please provide comment and rate.');
         return;
       }
 
