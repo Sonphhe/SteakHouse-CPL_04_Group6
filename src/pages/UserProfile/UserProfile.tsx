@@ -16,6 +16,7 @@ import UserProfileContent from './components/ContentUserProfile/UserProfileConte
 import EditProfile from './components/EditProfile/EditProfile'
 import ValidationNum from './components/ValidationNum/ValidationNum'
 import UserOrder from '../User/components/UserOrder/UserOrder'
+import Location from '../User/components/Location'
 
 const UserProfile = () => {
   const { currentAccount,option, setOption } = useSteakHouseContext()
@@ -45,6 +46,7 @@ const UserProfile = () => {
             )
           ) : null}
           {option === 'userOrder'?<UserOrder />:<></>}
+          {option === 'location' && <Location />}
         </div>
         <div className='user-profile-footer'>
           <Footer />
