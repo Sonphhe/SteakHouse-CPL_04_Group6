@@ -1,98 +1,267 @@
-import React, { useState } from 'react';
+import  { useEffect, useMemo, useState } from 'react';
+import { 
+  Box, 
+  Button, 
+  Dialog, 
+  DialogTitle, 
+  DialogContent, 
+  DialogActions, 
+  TextField, 
+  Select, 
+  MenuItem, 
+  FormControl, 
+  InputLabel 
+} from '@mui/material';
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
+import { EditNote, Delete, SettingsRounded } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
-import './BlogManage.css';
 import { useBlogContext } from '../../../../context/BlogContext';
 
-const BlogManage = () => {
-  const { blogs, deleteBlog, filterBlogs } = useBlogContext();
-  const [searchTerm, setSearchTerm] = useState('');
-  const navigate = useNavigate();
+type BlogRow = {
+  id: string;
+  title: string;
+  blogCategoryId: number;
+  image: string;
+};
 
-  // Navigate to Add Blog page
+const BlogManage = () => {
+  const { blogs, deleteBlog, filterBlogs, editBlog,blogCategories } = useBlogContext();
+  const [searchTerm, setSearchTerm] = useState('');
+  const [editModalOpen, setEditModalOpen] = useState(false);
+  const [selectedBlog, setSelectedBlog] = useState<BlogRow | null>(null);
+  const navigate = useNavigate()
   const handleAddBlog = () => {
     navigate('/admin/blog-add');
   };
 
-  // Navigate to Edit Blog page
-  const handleEditBlog = (id: string) => {
-    const blogToEdit = blogs.find((blog) => blog.id === id);
-    if (blogToEdit) {
-      navigate(`/admin/blog-edit/${id}`, { state: { blog: blogToEdit } });
-    }
-  };
-
-  // Handle deleting a blog
-  const handleDeleteBlog = (id: string) => {
-    deleteBlog(id);
-  };
-
-  // Handle blog search
+      
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.target.value;
     setSearchTerm(searchValue);
     filterBlogs(searchValue);
   };
 
-  return (
-    <div className="admin-dashboard-hungkc">
-      <div className="dashboard-container-hungkc">
-        <main className="dashboard-mainTMHKC">
-          <div className="blog-manage-hungkc">
-            <div className="blog-manage-header-hungkc">
-              <button className="add-blog-btn-hungkc" onClick={handleAddBlog}>
-                Add Blog
-              </button>
-              <input
-                type="text"
-                placeholder="Search"
-                value={searchTerm}
-                onChange={handleSearch}
-                className="search-bar-hungkc"
-              />
-            </div>
+  const handleOpenEditModal = (blog: BlogRow) => {
+    setSelectedBlog(blog);
+    setEditModalOpen(true);
+  };
 
-            <table className="blog-table-hungkc">
-              <thead>
-                <tr>
-                  <th>No.</th>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Image</th>
-                  <th>Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {blogs.map((blog, index) => (
-                  <tr key={blog.id}>
-                    <td>{index + 1}</td>
-                    <td>{blog.title}</td>
-                    <td>{blog.blogCategoryId}</td>
-                    <td>
-                      <img src={blog.image} className="blog-image-hungkc" alt={blog.title} />
-                    </td>
-                    <td>
-                      <FontAwesomeIcon
-                        icon={faEdit}
-                        className="action-icon-hungkc edit-icon-hungkc"
-                        onClick={() => handleEditBlog(blog.id)}
-                      />
-                      <FontAwesomeIcon
-                        icon={faTrash}
-                        className="action-icon-hungkc delete-icon-hungkc"
-                        onClick={() => handleDeleteBlog(blog.id)}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+  const handleCloseEditModal = () => {
+    setEditModalOpen(false);
+    setSelectedBlog(null);
+  };
+
+  const handleEditBlog = () => {
+    if (selectedBlog) {
+      editBlog(selectedBlog.id, {
+        title: selectedBlog.title,
+        blogCategoryId: selectedBlog.blogCategoryId,
+        image: selectedBlog.image
+      });
+      handleCloseEditModal();
+    }
+  };
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const fileName = file.name;
+      const imagePath = `/assets/images/${fileName}`;
+      setSelectedBlog((prev) => ({ ...prev, image: imagePath }));
+    }
+  };
+
+  const handleDeleteBlog = (id: string) => {
+    deleteBlog(id);
+  };
+
+  const columns: GridColDef[] =  [
+      { field: 'id', headerName: 'ID', width: 100 },
+      { field: 'title', headerName: 'Title', width: 250 },
+      { 
+        field: 'blogCategoryId', 
+        headerName: 'Category', 
+        width: 150,
+        renderCell: (params) => {
+          if (params.value === undefined || params.value === null) {
+            return 'Unknown';
+          }
+          const category = blogCategories.find(cat => String(cat.id) === String(params.value));
+          return category ? category.name : 'Unknown';
+        }
+      },
+      {
+        field: 'image',
+        headerName: 'Image',
+        width: 150,
+        renderCell: (params: GridRenderCellParams<BlogRow, string>) => (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+            <img
+              src={params.value}
+              alt={params.row.title}
+              style={{ width: 50, height: 50, objectFit: 'cover' }}
+            />
           </div>
-        </main>
-      </div>
-    </div>
+        ),
+      },
+      {
+        field: 'actions',
+        headerName: 'Actions',
+        width: 200,
+        renderCell: (params: GridRenderCellParams) => {
+          const blog = params.row as BlogRow;
+          return (
+            <>
+              <Button
+                startIcon={<EditNote />}
+                color="primary"
+                onClick={() => handleOpenEditModal(blog)}
+              >
+                Edit
+              </Button>
+              <Button
+                startIcon={<Delete />}
+                color="error"
+                onClick={() => handleDeleteBlog(blog.id)}
+              >
+                Delete
+              </Button>
+            </>
+          );
+        },
+      },
+    ];
+  
+
+  return (
+  
+    <Box sx={{ width: '80%', padding: 2,marginLeft: 20 }}>
+      <Box sx={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'center', 
+        marginBottom: 2 
+      }}>
+        <Button 
+          variant="contained" 
+          color="primary"
+          onClick={() => handleAddBlog()}
+        >
+          Add Blog
+        </Button>
+        <TextField
+          label="Search Blogs"
+          variant="outlined"
+          value={searchTerm}
+          onChange={handleSearch}
+          size="small"
+          sx={{ width: 300 }}
+        />
+      </Box>
+
+      <DataGrid
+        rows={blogs}
+        columns={columns}
+        initialState={{
+          pagination: {
+            paginationModel: {
+              pageSize: 5,
+            },
+          },
+        }}
+        pageSizeOptions={[5]}
+        disableRowSelectionOnClick
+        
+      />
+
+      {/* Edit Blog Modal */}
+      <Dialog
+  open={editModalOpen}
+  onClose={handleCloseEditModal}
+  maxWidth="md"
+  fullWidth
+>
+  <DialogTitle>Edit Blog</DialogTitle>
+  <DialogContent>
+    <TextField
+      margin="dense"
+      label="Title"
+      fullWidth
+      required // Thêm validation
+      value={selectedBlog?.title || ''}
+      onChange={(e) => setSelectedBlog(prev => 
+        prev ? {...prev, title: e.target.value} : null
+      )}
+      error={!selectedBlog?.title} // Hiển thị lỗi nếu trống
+      helperText={!selectedBlog?.title ? "Title is required" : ""}
+    />
+    
+    <FormControl fullWidth margin="dense" required>
+      <InputLabel>Category</InputLabel>
+      <Select
+        value={selectedBlog?.blogCategoryId || ''}
+        label="Category"
+        onChange={(e) => setSelectedBlog(prev => 
+          prev ? {...prev, blogCategoryId: Number(e.target.value)} : null
+        )}
+        error={!selectedBlog?.blogCategoryId}
+      >
+        {blogCategories.map(category => (
+          <MenuItem key={category.id} value={category.id}>
+            {category.name}
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
+
+    <TextField
+      margin="dense"
+      label="Image URL"
+      fullWidth
+      value={selectedBlog?.image || ''}
+      onChange={(e) => setSelectedBlog(prev => 
+        prev ? {...prev, image: e.target.value} : null
+      )}
+    />
+     
+    <Button 
+      variant="outlined" 
+      component="label"
+      fullWidth
+      sx={{ mt: 2 }}
+    >
+      Upload Image
+      <input 
+        type="file" 
+        hidden 
+        accept="image/*" 
+        onChange={handleImageChange} 
+      />
+    </Button>
+    
+    {selectedBlog?.image && (
+      <Box sx={{ mt: 2, textAlign: 'center' }}>
+        <img 
+          src={selectedBlog.image} 
+          alt="Preview" 
+          style={{ maxWidth: '200px', maxHeight: '200px' }} 
+        />
+      </Box>
+    )}
+  </DialogContent>
+  <DialogActions>
+    <Button onClick={handleCloseEditModal} color="primary">
+      Cancel
+    </Button>
+    <Button 
+      onClick={handleEditBlog} 
+      color="primary"
+      disabled={!selectedBlog?.title || !selectedBlog?.blogCategoryId}
+    >
+      Save Changes
+    </Button>
+  </DialogActions>
+</Dialog>
+    </Box>
   );
 };
 

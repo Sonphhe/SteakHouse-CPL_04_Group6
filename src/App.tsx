@@ -26,12 +26,12 @@ import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
-import AdminLayout from './pages/Admin/pages/Dashboard/AdminLayout'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import AccountManage from './pages/Admin/pages/AccountManage/AccountManage'
 import { AccountProvider } from './context/AccountContext'
 import AccountAdd from './pages/Admin/pages/AccountAdd/AccountAdd'
 import AccountEdit from './pages/Admin/pages/AccountEdit/AccountEdit'
+import AdminLayout from './pages/Admin/pages/Dashboard'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 
 
@@ -56,14 +56,23 @@ function App() {
             <Route path='/admin/dashboard' element={<AdminDashboard />} />
             <Route path='/blog' element={<Blog />} />
             <Route path='/blog/postdetail' element={<PostDetail />} />
-            <Route path='/admin/table-management' element={<TableManagement />} />
             <Route path='/cart' element={<Cart />} />
             <Route path='/management' element={<Management />} />
             <Route path='/user/account/userProfile' element={<UserProfile />} />
             <Route path='/cart' element={<Cart />} />
             {/* Wrap only the ProductManage route with ProductProvider */}
             <Route path='/admin/dashboard' element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-              <Route path='/admin/table-management' element={<AdminLayout><TableManagement /></AdminLayout>} />
+              <Route 
+  path='/admin/table-management' 
+  element={
+    <ProductProvider>
+      <AdminLayout>
+        <TableManagement />
+      </AdminLayout>
+      </ProductProvider>
+  } 
+/>
+
               
               <Route 
                 path='/admin/product-management' 

@@ -37,7 +37,6 @@ const menuItems = [
   { label: 'Product Management', path: '/admin/product-management', icon: SettingsIcon },
   { label: 'Account Management', path: '/admin/account-management', icon: PeopleIcon },
   { label: 'Blog Management', path: '/admin/blog-management', icon: ArticleIcon },
-  { label: 'Table Management', path: '/admin/table-management', icon: TableChartIcon },
 ];
 
 interface SidebarProps {

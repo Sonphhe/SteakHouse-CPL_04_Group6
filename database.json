@@ -22,35 +22,56 @@
       "password": "123",
       "roleId": 1,
       "image": "/assets/images/profile-pics.jpg",
-      "id": "1"
+      "id": "1",
+      "reason": ""
     },
     {
       "username": "sondaigia",
       "password": "Sondaigia123@",
       "roleId": 3,
       "image": "/assets/images/profile-pics.jpg",
-      "id": "RaksUQw"
+      "id": "RaksUQw",
+      "reason": ""
     },
     {
       "username": "2k3sonpham@gmail.com",
       "password": "116940890875495737382",
       "roleId": 3,
       "image": "https://lh3.googleusercontent.com/a/ACg8ocK6F2KPx0WSHoSqnVg9yV04YKxLp6Tq_KnxtgEZPQENfEKBCP1J=s96-c",
-      "id": "UvmIhuy"
+      "id": "UvmIhuy",
+      "reason": ""
     },
     {
       "username": "sondaigia223",
       "password": "Sondaigia123@",
       "roleId": 3,
       "image": "/src/assets/images/profile-pics.jpg",
-      "id": "3Lo4Ulj"
+      "id": "3Lo4Ulj",
+      "reason": ""
     },
     {
       "username": "sonphhe173195@fpt.edu.vn",
       "password": "105917570415484790918",
       "roleId": 3,
       "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
-      "id": "588tNWj"
+      "id": "588tNWj",
+      "reason": ""
+    },
+    {
+      "username": "vuhieu12",
+      "password": "222",
+      "roleId": 2,
+      "image": "/assets/images/profile-pics.jpg",
+      "id": "589",
+      "reason": "1123123"
+    },
+    {
+      "id": "590",
+      "username": "vuhieu321",
+      "password": "123",
+      "roleId": 3,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
+      "reason": ""
     }
   ],
   "productCategory": [
@@ -75,25 +96,10 @@
     {
       "id": "1",
       "productName": "HOKUBEE STEAK",
-      "productOldPrice": 100,
-      "productPrice": 233,
       "image": "/assets/images/steak1.jpg",
+      "productPrice": 232,
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-      "categoryId": 1,
-      "reviews": [
-        {
-          "userName": "John Doe",
-          "rating": 5,
-          "comment": "Delicious steak with great flavor!",
-          "date": "2024-11-15"
-        },
-        {
-          "userName": "Jane Smith",
-          "rating": 4,
-          "comment": "Tasty, but a bit too salty for my taste.",
-          "date": "2024-11-14"
-        }
-      ]
+      "category": "Unknown"
     },
     {
       "id": "2",
@@ -395,12 +401,18 @@
     {
       "id": "30",
       "productName": "MULBERRY SALAD AND ICE CREAM",
-      "productOldPrice": 110,
-      "productPrice": 65,
       "image": "/assets/images/SALAD6.jpg",
+      "productPrice": "65",
       "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
-      "categoryId": 4,
-      "reviews": []
+      "category": "Salad"
+    },
+    {
+      "id": "31",
+      "productName": "LAMB STEAK-1",
+      "image": "blob:http://localhost:3000/a5ceaf09-972c-4939-93e7-87feaca4b397",
+      "productPrice": 32,
+      "description": "đá",
+      "category": "Unknown"
     }
   ],
   "blogCategory": [
@@ -532,7 +544,7 @@
       "id": "1",
       "name": "Table 1",
       "qrCode": "QR1",
-      "status": true
+      "status": false
     },
     {
       "id": "2",
