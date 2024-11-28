@@ -49,8 +49,8 @@ function App() {
   return (
     <div className='App'>
       <Chat />
-      <CartProvider>
-        <SteakHouseProvider>
+      <SteakHouseProvider>
+        <CartProvider>
           <BrowserRouter>
             <Routes>
               <Route path='/login' element={<Login />} />
@@ -199,8 +199,8 @@ function App() {
               />
             </Routes>
           </BrowserRouter>
-        </SteakHouseProvider>
-      </CartProvider>
+        </CartProvider>
+      </SteakHouseProvider>
     </div>
   )
 }

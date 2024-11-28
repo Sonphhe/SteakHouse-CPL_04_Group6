@@ -43,11 +43,18 @@
       }
     },
     {
-      "username": "long123",
-      "password": "123",
-      "roleId": "3",
-      "image": "/assets/images/image-baklava-thumbnail.jpg",
-      "id": "8"
+      "username": "sonphhe173195@fpt.edu.vn",
+      "password": "105917570415484790918",
+      "fullName": "user",
+      "roleId": 3,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
+      "location": {
+        "province": "",
+        "district": "",
+        "commune": "",
+        "detailLocation": ""
+      },
+      "id": "DbcbvEq"
     }
   ],
   "productCategory": [
@@ -778,6 +785,38 @@
           "quantity": 2
         }
       ]
+    },
+    {
+      "userId": "QgeL0To",
+      "cartItem": [],
+      "id": "jakQZLx"
+    },
+    {
+      "userId": "kMR44OT",
+      "cartItem": [],
+      "id": "2Xvi8m7"
+    },
+    {
+      "userId": "3Yy5dq5",
+      "cartItem": [],
+      "id": "O_VpAq2"
+    },
+    {
+      "userId": "DPColtJ",
+      "cartItem": [],
+      "id": "ewX4Jy8"
+    },
+    {
+      "userId": "DbcbvEq",
+      "cartItem": [],
+      "id": "hTZoIFP"
+    }
+  ],
+  "checkOutItems": [
+    {
+      "id": "1",
+      "userId": "7gV5Fax",
+      "cartItem": []
     }
   ],
   "discountTicket": [

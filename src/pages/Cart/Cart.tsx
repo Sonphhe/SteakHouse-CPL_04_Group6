@@ -9,6 +9,7 @@ import GoToTopButton from '../../components/GoToTopButton/GoToTopButton';
 import Chat from '../../components/Chat/Chat';
 import { useNavigate } from 'react-router-dom';
 import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder';
+import EmptyBlank from '../../components/ui/EmptyBlank/EmptyBlank';
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -132,7 +133,7 @@ const Cart = () => {
                 ))}
               </>
             ) : (
-              <p className="empty-cart-message">Your cart is empty.</p>
+              <EmptyBlank/>
             )}
           </div>
           <ConfirmOrder context='cart' paymentMethod='' selectedItems={selectedItems} cartItems={cartItems?.cartItem} />

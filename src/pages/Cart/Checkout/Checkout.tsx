@@ -21,7 +21,7 @@ const Checkout = () => {
   const [paymentMethod, setPaymentMethod] = useState<string>('');
 
   // Lọc các sản phẩm đã chọn
-  const selectedItems = cartItems.map((item) => item.id); // ID của tất cả sản phẩm trong giỏ
+  const selectedItems = cartItems?.cartItem.map((item) => item.id); // ID của tất cả sản phẩm trong giỏ
 
   return (
     <>
@@ -43,12 +43,12 @@ const Checkout = () => {
             </div>
             <div className="right-handside">
               {/* Truyền dữ liệu từ Context và state vào ConfirmOrder */}
-              <ConfirmOrder
+              {/* <ConfirmOrder
                 cartItems={cartItems}
                 selectedItems={selectedItems}
                 paymentMethod={paymentMethod}
                 context="checkout"
-              />
+              /> */}
             </div>
           </div>
         </div>

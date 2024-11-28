@@ -136,12 +136,58 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return savedAccount ? JSON.parse(savedAccount) : null
   })
 
+  const API_ROOT = 'http://localhost:9999' 
+
   useEffect(() => {
-    if (currentAccount) {
-      localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
-    } else {
-      localStorage.removeItem('currentAccount')
+    const syncAccountAndCart = async () => {
+      try {
+        if (currentAccount) {
+          // Lưu currentAccount vào localStorage
+          localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
+
+          // Kiểm tra xem cart của user đã tồn tại chưa
+          const { data: ownCartResCheck } = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount.id}`)
+          const ownCartCheck = ownCartResCheck[0]
+
+          if (ownCartCheck || currentAccount.id === '') {
+            console.log('Cart exists:', ownCartCheck)
+          } else {
+            // Nếu cart chưa tồn tại, tạo mới
+            // const defaultCartItem = {
+            //   id: null,
+            //   productName: null,
+            //   productOldPrice: null,
+            //   productPrice: null,
+            //   image: null,
+            //   description: null,
+            //   categoryId: null,
+            //   reviews: [],
+            //   quantity: null
+            // }
+
+            await axios.post(
+              `${API_ROOT}/ownCart`,
+              {
+                userId: currentAccount.id,
+                cartItem: []
+              },
+              {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+              }
+            )
+
+            console.log('New cart created for user:', currentAccount.id)
+          }
+        } else {
+          localStorage.removeItem('currentAccount')
+        }
+      } catch (error) {
+        console.error('Error syncing account and cart:', error)
+      }
     }
+
+    syncAccountAndCart()
   }, [currentAccount])
 
   const login = (currentAccount: CurrentAccount) => {
@@ -150,8 +196,6 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
 
   const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
   const [option, setOption] = useState('edit')
-
-  
 
   const logout = () => {
     const resetAccount = {

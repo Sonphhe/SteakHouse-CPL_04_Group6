@@ -28,7 +28,7 @@ interface CartContextType {
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
-// const { currentAccount } = useSteakHouseContext()
+
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<OwnCart>({
@@ -37,12 +37,14 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     cartItem: []
   })
 
+  const { currentAccount } = useSteakHouseContext()
+
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get<OwnCart[]>(`${API_ROOT}/ownCart?userId=7gV5Fax`)
+        const response = await axios.get<OwnCart[]>(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`)
 
-        const fetchedCartItem = response.data.find((item) => item.userId === '7gV5Fax')
+        const fetchedCartItem = response.data[0]
         if (fetchedCartItem) {
           setCartItems(fetchedCartItem)
         } else {
@@ -53,7 +55,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       }
     }
     fetchCartItems()
-  }, [])
+  }, [currentAccount])
 
   console.log(cartItems);
   
