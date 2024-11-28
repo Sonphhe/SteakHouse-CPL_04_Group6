@@ -135,7 +135,7 @@ const Cart = () => {
               <p className="empty-cart-message">Your cart is empty.</p>
             )}
           </div>
-          <ConfirmOrder selectedItems={selectedItems} cartItems={cartItems?.cartItem} />
+          <ConfirmOrder context='cart' paymentMethod='' selectedItems={selectedItems} cartItems={cartItems?.cartItem} />
         </div>
         {isDeleteModalOpen && (
           <div className="newCart-modal">

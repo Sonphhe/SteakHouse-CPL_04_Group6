@@ -3,6 +3,7 @@ import './ConfirmOrder.css';
 import { IoIosArrowForward } from 'react-icons/io';
 import VoucherModal from '../Voucher/VoucherModal';
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 interface CartItem {
   id: string;
@@ -18,9 +19,16 @@ interface CartItem {
 interface ConfirmOrderProps {
   selectedItems: SetStateAction<string>[]; // Mảng các ID sản phẩm đã chọn
   cartItems: CartItem[] | undefined; // Thông tin giỏ hàng
+  paymentMethod?: string; // Optional: Only required for checkout
+  context: 'cart' | 'checkout'; // Context to distinguish usage
 }
 
-const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems }) => {
+const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
+  selectedItems,
+  cartItems,
+  paymentMethod,
+  context,
+}) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [voucherDiscount, setVoucherDiscount] = useState<number>(0);
 
@@ -31,7 +39,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems })
     return cartItems?.filter((item) => selectedItems.includes(item.id)) || [];
   }, [selectedItems, cartItems]);
 
-  // Tổng tiền trước khi áp dụng voucher
+  // Calculate total before applying voucher
   const total = useMemo(() => {
     return selectedProducts.reduce((sum, item) => sum + item.productPrice * item.quantity, 0);
   }, [selectedProducts]);
@@ -39,68 +47,78 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems })
   // Phí vận chuyển
   const shippingFee = 0;
 
-  // Hàm mở modal
+  // Open voucher modal
   const handleShowModal = () => setModalVisible(true);
 
-  // Hàm đóng modal
+  // Close voucher modal
   const handleCloseModal = () => setModalVisible(false);
 
-  // Hàm áp dụng voucher
+  // Apply voucher discount
   const handleApplyVoucher = (discount: number) => {
     setVoucherDiscount(discount);
     setModalVisible(false);
   };
 
-  // Tính toán tiền sau khi áp dụng voucher
+  // Calculate final amount after discount
   const finalAmount = useMemo(() => {
-    if (!total) return 0;
-    const discountAmount = total * (voucherDiscount / 100);
+    const discountAmount = total * (voucherDiscount / 100); // Calculate discount amount
     return total - discountAmount + shippingFee;
   }, [total, voucherDiscount, shippingFee]);
 
-  return (
-    <div className='confirm-order'>
-      <div className='confirm-order-container'>
-        {/* Phần hiển thị voucher */}
-        <div className='discount-ticket' onClick={handleShowModal}>
-          <p>Apply the offer to get a discount</p>
-          <IoIosArrowForward size={16} />
-        </div>
+  // Handle confirm action based on context
+  const handleConfirm = () => {
+    if (context === 'cart') {
+      navigate('/checkout'); // Navigate to checkout page
+    } else if (context === 'checkout') {
+      if (paymentMethod === 'qrCode') {
+        navigate('/qrcode'); // Navigate to QR code page
+      } else if (paymentMethod === 'cashOnDelivery') {
+        swal('Success!', 'Order confirmed with Cash on Delivery!', 'success');
+      } else {
+        swal('Warning', 'Please select a payment method before confirming.', 'warning');
+      }
+    }
+  };
 
-        <div className='cf-content'>
-          {selectedProducts.length > 0 ? (
-            <ul>
-              {/* Hiển thị tổng tiền */}
+  return (
+    <div className="confirm-order">
+      <div className="confirm-order-container">
+        {/* Voucher section */}
+        {context === 'checkout' && (
+          <div className="discount-ticket" onClick={handleShowModal}>
+            <p>Apply the offer to get a discount</p>
+            <IoIosArrowForward size={16} />
+          </div>
+        )}
+
+        <div className="cf-content">
+          <ul>
+            <li>
+              <p className="title">Total</p>
+              <p className="price">{total.toLocaleString()}đ</p>
+            </li>
+            {context === 'checkout' && (
               <li>
-                <p className='title'>Total</p>
-                <p className='price'>{total.toLocaleString()}đ</p>
-              </li>
-              {/* Hiển thị giảm giá voucher */}
-              <li>
-                <p className='title'>Voucher discount</p>
-                <p className='price-discount'>
-                  {((total || 0) * (voucherDiscount / 100)).toLocaleString()}đ
+                <p className="title">Voucher discount</p>
+                <p className="price-discount">
+                  {(total * (voucherDiscount / 100)).toLocaleString()}đ
                 </p>
               </li>
-              {/* Hiển thị phí vận chuyển */}
-              <li>
-                <p className='title'>Shipping fees</p>
-                <p className='price'>{shippingFee.toLocaleString()}đ</p>
-              </li>
-            </ul>
-          ) : (
-            <p className='no-products'>No products selected.</p>
-          )}
+            )}
+            <li>
+              <p className="title">Shipping fees</p>
+              <p className="price">{shippingFee.toLocaleString()}đ</p>
+            </li>
+          </ul>
         </div>
 
-        {/* Tổng số tiền phải thanh toán sau khi áp dụng voucher */}
-        <div className='cf-offer'>
+        <div className="cf-offer">
           <div>
-            <p className='title'>Money</p>
-            <p className='money'>{finalAmount.toLocaleString()}đ</p>
+            <p className="title">Money</p>
+            <p className="money">{finalAmount.toLocaleString()}đ</p>
           </div>
-          <button onClick={() => navigate(`/checkout`)} disabled={!selectedProducts.length}>
-            Confirm Order
+          <button onClick={handleConfirm}>
+            {context === 'cart' ? 'Go to Checkout' : 'Confirm Order'}
           </button>
         </div>
       </div>
