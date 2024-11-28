@@ -10,12 +10,16 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
   const navigate = useNavigate()
 
   const onSearch = (searchTerm: any) => {
-    navigate(`/productdetail/${searchTerm.id}`, { state: { searchTerm } });
+    navigate(`/productdetail/${searchTerm.id}`, { state: { searchTerm } })
+  }
+
+  const onCategoryClick = (categoryName: string) => {
+    navigate(`/menu?category=${encodeURIComponent(categoryName)}`)
   }
 
   return (
     <div className='search-dropdown'>
-      <div onClick={(e) => e.stopPropagation} className='search-dropdown-container'>
+      <div onClick={(e) => e.stopPropagation()} className='search-dropdown-container'>
         <div className='search-keyload'>
           <ul>
             {products
@@ -51,7 +55,7 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
           <h4>Search Categories</h4>
           <ul>
             {categories.map((item) => (
-              <li key={item.id}>
+              <li key={item.id} onClick={() => onCategoryClick(item.categoryName)}>
                 <SearchBox title={item.categoryName} />
               </li>
             ))}
