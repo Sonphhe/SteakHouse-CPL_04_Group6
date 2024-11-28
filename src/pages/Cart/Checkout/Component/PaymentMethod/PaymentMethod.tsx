@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './PaymentMethod.css';
-import Swal from 'sweetalert2';
+import swal from 'sweetalert';
 
 const PaymentMethod: React.FC = () => {
   const [selectedMethod, setSelectedMethod] = useState<string>('');
@@ -26,18 +26,16 @@ const PaymentMethod: React.FC = () => {
 
   const handleConfirm = () => {
     if (!isTermsChecked) {
-      Swal.fire({
+      swal({
         title: 'Error!',
         text: 'You must agree to the terms before proceeding.',
         icon: 'error',
-        confirmButtonText: 'OK'
       });
     } else {
-      Swal.fire({
+      swal({
         title: 'Order Placed Successfully!',
         text: 'Please wait while we confirm your order.',
         icon: 'success',
-        confirmButtonText: 'OK'
       }).then(() => {
         setIsModalVisible(false);
       });

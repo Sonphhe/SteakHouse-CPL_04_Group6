@@ -15,13 +15,15 @@ import UserProfileCate from './components/CateUserProfile/UserProfileCate'
 import UserProfileContent from './components/ContentUserProfile/UserProfileContent'
 import EditProfile from './components/EditProfile/EditProfile'
 import ValidationNum from './components/ValidationNum/ValidationNum'
+import UserOrder from '../User/components/UserOrder/UserOrder'
 
 const UserProfile = () => {
-  const { currentAccount } = useSteakHouseContext()
+  const { currentAccount,option, setOption } = useSteakHouseContext()
 
   const [showVerify, setShowVerify] = useState(false)
   const [showEditProfile, setShowEditProfile] = useState(false)
   const [showValidNum, setShowValidNum] = useState(false)
+
   return (
     <div>
       <div className='user-profile'>
@@ -29,17 +31,20 @@ const UserProfile = () => {
         <div className='user-profile-content'>
           <div className='user-profile-left'>
             <div className='user-profile-top'>
-              <UserProfileCom />
+              <UserProfileCom setStateAction={setOption} />
             </div>
             <div className='user-profile-center'>
-              <UserProfileCate />
+              <UserProfileCate stateAction={option} setStateAction={setOption} />
             </div>
           </div>
-          {showEditProfile ? (
-            <EditProfile set={setShowVerify} setShowEdit={setShowEditProfile} title='Edit Your Profile' />
-          ) : (
-            <UserProfileContent setEdit={setShowEditProfile} title='My Profile' />
-          )}
+          {option === 'edit' ? (
+            showEditProfile ? (
+              <EditProfile set={setShowVerify} setShowEdit={setShowEditProfile} title='Edit Your Profile' />
+            ) : (
+              <UserProfileContent setEdit={setShowEditProfile} title='My Profile' />
+            )
+          ) : null}
+          {option === 'userOrder'?<UserOrder />:<></>}
         </div>
         <div className='user-profile-footer'>
           <Footer />

@@ -16,8 +16,10 @@ interface SteakHouseType {
   totalPages: number
   currentAccount: CurrentAccount | undefined
   phoneNumberValidation: string
-  ownCart: OwnCart,
-  currentOwnCart: OwnCart,
+  ownCart: OwnCart
+  currentOwnCart: OwnCart
+  option: string
+  setOption: Dispatch<SetStateAction<string>>
   setPhoneNumberValidation: Dispatch<string>
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
@@ -28,9 +30,9 @@ interface SteakHouseType {
   login: (currentAccount: CurrentAccount) => void
   logout: () => void
   setCurrentAccount: Dispatch<CurrentAccount>
-  getAuthorName: (authorId: string) => string;
-  getAuthorImg: (authorId: string) => string;
-  getCategoryName: (categoryId: number) => string;
+  getAuthorName: (authorId: string) => string
+  getAuthorImg: (authorId: string) => string
+  getCategoryName: (categoryId: number) => string
 }
 
 interface AccountType {
@@ -136,6 +138,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   })
 
   const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
+  const [option, setOption] = useState('edit')
 
   const [ownCart, setOwnCart] = useState<OwnCart>({
     id: '',
@@ -144,8 +147,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   })
 
   const currentOwnCart = ownCart
-  console.log(currentOwnCart);
-  
+  console.log(currentOwnCart)
+
   useEffect(() => {
     // Define an async function inside useEffect
     const fetchOwnCart = async () => {
@@ -258,21 +261,20 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
-  const getAuthorName = (authorId: string) => { 
-      const author = accounts.find((account) => account.id === authorId);
-        return author ? author.fullName : 'Unknown Author';
-  };
-  
-  const getCategoryName = (categoryId: number) => {   
-      const category = blogCategories.find((cat) => cat.id === categoryId.toString());
-      return category ? category.name : 'Unknown Category';
-  };
+  const getAuthorName = (authorId: string) => {
+    const author = accounts.find((account) => account.id === authorId)
+    return author ? author.fullName : 'Unknown Author'
+  }
 
-  const getAuthorImg = (authorId: string) => { 
-    const author = accounts.find((account) => account.id === authorId);
-      return author ? author.image : 'Unknown Author';
-};
+  const getCategoryName = (categoryId: number) => {
+    const category = blogCategories.find((cat) => cat.id === categoryId.toString())
+    return category ? category.name : 'Unknown Category'
+  }
 
+  const getAuthorImg = (authorId: string) => {
+    const author = accounts.find((account) => account.id === authorId)
+    return author ? author.image : 'Unknown Author'
+  }
 
   return (
     <SteakHouseContext.Provider
@@ -284,13 +286,14 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         blogs,
         searchQuery,
         sortOrder,
-
         currentPage,
         totalPages,
         currentAccount,
         phoneNumberValidation,
         ownCart,
         currentOwnCart,
+        option,
+        setOption,
         setPhoneNumberValidation,
         login,
         logout,

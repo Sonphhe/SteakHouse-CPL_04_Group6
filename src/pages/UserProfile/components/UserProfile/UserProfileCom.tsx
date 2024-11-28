@@ -1,9 +1,10 @@
 import { useNavigate } from 'react-router-dom'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 import './UserProfileCom.css'
+import { Dispatch, SetStateAction } from 'react'
 // import { FaUserCircle } from "react-icons/fa";
 
-const UserProfileCom = () => {
+const UserProfileCom = (props: {setStateAction:Dispatch<SetStateAction<string>>}) => {
   const { currentAccount } = useSteakHouseContext()
   const navigate = useNavigate()
 
@@ -21,7 +22,7 @@ const UserProfileCom = () => {
           </div>
         </div>
         <div className='detail-profile'>
-            <p onClick={() => navigate('/user/account/userProfile')}>View Profile</p>
+            <p onClick={() => props.setStateAction('edit')}>View Profile</p>
         </div>
       </div>
     </div>
