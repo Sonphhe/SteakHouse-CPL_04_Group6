@@ -38,8 +38,8 @@ const ProductDetail: React.FC = () => {
   const handleProductClick = (product: any) => {
     navigate(`/productdetail/${product.productName}`, { state: { product } });
   };
-  const [showModal, setShowModal] = useState(false);
-  const [modalMessage, setModalMessage] = useState('');
+  // const [showModal, setShowModal] = useState(false);
+  // const [modalMessage, setModalMessage] = useState('');
   useEffect(() => {
     const fetchProductData = async () => {
       if (id) {

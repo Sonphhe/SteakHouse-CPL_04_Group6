@@ -644,7 +644,7 @@
           "date": "2024-11-14"
         }
       ],
-      "quantity": 2
+      "quantity": 3
     },
     {
       "id": "4",
@@ -663,6 +663,30 @@
         }
       ],
       "quantity": 2
+    },
+    {
+      "id": "2",
+      "productName": "USA RIB EYE STEAK",
+      "productOldPrice": 120,
+      "productPrice": 195,
+      "image": "/assets/images/steak2_test.jpg",
+      "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Alice Johnson",
+          "rating": 5,
+          "comment": "The best rib-eye I've ever had!",
+          "date": "2024-11-13"
+        },
+        {
+          "userName": "Pham Hung Son",
+          "rating": 4,
+          "comment": "asd",
+          "date": "2024-11-16"
+        }
+      ],
+      "quantity": 1
     }
   ],
   "searchHistory": [

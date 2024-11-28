@@ -53,7 +53,7 @@ const Menu: React.FC = () => {
     handleFilter(category.id); // Lọc sản phẩm ngay lập tức
     navigate(`/menu?category=${category.categoryName}`); // Điều hướng URL
   };
-  
+
 
   // Xử lý chọn "All"
   const handleAllClick = () => {
@@ -70,8 +70,8 @@ const Menu: React.FC = () => {
   useEffect(() => {
     updateBreadcrumb(initialCategory); // Chỉ cần cập nhật breadcrumb từ URL
   }, [initialCategory]);
-  
-  
+
+
 
   const handleProductClick = (product: any) => {
     navigate(`/productdetail/${product.productName}`, { state: { product } });
@@ -99,7 +99,14 @@ const Menu: React.FC = () => {
     setShowModal(true);
   };
 
-  
+  const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({});
+  const toggleFavorite = (productId: any) => {
+    setFavorites((prevFavorites) => ({
+      ...prevFavorites,
+      [productId]: !prevFavorites[productId],
+    }));
+  };
+
   return (
     <div>
       <Navbar />
@@ -109,7 +116,7 @@ const Menu: React.FC = () => {
         <div className="sidebar">
           <Breadcrumb paths={breadcrumbPaths} />
           <h2>Browse</h2>
-          <ul> 
+          <ul>
             {/* Nút hiển thị tất cả sản phẩm */}
             <li onClick={handleAllClick} className={initialCategory === 'All' ? 'active' : ''}>
               All
@@ -149,16 +156,29 @@ const Menu: React.FC = () => {
           {/* Danh sách sản phẩm */}
           <div className="menu-items">
             {getPaginatedItems().map((product) => (
-              <div className="menu-item" key={product.id}>
-                <div onClick={() => handleProductClick(product)}>
-                  <img src={product.image} alt={product.productName} />
-                  <h3>{product.productName}</h3>
-                  <p>{product.productPrice}$</p>
-                </div>
-                <button className="add-to-cartt" onClick={() => handleAddToCart(product)}>
-                  <i className="fa fa-shopping-cart" style={{ marginRight: '8px' }}></i> Add to Cart
-                </button>
+             <div className="menu-item" key={product.id}>
+              <div onClick={() => handleProductClick(product)}>
+              <div className="image-container">
+               <img src={product.image} alt={product.productName} />
+               <button
+                 className={`favorite-icon ${favorites[product.id] ? 'active' : ''}`}
+                 onClick={() => toggleFavorite(product.id)}
+               >
+                 <i className={favorites[product.id] ? 'fa fa-heart' : 'fa fa-heart-o'}></i>
+               </button>
+             </div>
               </div>
+           
+             <div onClick={() => handleProductClick(product)}>
+               <h3>{product.productName}</h3>
+               <p>{product.productPrice}$</p>
+             </div>
+             <button className="add-to-cartt" onClick={() => handleAddToCart(product)}>
+               <i className="fa fa-shopping-cart" style={{ marginRight: '8px' }}></i> Add to Cart
+             </button>
+           </div>
+           
+
             ))}
           </div>
 
