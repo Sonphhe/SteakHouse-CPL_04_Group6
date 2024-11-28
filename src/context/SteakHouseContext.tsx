@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { createContext, useContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from 'react'
 import { API_ROOT } from '../utils/constants'
-import { uniq } from 'lodash'
 
 // Types for the various entities managed by the context
 interface SteakHouseType {
@@ -16,8 +15,6 @@ interface SteakHouseType {
   totalPages: number
   currentAccount: CurrentAccount | undefined
   phoneNumberValidation: string
-  ownCart: OwnCart
-  currentOwnCart: OwnCart
   option: string
   setOption: Dispatch<SetStateAction<string>>
   setPhoneNumberValidation: Dispatch<string>
@@ -100,15 +97,17 @@ interface CurrentAccount {
 interface OwnCart {
   id: string
   userId: string
-  cartItem: {
-    id: string
-    productName: string
-    productOldPrice: string
-    productPrice: string
-    image: string
-    description: string
-    categoryId: string
-  }[] // This defines cartItem as an array, not a tuple
+  cartItem: CartItem[]
+}
+
+interface CartItem {
+  id: string
+  productName: string
+  productOldPrice: number
+  productPrice: number
+  image: string
+  description: string
+  categoryId: string
 }
 
 // Create context
@@ -137,32 +136,6 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return savedAccount ? JSON.parse(savedAccount) : null
   })
 
-  const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
-  const [option, setOption] = useState('edit')
-
-  const [ownCart, setOwnCart] = useState<OwnCart>({
-    id: '',
-    userId: '',
-    cartItem: [] // Now this matches the updated type
-  })
-
-  const currentOwnCart = ownCart
-  console.log(currentOwnCart)
-
-  useEffect(() => {
-    // Define an async function inside useEffect
-    const fetchOwnCart = async () => {
-      try {
-        const ownCartRes = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount.id}`)
-        setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] }) // Provide a fallback structure
-      } catch (error) {
-        console.error('Error fetching ownCart:', error)
-      }
-    }
-
-    fetchOwnCart() // Call the async function
-  }, [currentAccount])
-
   useEffect(() => {
     if (currentAccount) {
       localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
@@ -174,6 +147,11 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const login = (currentAccount: CurrentAccount) => {
     setCurrentAccount(currentAccount)
   }
+
+  const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
+  const [option, setOption] = useState('edit')
+
+  
 
   const logout = () => {
     const resetAccount = {
@@ -290,8 +268,6 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         totalPages,
         currentAccount,
         phoneNumberValidation,
-        ownCart,
-        currentOwnCart,
         option,
         setOption,
         setPhoneNumberValidation,

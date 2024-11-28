@@ -95,7 +95,7 @@ const Navbar = () => {
           </div>
           <div className='navbar-cart' onClick={locateCart}>
             <button><FaCartArrowDown size={25} /> Cart Items</button>
-            <div className='shopee-cart-number-badge'>{cartItems.length}</div>
+            <div className='shopee-cart-number-badge'>{cartItems?.cartItem.length}</div>
           </div>
           {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
         </div>
