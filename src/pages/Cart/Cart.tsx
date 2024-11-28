@@ -134,7 +134,7 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <ConfirmOrder selectedItems={selectedItems} cartItems={cartItems} />
+          <ConfirmOrder selectedItems={selectedItems} cartItems={cartItems}  context='cart'/>
         </div>
         {isDeleteModalOpen && (
           <div className='newCart-modal'>

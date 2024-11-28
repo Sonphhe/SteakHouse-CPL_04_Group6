@@ -43,6 +43,7 @@ import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
 import ProductEdit from './pages/Admin/pages/ProductEdit/ProductEdit'
 import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
+import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
 
 function App() {
   return (
@@ -70,6 +71,7 @@ function App() {
               <Route path='/user/account/userProfile' element={<UserProfile />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
+              <Route path='/qrcode' element={<QrCodePage />} />
               {/* Wrap only the ProductManage route with ProductProvider */}
               <Route
                 path='/admin/dashboard'
