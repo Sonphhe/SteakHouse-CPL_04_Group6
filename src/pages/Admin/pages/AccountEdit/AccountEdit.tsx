@@ -17,22 +17,30 @@ type AccountEditProps = {
   onClose?: () => void;
   isModal?: boolean;
 };
-
 const AccountEdit: React.FC<AccountEditProps> = ({ 
   account, 
   onClose, 
   isModal = false 
 }) => {
   const navigate = useNavigate();
-  const { editAccount, roles } = useAccountContext();
+  const { editAccount, roles, accounts } = useAccountContext();
 
   const [editedAccount, setEditedAccount] = useState({
     username: account?.username || '',
     password: account?.password || '',  
-    roleId: account?.roleId || roles[0]?.roleId || 1,
+    // Sử dụng roleId từ role hoặc mặc định
+    roleId: roles.find(r => r.roleName.toLowerCase() === account?.role?.toLowerCase())?.roleId || 1,
     image: account?.image || '',
     id: account?.id || '',
   });
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setEditedAccount((prev) => ({
+      ...prev,
+      [name]: name === 'roleId' ? parseInt(value, 10) : value,
+    }));
+  };
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -44,13 +52,7 @@ const AccountEdit: React.FC<AccountEditProps> = ({
     }
   }, [account, navigate, isModal]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setEditedAccount((prev) => ({
-      ...prev,
-      [name]: name === 'roleId' ? parseInt(value, 10) : value,
-    }));
-  };
+  
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -139,7 +141,7 @@ const AccountEdit: React.FC<AccountEditProps> = ({
           size="small"
         />
 
-        <FormControl fullWidth size="small">
+<FormControl fullWidth size="small">
           <InputLabel>Role</InputLabel>
           <Select
             name="roleId"

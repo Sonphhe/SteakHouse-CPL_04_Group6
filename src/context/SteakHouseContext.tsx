@@ -33,7 +33,14 @@ interface SteakHouseType {
   getAuthorName: (authorId: string) => string
   getAuthorImg: (authorId: string) => string
   getCategoryName: (categoryId: number) => string
+  accountStatistics: {
+    total: number
+    statistics: AccountStatistics[]
+    monthWithMostRegistrations: AccountStatistics
+  } | null
+  fetchAccountStatistics: () => Promise<void>
 }
+
 
 interface AccountType {
   username: string
@@ -111,6 +118,12 @@ interface OwnCart {
   }[] // This defines cartItem as an array, not a tuple
 }
 
+interface AccountStatistics {
+  month: string;
+  count: number;
+  percentage: number;
+}
+
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -148,6 +161,58 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
 
   const currentOwnCart = ownCart
   console.log(currentOwnCart)
+
+  const [accountStatistics, setAccountStatistics] = useState<{
+    total: number
+    statistics: AccountStatistics[]
+    monthWithMostRegistrations: AccountStatistics
+  } | null>(null)
+  const fetchAccountStatistics = async () => {
+    try {
+      const response = await axios.get(`${API_ROOT}/account`)
+      const accounts = response.data
+
+      // Tạo thống kê
+      const monthCounts: { [key: string]: number } = {}
+      accounts.forEach((account: any) => {
+        if (account.createDate) {
+          const month = account.createDate.slice(3, 5) + '/' + account.createDate.slice(6)
+          monthCounts[month] = (monthCounts[month] || 0) + 1
+        }
+      })
+
+      const totalAccounts = accounts.length
+      const statistics: AccountStatistics[] = Object.entries(monthCounts)
+        .map(([month, count]) => ({
+          month,
+          count,
+          percentage: Number(((count / totalAccounts) * 100).toFixed(2))
+        }))
+        .sort((a, b) => {
+          const [aMonth, aYear] = a.month.split('/')
+          const [bMonth, bYear] = b.month.split('/')
+          return aYear === bYear
+            ? parseInt(aMonth) - parseInt(bMonth)
+            : parseInt(aYear) - parseInt(bYear)
+        })
+
+      const monthWithMostRegistrations = statistics.reduce((prev, current) =>
+        prev.count > current.count ? prev : current
+      )
+
+      setAccountStatistics({
+        total: totalAccounts,
+        statistics,
+        monthWithMostRegistrations
+      })
+    } catch (error) {
+      console.error('Error fetching account statistics:', error)
+    }
+  }
+
+  useEffect(() => {
+    fetchAccountStatistics()
+  }, [])
 
   useEffect(() => {
     // Define an async function inside useEffect
@@ -306,7 +371,9 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCurrentAccount,
         getAuthorName,
         getCategoryName,
-        getAuthorImg
+        getAuthorImg,
+        accountStatistics,
+        fetchAccountStatistics,
       }}
     >
       {children}

@@ -14,46 +14,42 @@ import {
   FormControl,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/DeleteOutlined';
+import EditIcon from '@mui/icons-material/EditOutlined';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { DataGrid } from '@mui/x-data-grid';
 
-interface Category {
-  id: number;
-  categoryName: string;
-}
-
 interface Product {
-  id: number;
+  id: string;
   productName: string;
   image: string;
   productPrice: number;
   description: string;
-  categoryId: number;
+  categoryId: string;
+  hidden?: boolean;
 }
-
-// Type for Row in DataGrid
-interface ProductRow {
-  id: number;
-  productName: string;
-  image: string;
-  productPrice: string;
-  description: string;
-  category: string;
-}
-
-// Type for Edit Modal Product State
-type SelectedProduct = Partial<Product> | null;
 
 const ProductManage = () => {
-  const { products, deleteProduct, filterProducts, editProduct, error, clearError,categoryProduct } = useProductContext();
+  const { 
+    products, 
+    editProduct: editProductInContext,
+    error, 
+    clearError,
+    categoryProduct 
+  } = useProductContext();
+
+  const [productData, setProductData] = useState<Product[]>([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [openEditModal, setOpenEditModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const navigate = useNavigate();
 
-  
+  // Sync productData with context products
+  useEffect(() => {
+    setProductData(products);
+  }, [products]);
 
+  // Handle error display
   useEffect(() => {
     if (error) {
       alert(error);
@@ -61,23 +57,38 @@ const ProductManage = () => {
     }
   }, [error, clearError]);
 
+  // Search and filter products
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchValue = e.target.value;
     setSearchTerm(searchValue);
-    filterProducts(searchValue);
+    
+    const filteredProducts = products.filter(product => 
+      product.productName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setProductData(filteredProducts);
   };
 
+  // Edit product handling
   const handleEditProduct = (product: Product) => {
     setSelectedProduct({
       ...product,
-      categoryId: product.categoryId 
+      categoryId: String(product.categoryId)
     });
     setOpenEditModal(true);
   };
+
+  // Save edited product
   const handleSaveProduct = async () => {
     if (selectedProduct && selectedProduct.id) {
       try {
-        await editProduct(selectedProduct.id, selectedProduct);
+        // Update local state
+        const updatedProducts = productData.map(product => 
+          product.id === selectedProduct.id ? selectedProduct : product
+        );
+        setProductData(updatedProducts);
+
+        // Update in context
+        await editProductInContext(selectedProduct.id, selectedProduct);
         setOpenEditModal(false);
       } catch (error) {
         console.error('Failed to save product:', error);
@@ -85,12 +96,28 @@ const ProductManage = () => {
     }
   };
 
-  const handleDeleteProduct = (id) => {
-    if (window.confirm('Are you sure you want to delete this product?')) {
-      deleteProduct(id);
+  // Toggle product visibility
+  const handleToggleProductVisibility = (id: string) => {
+    const productToToggle = productData.find(product => product.id === id);
+    
+    if (productToToggle) {
+      const updatedProduct = { 
+        ...productToToggle, 
+        hidden: !productToToggle.hidden 
+      };
+
+      // Update local state
+      const updatedProducts = productData.map(product => 
+        product.id === id ? updatedProduct : product
+      );
+      setProductData(updatedProducts);
+
+      // Update in context
+      editProductInContext(id, updatedProduct);
     }
   };
 
+  // DataGrid columns configuration
   const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
     { field: 'productName', headerName: 'Name', width: 180 },
@@ -98,14 +125,27 @@ const ProductManage = () => {
       field: 'image',
       headerName: 'Image',
       width: 150,
-      renderCell: (params) => <img src={params.value} alt={params.row.productName} style={{ width: 50, height: 50 }} />,
+      renderCell: (params) => (
+        <img 
+          src={params.value} 
+          alt={params.row.productName} 
+          style={{ width: 50, height: 50, objectFit: 'contain' }} 
+        />
+      ),
     },
     { field: 'productPrice', headerName: 'Price', width: 130, type: 'number' },
     { field: 'description', headerName: 'Description', width: 250 },
-    { 
-      field: 'category', 
-      headerName: 'Category', 
-      width: 150 
+    {
+      field: 'hidden', 
+      headerName: 'Status', 
+      width: 100,
+      renderCell: (params) => (
+        params.value ? (
+          <VisibilityOffIcon color="disabled" />
+        ) : (
+          <VisibilityIcon color="primary" />
+        )
+      )
     },
     {
       field: 'actions',
@@ -113,23 +153,27 @@ const ProductManage = () => {
       width: 180,
       renderCell: (params) => (
         <>
-          <Button onClick={() => handleEditProduct(params.row)} startIcon={<EditIcon />}>
+          <Button 
+            onClick={() => handleEditProduct(params.row)} 
+            startIcon={<EditIcon />}
+          >
             Edit
           </Button>
-          <Button onClick={() => handleDeleteProduct(params.row.id)} startIcon={<DeleteIcon />}>
-            Delete
+          <Button 
+            onClick={() => handleToggleProductVisibility(params.row.id)} 
+            startIcon={params.row.hidden ? <VisibilityIcon /> : <VisibilityOffIcon />}
+            color="warning"
+          >
+            {params.row.hidden ? 'Show' : 'Hide'}
           </Button>
         </>
       ),
     },
   ];
 
-  const rows = products.map((product) => ({
-    id: product.id,
-    productName: product.productName,
-    image: product.image,
-    productPrice: product.productPrice,
-    description: product.description,
+  // Prepare rows for DataGrid
+  const rows = productData.map((product) => ({
+    ...product,
     category: categoryProduct.find((cat) => cat.id === String(product.categoryId))?.categoryName || 'Unknown',
   }));
 
@@ -171,119 +215,125 @@ const ProductManage = () => {
   
       {/* Edit Modal */}
       <Modal open={openEditModal} onClose={() => setOpenEditModal(false)}>
-  <Box
-    sx={{
-      maxWidth: '600px',
-      width: '80%', 
-      maxHeight: '90vh', 
-      overflowY: 'auto', 
-      mx: 'auto',
-      mt: '5vh', 
-      p: 3,
-      borderRadius: 2,
-      boxShadow: 3,
-      backgroundColor: 'white',
-    }}
-  >
-    <Typography variant="h5" gutterBottom>
-      Edit Product
-    </Typography>
-    <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-      <TextField
-        label="Product Name"
-        name="productName"
-        value={selectedProduct?.productName || ''}
-        onChange={(e) => setSelectedProduct({ ...selectedProduct, productName: e.target.value })}
-        fullWidth
-      />
-      <TextField
-        label="Price"
-        type="number"
-        name="productPrice"
-        value={selectedProduct?.productPrice || ''}
-        onChange={(e) => setSelectedProduct({ ...selectedProduct, productPrice: parseFloat(e.target.value) })}
-        fullWidth
-      />
-      <TextField
-        label="Description"
-        name="description"
-        multiline
-        rows={4}
-        value={selectedProduct?.description || ''}
-        onChange={(e) => setSelectedProduct({ ...selectedProduct, description: e.target.value })}
-        fullWidth
-      />
-    <FormControl fullWidth>
-  <InputLabel id="category-select-label">Category</InputLabel>
-  <Select
-    labelId="category-select-label"
-    name="categoryId"
-    value={selectedProduct?.categoryId || ''}
-    label="Category"
-    onChange={(e) => {
-      console.log('Selected Category:', e.target.value); // Để debug
-      setSelectedProduct({ 
-        ...selectedProduct, 
-        categoryId: e.target.value ? Number(e.target.value) : undefined 
-      });
-    }}
-  >
-    {categoryProduct.map((category) => (
-      <MenuItem key={category.id} value={String(category.id)}>
-        {category.categoryName}
-      </MenuItem>
-    ))}
-  </Select>
-</FormControl>
+        <Box
+          sx={{
+            maxWidth: '600px',
+            width: '80%', 
+            maxHeight: '90vh', 
+            overflowY: 'auto', 
+            mx: 'auto',
+            mt: '5vh', 
+            p: 3,
+            borderRadius: 2,
+            boxShadow: 3,
+            backgroundColor: 'white',
+          }}
+        >
+          <Typography variant="h5" gutterBottom>
+            Edit Product
+          </Typography>
+          <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <TextField
+              label="Product Name"
+              name="productName"
+              value={selectedProduct?.productName || ''}
+              onChange={(e) => setSelectedProduct({ 
+                ...selectedProduct!, 
+                productName: e.target.value 
+              })}
+              fullWidth
+            />
+            <TextField
+              label="Price"
+              type="number"
+              name="productPrice"
+              value={selectedProduct?.productPrice || ''}
+              onChange={(e) => setSelectedProduct({ 
+                ...selectedProduct!, 
+                productPrice: parseFloat(e.target.value) 
+              })}
+              fullWidth
+            />
+            <TextField
+              label="Description"
+              name="description"
+              multiline
+              rows={4}
+              value={selectedProduct?.description || ''}
+              onChange={(e) => setSelectedProduct({ 
+                ...selectedProduct!, 
+                description: e.target.value 
+              })}
+              fullWidth
+            />
+            <FormControl fullWidth>
+              <InputLabel id="category-select-label">Category</InputLabel>
+              <Select
+                labelId="category-select-label"
+                name="categoryId"
+                value={selectedProduct?.categoryId || ''}
+                label="Category"
+                onChange={(e) => {
+                  setSelectedProduct({ 
+                    ...selectedProduct!, 
+                    categoryId: String(e.target.value)
+                  });
+                }}
+              >
+                {categoryProduct.map((category) => (
+                  <MenuItem key={category.id} value={category.id}>
+                    {category.categoryName}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
 
-      {/* Image Upload Section */}
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-        <Button variant="outlined" component="label" fullWidth>
-          Upload Image
-          <input
-            type="file"
-            hidden
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) {
-                const imageUrl = URL.createObjectURL(file);
-                setSelectedProduct({
-                  ...selectedProduct,
-                  image: imageUrl,
-                });
-              }
-            }}
-          />
-        </Button>
-      </Box>
+            {/* Image Upload Section */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Button variant="outlined" component="label" fullWidth>
+                Upload Image
+                <input
+                  type="file"
+                  hidden
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      const imageUrl = URL.createObjectURL(file);
+                      setSelectedProduct({
+                        ...selectedProduct!,
+                        image: imageUrl,
+                      });
+                    }
+                  }}
+                />
+              </Button>
+            </Box>
 
-      {/* Image Preview */}
-      {selectedProduct?.image && (
-        <Box sx={{ textAlign: 'center', mt: 2 }}>
-          <img
-            src={selectedProduct.image}
-            alt="Product Preview"
-            style={{ maxWidth: '200px', maxHeight: '200px', objectFit: 'contain' }}
-          />
+            {/* Image Preview */}
+            {selectedProduct?.image && (
+              <Box sx={{ textAlign: 'center', mt: 2 }}>
+                <img
+                  src={selectedProduct.image}
+                  alt="Product Preview"
+                  style={{ maxWidth: '200px', maxHeight: '200px', objectFit: 'contain' }}
+                />
+              </Box>
+            )}
+
+            <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
+              <Button variant="contained" color="primary" onClick={handleSaveProduct}>
+                Save Changes
+              </Button>
+              <Button variant="outlined" color="secondary" onClick={() => setOpenEditModal(false)}>
+                Cancel
+              </Button>
+            </Box>
+          </Box>
         </Box>
-      )}
-
-      <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
-        <Button variant="contained" color="primary" onClick={handleSaveProduct}>
-          Save Changes
-        </Button>
-        <Button variant="outlined" color="secondary" onClick={() => setOpenEditModal(false)}>
-          Cancel
-        </Button>
-      </Box>
-    </Box>
-  </Box>
-</Modal>
-
+      </Modal>
     </div>
   );
-  
 };
 
 export default ProductManage;

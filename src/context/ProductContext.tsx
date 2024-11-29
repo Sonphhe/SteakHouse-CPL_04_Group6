@@ -42,8 +42,6 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
       try {
         const productRes = await axios.get(`${API_ROOT}/product`);
         const categoryTypeRes = await axios.get(`${API_ROOT}/productCategory`);
-        console.log('Category Data:', categoryTypeRes.data);
-        console.log('Product Data:', productRes.data);
         setProducts(productRes.data);
         setCategoryProduct(categoryTypeRes.data);
         setFilteredProducts(productRes.data);
