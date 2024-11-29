@@ -44,43 +44,53 @@ import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
 import Location from './pages/User/components/Location'
+import Checkout from './pages/Cart/Checkout/Checkout'
 
 function App() {
   return (
     <div className='App'>
       <Chat />
-      <CartProvider>
       <SteakHouseProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<UserLoginView />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/forgotpass' element={<ForgotPassword />} />
-            <Route path='/menu' element={<Menu />} />
-            <Route path='/productdetail/:productName' element={<ProductDetail />} />
-            <Route path='/about' element={<AboutUs />} />
-            <Route path='/contact' element={<ContactUs />} />
-            <Route path='/admin/dashboard' element={<AdminDashboard />} />
-            <Route path='/blog' element={<Blog />} />
-            <Route path='/blog/postdetail' element={<PostDetail />} />
-            <Route path='/cart' element={<Cart />} />
-            <Route path='/management' element={<Management />} />
-            <Route path='/user/account/userProfile' element={<UserProfile />} />
-            <Route path='/cart' element={<Cart />} />
-            {/* Wrap only the ProductManage route with ProductProvider */}
-            <Route path='/admin/dashboard' element={<AdminLayout><AdminDashboard /></AdminLayout>} />
-              <Route 
-  path='/admin/table-management' 
-  element={
-    <ProductProvider>
-      <AdminLayout>
-        <TableManagement />
-      </AdminLayout>
-      </ProductProvider>
-  } 
-/>
+        <CartProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/login' element={<Login />} />
+              <Route path='/' element={<Home />} />
+              <Route path='/home' element={<Home />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/forgotpass' element={<ForgotPassword />} />
+              <Route path='/menu' element={<Menu />} />
+              <Route path='/productdetail/:productName' element={<ProductDetail />} />
+              <Route path='/about' element={<AboutUs />} />
+              <Route path='/contact' element={<ContactUs />} />
+              <Route path='/admin/dashboard' element={<AdminDashboard />} />
+              <Route path='/blog' element={<Blog />} />
+              <Route path='/blog/postdetail/:id' element={<PostDetail />} />
+              <Route path='/admin/table-management' element={<TableManagement />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/management' element={<Management />} />
+              <Route path='/user/account/userProfile' element={<UserProfile />} />
+              <Route path='/cart' element={<Cart />} />
+              <Route path='/checkout' element={<Checkout />} />
+              <Route path='/qrcode' element={<QrCodePage />} />
+              <Route path="/profile/locations" element={<Location />} />
+              {/* Wrap only the ProductManage route with ProductProvider */}
+              <Route
+                path='/admin/dashboard'
+                element={
+                  <AdminLayout>
+                    <AdminDashboard />
+                  </AdminLayout>
+                }
+              />
+              <Route
+                path='/admin/table-management'
+                element={
+                  <AdminLayout>
+                    <TableManagement />
+                  </AdminLayout>
+                }
+              />
 
               
               <Route 
@@ -192,8 +202,8 @@ function App() {
               />
             </Routes>
           </BrowserRouter>
-        </SteakHouseProvider>
-      </CartProvider>
+        </CartProvider>
+      </SteakHouseProvider>
     </div>
   )
 }

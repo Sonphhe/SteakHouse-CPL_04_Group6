@@ -8,7 +8,6 @@ import { useGoogleLogin } from '@react-oauth/google'
 import axios from 'axios'
 import { API_ROOT } from '../../../../utils/constants'
 import profile_pics from '../../../../assets/images/profile-pics.jpg'
-import { error } from 'console'
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/
 
@@ -16,6 +15,7 @@ const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{3,23}$/
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
 
 const ACCOUNT_URL = '/account'
+const OWNCART_URL = '/ownCart'
 
 const Register = () => {
   const userRef = useRef<HTMLInputElement | null>(null)
@@ -63,7 +63,14 @@ const Register = () => {
       } else {
         const response = await axios.post(
           API_ROOT + ACCOUNT_URL,
-          JSON.stringify({ username: user, password: pwd, roleId: 3, image: profile_pics }),
+          JSON.stringify({
+            username: user,
+            password: pwd,
+            fullName: 'user',
+            roleId: 3,
+            image: profile_pics,
+            location: { province: '', district: '', commune: '', detailLocation: '' }
+          }),
           {
             headers: { 'Content-Type': 'application/json' },
             withCredentials: true
@@ -95,7 +102,14 @@ const Register = () => {
         } else {
           const res2 = await axios.post(
             API_ROOT + ACCOUNT_URL,
-            JSON.stringify({ username: res.data.email, password: res.data.sub, roleId: 3, image: res.data.picture }),
+            JSON.stringify({
+              username: res.data.email,
+              password: res.data.sub,
+              fullName: 'user',
+              roleId: 3,
+              image: res.data.picture,
+              location: { province: '', district: '', commune: '', detailLocation: '' }
+            }),
             {
               headers: { 'Content-Type': 'application/json' },
               withCredentials: true
