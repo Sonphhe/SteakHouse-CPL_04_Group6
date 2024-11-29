@@ -20,6 +20,13 @@ interface CartItem {
   quantity: number
 }
 
+interface CheckOutItem {
+  id: string
+  userId: string
+  status: string
+  cartItem: CartItem[]
+}
+
 interface CartContextType {
   cartItems: OwnCart | null,
   selectedItems: string[],
@@ -27,10 +34,10 @@ interface CartContextType {
   // addToCart: (product: CartItem) => void
   // removeFromCart: (id: string) => void
   // updateQuantity: (id: string, quantity: number) => void
+  saveToCheckOut: () => Promise<void>
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
-
 
 export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [cartItems, setCartItems] = useState<OwnCart>({
@@ -46,7 +53,6 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const fetchCartItems = async () => {
       try {
         const response = await axios.get<OwnCart[]>(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`)
-
         const fetchedCartItem = response.data[0]
         if (fetchedCartItem) {
           setCartItems(fetchedCartItem)
@@ -54,14 +60,50 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           console.error(`Không tìm thấy đối tượng với userId ${currentAccount?.id}`)
         }
       } catch (error) {
-        console.error('Error fetching cart items:', error)
+        console.error('Lỗi khi tải giỏ hàng:', error)
       }
     }
     fetchCartItems()
   }, [currentAccount])
 
-  console.log(currentAccount?.id);
-  console.log(cartItems);
+  console.log(cartItems)
+
+  const saveToCheckOut = async () => {
+    if (!currentAccount) {
+      console.error('Người dùng chưa đăng nhập!');
+      return;
+    }
+  
+    try {
+      // Lọc các sản phẩm có quantity > 0 từ giỏ hàng
+      const selectedItems = cartItems.cartItem.filter(item => item.quantity > 0); 
+      if (!selectedItems.length) {
+        console.error('Không có sản phẩm nào để lưu đơn hàng!');
+        return;
+      }
+  
+      const newCheckOutItem: CheckOutItem = {
+        id: Date.now().toString(), // Tạo id cho đơn hàng
+        userId: currentAccount.id,
+        status: 'Pending', // Trạng thái đơn hàng mặc định
+        cartItem: selectedItems, // Các sản phẩm đã chọn
+      };
+  
+      // Lưu đơn hàng vào bảng checkOutItems
+      await axios.post(`${API_ROOT}/checkOutItems`, newCheckOutItem);
+  
+      // Xóa các sản phẩm khỏi giỏ hàng (ownCart) sau khi lưu đơn hàng
+      await axios.patch(`${API_ROOT}/ownCart/${cartItems.id}`, {
+        cartItem: [], // Giỏ hàng trống sau khi checkout
+      });
+  
+      console.log('Lưu đơn hàng thành công!');
+    } catch (error) {
+      console.error('Lỗi khi lưu đơn hàng:', error);
+    }
+  };
+  
+  
   
   
 
@@ -109,15 +151,16 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   // }
 
   return (
-    // <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity }}>
-    <CartContext.Provider value={{ cartItems, selectedItems, setSelectedItems }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cartItems, saveToCheckOut, selectedItems, setSelectedItems }}>
+      {children}
+    </CartContext.Provider>
   )
 }
 
 export const useCartContext = () => {
   const context = useContext(CartContext)
   if (!context) {
-    throw new Error('useCartContext must be used within a CartProvider')
+    throw new Error('useCartContext phải được sử dụng trong CartProvider')
   }
   return context
 }

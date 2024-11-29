@@ -73,7 +73,7 @@ const BlogManage = () => {
   const handleDeleteBlog = (id: string) => {
     deleteBlog(id);
   };
-
+ console.log(selectedBlog?.blogCategoryId)
   const columns: GridColDef[] =  [
       { field: 'id', headerName: 'ID', width: 100 },
       { field: 'title', headerName: 'Title', width: 250 },
@@ -198,6 +198,7 @@ const BlogManage = () => {
     <FormControl fullWidth margin="dense" required>
       <InputLabel>Category</InputLabel>
       <Select
+       
         value={selectedBlog?.blogCategoryId || ''}
         label="Category"
         onChange={(e) => setSelectedBlog(prev => 

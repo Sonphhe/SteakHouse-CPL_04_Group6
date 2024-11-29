@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import './ReceiveLocation.css'
 import { CiShop } from 'react-icons/ci'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -6,7 +6,7 @@ import { FaChevronDown } from 'react-icons/fa6'
 import { CiSearch } from 'react-icons/ci'
 import { LiaTimesCircle } from 'react-icons/lia'
 
-const ReceiveLocation = () => {
+const ReceiveLocation = (props: {onDistanceChange: Dispatch<SetStateAction<number>>}) => {
   const [enable, setEnable] = useState(true)
 
   const communeList = [
