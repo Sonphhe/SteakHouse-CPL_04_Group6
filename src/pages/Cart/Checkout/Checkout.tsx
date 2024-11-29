@@ -15,13 +15,12 @@ const Checkout = () => {
   const navigate = useNavigate();
 
   // Lấy dữ liệu từ CartContext
-  const { cartItems } = useCartContext();
+  const { cartItems, selectedItems } = useCartContext();
 
   // State quản lý phương thức thanh toán
   const [paymentMethod, setPaymentMethod] = useState<string>('');
 
   // Lọc các sản phẩm đã chọn
-  const selectedItems = cartItems?.cartItem.map((item) => item.id); // ID của tất cả sản phẩm trong giỏ
 
   return (
     <>
@@ -43,12 +42,12 @@ const Checkout = () => {
             </div>
             <div className="right-handside">
               {/* Truyền dữ liệu từ Context và state vào ConfirmOrder */}
-              {/* <ConfirmOrder
-                cartItems={cartItems}
+              <ConfirmOrder
+                cartItems={cartItems?.cartItem}
                 selectedItems={selectedItems}
                 paymentMethod={paymentMethod}
                 context="checkout"
-              /> */}
+              />
             </div>
           </div>
         </div>

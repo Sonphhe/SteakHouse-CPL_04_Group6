@@ -14,10 +14,10 @@ const ProductItems = () => {
       <div className='productItems-detail'>
         <div className='leftside'>
           <div className='image'>
-            <img src='https://down-vn.img.susercontent.com/file/vn-11134201-7r98o-lz3f1nkc5k5p2c_tn' alt='' />
+            <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Beef_fillet_steak_with_mushrooms.jpg/1280px-Beef_fillet_steak_with_mushrooms.jpg' alt='' />
           </div>
           <div className='productName'>
-            <p>Má Hồng Kem OFÉLIA Lolli Liquid Blush (4.3g)</p>
+            <p>A beef steak dinner, served with mushrooms</p>
             <p>Amount: 1</p>
           </div>
         </div>

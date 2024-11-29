@@ -102,7 +102,6 @@ const ReceiveLocation = () => {
         ) : (
           <div className='content-2'>
             <CiShop /> <p>Shop location: Fpt University - Thach Hoa - Thach That - Ha Noi</p>
-            <p>Request Notes</p>
             <textarea maxLength={128} rows={4} placeholder='Notes (Example: Call me when you are done)'></textarea>
           </div>
         )}

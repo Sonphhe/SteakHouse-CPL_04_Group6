@@ -44,39 +44,7 @@
       "fullName": "Pham Hong Ngoc",
       "roleId": 3,
       "image": "https://lh3.googleusercontent.com/a/ACg8ocK6F2KPx0WSHoSqnVg9yV04YKxLp6Tq_KnxtgEZPQENfEKBCP1J=s96-c",
-      "id": "UvmIhuy",
-      "reason": ""
-    },
-    {
-      "username": "sondaigia223",
-      "password": "Sondaigia123@",
-      "roleId": 3,
-      "image": "/src/assets/images/profile-pics.jpg",
-      "id": "3Lo4Ulj",
-      "reason": ""
-    },
-    {
-      "username": "sonphhe173195@fpt.edu.vn",
-      "password": "105917570415484790918",
-      "roleId": 3,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
-      "id": "588tNWj",
-      "reason": ""
-    },
-    {
-      "username": "vuhieu12",
-      "password": "222",
-      "roleId": 2,
-      "image": "/assets/images/profile-pics.jpg",
-      "id": "589",
-      "reason": "1123123"
-    },
-    {
-      "id": "590",
-      "username": "vuhieu321",
-      "password": "123",
-      "roleId": 3,
-      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
+      "id": "7gV5Fax",
       "reason": ""
     }
   ],
@@ -739,7 +707,7 @@
           "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
           "categoryId": 3,
           "reviews": [],
-          "quantity": 2,
+          "quantity": 1,
           "isChecked": true
         },
         {
@@ -751,7 +719,7 @@
           "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
           "categoryId": 4,
           "reviews": [],
-          "quantity": 2,
+          "quantity": 1,
           "isChecked": true
         },
         {
@@ -763,7 +731,7 @@
           "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
           "categoryId": 4,
           "reviews": [],
-          "quantity": 2,
+          "quantity": 1,
           "isChecked": true
         },
         {
@@ -775,7 +743,7 @@
           "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
           "categoryId": 4,
           "reviews": [],
-          "quantity": 2,
+          "quantity": 1,
           "isChecked": true
         }
       ]
@@ -799,34 +767,9 @@
       ]
     },
     {
-      "userId": "QgeL0To",
+      "userId": "UvmIhuy",
       "cartItem": [],
-      "id": "jakQZLx"
-    },
-    {
-      "userId": "kMR44OT",
-      "cartItem": [],
-      "id": "2Xvi8m7"
-    },
-    {
-      "userId": "3Yy5dq5",
-      "cartItem": [],
-      "id": "O_VpAq2"
-    },
-    {
-      "userId": "DPColtJ",
-      "cartItem": [],
-      "id": "ewX4Jy8"
-    },
-    {
-      "userId": "DbcbvEq",
-      "cartItem": [],
-      "id": "hTZoIFP"
-    },
-    {
-      "userId": "1",
-      "cartItem": [],
-      "id": "PZnthw8"
+      "id": "XsmKL4Y"
     }
   ],
   "checkOutItems": [

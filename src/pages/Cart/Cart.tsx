@@ -13,11 +13,10 @@ import EmptyBlank from '../../components/ui/EmptyBlank/EmptyBlank';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cartItems } = useCartContext();
+  const { cartItems,selectedItems, setSelectedItems } = useCartContext();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
-  const [selectedItems, setSelectedItems] = useState<string[]>([]); // Khởi tạo mặc định là mảng rỗng
 
   const handleDeleteClick = (id: string) => {
     setItemToDelete(id);

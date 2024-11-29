@@ -21,7 +21,9 @@ interface CartItem {
 }
 
 interface CartContextType {
-  cartItems: OwnCart | null
+  cartItems: OwnCart | null,
+  selectedItems: string[],
+  setSelectedItems: React.Dispatch<React.SetStateAction<string[]>>;
   // addToCart: (product: CartItem) => void
   // removeFromCart: (id: string) => void
   // updateQuantity: (id: string, quantity: number) => void
@@ -36,6 +38,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     userId: '',
     cartItem: []
   })
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
 
   const { currentAccount } = useSteakHouseContext()
 
@@ -48,7 +51,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         if (fetchedCartItem) {
           setCartItems(fetchedCartItem)
         } else {
-          console.error('Không tìm thấy đối tượng với userId = 7gV5Fax')
+          console.error(`Không tìm thấy đối tượng với userId ${currentAccount?.id}`)
         }
       } catch (error) {
         console.error('Error fetching cart items:', error)
@@ -57,7 +60,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     fetchCartItems()
   }, [currentAccount])
 
+  console.log(currentAccount?.id);
   console.log(cartItems);
+  
   
 
   // const addToCart = async (product: OwnCart) => {
@@ -105,7 +110,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   return (
     // <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, updateQuantity }}>
-    <CartContext.Provider value={{ cartItems }}>{children}</CartContext.Provider>
+    <CartContext.Provider value={{ cartItems, selectedItems, setSelectedItems }}>{children}</CartContext.Provider>
   )
 }
 
