@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Location.css';
+import '../User.css';
 import { GoHomeFill } from "react-icons/go";
 
 const Location = () => {
