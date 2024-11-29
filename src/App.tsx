@@ -25,7 +25,6 @@ import UserProfile from './pages/UserProfile/UserProfile'
 // import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
-import AdminLayout from './pages/Admin/pages/Dashboard/AdminLayout'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import Chat from './components/Chat/Chat'
 // import ValidationNum from './pages/UserProfile/components/ValidationNum/ValidationNum'
@@ -33,7 +32,7 @@ import AccountManage from './pages/Admin/pages/AccountManage/AccountManage'
 import { AccountProvider } from './context/AccountContext'
 import AccountAdd from './pages/Admin/pages/AccountAdd/AccountAdd'
 import AccountEdit from './pages/Admin/pages/AccountEdit/AccountEdit'
-import Checkout from './pages/Cart/Checkout/Checkout'
+import AdminLayout from './pages/Admin/pages/Dashboard'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 import sampleImg from '/assets/images/SALAD1.jpeg'
 import Orderer from './pages/Cart/Checkout/Component/Orderer/Orderer'
@@ -45,6 +44,7 @@ import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
 import Location from './pages/User/components/Location'
+import Checkout from './pages/Cart/Checkout/Checkout'
 
 function App() {
   return (
@@ -92,8 +92,9 @@ function App() {
                 }
               />
 
-              <Route
-                path='/admin/product-management'
+              
+              <Route 
+                path='/admin/product-management' 
                 element={
                   <ProductProvider>
                     <AdminLayout>

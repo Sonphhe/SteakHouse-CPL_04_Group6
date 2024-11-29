@@ -14,6 +14,7 @@ interface AccountType {
   password: string;
   roleId: number;
   image: string;
+  reason: string;
 }
 
 interface AccountContextType {
@@ -23,7 +24,10 @@ interface AccountContextType {
   editAccount: (id: string, updatedAccount: Partial<AccountType>) => Promise<void>;
   deleteAccount: (id: string) => Promise<void>;
   filterAccounts: (searchTerm: string) => void;
+  banAccount: (id: string, reason: string) => void; 
+  unbanAccount: (id: string) => Promise<void>;      
 }
+
 
 const AccountContext = createContext<AccountContextType | undefined>(undefined);
 
@@ -107,6 +111,85 @@ export const AccountProvider: React.FC<{ children: ReactNode }> = ({ children })
     }
   }, [accounts]);
 
+  const banAccount = useCallback(async (id: string, reason: string) => {
+    try {
+      // Tìm account hiện tại
+      const currentAccount = accounts.find(account => account.id === id);
+      
+      if (!currentAccount) {
+        setError('Account not found');
+        return;
+      }
+  
+      // Tạo object update
+      const updatedAccount = {
+        ...currentAccount,
+        reason: reason
+      };
+  
+      const response = await axios.put(`${API_ROOT}/account/${id}`, updatedAccount);
+      
+      // Cập nhật state local
+      setAccounts((prev) => 
+        prev.map((account) => 
+          account.id === id 
+            ? { ...account, reason } 
+            : account
+        )
+      );
+      
+      setFilteredAccounts((prev) => 
+        prev.map((account) => 
+          account.id === id 
+            ? { ...account, reason } 
+            : account
+        )
+      );
+    } catch (error) {
+      console.error('Error banning account:', error);
+      setError('Failed to ban account.');
+    }
+  }, [accounts]); 
+  
+  const unbanAccount = useCallback(async (id: string) => {
+    try {
+      // Tìm account hiện tại
+      const currentAccount = accounts.find(account => account.id === id);
+      
+      if (!currentAccount) {
+        setError('Account not found');
+        return;
+      }
+  
+      // Tạo object update
+      const updatedAccount = {
+        ...currentAccount,
+        reason: '' // Đặt reason thành chuỗi rỗng
+      };
+  
+      const response = await axios.put(`${API_ROOT}/account/${id}`, updatedAccount);
+      
+      // Cập nhật state local
+      setAccounts((prev) => 
+        prev.map((account) => 
+          account.id === id 
+            ? { ...account, reason: '' } 
+            : account
+        )
+      );
+      
+      setFilteredAccounts((prev) => 
+        prev.map((account) => 
+          account.id === id 
+            ? { ...account, reason: '' } 
+            : account
+        )
+      );
+    } catch (error) {
+      console.error('Error unbanning account:', error);
+      setError('Failed to unban account.');
+    }
+  }, [accounts]); 
   return (
     <AccountContext.Provider
       value={{
@@ -116,6 +199,8 @@ export const AccountProvider: React.FC<{ children: ReactNode }> = ({ children })
         editAccount,
         deleteAccount,
         filterAccounts,
+        banAccount,
+        unbanAccount
       }}
     >
       {children}

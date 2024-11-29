@@ -2,6 +2,12 @@ import React, { createContext, useContext, useState, ReactNode, useEffect, useCa
 import axios from 'axios';
 import { API_ROOT } from '../utils/constants';
 
+interface CategoryType {
+  id: number;
+  categoryName: string;
+}
+
+
 interface ProductType {
   id: string; // Changed to string
   productName: string;
@@ -14,6 +20,7 @@ interface ProductType {
 
 interface ProductContextType {
   products: ProductType[];
+  categoryProduct: CategoryType[]
   addProduct: (product: ProductType) => Promise<void>;
   editProduct: (id: string, updatedProduct: Partial<ProductType>) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
@@ -28,14 +35,18 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [products, setProducts] = useState<ProductType[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([]);
   const [error, setError] = useState<string | null>(null); // Error state
-
+  const [categoryProduct, setCategoryProduct] = useState<CategoryType[]>([])
   // Fetch products on initial load
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get(`${API_ROOT}/product`);
-        setProducts(data);
-        setFilteredProducts(data);
+        const productRes = await axios.get(`${API_ROOT}/product`);
+        const categoryTypeRes = await axios.get(`${API_ROOT}/productCategory`);
+        console.log('Category Data:', categoryTypeRes.data);
+        console.log('Product Data:', productRes.data);
+        setProducts(productRes.data);
+        setCategoryProduct(categoryTypeRes.data);
+        setFilteredProducts(productRes.data);
       } catch (err) {
         console.error('Error fetching products:', err);
         setError('Failed to fetch products. Please try again.');
@@ -43,6 +54,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     };
     fetchProducts();
   }, []);
+  
 
   // Add a new product
   const addProduct = useCallback(async (product: ProductType) => {
@@ -104,6 +116,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     <ProductContext.Provider
       value={{
         products: filteredProducts,
+        categoryProduct,
         addProduct,
         editProduct,
         deleteProduct,

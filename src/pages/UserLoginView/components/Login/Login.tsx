@@ -1,46 +1,68 @@
+import React, { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import './Login.css'
-import { FaUser, FaLock } from 'react-icons/fa'
-import { GoogleLogin, useGoogleLogin, useGoogleOneTapLogin } from '@react-oauth/google'
-import { jwtDecode } from 'jwt-decode'
-import { useEffect, useRef, useState } from 'react'
-import { API_ROOT } from '../../../../utils/constants'
-
 import axios from 'axios'
+import { FaUser, FaLock } from 'react-icons/fa'
+import { useGoogleLogin } from '@react-oauth/google'
+import { 
+  Modal, 
+  Box, 
+  Typography, 
+  Button, 
+  styled 
+} from '@mui/material'
+
+import './Login.css'
 import CustomButton from '../../../../components/CustomButton/CustomButton'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
-//696973079249-64hrr1rgokst2im55kjbbprpt3sjard5.apps.googleusercontent.com - clientID
-
-const LOGIN_URL = '/account'
 
 const Login = () => {
-  const [user, setUser] = useState({})
-
-  const { login } = useSteakHouseContext()
+  const [newUser, setNewUser] = useState('')
+  const [pwd, setPwd] = useState('')
+  const [errMsg, setErrMsg] = useState('')
+  const [banReason, setBanReason] = useState('')
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   const userRef = useRef<HTMLInputElement | null>(null)
   const errRef = useRef<HTMLDivElement | null>(null)
 
-  const [newUser, setNewUser] = useState('')
-  const [pwd, setPwd] = useState('')
-  const [errMsg, setErrMsg] = useState('')
-  // const [success, setSuccess] = useState(false)
-
+  const { login } = useSteakHouseContext()
   const navigate = useNavigate()
+
+  // Modal style
+  const ModalStyle = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    textAlign: 'center'
+  }
 
   useEffect(() => {
     setErrMsg('')
-  }, [user, pwd])
+  }, [newUser, pwd])
 
-  const handleLogin = async (e: any) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
 
     try {
       const response = await axios.get(`http://localhost:9999/account?username=${newUser}&password=${pwd}`)
       const user = response.data[0]
-      console.log(user)
 
       if (user) {
+        // Check if user is banned
+        if (user.reason) {
+          // If banned, open modal with ban reason
+          setBanReason(user.reason)
+          setIsModalOpen(true)
+          return
+        }
+
+        // If not banned, proceed with login
         login(user)
         navigate('/management')
       } else {
@@ -48,6 +70,7 @@ const Login = () => {
       }
     } catch (error) {
       console.error('Login failed', error)
+      alert('Login failed. Please try again.')
     }
   }
 
@@ -63,8 +86,17 @@ const Login = () => {
           `http://localhost:9999/account?username=${res.data.email}&password=${res.data.sub}`
         )
         const user = res2.data[0]
-        console.log(user)
+
         if (user) {
+          // Check if user is banned
+          if (user.reason) {
+            // If banned, open modal with ban reason
+            setBanReason(user.reason)
+            setIsModalOpen(true)
+            return
+          }
+
+          // If not banned, proceed with login
           login(user)
           navigate('/management')
         } else {
@@ -76,6 +108,10 @@ const Login = () => {
     }
   })
 
+  const handleCloseModal = () => {
+    setIsModalOpen(false)
+  }
+
   return (
     <>
       <div className='login'>
@@ -84,7 +120,6 @@ const Login = () => {
             {errMsg}
           </p>
           <form onSubmit={handleLogin}>
-            {/* <form> */}
             <h1>Login</h1>
             <div className='input-box'>
               <input
@@ -105,6 +140,7 @@ const Login = () => {
                 type='password'
                 placeholder='Password'
                 onChange={(e) => setPwd(e.target.value)}
+                value={pwd}
               />
               <FaLock className='icon' />
             </div>
@@ -136,6 +172,34 @@ const Login = () => {
           Countinue Shopping
         </Link>
       </div>
+
+      {/* Ban Modal */}
+      <Modal
+        open={isModalOpen}
+        onClose={handleCloseModal}
+        aria-labelledby="ban-modal-title"
+        aria-describedby="ban-modal-description"
+      >
+        <Box sx={ModalStyle}>
+          <Typography id="ban-modal-title" variant="h6" component="h2">
+            Account Banned
+          </Typography>
+          <Typography id="ban-modal-description" sx={{ mt: 2 }}>
+            Your account has been banned for the following reason:
+          </Typography>
+          <Typography variant="body1" color="error" sx={{ mt: 2, fontWeight: 'bold' }}>
+            {banReason || 'No specific reason provided'}
+          </Typography>
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={handleCloseModal} 
+            sx={{ mt: 3 }}
+          >
+            Understand
+          </Button>
+        </Box>
+      </Modal>
     </>
   )
 }

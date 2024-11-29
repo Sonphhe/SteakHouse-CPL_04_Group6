@@ -1,7 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import './ProductEdit.css';
 import { useProductContext } from '../../../../context/ProductContext';
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+  InputLabel,
+  FormControl,
+} from '@mui/material';
 
 const ProductEdit = () => {
   const location = useLocation();
@@ -34,20 +43,25 @@ const ProductEdit = () => {
     }
   }, [product, navigate]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setEditedProduct((prev) => ({
       ...prev,
-      [name]: name === 'productPrice' ? parseFloat(value) : name === 'categoryId' ? parseInt(value, 10) : value,
+      [name]:
+        name === 'productPrice'
+          ? parseFloat(value)
+          : name === 'categoryId'
+          ? parseInt(value, 10)
+          : value,
     }));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      const fileName = file.name; // Lấy tên file
-      const imagePath = `/assets/images/${fileName}`; // Tạo đường dẫn tạm thời
-      setEditedProduct((prev) => ({ ...prev, image: imagePath })); // Cập nhật state
+      const fileName = file.name;
+      const imagePath = `/assets/images/${fileName}`;
+      setEditedProduct((prev) => ({ ...prev, image: imagePath }));
     }
   };
 
@@ -78,87 +92,109 @@ const ProductEdit = () => {
   };
 
   return (
-    <div className="admin-dashboard-proEdit">
-     
-      <div className="dashboard-container-proEdit">
-      
-        <main className="dashboard-main-proEdit">
-          <div className="product-edit-container">
-            <h2>Edit Product</h2>
-            <form className="product-edit-form">
-              {error && <p className="error-message">{error}</p>}
-              {loading && <p className="loading-message">Saving changes...</p>}
+    <Box
+      sx={{
+        maxWidth: 600,
+        mx: 'auto',
+        mt: 4,
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 3,
+        backgroundColor: 'white',
+      }}
+    >
+      <Typography variant="h5" gutterBottom>
+        Edit Product
+      </Typography>
 
-              <label>Product Name:</label>
-              <input
-                type="text"
-                name="productName"
-                value={editedProduct.productName}
-                onChange={handleInputChange}
-                required
-              />
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        {error && (
+          <Typography variant="body2" color="error">
+            {error}
+          </Typography>
+        )}
+        {loading && (
+          <Typography variant="body2" color="primary">
+            Saving changes...
+          </Typography>
+        )}
 
-              <label>Price:</label>
-              <input
-                type="number"
-                name="productPrice"
-                value={editedProduct.productPrice}
-                onChange={handleInputChange}
-                required
-              />
+        <TextField
+          label="Product Name"
+          name="productName"
+          value={editedProduct.productName}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-              <label>Description:</label>
-              <textarea
-                name="description"
-                value={editedProduct.description}
-                onChange={handleInputChange}
-                rows={3}
-              ></textarea>
+        <TextField
+          label="Price"
+          type="number"
+          name="productPrice"
+          value={editedProduct.productPrice}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-              <label>Image URL:</label>
-              <input
-                type="text"
-                name="image"
-                value={editedProduct.image}
-                onChange={handleInputChange}
-                readOnly
-              />
+        <TextField
+          label="Description"
+          name="description"
+          multiline
+          rows={4}
+          value={editedProduct.description}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-<label>Choose Image:</label>
-<input
-  id="fileInput-HKC" // Thêm id với hậu tố HKC
-  className="file-input-HKC" // Thêm className với hậu tố HKC
-  type="file"
-  accept="image/*"
-  onChange={handleImageChange}
-/>
+        <TextField
+          label="Image URL"
+          name="image"
+          value={editedProduct.image}
+          onChange={handleInputChange}
+          fullWidth
+          InputProps={{
+            readOnly: true,
+          }}
+        />
 
-              <label>Category:</label>
-              <select
-                name="categoryId"
-                value={editedProduct.categoryId}
-                onChange={handleInputChange}
-              >
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.name}
-                  </option>
-                ))}
-              </select>
+        <Button variant="outlined" component="label">
+          Upload Image
+          <input type="file" hidden accept="image/*" onChange={handleImageChange} />
+        </Button>
 
-              <div className="actions">
-                <button type="button" onClick={handleSave} disabled={loading}>
-                  Save Changes
-                </button>
-                <button type="button" onClick={handleCancel}>
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </main>
-      </div>
-    </div>
+        <FormControl fullWidth>
+          <InputLabel>Category</InputLabel>
+          <Select
+            name="categoryId"
+            value={editedProduct.categoryId}
+            onChange={handleInputChange}
+            label="Category"
+          >
+            {categories.map((category) => (
+              <MenuItem key={category.id} value={category.id}>
+                {category.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
+          <Button variant="contained" color="primary" onClick={handleSave} disabled={loading}>
+            Save Changes
+          </Button>
+          <Button variant="outlined" color="secondary" onClick={handleCancel}>
+            Cancel
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
