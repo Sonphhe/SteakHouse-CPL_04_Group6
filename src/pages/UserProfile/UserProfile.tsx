@@ -5,61 +5,55 @@ import Profile from './components/Profile'
 import './UserProfile.css'
 import { useSteakHouseContext } from '../../hooks/useSteakHouseContext'
 import { LiaCartArrowDownSolid } from 'react-icons/lia'
-import { FaPencil } from "react-icons/fa6";
+import { FaPencil } from 'react-icons/fa6'
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert'
+import { useState } from 'react'
+import VerifyNum from './components/VerifyNum/VerifyNum'
+import UserProfileCom from './components/UserProfile/UserProfileCom'
+import UserProfileCate from './components/CateUserProfile/UserProfileCate'
+import UserProfileContent from './components/ContentUserProfile/UserProfileContent'
+import EditProfile from './components/EditProfile/EditProfile'
+import ValidationNum from './components/ValidationNum/ValidationNum'
+import UserOrder from '../User/components/UserOrder/UserOrder'
+import Location from '../User/components/Location'
 
 const UserProfile = () => {
-  const { currentAccount } = useSteakHouseContext()
+  const { currentAccount,option, setOption } = useSteakHouseContext()
+
+  const [showVerify, setShowVerify] = useState(false)
+  const [showEditProfile, setShowEditProfile] = useState(false)
+  const [showValidNum, setShowValidNum] = useState(false)
 
   return (
     <div>
       <div className='user-profile'>
-        <div className='navbar'>
-          <Navbar />
-        </div>
+        <Navbar />
         <div className='user-profile-content'>
           <div className='user-profile-left'>
             <div className='user-profile-top'>
-              <img src={currentAccount?.image} alt='' />
-              <div className='user-profile-top-info'>
-                <h4>{currentAccount?.username}</h4>
-                <Link className='Kytn1s' to='/user/account/userProfile'>
-                  <i><FaPencil/></i>
-                  Edit profile
-                </Link>
-              </div>
+              <UserProfileCom setStateAction={setOption} />
             </div>
             <div className='user-profile-center'>
-              <ul>
-                <li className='list-older'>
-                  <i>
-                    <FiUser />
-                  </i>
-                  <span>My Account</span>
-                </li>
-                <li>
-                  <ul>
-                    <li className='list-y'>My Profile</li>
-                    <li className='list-y'>Change Password</li>
-                  </ul>
-                </li>
-                <li className='list-older'>
-                  <i>
-                    <LiaCartArrowDownSolid />
-                  </i>
-                  <span>Purchase Order</span>
-                </li>
-              </ul>
+              <UserProfileCate stateAction={option} setStateAction={setOption} />
             </div>
           </div>
-          <div className='userprofile-right'>
-            <Profile />
-          </div>
+          {option === 'edit' ? (
+            showEditProfile ? (
+              <EditProfile set={setShowVerify} setShowEdit={setShowEditProfile} title='Edit Your Profile' />
+            ) : (
+              <UserProfileContent setEdit={setShowEditProfile} title='My Profile' />
+            )
+          ) : null}
+          {option === 'userOrder'?<UserOrder />:<></>}
+          {option === 'location' && <Location />}
         </div>
         <div className='user-profile-footer'>
           <Footer />
         </div>
       </div>
+      {showVerify ? <VerifyNum set={setShowVerify} setShowValidNum={setShowValidNum} /> : <></>}
+      {showValidNum ? <ValidationNum setShowValidNum={setShowValidNum} /> : <></>}
     </div>
   )
 }

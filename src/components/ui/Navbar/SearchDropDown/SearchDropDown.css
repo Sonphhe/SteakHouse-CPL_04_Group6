@@ -1,0 +1,90 @@
+.search-dropdown {
+  position: absolute;
+  margin-top: 10px;
+  padding-left: -33%;
+}
+.search-dropdown-container {
+  width: 350px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 10px 0;
+}
+.search-history ul {
+  list-style: none;
+}
+.search-history div {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.search-history div i {
+  font-size: 24px;
+  cursor: pointer;
+}
+.search-history div p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.search-history div p:hover {
+  text-decoration: underline;
+}
+.search-history li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 1rem;
+}
+
+.search-history .times {
+  font-size: 14px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+.search-history .times:hover {
+  transform: scale(130%);
+  transition: 0.3s ease-in-out;
+}
+.search-history h5 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: blue;
+  cursor: pointer;
+}
+.search-history h5:hover {
+  text-decoration: underline;
+}
+.search-keyload ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+  gap: 10px;
+  margin-left: 20px;
+}
+.search-keyload li {
+  cursor: pointer;
+}
+.search-keyload li:hover {
+  text-decoration: underline;
+  transition: 0.3s ease-in-out;
+}
+.search-keyload {
+  max-height: 150px;
+  overflow-y: auto;
+}
+.search-dropdown .search-category ul{
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: 20px;
+}
+.search-dropdown .search-category h4{
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 10px;
+}

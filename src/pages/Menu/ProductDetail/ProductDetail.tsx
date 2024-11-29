@@ -7,7 +7,7 @@ import Footer from '../../../components/ui/Footer/Footer';
 import Breadcrumb from '../../../pages/Breadcrumb/Breadcrumb';
 import 'font-awesome/css/font-awesome.min.css';
 import GoToTopButton from '../../../components/GoToTopButton/GoToTopButton';
-// import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const location = useLocation();
@@ -20,20 +20,27 @@ const ProductDetail: React.FC = () => {
   const [comments, setComments] = useState<any[]>([]);
   const [rating, setRating] = useState<number>(0);
   const [commentText, setCommentText] = useState<string>('');
-  const [userName, setUserName] = useState<string>('');
+  const [userName, setUserName] = useState<string | null>(null); // Khởi tạo userName với giá trị null
 
   // Phân trang bình luận
   const [currentPage, setCurrentPage] = useState(1);
   const commentsPerPage = 2; // Số bình luận hiển thị trên mỗi trang
-
   // Tính toán các bình luận hiển thị trên trang hiện tại
   const indexOfLastComment = currentPage * commentsPerPage;
   const indexOfFirstComment = indexOfLastComment - commentsPerPage;
   const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
 
   const totalPages = Math.ceil(comments.length / commentsPerPage);
+  const { currentAccount } = useSteakHouseContext()
   // const handleFilter = useSteakHouseContext();
   // Fetch dữ liệu sản phẩm
+  const { getPaginatedItems } = useSteakHouseContext();
+  const handleProductClick = (product: any) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    navigate(`/productdetail/${product.productName}`, { state: { product } });
+  };
+  // const [showModal, setShowModal] = useState(false);
+  // const [modalMessage, setModalMessage] = useState('');
   useEffect(() => {
     const fetchProductData = async () => {
       if (id) {
@@ -64,6 +71,12 @@ const ProductDetail: React.FC = () => {
     }
   }, [id, location.state]);
 
+  useEffect(() => {
+    if (currentAccount) {
+      setUserName(currentAccount.fullName); // Gán tên người dùng từ currentAccount
+    }
+  }, [currentAccount]); // Chạy khi currentAccount thay đổi
+
   const calculateAverageRating = (reviews: any[]) => {
     return reviews && reviews.length > 0
       ? reviews.reduce((acc: number, review: any) => acc + review.rating, 0) / reviews.length
@@ -91,45 +104,51 @@ const ProductDetail: React.FC = () => {
 
   // Thêm bình luận
   const handleAddComment = async () => {
-    if (!commentText || !userName) {
-      alert('Please provide your name and comment.');
-      return;
-    }
-
-    const newComment = {
-      userName,
-      rating,
-      comment: commentText,
-      date: new Date().toISOString().split('T')[0], // Định dạng ngày
-    };
-
-    try {
-      const response = await fetch(`http://localhost:9999/product/${productData?.id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          reviews: [...(productData?.reviews || []), newComment], // Gộp bình luận mới
-        }),
-      });
-
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error('Error updating product reviews:', errorText);
+    if (currentAccount?.id === '') {
+      alert('You need to login to comment and rate the product.');
+    } else {
+      if (!commentText) {
+        alert('Please provide comment and rate.');
         return;
       }
 
-      console.log('Comment added successfully');
-      const updatedProduct = { ...productData, reviews: [...(productData?.reviews || []), newComment] };
-      setProductData(updatedProduct);
-      setComments(updatedProduct.reviews);
-      setCommentText('');
-      setUserName('');
-      setRating(0);
-    } catch (error) {
-      console.error('Error submitting comment:', error);
+      const newComment = {
+        userName,
+        rating,
+        comment: commentText,
+        date: new Date().toISOString().split('T')[0], // Định dạng ngày
+      };
+
+      try {
+        const response = await fetch(`http://localhost:9999/product/${productData?.id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            reviews: [...(productData?.reviews || []), newComment], // Gộp bình luận mới
+          }),
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('Error updating product reviews:', errorText);
+          return;
+        }
+
+        console.log('Comment added successfully');
+        const updatedProduct = { ...productData, reviews: [...(productData?.reviews || []), newComment] };
+        setProductData(updatedProduct);
+        setComments(updatedProduct.reviews);
+        setCommentText('');
+        setUserName('');
+        setRating(0);
+      } catch (error) {
+        console.error('Error submitting comment:', error);
+      }
     }
+
+
   };
 
   const generateStars = (rating: number) => {
@@ -160,28 +179,19 @@ const ProductDetail: React.FC = () => {
     return <div>Loading...</div>;
   }
 
-
+  
   return (
     <div>
       <Navbar />
       <Breadcrumb
-        paths={[{ name: 'Home', path: '/home' }, { name: 'Menu', path: '/menu' }, { name: productData.productName, path: '#' }]}
+        paths={[
+          { name: 'Home', path: '/home' },
+          { name: 'Menu', path: '/menu' },
+          { name: productData.productName, path: '#' }
+        ]}
       />
       <div style={{ display: "flex", justifyContent: "center" }}>
-        <div>
-          {/* <div className="sidebar">
-            <Breadcrumb paths={breadcrumbPaths} />
-            <h2>Browse</h2>
-            <ul>
-              <li onClick={handleAllClick}>All</li>
-              {categories.map((category) => (
-                <li key={category.id} onClick={() => handleCategoryClick(category)}>
-                  {category.categoryName}
-                </li>
-              ))}
-            </ul>
-          </div> */}
-        </div>
+
         <div>
           <div className="product-detail">
 
@@ -192,7 +202,7 @@ const ProductDetail: React.FC = () => {
 
             <div className="product-info">
               <h2>{productData.productName}</h2>
-              <p className="product-price">Price: ${productData.productPrice}</p>
+              <p className="product-price">Price: {productData.productPrice}$</p>
               <div className="product-sale">
                 <h4>Hot Sale: </h4>
                 <li>
@@ -205,7 +215,7 @@ const ProductDetail: React.FC = () => {
                 </li>
                 <li>
                   <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
-                  $50 voucher discount for bill from $350
+                  50$ voucher discount for bill from $350
                 </li>
               </div>
 
@@ -238,64 +248,86 @@ const ProductDetail: React.FC = () => {
               </div>
             )}
           </div>
-
-          <div className="product-comments-container">
-            <div className="product-comments">
-              <h3>Reviews & Comments</h3>
-              {comments.length === 0 ? (
-                <p>No reviews yet. Be the first to comment!</p>
-              ) : (
-                <ul>
-                  {currentComments.map((review, index) => (
-                    <li key={index}>
-                      <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
-                      <div className="rating-container">
-                        <i>Rating:</i> {generateStars(review.rating)}
-                      </div>
-                      <p>{review.comment}</p>
-                    </li>
-                  ))}
-                </ul>
-              )}
-              <div className="pagination-controls">
-                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
-                <span>{currentPage} / {totalPages}</span>
-                <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+          <h3 className="related-title">Ralated Product</h3>
+          <div className="related-products">
+            {getPaginatedItems().map((product) => (
+              <div className="related-product" key={product.id}>
+                <div onClick={() => handleProductClick(product)} className="product-card-relate">
+                  <img className="card-image-large-relate" src={product.image} alt={product.productName} />
+                  <h4 className="card-title-centered-relate">{product.productName}</h4>
+                  <p className="card-price-centered-relate">{product.productPrice}$</p>
+                </div>
               </div>
-            </div>
-
-
-
-            <div className="comment-form">
-              <h4>Leave a Review</h4>
-              <div className="rating">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <span
-                    key={star}
-                    onClick={() => setRating(star)}
-                    className={rating >= star ? "star-filled" : "star-empty"}
-                  >
-                    ★
-                  </span>
-                ))}
-              </div>
-              <textarea
-                placeholder="Your comment..."
-                value={commentText}
-                onChange={(e) => setCommentText(e.target.value)}
-              />
-              <div className="name-and-button">
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
-                />
-                <button onClick={handleAddComment}>Submit Review</button>
-              </div>
-            </div>
-
+            ))}
           </div>
+
+
+
+          <div className="product-all">
+            <div className="product-comments-container">
+              <div className="comment-form">
+                <h4>Leave a Review</h4>
+                {/* Phần đánh giá sao */}
+                <div className="rating">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <span
+                      key={star}
+                      onClick={() => setRating(star)}
+                      className={rating >= star ? "star-filled" : "star-empty"}
+                    >
+                      ★
+                    </span>
+                  ))}
+                </div>
+
+                {/* Phần nhập bình luận */}
+                <textarea
+                  placeholder="Your comment..."
+                  value={commentText}
+                  onChange={(e) => setCommentText(e.target.value)}
+                />
+
+                {/* Phần nhập tên và nút gửi */}
+                <div className="name-and-button">
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    value={userName || currentAccount?.fullName || ""}
+                    onChange={(e) => setUserName(e.target.value)}
+                  />
+                  <button onClick={handleAddComment}>Submit Review</button>
+                </div>
+              </div>
+
+              {/* Phần hiển thị các bình luận đã có */}
+              <div className="product-comments">
+                <h3>Reviews & Comments</h3>
+                {comments.length === 0 ? (
+                  <p>No reviews yet. Be the first to comment!</p>
+                ) : (
+                  <ul>
+                    {currentComments.map((review, index) => (
+                      <li key={index}>
+                        <p><strong>{review.userName}</strong> - <em>{new Date(review.date).toISOString().split('T')[0]}</em></p>
+                        <div className="rating-container">
+                          <i>Rating:</i> {generateStars(review.rating)}
+                        </div>
+                        <p>{review.comment}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Phần phân trang */}
+                <div className="pagination-controls">
+                  <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
+                  <span>{currentPage} / {totalPages}</span>
+                  <button onClick={handleNextPage} disabled={currentPage === totalPages}>Next</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
       <Footer />

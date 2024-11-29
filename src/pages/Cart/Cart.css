@@ -1,7 +1,7 @@
 .newCart {
-  font-family: 'Nunito', Arial, Helvetica, sans-serif;
   background-color: #f2f2f2;
   padding: 20px;
+  width: 100%;
 }
 .newCart-header {
   display: flex;
@@ -17,7 +17,7 @@
 }
 
 .newCart-header a.active-link {
-  color: #007bff;  /* Màu sắc nổi bật khi đang ở trang hiện tại */
+  color: #007bff; /* Màu sắc nổi bật khi đang ở trang hiện tại */
   font-weight: bold; /* Đậm hơn */
 }
 
@@ -36,13 +36,12 @@
 .newCart-section {
   margin-top: 100px;
   margin-bottom: 200px;
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 68% 30%;
+  gap: 2%;
 }
 .newCart-product-list {
   flex: 3;
-  padding: 20px;
 }
 .newCart-product-list table {
   width: 100%;
@@ -90,7 +89,6 @@
 .newCart-product-list .item-quantity span.disabled {
   cursor: not-allowed;
   opacity: 0.5;
-  background-color: #ececec;
 }
 .cart_totals {
   flex: 1;
@@ -100,10 +98,10 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 74px;
   height: 350px;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: fit-content;
 }
 
 .cart_totals h2 {
@@ -183,17 +181,17 @@
   border-radius: 5px;
 }
 .newCart-modal-buttons .yes {
-  border: 2px solid #e74c3c; 
+  border: 2px solid #e74c3c;
   background-color: transparent;
 }
 
 .newCart-modal-buttons .no {
-  background-color: #e74c3c; 
+  background-color: #e74c3c;
   color: #fff;
 }
 
 .newCart-modal-buttons .no:hover {
-  background-color: #c0392b; 
+  background-color: #c0392b;
 }
 
 .newCart-modal-buttons .yes:hover {
@@ -203,9 +201,9 @@
   margin-top: 50px;
 }
 .product-card {
-  display: flex; 
-  align-items: center; 
-  gap: 15px; 
+  display: flex;
+  align-items: center;
+  gap: 15px;
   background: #fff;
   padding: 15px;
   border-radius: 10px;
@@ -216,7 +214,7 @@
 .product-card img {
   width: 100px;
   height: auto;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 .product-card .product-info {
@@ -259,6 +257,7 @@
 .product-card .item-quantity span.disabled {
   cursor: not-allowed;
   opacity: 0.5;
+  color: #555;
 }
 
 .product-card .delete-item {
@@ -296,11 +295,10 @@
   margin-left: 20px;
   opacity: 0.5;
   cursor: not-allowed;
-  
 }
 .delete-all.active {
-  cursor: pointer; 
-  opacity: 1; 
+  cursor: pointer;
+  opacity: 1;
   pointer-events: auto;
   color: #a71e1e;
 }

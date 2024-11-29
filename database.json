@@ -6,11 +6,6 @@
       "id": "5a59"
     },
     {
-      "roleId": 2,
-      "roleName": "cashier",
-      "id": "9178"
-    },
-    {
       "roleId": 3,
       "roleName": "customer",
       "id": "35ea"
@@ -20,6 +15,8 @@
     {
       "username": "sonpham123",
       "password": "123",
+      "phoneNumber": "0357663145",
+      "fullName": "Pham Hung Son",
       "roleId": 1,
       "image": "/assets/images/profile-pics.jpg",
       "id": "1",
@@ -36,6 +33,8 @@
     {
       "username": "2k3sonpham@gmail.com",
       "password": "116940890875495737382",
+      "phoneNumber": "04385982347",
+      "fullName": "Pham Hong Ngoc",
       "roleId": 3,
       "image": "https://lh3.googleusercontent.com/a/ACg8ocK6F2KPx0WSHoSqnVg9yV04YKxLp6Tq_KnxtgEZPQENfEKBCP1J=s96-c",
       "id": "UvmIhuy",
@@ -99,14 +98,14 @@
       "image": "/assets/images/steak1.jpg",
       "productPrice": 232,
       "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-      "category": "Unknown"
+      "categoryId": 1
     },
     {
       "id": "2",
       "productName": "USA RIB EYE STEAK",
       "productOldPrice": 120,
       "productPrice": 195,
-      "image": "/assets/images/steak2.jpg",
+      "image": "/assets/images/steak2_test.jpg",
       "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
       "categoryId": 1,
       "reviews": [
@@ -129,7 +128,7 @@
       "productName": "USA TOPBLADE STEAK",
       "productOldPrice": 85,
       "productPrice": 165,
-      "image": "/assets/images/steak3.jpg",
+      "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
       "reviews": []
@@ -139,7 +138,7 @@
       "productName": "VIETNAM BEEFSTEAK",
       "productOldPrice": 95,
       "productPrice": 105,
-      "image": "/assets/images/steak4.jpeg",
+      "image": "/assets/images/steak4_test.webp",
       "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
       "categoryId": 1,
       "reviews": [
@@ -175,6 +174,12 @@
           "rating": 4,
           "comment": "Tender and flavorful lamb, great experience.",
           "date": "2024-11-11"
+        },
+        {
+          "userName": "s",
+          "rating": 4,
+          "comment": "s",
+          "date": "2024-11-25"
         }
       ]
     },
@@ -183,7 +188,7 @@
       "productName": "BEEF WITH PEPPER SAUCE",
       "productOldPrice": 140,
       "productPrice": 95,
-      "image": "/assets/images/steak7.jpg",
+      "image": "/assets/images/steak7_test.jpg",
       "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
       "categoryId": 1,
       "reviews": []
@@ -193,7 +198,7 @@
       "productName": "NORWEGIAN SALMON",
       "productOldPrice": 115,
       "productPrice": 175,
-      "image": "/assets/images/steak8.jpg",
+      "image": "/assets/images/steak8_test.webp",
       "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
       "categoryId": 1,
       "reviews": []
@@ -404,15 +409,8 @@
       "image": "/assets/images/SALAD6.jpg",
       "productPrice": "65",
       "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
-      "category": "Salad"
-    },
-    {
-      "id": "31",
-      "productName": "LAMB STEAK-1",
-      "image": "blob:http://localhost:3000/a5ceaf09-972c-4939-93e7-87feaca4b397",
-      "productPrice": 32,
-      "description": "đá",
-      "category": "Unknown"
+      "category": "Unknown",
+      "categoryId": 4
     }
   ],
   "blogCategory": [
@@ -463,80 +461,90 @@
       "title": "Understanding Quantum Mechanics",
       "description": "A beginner-friendly guide to quantum mechanics.",
       "image": "/assets/images/steak3.jpg",
-      "blogCategoryId": 3,
-      "accountId": 2
+      "blogCategoryId": "3",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "2",
       "title": "The Basics of Machine Learning test hung",
       "description": "An introductory article on machine learning concepts and applications.",
       "image": "/assets/images/beef-wellington-brocolini.webp",
-      "blogCategoryId": 3,
-      "accountId": 2
+      "blogCategoryId": "3",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "3",
       "title": "Exploring the Human Brain",
       "description": "Insights into neuroscience and how the brain functions.",
       "image": "/assets/images/regular-steak1.jpg",
-      "blogCategoryId": 4,
-      "accountId": 2
+      "blogCategoryId": "4",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "4",
       "title": "History of Ancient Civilizations",
       "description": "A journey through ancient civilizations and their impact on modern society.",
       "image": "/assets/images/steak4.jpeg",
-      "blogCategoryId": 1,
-      "accountId": 2
+      "blogCategoryId": "1",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "5",
       "title": "Introduction to Artificial Intelligence",
       "description": "A look at the fundamentals of AI and its impact on the future.",
       "image": "/assets/images/SPAGHETTI6.jpg",
-      "blogCategoryId": 3,
-      "accountId": 2
+      "blogCategoryId": "3",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "6",
       "title": "Climate Change and Its Effects",
       "description": "An analysis of climate change and its global impact.",
       "image": "/assets/images/SALAD2.jpg",
-      "blogCategoryId": 5,
-      "accountId": 2
+      "blogCategoryId": "5",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "7",
       "title": "Guide to Meditation and Mindfulness",
       "description": "Exploring techniques for mindfulness and achieving mental clarity.",
       "image": "/assets/images/restaurant1.webp",
-      "blogCategoryId": 6,
-      "accountId": 2
+      "blogCategoryId": "6",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "8",
       "title": "The Future of Renewable Energy",
       "description": "Examining renewable energy sources and their role in sustainability.",
       "image": "/assets/images/restaurant1.webp",
-      "blogCategoryId": 5,
-      "accountId": 2
+      "blogCategoryId": "5",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "9",
       "title": "How to Improve Your Writing Skills",
       "description": "Tips and techniques to become a more effective writer.",
       "image": "/assets/images/restaurant1.webp",
-      "blogCategoryId": 7,
-      "accountId": 2
+      "blogCategoryId": "7",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     },
     {
       "id": "10",
       "title": "The Fundamentals of Blockchain Technology",
       "description": "An introductory guide to blockchain and its applications.",
       "image": "/assets/images/SPAGHETTI6.jpg",
-      "blogCategoryId": 3,
-      "accountId": 2
+      "blogCategoryId": "3",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
     }
   ],
   "tables": [
@@ -604,59 +612,6 @@
   "menuItems": [],
   "cartItems": [
     {
-      "id": "1",
-      "productName": "HOKUBEE STEAK",
-      "productOldPrice": 100,
-      "productPrice": 235,
-      "image": "/assets/images/steak1.jpg",
-      "description": "Steak Bo Hokubee, sirloin",
-      "categoryId": 1,
-      "reviews": [
-        {
-          "userName": "John Doe",
-          "rating": 5,
-          "comment": "Delicious steak with great flavor!",
-          "date": "2024-11-15"
-        },
-        {
-          "userName": "Jane Smith",
-          "rating": 4,
-          "comment": "Tasty, but a bit too salty for my taste.",
-          "date": "2024-11-14"
-        }
-      ],
-      "quantity": 1
-    },
-    {
-      "id": "3",
-      "productName": "USA TOPBLADE STEAK",
-      "productOldPrice": 85,
-      "productPrice": 165,
-      "image": "/assets/images/steak3.jpg",
-      "description": "USA Topblade steak",
-      "categoryId": 1,
-      "reviews": [],
-      "quantity": 1
-    },
-    {
-      "id": "4",
-      "productName": "VIETNAM BEEFSTEAK",
-      "productOldPrice": 95,
-      "productPrice": 105,
-      "image": "/assets/images/steak4.jpeg",
-      "description": "Vietnamese Beefsteak, from beef tenderloin",
-      "categoryId": 1,
-      "reviews": [
-        {
-          "userName": "Mark Lee",
-          "rating": 3,
-          "comment": "It was okay, but I prefer other options.",
-          "date": "2024-11-12"
-        }
-      ],
-      "quantity": 1
-    },
-    {
       "id": "6",
       "productName": "LAMB STEAK",
       "productOldPrice": 130,
@@ -673,6 +628,178 @@
         }
       ],
       "quantity": 1
+    },
+    {
+      "id": "1",
+      "productName": "HOKUBEE STEAK",
+      "productOldPrice": 100,
+      "productPrice": 233,
+      "image": "/assets/images/steak1.jpg",
+      "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "John Doe",
+          "rating": 5,
+          "comment": "Delicious steak with great flavor!",
+          "date": "2024-11-15"
+        },
+        {
+          "userName": "Jane Smith",
+          "rating": 4,
+          "comment": "Tasty, but a bit too salty for my taste.",
+          "date": "2024-11-14"
+        }
+      ],
+      "quantity": 4
+    },
+    {
+      "id": "4",
+      "productName": "VIETNAM BEEFSTEAK",
+      "productOldPrice": 95,
+      "productPrice": 105,
+      "image": "/assets/images/steak4_test.webp",
+      "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Mark Lee",
+          "rating": 3,
+          "comment": "It was okay, but I prefer other options.",
+          "date": "2024-11-12"
+        }
+      ],
+      "quantity": 2
+    },
+    {
+      "id": "2",
+      "productName": "USA RIB EYE STEAK",
+      "productOldPrice": 120,
+      "productPrice": 195,
+      "image": "/assets/images/steak2_test.jpg",
+      "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+      "categoryId": 1,
+      "reviews": [
+        {
+          "userName": "Alice Johnson",
+          "rating": 5,
+          "comment": "The best rib-eye I've ever had!",
+          "date": "2024-11-13"
+        },
+        {
+          "userName": "Pham Hung Son",
+          "rating": 4,
+          "comment": "asd",
+          "date": "2024-11-16"
+        }
+      ],
+      "quantity": 1
+    }
+  ],
+  "searchHistory": [
+    {
+      "title": "Regular Steak",
+      "searchTimes": 2,
+      "id": "eb36"
+    },
+    {
+      "title": "MULBERRY SALAD AND ICE CREAM",
+      "searchTimes": 2,
+      "id": "334c"
+    },
+    {
+      "title": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+      "searchTimes": 2,
+      "id": "6be2"
+    },
+    {
+      "title": "BEEF WITH PEPPER SAUCE",
+      "searchTimes": 2,
+      "id": "5f20"
+    }
+  ],
+  "ownCart": [
+    {
+      "id": "2",
+      "userId": "7gV5Fax",
+      "cartItem": [
+        {
+          "id": "18",
+          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+          "productOldPrice": 100,
+          "productPrice": 165,
+          "image": "/assets/images/SPAGHETTI1.jpeg",
+          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
+          "categoryId": 3,
+          "reviews": []
+        },
+        {
+          "id": "28",
+          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD4.png",
+          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
+          "categoryId": 4,
+          "reviews": []
+        },
+        {
+          "id": "29",
+          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD5.jpg",
+          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
+          "categoryId": 4,
+          "reviews": []
+        },
+        {
+          "id": "30",
+          "productName": "MULBERRY SALAD AND ICE CREAM",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD6.jpg",
+          "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
+          "categoryId": 4,
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "userId": "8",
+      "cartItem": [
+        {
+          "id": "18",
+          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+          "productOldPrice": 100,
+          "productPrice": 165,
+          "image": "/assets/images/SPAGHETTI1.jpeg",
+          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
+          "categoryId": 3,
+          "reviews": []
+        }
+      ]
+    }
+  ],
+  "discountTicket": [
+    {
+      "title": "Welcome new user ticket",
+      "discountValue": 30,
+      "backGroundIcon": "",
+      "id": "06ef"
+    },
+    {
+      "title": "Discount 15% of total payment",
+      "discountValue": 15,
+      "backGroundIcon": "",
+      "id": "74db"
+    },
+    {
+      "title": "Discount 20% of total payment",
+      "discountValue": 20,
+      "backGroundIcon": "",
+      "id": "7019"
     }
   ]
 }

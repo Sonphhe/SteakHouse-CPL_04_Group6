@@ -40,11 +40,12 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productRes = await axios.get(`${API_ROOT}/product`)
-        const categoryTypeRes = await axios.get(`${API_ROOT}/productCategory`)
-        
+        const productRes = await axios.get(`${API_ROOT}/product`);
+        const categoryTypeRes = await axios.get(`${API_ROOT}/productCategory`);
+        console.log('Category Data:', categoryTypeRes.data);
+        console.log('Product Data:', productRes.data);
         setProducts(productRes.data);
-        setCategoryProduct(categoryTypeRes.data)
+        setCategoryProduct(categoryTypeRes.data);
         setFilteredProducts(productRes.data);
       } catch (err) {
         console.error('Error fetching products:', err);
@@ -53,6 +54,7 @@ export const ProductProvider: React.FC<{ children: ReactNode }> = ({ children })
     };
     fetchProducts();
   }, []);
+  
 
   // Add a new product
   const addProduct = useCallback(async (product: ProductType) => {

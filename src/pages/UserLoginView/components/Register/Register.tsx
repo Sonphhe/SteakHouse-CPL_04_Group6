@@ -184,7 +184,6 @@ const Register = () => {
                   Letters, numbers, underscores, hyphens allowed.
                 </p>
               </div>
-
               <div className='input-box'>
                 <label htmlFor='password'>
                   Password:

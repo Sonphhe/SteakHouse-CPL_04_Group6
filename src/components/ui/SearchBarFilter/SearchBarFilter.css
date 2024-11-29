@@ -1,0 +1,23 @@
+.userorder-search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.userorder-search input{
+    height: 35px;
+    width: 100%;
+    padding-left: 50px;
+    font-size: 14px;
+}
+.userorder-search .search-icon{
+    position: absolute;
+    left: 23.5em;
+    /* margin-right: 40rem; */
+}
+.userorder-search .search-icon-times{
+    position: absolute;
+    /* margin-left: 60rem; */
+    right: 4em;
+    cursor: pointer;
+}

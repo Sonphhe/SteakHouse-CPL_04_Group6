@@ -4,136 +4,167 @@
   padding-top: 20vh;
 }
 .user-profile-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 75%;
+  gap: 30px;
   padding-left: 3rem;
+  width: 100%;
+  margin-bottom: 40px;
 }
-.user-profile-top{
-    display: flex;
-    gap: 20px;
-    border-bottom: 1px solid #9B9B9B;
-    padding: 20px 0;
+.user-profile-top {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-bottom: 1px solid #9b9b9b;
+  padding-bottom: 20px;
 }
-.user-profile-top img{
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
+.user-profile-top img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
 }
-.user-profile-center{
-    margin-top: 1rem;
+.user-profile-center {
+  margin-top: 1rem;
 }
-.user-profile-center ul{
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 0.5rem;
+.user-profile-center li {
+  cursor: pointer;
 }
-.user-profile-center li{
-    cursor: pointer;
+.list-older i {
+  font-size: 24px;
+  margin-right: 10px;
+  position: relative;
+  top: 5px;
 }
-.list-older i{
-    font-size: 24px;
-    margin-right: 10px;
-    position: relative;
-    top: 5px;
+.list-older span:hover {
+  color: chocolate;
 }
-.list-older span:hover{
-    color: chocolate;
+.list-y {
+  color: #9b9b9b;
+  padding-left: 34px;
 }
-.list-y{
-    color: #9B9B9B;
-    padding-left: 34px;
+.list-y:hover {
+  color: chocolate;
 }
-.list-y:hover{
-    color: chocolate;
+.user-profile-top-info h4 {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 5rem;
 }
-.user-profile-top-info h4{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 5rem;
-}
-.Kytn1s{
-    text-decoration: none;
-    color: #9B9B9B;
+.Kytn1s {
+  text-decoration: none;
+  color: #9b9b9b;
 }
 /* --------------------------------MY PROFILE-------------------------------- */
 
-.userprofile-right{
-    background-color: #ffffff;
-    border: 1px solid whitesmoke;
-    width: 80%;
-    height: 70vh;
-    padding: 1rem 1.5rem;
-    margin-bottom: 5rem;
-    margin-left: 20px;
+.userprofile-right {
+  background-color: #ffffff;
+  border: 1px solid whitesmoke;
+  width: 80%;
+  height: 70vh;
+  padding: 1rem 1.5rem;
+  margin-bottom: 5rem;
+  margin-left: 20px;
 }
-.profile-detail-title{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding-bottom: 20px;
-    border-bottom: 2px solid whitesmoke;
+.profile-detail-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  border-bottom: 2px solid whitesmoke;
 }
-.profile-detail-title h3{
-    font-size: 25px;
-    font-weight: 400;
+.profile-detail-title h3 {
+  font-size: 25px;
+  font-weight: 400;
 }
-.profile-detail-title p{
-    font-size: 15px;
-    font-weight: 300;
-    color: rgb(71, 67, 67);
+.profile-detail-title p {
+  font-size: 15px;
+  font-weight: 300;
+  color: rgb(71, 67, 67);
 }
-.profile-detail-content{
-    display: flex;
+.profile-detail-content {
+  display: flex;
 }
-.profile-detail-content .table{
-    margin-top: 30px;
+.profile-detail-content .table {
+  margin-top: 30px;
 }
-.profile-detail-content .table tr{
-    height: 4rem;
+.profile-detail-content .table tr {
+  height: 4rem;
 }
-.profile-detail-content .table input{
-    width: 100%;
-    height: 2.5rem;
-    padding-left: 10px;
+.profile-detail-content .table input {
+  width: 100%;
+  height: 2.5rem;
+  padding-left: 10px;
 }
-.profile-detail-content .table th{
-    color: rgb(170, 169, 169);
-    text-align: end;
+.profile-detail-content .table th {
+  color: rgb(170, 169, 169);
+  text-align: end;
 }
-.profile-detail-content .table td{
-    text-align: left;
-    padding-left: 30px;
+.profile-detail-content .table td {
+  text-align: left;
+  padding-left: 30px;
 }
-.profile-detail-img{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 3rem;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    left: 40%;
-    border-left: 2px solid whitesmoke;
-    padding-left: 4rem;
+.profile-detail-content .table button {
+  padding: 10px 20px;
+  position: absolute;
+  bottom: 15%;
+  right: 30%;
+  cursor: pointer;
 }
-.profile-detail-img img{
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
+.profile-detail-content .table button:active {
+    background: rgb(72, 33, 33);
+    color: white;
+  }
+.profile-detail-img {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 3rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  left: 40%;
+  border-left: 2px solid whitesmoke;
+  padding-left: 4rem;
 }
-.profile-detail-img div{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+.profile-detail-img img {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
 }
-.profile-detail-img button{
-    background: white;
-    border: 1px solid rgb(170, 169, 169);
-    padding: 10px 20px;
-    cursor: pointer;
+.profile-detail-img div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
-input[type="file"]{
-    display: none;
+.profile-detail-img button {
+  background: white;
+  border: 1px solid rgb(170, 169, 169);
+  padding: 10px 20px;
+  cursor: pointer;
 }
+input[type='file'] {
+  display: none;
+}
+.profile-detail-img .save-change .submit-form {
+  margin-top: 4rem;
+  margin-left: 7rem;
+  cursor: pointer;
+  border-radius: 10px;
+  background: rgb(170, 169, 169);
+  color: white;
+}
+.table table h4{
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px 10px;
+  background: #9b9b9b ;
+  text-align: center;
+  color: #0a0202;
+  cursor: pointer;
+  border-radius: 2px;
+  border: none;
+}
+.table table h4:hover{
+  background: #615a5a ;
+}
+

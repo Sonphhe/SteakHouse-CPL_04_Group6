@@ -35,9 +35,9 @@
 }
 
 .sidebar ul li:hover {
-  background-color: #ffefeb; /* MÃ u ná»n nháº¹ khi hover */
-  color: #e5533d; /* MÃ u chá»¯ ná»•i báº­t */
-  padding-left: 10px; /* Hiá»‡u á»©ng di chuyá»ƒn nháº¹ */
+  background-color: #ffefeb;
+  color: #e5533d; 
+  padding-left: 10px; 
   border-radius: 5px;
   cursor: pointer;
 }
@@ -89,6 +89,7 @@
   text-align: center;
   padding: 15px;
   min-height: 300px; /* Chiá»u cao tá»‘i thiá»ƒu cá»§a má»¥c */
+  position: relative;
 }
 
 .menu-item img {
@@ -105,17 +106,48 @@
   color: #333333;
   margin: 10px 0; /* Khoáº£ng cÃ¡ch vá»›i pháº§n text bÃªn dÆ°á»›i */
   flex-grow: 1; /* Äáº©y ná»™i dung phÃ­a dÆ°á»›i xuá»‘ng */
+  cursor: pointer;
+}
+.image-container {
+  position: relative;
 }
 
+.image-container img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
 .menu-item p {
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
   color: #e5533d;
+  cursor: pointer;
 }
 .menu-item:hover {
   transform: scale(1.05); /* PhÃ³ng to nháº¹ */
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* TÄƒng Ä‘á»™ ná»•i báº­t */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.favorite-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(252, 247, 247, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: gray;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s, background 0.3s;
+}
+
+.favorite-icon.active {
+  color: red;
+  background: rgba(255, 0, 0, 0.1);
+}
+
 
 
 .add-to-cartt {

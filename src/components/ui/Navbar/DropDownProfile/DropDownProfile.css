@@ -6,6 +6,7 @@
     max-height: 0px;
     overflow: hidden;
     transition: max-height 0.5s;
+    border-radius: 5px;
 }
 .sub-menu-wrap.open-menu{
     max-height: 400px;
@@ -39,9 +40,11 @@
 .sub-menu-links{
     display: flex;
     align-items: center;
+    justify-content: center;
     text-decoration: none;
     color: #525252;
     margin: 12px 0;
+    cursor: pointer;
 }
 .sub-menu-links p{
     width: 100%;

@@ -20,7 +20,7 @@ import { DataGrid } from '@mui/x-data-grid';
 
 interface Category {
   id: number;
-  name: string;
+  categoryName: string;
 }
 
 interface Product {
@@ -67,11 +67,13 @@ const ProductManage = () => {
     filterProducts(searchValue);
   };
 
-  const handleEditProduct = (product: Product ) => {
-    setSelectedProduct(product);
+  const handleEditProduct = (product: Product) => {
+    setSelectedProduct({
+      ...product,
+      categoryId: product.categoryId 
+    });
     setOpenEditModal(true);
   };
-
   const handleSaveProduct = async () => {
     if (selectedProduct && selectedProduct.id) {
       try {
@@ -100,6 +102,11 @@ const ProductManage = () => {
     },
     { field: 'productPrice', headerName: 'Price', width: 130, type: 'number' },
     { field: 'description', headerName: 'Description', width: 250 },
+    { 
+      field: 'category', 
+      headerName: 'Category', 
+      width: 150 
+    },
     {
       field: 'actions',
       headerName: 'Actions',
@@ -123,7 +130,7 @@ const ProductManage = () => {
     image: product.image,
     productPrice: product.productPrice,
     description: product.description,
-    category: categoryProduct.find((cat) => cat.id === product.categoryId)?.name || 'Unknown',
+    category: categoryProduct.find((cat) => cat.id === String(product.categoryId))?.categoryName || 'Unknown',
   }));
 
   return (
@@ -206,20 +213,28 @@ const ProductManage = () => {
         onChange={(e) => setSelectedProduct({ ...selectedProduct, description: e.target.value })}
         fullWidth
       />
-      <FormControl fullWidth>
-        <InputLabel>Category</InputLabel>
-        <Select
-          name="categoryId"
-          value={selectedProduct?.categoryId || ''}
-          onChange={(e) => setSelectedProduct({ ...selectedProduct, categoryId: parseInt(e.target.value, 10) })}
-        >
-          {categoryProduct.map((category) => (
-            <MenuItem key={category.id} value={category.id}>
-              {category.categoryName}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+    <FormControl fullWidth>
+  <InputLabel id="category-select-label">Category</InputLabel>
+  <Select
+    labelId="category-select-label"
+    name="categoryId"
+    value={selectedProduct?.categoryId || ''}
+    label="Category"
+    onChange={(e) => {
+      console.log('Selected Category:', e.target.value); // Để debug
+      setSelectedProduct({ 
+        ...selectedProduct, 
+        categoryId: e.target.value ? Number(e.target.value) : undefined 
+      });
+    }}
+  >
+    {categoryProduct.map((category) => (
+      <MenuItem key={category.id} value={String(category.id)}>
+        {category.categoryName}
+      </MenuItem>
+    ))}
+  </Select>
+</FormControl>
 
       {/* Image Upload Section */}
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>

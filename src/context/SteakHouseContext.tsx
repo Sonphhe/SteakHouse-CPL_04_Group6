@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { createContext, useContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from 'react'
 import { API_ROOT } from '../utils/constants'
+import { uniq } from 'lodash'
 
 // Types for the various entities managed by the context
 interface SteakHouseType {
@@ -14,6 +15,12 @@ interface SteakHouseType {
   currentPage: number
   totalPages: number
   currentAccount: CurrentAccount | undefined
+  phoneNumberValidation: string
+  ownCart: OwnCart
+  currentOwnCart: OwnCart
+  option: string
+  setOption: Dispatch<SetStateAction<string>>
+  setPhoneNumberValidation: Dispatch<string>
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
@@ -21,16 +28,27 @@ interface SteakHouseType {
   handleNext: () => void
   getPaginatedItems: () => ProductType[]
   login: (currentAccount: CurrentAccount) => void
-  logout: () => void,
+  logout: () => void
   setCurrentAccount: Dispatch<CurrentAccount>
+  getAuthorName: (authorId: string) => string
+  getAuthorImg: (authorId: string) => string
+  getCategoryName: (categoryId: number) => string
 }
 
 interface AccountType {
-  id: number
   username: string
   password: string
-  roleId: number
+  phoneNumber: string
+  fullName: string
+  roleId: string
   image: string
+  id: string
+  location: {
+    province: string
+    district: string
+    commune: string
+    detailLocation: string
+  }
 }
 
 interface ProductType {
@@ -49,7 +67,7 @@ interface ProductCategoryType {
 }
 
 interface BlogCategoryType {
-  id: number
+  id: string
   name: string
 }
 
@@ -59,15 +77,38 @@ interface BlogType {
   description: string
   image: string
   blogCategoryId: number
-  accountId: number
+  accountId: string
+  publishDate: Date
 }
 
 interface CurrentAccount {
   username: string
   password: string
-  roleId: number
+  phoneNumber: string
+  fullName: string
+  roleId: string
   image: string
   id: string
+  location: {
+    province: string
+    district: string
+    commune: string
+    detailLocation: string
+  }
+}
+
+interface OwnCart {
+  id: string
+  userId: string
+  cartItem: {
+    id: string
+    productName: string
+    productOldPrice: string
+    productPrice: string
+    image: string
+    description: string
+    categoryId: string
+  }[] // This defines cartItem as an array, not a tuple
 }
 
 // Create context
@@ -96,6 +137,32 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return savedAccount ? JSON.parse(savedAccount) : null
   })
 
+  const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
+  const [option, setOption] = useState('edit')
+
+  const [ownCart, setOwnCart] = useState<OwnCart>({
+    id: '',
+    userId: '',
+    cartItem: [] // Now this matches the updated type
+  })
+
+  const currentOwnCart = ownCart
+  console.log(currentOwnCart)
+
+  useEffect(() => {
+    // Define an async function inside useEffect
+    const fetchOwnCart = async () => {
+      try {
+        const ownCartRes = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount.id}`)
+        setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] }) // Provide a fallback structure
+      } catch (error) {
+        console.error('Error fetching ownCart:', error)
+      }
+    }
+
+    fetchOwnCart() // Call the async function
+  }, [currentAccount])
+
   useEffect(() => {
     if (currentAccount) {
       localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
@@ -112,9 +179,17 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     const resetAccount = {
       username: '',
       password: '',
-      roleId: 3,
+      phoneNumber: '',
+      fullName: '',
+      roleId: '',
       image: '',
-      id: ''
+      id: '',
+      location: {
+        province: '',
+        district: '',
+        commune: '',
+        detailLocation: ''
+      }
     }
     setCurrentAccount(resetAccount)
     localStorage.removeItem('currentAccount')
@@ -128,7 +203,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
           axios.get(`${API_ROOT}/product`),
           axios.get(`${API_ROOT}/productCategory`),
           axios.get(`${API_ROOT}/blogCategory`),
-          axios.get(`${API_ROOT}/blog`),
+          axios.get(`${API_ROOT}/blog`)
         ])
 
         setAccounts(accountRes.data)
@@ -138,6 +213,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCategories(categoryRes.data)
         setBlogCategories(blogCategoryRes.data)
         setBlogs(blogRes.data)
+        // setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] })
       } catch (error) {
         console.error('Error fetching data:', error)
       }
@@ -185,6 +261,21 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
+  const getAuthorName = (authorId: string) => {
+    const author = accounts.find((account) => account.id === authorId)
+    return author ? author.fullName : 'Unknown Author'
+  }
+
+  const getCategoryName = (categoryId: number) => {
+    const category = blogCategories.find((cat) => cat.id === categoryId.toString())
+    return category ? category.name : 'Unknown Category'
+  }
+
+  const getAuthorImg = (authorId: string) => {
+    const author = accounts.find((account) => account.id === authorId)
+    return author ? author.image : 'Unknown Author'
+  }
+
   return (
     <SteakHouseContext.Provider
       value={{
@@ -198,6 +289,12 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         currentPage,
         totalPages,
         currentAccount,
+        phoneNumberValidation,
+        ownCart,
+        currentOwnCart,
+        option,
+        setOption,
+        setPhoneNumberValidation,
         login,
         logout,
         handleFilter,
@@ -206,7 +303,10 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         handlePrevious,
         handleNext,
         getPaginatedItems,
-        setCurrentAccount
+        setCurrentAccount,
+        getAuthorName,
+        getCategoryName,
+        getAuthorImg
       }}
     >
       {children}

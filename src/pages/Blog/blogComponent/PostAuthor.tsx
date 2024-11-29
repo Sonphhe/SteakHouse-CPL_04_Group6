@@ -1,10 +1,13 @@
-const PostAuthor = (props: {profile_image:string, authorId:number}) => {
+import { useSteakHouseContext } from "../../../hooks/useSteakHouseContext";
+
+const PostAuthor = (props: { authorId:string, publishDate: string}) => {
+  const { getAuthorName, getAuthorImg } = useSteakHouseContext();
   return (
     <div className='post-footer-name'>
-      <img src={props.profile_image} alt='' />
+      <img src={getAuthorImg(props.authorId)} alt='' />
       <div className='lastest-content'>
-        <h4>By: {props.authorId}</h4>
-        <p>Just now</p>
+      <h4>By: {getAuthorName(props.authorId)}</h4>
+        <p>{props.publishDate}</p>
       </div>
     </div>
   )

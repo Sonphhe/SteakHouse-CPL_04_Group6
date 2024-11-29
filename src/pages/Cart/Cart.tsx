@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom'
 import Navbar from '../../components/ui/Navbar/Navbar'
 import { useCartContext } from '../../context/CartContext'
 import './Cart.css'
@@ -8,24 +7,22 @@ import Footer from '../../components/ui/Footer/Footer'
 import BannerCarousel from '../../components/ui/BannerCoupon/BannerCarousel'
 import GoToTopButton from '../../components/GoToTopButton/GoToTopButton'
 import Chat from '../../components/Chat/Chat'
+import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder'
+import { useNavigate } from 'react-router-dom'
 const Cart = () => {
+  const navigate = useNavigate()
   const { cartItems, removeFromCart, updateQuantity } = useCartContext()
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false) // Modal cho xoá tất cả
   const [itemToDelete, setItemToDelete] = useState<number | null>(null)
   const [selectedItems, setSelectedItems] = useState<number[]>([])
-  
-  
-  const navigate = useNavigate()
-
-  const totalAmount = selectedItems.reduce((sum, itemId) => {
-    const item = cartItems.find((item) => item.id === itemId)
-    return sum + (item ? item.productPrice * item.quantity : 0)
-  }, 0)
 
   const handleDeleteClick = (id: number) => {
     setItemToDelete(id)
     setIsDeleteModalOpen(true)
+  }
+  const handleProductClick = (product: any) => {
+    navigate(`/productdetail/${product.id}`, { state: { product } })
   }
 
   const handleConfirmDelete = () => {
@@ -81,118 +78,95 @@ const Cart = () => {
   }
 
   return (
-    <div className='newCart'>
-      <Navbar />
-      <BannerCarousel />
-      <div className='newCart-section'>
-        <div className='newCart-product-list'>
-          <div className='select-all'>
-            <div className='select-all-inner'>
-              <input
-                type='checkbox'
-                checked={selectedItems.length === cartItems.length}
-                onChange={handleSelectAllChange}
-              />
-              <span>Select All</span>
-            </div>
-            <CiTrash
-              onClick={selectedItems.length > 0 ? handleDeleteAll : undefined}
-              className={`delete-all ${selectedItems.length > 0 ? 'active' : ''}`}
-            />
-          </div>
-
-          {cartItems.map((item) => (
-            <div className='product-card' key={item.id}>
-              <input
-                type='checkbox'
-                checked={selectedItems.includes(item.id)}
-                onChange={() => handleCheckboxChange(item.id)}
-              />
-              <img src={item.image} alt={item.productName} />
-              <div className='product-info'>
-                <h4>{item.productName}</h4>
+    <>
+      <div className='newCart'>
+        <Navbar />
+        <BannerCarousel />
+        <div className='newCart-section'>
+          <div className='newCart-product-list'>
+            <div className='select-all'>
+              <div className='select-all-inner'>
+                <input
+                  type='checkbox'
+                  checked={selectedItems.length === cartItems.length}
+                  onChange={handleSelectAllChange}
+                />
+                <span>Select All</span>
               </div>
-              <div className='price'>{item.productPrice}₫</div>
-              <div className='item-quantity'>
-                <span
-                  onClick={() => handleQuantityChange(item, item.quantity - 1)}
-                  className={item.quantity === 1 ? 'disabled' : ''}
-                >
-                  <CiCircleMinus />
-                </span>
-                {item.quantity}
-                <span onClick={() => handleQuantityChange(item, item.quantity + 1)}>
-                  <CiCirclePlus />
-                </span>
-              </div>
-              <CiTrash onClick={() => handleDeleteClick(item.id)} className='delete-item' />
+              <CiTrash
+                onClick={selectedItems.length > 0 ? handleDeleteAll : undefined}
+                className={`delete-all ${selectedItems.length > 0 ? 'active' : ''}`}
+              />
             </div>
-          ))}
-        </div>
 
-        <div className='cart_totals'>
-          <h2 className='order-info'>Order Information</h2>
-          <div className='coupon-code-section'>
-            <input type='text' className='coupon-input' placeholder='Coupon Code' />
-            <button className='apply-coupon-button'>Apply</button>
+            {cartItems.map((item) => (
+              <div className='product-card' key={item.id}>
+                <input
+                  type='checkbox'
+                  checked={selectedItems.includes(item.id)}
+                  onChange={() => handleCheckboxChange(item.id)}
+                />
+                <img
+                  src={item.image}
+                  alt={item.productName}
+                  onClick={() => handleProductClick(item)}
+                  style={{ cursor: 'pointer' }}
+                />
+                <div className='product-info'>
+                  <h4 onClick={() => handleProductClick(item)} style={{ cursor: 'pointer' }}>
+                    {item.productName}
+                  </h4>
+                </div>
+                <div className='price'>{item.productPrice}₫</div>
+                <div className='item-quantity'>
+                  <span
+                    onClick={() => handleQuantityChange(item, item.quantity - 1)}
+                    className={item.quantity === 1 ? 'disabled' : ''}
+                  >
+                    <CiCircleMinus />
+                  </span>
+                  {item.quantity}
+                  <span onClick={() => handleQuantityChange(item, item.quantity + 1)}>
+                    <CiCirclePlus />
+                  </span>
+                </div>
+                <CiTrash onClick={() => handleDeleteClick(item.id)} className='delete-item' />
+              </div>
+            ))}
           </div>
-
-          <table>
-            <tbody>
-              <tr>
-                <th>Subtotal</th>
-                <td>{totalAmount}₫</td>
-              </tr>
-              <tr>
-                <th>Discount</th>
-                <td></td>
-              </tr>
-              <tr>
-                <th>Shipping Fee</th>
-                <td>Free</td>
-              </tr>
-              <tr className='order-total'>
-                <th>Total Amount</th>
-                <td>{totalAmount}₫</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <button className='checkout-button' onClick={() => navigate('/checkout')}>
-            Confirm Order
-          </button>
+          <ConfirmOrder selectedItems={selectedItems} cartItems={cartItems}  context='cart'/>
         </div>
+        {isDeleteModalOpen && (
+          <div className='newCart-modal'>
+            <h3>Are you sure you want to delete this product?</h3>
+            <div className='newCart-modal-buttons'>
+              <button className='no' onClick={handleCancelDelete}>
+                No
+              </button>
+              <button className='yes' onClick={handleConfirmDelete}>
+                Yes
+              </button>
+            </div>
+          </div>
+        )}
+        {isDeleteAllModalOpen && (
+          <div className='newCart-modal'>
+            <h3>Are you sure you want to delete all selected products?</h3>
+            <div className='newCart-modal-buttons'>
+              <button className='no' onClick={handleCancelDeleteAll}>
+                No
+              </button>
+              <button className='yes' onClick={handleConfirmDeleteAll}>
+                Yes
+              </button>
+            </div>
+          </div>
+        )}
+        <Chat />
+        <GoToTopButton />
       </div>
       <Footer />
-      {isDeleteModalOpen && (
-        <div className='newCart-modal'>
-          <h3>Are you sure you want to delete this product?</h3>
-          <div className='newCart-modal-buttons'>
-            <button className='no' onClick={handleCancelDelete}>
-              No
-            </button>
-            <button className='yes' onClick={handleConfirmDelete}>
-              Yes
-            </button>
-          </div>
-        </div>
-      )}
-      {isDeleteAllModalOpen && (
-        <div className='newCart-modal'>
-          <h3>Are you sure you want to delete all selected products?</h3>
-          <div className='newCart-modal-buttons'>
-            <button className='no' onClick={handleCancelDeleteAll}>
-              No
-            </button>
-            <button className='yes' onClick={handleConfirmDeleteAll}>
-              Yes
-            </button>
-          </div>
-        </div>
-      )}
-      <Chat />
-      <GoToTopButton />
-    </div>
+    </>
   )
 }
 
