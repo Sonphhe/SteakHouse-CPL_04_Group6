@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 interface ProductItemsProps {
   product: {
     id: string;
@@ -8,58 +9,60 @@ interface ProductItemsProps {
     image: string;
     description: string;
     quantity: number;
+    categoryId: string;
+    orderTime: string;
   };
-  status: string; // Thêm status từ đơn hàng
+  status: string;
 }
 
+const ProductItems: React.FC<ProductItemsProps> = ({ product}) => {
+  // Tạo một state để lưu danh mục
+  const [categories, setCategories] = useState<{ id: string; categoryName: string }[]>([]);
 
-const ProductItems: React.FC<ProductItemsProps> = ({ product, status }) => {
-   // Hàm để xác định trạng thái dựa trên giá trị status
-  // const getStatusLabel = (status: string): string => {
-  //   switch (status) {
-  //     case 'Waiting for Payment':
-  //       return 'Pending Payment';
-  //     case 'Waiting for Confirmation':
-  //       return 'Pending Confirmation';
-  //     case 'Complete':
-  //       return 'Completed';
-  //     case 'Cancel':
-  //       return 'Cancelled';
-  //     default:
-  //       return status;
-  //   }
-  // };
+  // Fetch dữ liệu danh mục từ API hoặc sử dụng dữ liệu tĩnh
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const response = await fetch('http://localhost:9999/productCategory'); // Thay URL API nếu cần
+      const data = await response.json();
+      setCategories(data);
+    };
+    fetchCategories();
+  }, []);
+
+  // Tìm tên danh mục từ categoryId của sản phẩm
+  const categoryName =
+    categories.find((category) => category.id == product.categoryId)?.categoryName || "Unknown";
+
+  console.log(product.orderTime);
   return (
-    <div className='product-items-container'>
-      <div className='product-header'>
-        <div className='category'>
-          {/* <p>Drinks</p> */}
+    <div className="product-items-container">
+      <div className="product-header">
+        <div className="category">
+          {/* Có thể hiển thị tên danh mục ở đây nếu cần */}
         </div>
-        {/* <p style={{ color: '#7d161c' }}>{getStatusLabel(status)}</p> */}
       </div>
-      <div className='productItems-detail'>
-        <div className='leftside'>
-          <div className='image'>
-            <img src={product.image || '/default-image.jpg'} alt={product.productName} /> {/* Thêm giá trị mặc định nếu image trống */}
+      <div className="productItems-detail">
+        <div className="leftside">
+          <div className="image">
+            <img
+              src={product.image || '/default-image.jpg'}
+              alt={product.productName}
+            /> {/* Thêm giá trị mặc định nếu image trống */}
           </div>
-          <div className='productName'>
+          <div className="productName">
             <p>{product.productName}</p>
-            <p >x{product.quantity}</p>
+            <p>x{product.quantity}</p>
+            <p className="categoryName">{categoryName}</p> {/* Hiển thị tên danh mục */}
+            <p className="order-time">Order Time: {product.orderTime}</p>
           </div>
         </div>
-        <div className='rightside'>
-          <span className='old-price'>{product.productOldPrice}đ</span>
-          <span className='new-price'>{product.productPrice}đ</span>
+        <div className="rightside">
+          <span className="old-price">{product.productOldPrice}đ</span>
+          <span className="new-price">{product.productPrice}đ</span>
         </div>
       </div>
-      {/* <div className='productItems-action'>
-        <div className='total'>
-          <p className='total-text'>Total: </p>
-          <p className='total-money'>{product.productPrice * product.quantity}đ</p>
-        </div>
-      </div> */}
     </div>
-  )
+  );
 }
 
-export default ProductItems
+export default ProductItems;
