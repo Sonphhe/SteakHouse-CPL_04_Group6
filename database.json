@@ -11,7 +11,7 @@
       "id": "35ea"
     }
   ],
- "account": [
+  "account": [
     {
       "username": "sonpham123",
       "password": "123",
@@ -78,7 +78,7 @@
       "id": "590",
       "createDate": "29/11/24"
     }
-],
+  ],
   "productCategory": [
     {
       "id": "1",
@@ -737,42 +737,6 @@
       "userId": "7gV5Fax",
       "cartItem": [
         {
-          "id": "18",
-          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
-          "productOldPrice": 100,
-          "productPrice": 165,
-          "image": "/assets/images/SPAGHETTI1.jpeg",
-          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
-          "categoryId": 3,
-          "reviews": [],
-          "quantity": 2,
-          "isChecked": true
-        },
-        {
-          "id": "28",
-          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD4.png",
-          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
-          "categoryId": 4,
-          "reviews": [],
-          "quantity": 2,
-          "isChecked": true
-        },
-        {
-          "id": "29",
-          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD5.jpg",
-          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
-          "categoryId": 4,
-          "reviews": [],
-          "quantity": 2,
-          "isChecked": true
-        },
-        {
           "id": "30",
           "productName": "MULBERRY SALAD AND ICE CREAM",
           "productOldPrice": 110,
@@ -837,9 +801,54 @@
   ],
   "checkOutItems": [
     {
-      "id": "1",
+      "id": "1732945990609",
       "userId": "7gV5Fax",
-      "cartItem": []
+      "status": "Waiting for Confirmation",
+      "cartItem": [
+        {
+          "id": "18",
+          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+          "productOldPrice": 100,
+          "productPrice": 165,
+          "image": "/assets/images/SPAGHETTI1.jpeg",
+          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
+          "categoryId": 3,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        },
+        {
+          "id": "28",
+          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD4.png",
+          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
+          "categoryId": 4,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        }
+      ]
+    },
+    {
+      "id": "1732946512112",
+      "userId": "7gV5Fax",
+      "status": "Waiting for Payment",
+      "cartItem": [
+        {
+          "id": "29",
+          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD5.jpg",
+          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
+          "categoryId": 4,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        }
+      ]
     }
   ],
   "discountTicket": [

@@ -21,12 +21,13 @@ const QrCodePage: React.FC = () => {
       swal('Warning', 'Please agree to the terms and conditions.', 'warning')
     } else {
       setIsPaymentSuccessful(true)
-
+  
       // Chuyển sản phẩm từ giỏ hàng sang checkout khi thanh toán thành công
-      await saveToCheckOut() // Lưu giỏ hàng vào checkout
-      // swal('Success!', 'Payment successful. Your order is being processed.', 'success')
+      await saveToCheckOut('qrCode') // Truyền tham số vào nếu cần
+      swal('Success!', 'Payment successful. Your order is being processed.', 'success')
     }
   }
+  
 
   const totalMoneyWithZeros = totalMoney * 1000
   const url = `https://qrcode.io.vn/api/generate/mb/678928072003/${totalMoneyWithZeros}/Order?frame=1&is_mask=1`

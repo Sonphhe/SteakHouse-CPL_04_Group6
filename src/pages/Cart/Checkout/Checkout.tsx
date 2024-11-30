@@ -13,7 +13,7 @@ import { useCartContext } from '../../../context/CartContext'
 
 const Checkout = () => {
   const navigate = useNavigate()
-  const [distance, setDistance] = useState(0);
+
   // Lấy dữ liệu từ CartContext
   const { cartItems } = useCartContext()
 
@@ -22,7 +22,7 @@ const Checkout = () => {
 
   // Lọc các sản phẩm đã chọn
   const selectedItems = cartItems?.cartItem?.map((item) => item.id) || [] // Kiểm tra cartItems và gán mảng rỗng nếu là undefined
-
+  
   return (
     <>
       <div className='checkout'>
@@ -38,7 +38,7 @@ const Checkout = () => {
               {/* Hiển thị danh sách sản phẩm trong giỏ */}
               <ProductInCart />
               <Orderer />
-              <ReceiveLocation onDistanceChange={setDistance} />
+              <ReceiveLocation />
               <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
             </div>
             <div className='right-handside'>
@@ -48,7 +48,6 @@ const Checkout = () => {
                 cartItems={cartItems?.cartItem}
                 paymentMethod={paymentMethod}
                 context='checkout'
-                shippingFee={distance}
               />
             </div>
           </div>

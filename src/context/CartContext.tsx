@@ -18,6 +18,7 @@ interface CartItem {
   description: string
   categoryId: string
   quantity: number
+  isChecked: boolean
 }
 
 interface CheckOutItem {
@@ -32,7 +33,7 @@ interface CartContextType {
   // addToCart: (product: CartItem) => void
   // removeFromCart: (id: string) => void
   // updateQuantity: (id: string, quantity: number) => void
-  saveToCheckOut: () => Promise<void>
+  saveToCheckOut: (paymentMethod?: string) => Promise<void>
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -65,40 +66,54 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   console.log(cartItems)
 
-  const saveToCheckOut = async () => {
+  const saveToCheckOut = async (paymentMethod?: string) => {
     if (!currentAccount) {
       console.error('Người dùng chưa đăng nhập!');
       return;
     }
   
     try {
-      // Lọc các sản phẩm có quantity > 0 từ giỏ hàng
-      const selectedItems = cartItems.cartItem.filter(item => item.quantity > 0); 
-      if (!selectedItems.length) {
-        console.error('Không có sản phẩm nào để lưu đơn hàng!');
+      // Lọc những sản phẩm đã chọn (ichecker = true)
+      const selectedItems = cartItems.cartItem.filter(item => item.isChecked === true && item.quantity > 0);
+      
+      if (selectedItems.length === 0) {
+        console.error('Không có sản phẩm nào được chọn để lưu đơn hàng!');
         return;
       }
   
+      // Xác định trạng thái dựa trên phương thức thanh toán
+      let status = 'Pending';
+      if (paymentMethod === 'qrCode') {
+        status = 'Waiting for Payment'; // Cập nhật trạng thái khi chọn qrCode
+      } else if (paymentMethod === 'cashOnDelivery') {
+        status = 'Waiting for Confirmation'; // Trạng thái cho thanh toán khi giao hàng
+      }
+  
+      // Tạo đơn hàng mới
       const newCheckOutItem: CheckOutItem = {
-        id: Date.now().toString(), // Tạo id cho đơn hàng
+        id: Date.now().toString(),
         userId: currentAccount.id,
-        status: 'Pending', // Trạng thái đơn hàng mặc định
-        cartItem: selectedItems, // Các sản phẩm đã chọn
+        status,
+        cartItem: selectedItems,
       };
   
-      // Lưu đơn hàng vào bảng checkOutItems
+      // Lưu đơn hàng vào API
       await axios.post(`${API_ROOT}/checkOutItems`, newCheckOutItem);
   
-      // Xóa các sản phẩm khỏi giỏ hàng (ownCart) sau khi lưu đơn hàng
+      // Xóa các sản phẩm đã chọn trong giỏ hàng
       await axios.patch(`${API_ROOT}/ownCart/${cartItems.id}`, {
-        cartItem: [], // Giỏ hàng trống sau khi checkout
+        cartItem: cartItems.cartItem.filter(item => item.isChecked === false), // Giữ lại sản phẩm chưa được chọn
       });
   
-      console.log('Lưu đơn hàng thành công!');
+      console.log('Lưu đơn hàng thành công với trạng thái:', status);
     } catch (error) {
       console.error('Lỗi khi lưu đơn hàng:', error);
     }
   };
+  
+  
+  
+  
   
   
   
