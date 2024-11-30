@@ -17,9 +17,9 @@ import EditProfile from './components/EditProfile/EditProfile'
 import ValidationNum from './components/ValidationNum/ValidationNum'
 import UserOrder from '../User/components/UserOrder/UserOrder'
 import Location from '../User/components/Location'
-
+import FavouriteProduct  from '../User/components/FavouriteProduct'
 const UserProfile = () => {
-  const { currentAccount,option, setOption } = useSteakHouseContext()
+  const { currentAccount, option, setOption } = useSteakHouseContext()
 
   const [showVerify, setShowVerify] = useState(false)
   const [showEditProfile, setShowEditProfile] = useState(false)
@@ -27,33 +27,34 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div className='user-profile'>
+      <div className="user-profile">
         <Navbar />
-        <div className='user-profile-content'>
-          <div className='user-profile-left'>
-            <div className='user-profile-top'>
+        <div className="user-profile-content">
+          <div className="user-profile-left">
+            <div className="user-profile-top">
               <UserProfileCom setStateAction={setOption} />
             </div>
-            <div className='user-profile-center'>
+            <div className="user-profile-center">
               <UserProfileCate stateAction={option} setStateAction={setOption} />
             </div>
           </div>
           {option === 'edit' ? (
             showEditProfile ? (
-              <EditProfile set={setShowVerify} setShowEdit={setShowEditProfile} title='Edit Your Profile' />
+              <EditProfile set={setShowVerify} setShowEdit={setShowEditProfile} title="Edit Your Profile" />
             ) : (
-              <UserProfileContent setEdit={setShowEditProfile} title='My Profile' />
+              <UserProfileContent setEdit={setShowEditProfile} title="My Profile" />
             )
           ) : null}
-          {option === 'userOrder'?<UserOrder />:<></>}
+          {option === 'userOrder' ? <UserOrder /> : null}
           {option === 'location' && <Location />}
+          {option === 'heart' && <FavouriteProduct />}
         </div>
-        <div className='user-profile-footer'>
+        <div className="user-profile-footer">
           <Footer />
         </div>
       </div>
-      {showVerify ? <VerifyNum set={setShowVerify} setShowValidNum={setShowValidNum} /> : <></>}
-      {showValidNum ? <ValidationNum setShowValidNum={setShowValidNum} /> : <></>}
+      {showVerify ? <VerifyNum set={setShowVerify} setShowValidNum={setShowValidNum} /> : null}
+      {showValidNum ? <ValidationNum setShowValidNum={setShowValidNum} /> : null}
     </div>
   )
 }

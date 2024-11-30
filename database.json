@@ -663,5 +663,29 @@
       "backGroundIcon": "",
       "id": "7019"
     }
+  ],
+  "favourite": [
+    {
+      "id": "1",
+      "userId": "3Lo4Ulj",
+      "favoriteItems": [
+        {
+          "id": "26",
+          "productName": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 60,
+          "image": "/assets/images/SALAD2.jpg",
+          "description": "A hearty and protein-packed salad combining tender beef, succulent chicken, and flavorful tuna, all tossed with a smoky BBQ sauce and fresh vegetables. This dish offers a variety of textures and flavors, with the savory meats paired perfectly with the bold, tangy BBQ sauce.",
+          "categoryId": 4,
+          "hidden": false,
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "userId": "7gV5Fax",
+      "favoriteItems": []
+    }
   ]
 }
