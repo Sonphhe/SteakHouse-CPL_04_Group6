@@ -11,7 +11,7 @@
       "id": "35ea"
     }
   ],
- "account": [
+  "account": [
     {
       "username": "sonpham123",
       "password": "123",
@@ -78,7 +78,7 @@
       "id": "590",
       "createDate": "29/11/24"
     }
-],
+  ],
   "productCategory": [
     {
       "id": "1",
@@ -745,7 +745,7 @@
           "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
           "categoryId": 3,
           "reviews": [],
-          "quantity": 1,
+          "quantity": 2,
           "isChecked": true
         },
         {
@@ -757,8 +757,20 @@
           "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
           "categoryId": 4,
           "reviews": [],
-          "quantity": 1,
+          "quantity": 4,
           "isChecked": true
+        },
+        {
+          "id": "7",
+          "productName": "BEEF WITH PEPPER SAUCE",
+          "productOldPrice": 140,
+          "productPrice": 95,
+          "image": "/assets/images/steak7_test.jpg",
+          "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": [],
+          "quantity": 4
         },
         {
           "id": "29",
@@ -768,21 +780,9 @@
           "image": "/assets/images/SALAD5.jpg",
           "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
           "categoryId": 4,
+          "hidden": false,
           "reviews": [],
-          "quantity": 1,
-          "isChecked": true
-        },
-        {
-          "id": "30",
-          "productName": "MULBERRY SALAD AND ICE CREAM",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD6.jpg",
-          "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
-          "categoryId": 4,
-          "reviews": [],
-          "quantity": 1,
-          "isChecked": true
+          "quantity": 1
         }
       ]
     },
@@ -808,6 +808,36 @@
       "userId": "UvmIhuy",
       "cartItem": [],
       "id": "XsmKL4Y"
+    },
+    {
+      "userId": "588tNWj",
+      "cartItem": [
+        {
+          "id": "27",
+          "productName": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD3.jpg",
+          "description": "A vibrant, flavorful salad featuring a combination of tender beef and tuna, tossed with a zesty spicy and sour sauce. The mix of protein-rich beef and tuna pairs perfectly with the tangy and spicy dressing, making this a bold and satisfying dish.",
+          "categoryId": 4,
+          "hidden": false,
+          "reviews": [],
+          "quantity": 1
+        },
+        {
+          "id": "29",
+          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD5.jpg",
+          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
+          "categoryId": 4,
+          "hidden": false,
+          "reviews": [],
+          "quantity": 1
+        }
+      ],
+      "id": "qmhQU5H"
     }
   ],
   "checkOutItems": [

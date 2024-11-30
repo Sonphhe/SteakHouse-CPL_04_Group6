@@ -13,7 +13,7 @@ import EmptyBlank from '../../components/ui/EmptyBlank/EmptyBlank';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cartItems,selectedItems, setSelectedItems } = useCartContext();
+  const { cartItems,selectedItems, setSelectedItems, removeFromCart, updateQuantity } = useCartContext();
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false);
   const [itemToDelete, setItemToDelete] = useState<string | null>(null);
@@ -34,6 +34,7 @@ const Cart = () => {
       );
       setItemToDelete(null);
       setIsDeleteModalOpen(false);
+      removeFromCart(itemToDelete)
     }
   };
 
@@ -44,7 +45,7 @@ const Cart = () => {
 
   const handleQuantityChange = (item: any, newQuantity: number) => {
     if (newQuantity > 0) {
-      // updateQuantity(item.id, newQuantity)
+      updateQuantity(item.id, newQuantity)
     }
   };
 
@@ -114,7 +115,7 @@ const Cart = () => {
                         {item.productName}
                       </h4>
                     </div>
-                    <div className="price">{item.productPrice}₫</div>
+                    <div className="price">{(item.productPrice * 1000).toLocaleString('vi-VN')}₫</div>
                     <div className="item-quantity">
                       <span
                         onClick={() => handleQuantityChange(item, item.quantity - 1)}

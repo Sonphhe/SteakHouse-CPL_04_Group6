@@ -97,17 +97,17 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
           <ul>
             <li>
               <p className='title'>Total</p>
-              <p className='price'>{total.toLocaleString()}đ</p>
+              <p className='price'>{(total*1000).toLocaleString('vi-VN')}đ</p>
             </li>
             {context === 'checkout' && (
               <li>
                 <p className='title'>Voucher discount</p>
-                <p className='price-discount'>{(total * (voucherDiscount / 100)).toLocaleString()}đ</p>
+                <p className='price-discount'>{((total*1000) * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ</p>
               </li>
             )}
             <li>
               <p className='title'>Shipping fees</p>
-              <p className='price'>{shippingFee.toLocaleString()}đ</p>
+              <p className='price'>{(shippingFee*1000).toLocaleString('vi-VN')}đ</p>
             </li>
           </ul>
         </div>
@@ -115,7 +115,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
         <div className='cf-offer'>
           <div>
             <p className='title'>Money</p>
-            <p className='money'>{finalAmount.toLocaleString()}đ</p>
+            <p className='money'>{(finalAmount*1000).toLocaleString('vi-VN')}đ</p>
           </div>
           <button onClick={handleConfirm}>{context === 'cart' ? 'Go to Checkout' : 'Confirm Order'}</button>
         </div>

@@ -14,13 +14,9 @@ import { useCartContext } from '../../../context/CartContext'
 const Checkout = () => {
   const navigate = useNavigate()
   const [distance, setDistance] = useState(0);
-  // Lấy dữ liệu từ CartContext
   const { cartItems, selectedItems } = useCartContext();
 
-  // State quản lý phương thức thanh toán
   const [paymentMethod, setPaymentMethod] = useState<string>('')
-
-  // Lọc các sản phẩm đã chọn
 
   return (
     <>
@@ -34,14 +30,12 @@ const Checkout = () => {
           </div>
           <div className='content'>
             <div className='left-handside'>
-              {/* Hiển thị danh sách sản phẩm trong giỏ */}
               <ProductInCart />
               <Orderer />
               <ReceiveLocation onDistanceChange={setDistance} />
               <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
             </div>
             <div className='right-handside'>
-              {/* Truyền dữ liệu từ Context và state vào ConfirmOrder */}
               <ConfirmOrder
                 cartItems={cartItems?.cartItem}
                 selectedItems={selectedItems}
