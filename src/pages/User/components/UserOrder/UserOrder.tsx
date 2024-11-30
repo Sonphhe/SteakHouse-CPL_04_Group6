@@ -2,30 +2,50 @@ import { useState, useEffect } from 'react'
 import SearchBarFilter from '../../../../components/ui/SearchBarFilter/SearchBarFilter'
 import '../../User.css'
 import ProductItems from './components/ProductItems'
+import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 
 const UserOrder = () => {
   const [orders, setOrders] = useState<any[]>([]) // State để lưu đơn hàng
   const [filterStatus, setFilterStatus] = useState<string>('All') // Trạng thái lọc
-
-  // Giả sử bạn có một API để lấy dữ liệu từ server hoặc database
+  const { currentAccount } = useSteakHouseContext()
+  // Lấy dữ liệu đơn hàng từ API, lọc theo userId
   useEffect(() => {
     const fetchOrders = async () => {
-      const response = await fetch('http://localhost:9999/checkOutItems') // URL API của bạn
+      if (!currentAccount) return; // Kiểm tra nếu không có tài khoản đăng nhập
+
+      const response = await fetch(`http://localhost:9999/checkOutItems?userId=${currentAccount.id}`) // Lọc đơn hàng theo userId
       const data = await response.json()
       setOrders(data) // Lưu dữ liệu vào state
     }
 
     fetchOrders()
-  }, [])
+  }, [currentAccount]) // Chạy lại mỗi khi currentAccount thay đổi
+  // Lấy dữ liệu đơn hàng từ API
+  // useEffect(() => {
+  //   const fetchOrders = async () => {
+  //     const response = await fetch('http://localhost:9999/checkOutItems') // URL API
+  //     const data = await response.json()
+  //     setOrders(data) // Lưu dữ liệu vào state
+  //   }
+
+  //   fetchOrders()
+  // }, [])
 
   const filterOrders = (status: string) => {
     setFilterStatus(status)
   }
 
   // Lọc các đơn hàng theo trạng thái
-  const filteredOrders = orders.filter((order) => {
-    return filterStatus === 'All' || order.status === filterStatus
-  })
+  const filteredOrders = orders.flatMap((order) => 
+    order.cartItems.filter((cartItem: any) => 
+      filterStatus === 'All' || cartItem.status === filterStatus
+    ).map((cartItem: any) => ({
+      ...cartItem,
+      parentOrderId: order.id,
+      orderTime: cartItem.orderTime // Thêm ID cha để dễ xử lý
+    }))
+  )
+
   const handleBuyAgain = (orderId: string) => {
     console.log(`Buy again for order: ${orderId}`)
     // Thêm logic xử lý mua lại ở đây
@@ -58,28 +78,27 @@ const UserOrder = () => {
         </div>
         <SearchBarFilter title='You can search your product by name' />
         <div className='product-list'>
-          {/* Hiển thị các sản phẩm từ đơn hàng đã lọc */}
-          {filteredOrders.map((order) => (
-            <div key={order.id} className='order-group'>
+          {filteredOrders.map((cartItem) => (
+            <div key={cartItem.id} className='order-group'>
               {/* Trạng thái đơn hàng */}
               <div className='order-header'>
                 <p className='order-status'>
-                  {order.status === 'Waiting for Payment'
+                  {cartItem.status === 'Waiting for Payment'
                     ? 'Pending Payment'
-                    : order.status === 'Waiting for Confirmation'
+                    : cartItem.status === 'Waiting for Confirmation'
                       ? 'Pending Confirmation'
-                      : order.status === 'Complete'
+                      : cartItem.status === 'Complete'
                         ? 'Completed'
-                        : order.status === 'Cancel'
+                        : cartItem.status === 'Cancel'
                           ? 'Cancelled'
-                          : order.status}
+                          : cartItem.status}
                 </p>
               </div>
 
               {/* Sản phẩm trong đơn hàng */}
               <div className='order-products'>
-                {order.cartItem?.map((item: any) => (
-                  <ProductItems key={item.id} product={item} status={order.status} />
+                {cartItem.items?.map((item: any) => (
+                  <ProductItems key={item.id} product={{ ...item, orderTime: cartItem.orderTime }} status={cartItem.status} />
                 ))}
               </div>
 
@@ -88,20 +107,19 @@ const UserOrder = () => {
                 <div className='total'>
                   <p className='total-text'>Total:</p>
                   <p className='total-money'>
-                    {/* Tính tổng giá của tất cả các sản phẩm trong đơn hàng */}
-                    {order.cartItem?.reduce((acc: number, item: any) => acc + item.productPrice * item.quantity, 0)}đ
+                    {cartItem.items?.reduce((acc: number, item: any) => acc + item.productPrice * item.quantity, 0)}đ
                   </p>
                 </div>
 
                 {/* Nút hành động cho đơn hàng */}
                 <div className='order-actions'>
-                  {order.status === 'Complete' && (
-                    <button className='btn1' onClick={() => handleBuyAgain(order.id)}>
+                  {cartItem.status === 'Complete' && (
+                    <button className='btn1' onClick={() => handleBuyAgain(cartItem.id)}>
                       Buy Again
                     </button>
                   )}
-                  {(order.status === 'Waiting for Payment' || order.status === 'Waiting for Confirmation') && (
-                    <button className='btn2' onClick={() => handleCancelOrder(order.id)}>
+                  {(cartItem.status === 'Waiting for Payment' || cartItem.status === 'Waiting for Confirmation') && (
+                    <button className='btn2' onClick={() => handleCancelOrder(cartItem.id)}>
                       Cancel Order
                     </button>
                   )}

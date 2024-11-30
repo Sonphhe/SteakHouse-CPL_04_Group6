@@ -347,3 +347,8 @@
 .order-actions .btn2:hover {
   background-color: #db575e;
 }
+.order-time {
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}

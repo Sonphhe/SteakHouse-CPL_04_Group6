@@ -72,44 +72,86 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const saveToCheckOut = async (paymentMethod?: string) => {
     if (!currentAccount) {
-      console.error('User is not logged in!');
+      console.error("User is not logged in!");
       return;
     }
-
+  
     try {
-      const selectedItems = cartItems.cartItem.filter((item) => item.isChecked && item.quantity > 0);
-
-      if (selectedItems.length === 0) {
-        console.error('No items selected for checkout!');
+      const selectedProducts = cartItems.cartItem.filter(
+        (item) => item.isChecked && item.quantity > 0
+      );
+  
+      if (selectedProducts.length === 0) {
+        console.error("No items selected for checkout!");
         return;
       }
-
+  
       const status =
-        paymentMethod === 'qrCode'
-          ? 'Waiting for Payment'
-          : paymentMethod === 'cashOnDelivery'
-          ? 'Waiting for Confirmation'
-          : 'Pending';
-
-      const newCheckOutItem: CheckOutItem = {
-        id: Date.now().toString(),
-        userId: currentAccount.id,
+        paymentMethod === "qrCode"
+          ? "Waiting for Payment"
+          : paymentMethod === "cashOnDelivery"
+          ? "Waiting for Confirmation"
+          : "Pending";
+  
+      // Tạo id cho đơn hàng mới
+      const generateId = () =>
+        `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+  
+      // Lấy thời gian hiện tại với định dạng ngày/tháng/năm và phút
+      const currentDate = new Date();
+      const formattedTime = currentDate.toLocaleString("vi-VN", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+  
+      const newCartItem = {
+        id: generateId(),
         status,
-        cartItem: selectedItems,
+        items: selectedProducts,
+        orderTime: formattedTime, // Ghi lại thời gian theo định dạng
       };
-
-      await axios.post(`${API_ROOT}/checkOutItems`, newCheckOutItem);
-
+  
+      const response = await axios.get(`${API_ROOT}/checkOutItems`);
+      const existingUserCheckOut = response.data.find(
+        (item: any) => item.userId === currentAccount.id
+      );
+  
+      if (existingUserCheckOut) {
+        const updatedCartItems = [
+          ...existingUserCheckOut.cartItems,
+          newCartItem,
+        ];
+  
+        await axios.patch(`${API_ROOT}/checkOutItems/${existingUserCheckOut.id}`, {
+          cartItems: updatedCartItems,
+        });
+      } else {
+        const newCheckOutItem = {
+          id: Date.now().toString(),
+          userId: currentAccount.id,
+          cartItems: [newCartItem],
+        };
+  
+        await axios.post(`${API_ROOT}/checkOutItems`, newCheckOutItem);
+      }
+  
       const remainingItems = cartItems.cartItem.filter((item) => !item.isChecked);
-      await axios.patch(`${API_ROOT}/ownCart/${cartItems.id}`, { cartItem: remainingItems });
-
+      await axios.patch(`${API_ROOT}/ownCart/${cartItems.id}`, {
+        cartItem: remainingItems,
+      });
+  
       setCartItems((prev) => ({ ...prev, cartItem: remainingItems }));
-
-      console.log('Checkout saved successfully with status:', status);
+      console.log("Checkout saved successfully with status:", status);
     } catch (error) {
-      console.error('Error saving checkout:', error);
+      console.error("Error saving checkout:", error);
     }
   };
+  
+
+  
 
   const addToCart = async (product: CartItem) => {
     try {
