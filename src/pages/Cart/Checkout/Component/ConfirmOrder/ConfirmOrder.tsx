@@ -14,6 +14,7 @@ interface CartItem {
   description: string
   categoryId: string
   quantity: number
+  isChecked: boolean
 }
 
 // interface ConfirmOrderProps {
@@ -23,14 +24,20 @@ interface CartItem {
 //   context: 'cart' | 'checkout'; // Context to distinguish usage
 // }
 interface ConfirmOrderProps {
-  selectedItems: string[] 
-  cartItems: CartItem[] | undefined 
+  selectedItems: string[]
+  cartItems: CartItem[] | undefined
   paymentMethod?: string
   context: 'cart' | 'checkout'
   shippingFee: number
 }
 
-const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, paymentMethod, context, shippingFee }) => {
+const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
+  selectedItems,
+  cartItems,
+  paymentMethod,
+  context,
+  shippingFee
+}) => {
   const [isModalVisible, setModalVisible] = useState(false)
   const [voucherDiscount, setVoucherDiscount] = useState<number>(0)
   const { saveToCheckOut } = useCartContext()
@@ -38,7 +45,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
 
   // Tính toán các sản phẩm đã chọn
   const selectedProducts = useMemo(() => {
-    return cartItems?.filter((item) => selectedItems.includes(item.id)) || []
+    return cartItems?.filter((item) => selectedItems.includes(item.id) && item.isChecked === true) || []
   }, [selectedItems, cartItems])
 
   // Calculate total before applying voucher
@@ -67,22 +74,19 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
   // Handle confirm action based on context
   const handleConfirm = () => {
     if (context === 'cart') {
-      navigate('/checkout'); // Điều hướng đến trang thanh toán
+      navigate('/checkout') // Điều hướng đến trang thanh toán
     } else if (context === 'checkout') {
       if (paymentMethod === 'qrCode') {
-        console.log(paymentMethod);
-        navigate('/qrcode', { state: { totalMoney: finalAmount } });
+        console.log(paymentMethod)
+        navigate('/qrcode', { state: { totalMoney: finalAmount } })
       } else if (paymentMethod === 'cashOnDelivery') {
-        swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success');
-        saveToCheckOut(paymentMethod); // Truyền `paymentMethod` vào hàm
+        swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success')
+        saveToCheckOut(paymentMethod) // Truyền `paymentMethod` vào hàm
       } else {
-        swal('Warning', 'Please select a payment method before confirming.', 'warning');
+        swal('Warning', 'Please select a payment method before confirming.', 'warning')
       }
     }
-  };
-  
-
-  
+  }
 
   return (
     <div className='confirm-order'>
@@ -99,17 +103,17 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
           <ul>
             <li>
               <p className='title'>Total</p>
-              <p className='price'>{(total*1000).toLocaleString('vi-VN')}đ</p>
+              <p className='price'>{(total * 1000).toLocaleString('vi-VN')}đ</p>
             </li>
             {context === 'checkout' && (
               <li>
                 <p className='title'>Voucher discount</p>
-                <p className='price-discount'>{((total*1000) * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ</p>
+                <p className='price-discount'>{(total * 1000 * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ</p>
               </li>
             )}
             <li>
               <p className='title'>Shipping fees</p>
-              <p className='price'>{(shippingFee*1000).toLocaleString('vi-VN')}đ</p>
+              <p className='price'>{(shippingFee * 1000).toLocaleString('vi-VN')}đ</p>
             </li>
           </ul>
         </div>
@@ -117,7 +121,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
         <div className='cf-offer'>
           <div>
             <p className='title'>Money</p>
-            <p className='money'>{(finalAmount*1000).toLocaleString('vi-VN')}đ</p>
+            <p className='money'>{(finalAmount * 1000).toLocaleString('vi-VN')}đ</p>
           </div>
           <button onClick={handleConfirm}>{context === 'cart' ? 'Go to Checkout' : 'Confirm Order'}</button>
         </div>

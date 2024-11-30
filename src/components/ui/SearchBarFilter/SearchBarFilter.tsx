@@ -3,20 +3,13 @@ import { CiSearch } from 'react-icons/ci'
 import './SearchBarFilter.css'
 import { LiaTimesCircle } from 'react-icons/lia'
 
-const SearchBarFilter = (props: {title:string}) => {
+const SearchBarFilter = (props: { title: string }) => {
   const [searchValue, setSearchValue] = useState('')
   return (
-    <div className='userorder'>
-      <div className='userorder-search'>
-        <CiSearch size={30} className='search-icon' />
-        <input
-          type='text'
-          onChange={(e) => setSearchValue(e.target.value)}
-          value={searchValue}
-          placeholder={props.title}
-        />
-        {searchValue && <LiaTimesCircle onClick={() => setSearchValue('')} size={20} className='search-icon-times' />}
-      </div>
+    <div className='searchbar-input-wrapper'>
+      <CiSearch size={25} id='search-icon' />
+      <input type='text' value={searchValue} onChange={(e) => setSearchValue(e.target.value) } placeholder={props.title} />
+      {searchValue===''?<></>:<LiaTimesCircle onClick={() => setSearchValue('')} id='del-icon'/>}
     </div>
   )
 }

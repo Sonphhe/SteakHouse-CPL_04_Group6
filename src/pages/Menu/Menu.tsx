@@ -89,6 +89,7 @@ const Menu: React.FC = () => {
   const handleAddToCart = (product: any) => {
     const productWithValidQuantity = {
       ...product,
+      isChecked: false,
       quantity: product.quantity && product.quantity > 0 ? product.quantity : 1 // Default quantity to 1
     }
 
