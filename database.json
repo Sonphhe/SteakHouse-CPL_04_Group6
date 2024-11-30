@@ -737,49 +737,25 @@
       "userId": "7gV5Fax",
       "cartItem": [
         {
-          "id": "18",
-          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
-          "productOldPrice": 100,
+          "id": "3",
+          "productName": "USA TOPBLADE STEAK",
+          "productOldPrice": 85,
           "productPrice": 165,
-          "image": "/assets/images/SPAGHETTI1.jpeg",
-          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
-          "categoryId": 3,
-          "reviews": [],
-          "quantity": 2,
-          "isChecked": true
-        },
-        {
-          "id": "28",
-          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD4.png",
-          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
-          "categoryId": 4,
-          "reviews": [],
-          "quantity": 4,
-          "isChecked": true
-        },
-        {
-          "id": "7",
-          "productName": "BEEF WITH PEPPER SAUCE",
-          "productOldPrice": 140,
-          "productPrice": 95,
-          "image": "/assets/images/steak7_test.jpg",
-          "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
+          "image": "/assets/images/steak3_test.webp",
+          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
           "categoryId": 1,
           "hidden": false,
           "reviews": [],
-          "quantity": 4
+          "quantity": 1
         },
         {
-          "id": "29",
-          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+          "id": "5",
+          "productName": "SHAKING BEEF",
           "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD5.jpg",
-          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
-          "categoryId": 4,
+          "productPrice": 95,
+          "image": "/assets/images/steak5.jpg",
+          "description": "Tender cuts of beef, typically sirloin or tenderloin, marinated and stir-fried to perfection. The beef is diced into cubes, which are quickly seared at high heat, creating a crispy outer layer while retaining juiciness inside.",
+          "categoryId": 1,
           "hidden": false,
           "reviews": [],
           "quantity": 1
@@ -842,9 +818,73 @@
   ],
   "checkOutItems": [
     {
-      "id": "1",
+      "id": "1732945990609",
       "userId": "7gV5Fax",
-      "cartItem": []
+      "status": "Waiting for Confirmation",
+      "cartItem": [
+        {
+          "id": "18",
+          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
+          "productOldPrice": 100,
+          "productPrice": 165,
+          "image": "/assets/images/SPAGHETTI1.jpeg",
+          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
+          "categoryId": 3,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        },
+        {
+          "id": "28",
+          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD4.png",
+          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
+          "categoryId": 4,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        }
+      ]
+    },
+    {
+      "id": "1732946512112",
+      "userId": "7gV5Fax",
+      "status": "Waiting for Payment",
+      "cartItem": [
+        {
+          "id": "29",
+          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD5.jpg",
+          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
+          "categoryId": 4,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        }
+      ]
+    },
+    {
+      "id": "1732954157149",
+      "userId": "7gV5Fax",
+      "status": "Waiting for Confirmation",
+      "cartItem": [
+        {
+          "id": "30",
+          "productName": "MULBERRY SALAD AND ICE CREAM",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD6.jpg",
+          "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
+          "categoryId": 4,
+          "reviews": [],
+          "quantity": 2,
+          "isChecked": true
+        }
+      ]
     }
   ],
   "discountTicket": [

@@ -32,11 +32,13 @@
   background-color: #fff;
   padding: 20px;
   border-radius: 10px;
+  padding-top: 0px;
 }
 .product-items-container .product-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 0px;
 }
 .product-items-container .product-header .category {
   display: flex;
@@ -51,6 +53,8 @@
   border-bottom: 1px solid #dacdce;
   border-top: 1px solid #dacdce;
   padding: 15px 0;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 .productItems-detail .leftside {
   display: flex;
@@ -100,16 +104,18 @@
   align-items: center;
 }
 .productItems-action .total .total-text {
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 14px;
+  font-size: 14px; /* Chữ nhỏ hơn */
   line-height: 20px;
-  margin: 0 10px 0 0;
+  color: rgba(0, 0, 0, 0.7); /* Màu chữ nhạt hơn */
+  font-weight: 800;
 }
+
 .productItems-action .total .total-money {
-  color: #7d161c;
-  font-size: 24px;
-  line-height: 30px;
+  font-size: 16px; /* Kích thước chữ nhỏ hơn cho tổng từng sản phẩm */
+  color: #b40f17; /* Màu chữ chính */
+  font-weight: 800;
 }
+
 .productItems-action .action {
   display: flex;
   justify-content: flex-end;
@@ -277,4 +283,67 @@
 
 .delete-btn:hover {
   text-decoration: underline;
+}
+/* Group đơn hàng */
+.order-group {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  padding: 15px;
+}
+
+/* Header của từng đơn hàng */
+/* Header chứa trạng thái */
+.order-header {
+  display: flex;
+  justify-content: flex-end; /* Căn sang bên phải */
+  align-items: center; /* Căn giữa theo chiều dọc nếu cần */
+  margin-bottom: 10px; /* Khoảng cách dưới */
+}
+
+.order-header .order-status {
+  font-size: 14px;
+  font-weight: bold;
+  color: #7d161c; /* Màu trạng thái */
+  text-align: right; /* Căn phải */
+}
+
+
+/* Danh sách sản phẩm */
+.order-products {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+/* Nhóm nút hành động cho đơn hàng */
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.order-actions .btn1,
+.order-actions .btn2 {
+  background-color: #7d161c;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px 20px;
+  cursor: pointer;
+}
+
+.order-actions .btn1:hover {
+  background-color: #971f25;
+}
+
+.order-actions .btn2 {
+  background-color: #ce232c;
+}
+
+.order-actions .btn2:hover {
+  background-color: #db575e;
 }

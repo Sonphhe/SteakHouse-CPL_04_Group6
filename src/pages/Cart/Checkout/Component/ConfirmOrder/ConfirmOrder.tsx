@@ -67,18 +67,20 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({ selectedItems, cartItems, p
   // Handle confirm action based on context
   const handleConfirm = () => {
     if (context === 'cart') {
-      navigate('/checkout') // Navigate to the checkout page
+      navigate('/checkout'); // Điều hướng đến trang thanh toán
     } else if (context === 'checkout') {
       if (paymentMethod === 'qrCode') {
-        navigate('/qrcode', { state: { totalMoney: finalAmount } })
+        console.log(paymentMethod);
+        navigate('/qrcode', { state: { totalMoney: finalAmount } });
       } else if (paymentMethod === 'cashOnDelivery') {
-        swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success')
-        saveToCheckOut() // Save the order when confirmed
+        swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success');
+        saveToCheckOut(paymentMethod); // Truyền `paymentMethod` vào hàm
       } else {
-        swal('Warning', 'Please select a payment method before confirming.', 'warning')
+        swal('Warning', 'Please select a payment method before confirming.', 'warning');
       }
     }
-  }
+  };
+  
 
   
 

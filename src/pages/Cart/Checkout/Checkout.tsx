@@ -13,8 +13,8 @@ import { useCartContext } from '../../../context/CartContext'
 
 const Checkout = () => {
   const navigate = useNavigate()
-  const [distance, setDistance] = useState(0);
-  const { cartItems, selectedItems } = useCartContext();
+  const [distance, setDistance] = useState(0)
+  const { cartItems, selectedItems } = useCartContext()
 
   const [paymentMethod, setPaymentMethod] = useState<string>('')
 
@@ -37,11 +37,11 @@ const Checkout = () => {
             </div>
             <div className='right-handside'>
               <ConfirmOrder
+                shippingFee={0}
                 cartItems={cartItems?.cartItem}
                 selectedItems={selectedItems}
                 paymentMethod={paymentMethod}
                 context='checkout'
-                shippingFee={distance}
               />
             </div>
           </div>
