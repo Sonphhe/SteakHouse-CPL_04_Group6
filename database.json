@@ -662,11 +662,10 @@
     {
       "id": "1732945990609",
       "userId": "7gV5Fax",
-      "cartItems":[
+      "cartItems": [
         {
           "status": "Waiting for Confirmation",
-          "items": [
-          ]
+          "items": []
         }
       ]
     }
@@ -689,6 +688,60 @@
       "discountValue": 20,
       "backGroundIcon": "",
       "id": "7019"
+    }
+  ],
+  "favourite": [
+    {
+      "id": "1",
+      "userId": "3Lo4Ulj",
+      "favoriteItems": [
+        {
+          "id": "1",
+          "productName": "HOKUBEE STEAK",
+          "image": "/assets/images/steak1.jpg",
+          "productPrice": 232,
+          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+          "categoryId": 1,
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "productName": "USA RIB EYE STEAK",
+          "image": "/assets/images/steak2_test.jpg",
+          "productPrice": 195,
+          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+          "category": "Steak",
+          "categoryId": 3,
+          "hidden": false
+        },
+        {
+          "id": "3",
+          "productName": "USA TOPBLADE STEAK",
+          "productOldPrice": 85,
+          "productPrice": 165,
+          "image": "/assets/images/steak3_test.webp",
+          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": []
+        },
+        {
+          "id": "26",
+          "productName": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 60,
+          "image": "/assets/images/SALAD2.jpg",
+          "description": "A hearty and protein-packed salad combining tender beef, succulent chicken, and flavorful tuna, all tossed with a smoky BBQ sauce and fresh vegetables. This dish offers a variety of textures and flavors, with the savory meats paired perfectly with the bold, tangy BBQ sauce.",
+          "categoryId": 4,
+          "hidden": false,
+          "reviews": []
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "userId": "7gV5Fax",
+      "favoriteItems": []
     }
   ]
 }
