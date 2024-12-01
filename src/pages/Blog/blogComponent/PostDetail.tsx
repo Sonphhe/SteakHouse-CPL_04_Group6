@@ -6,7 +6,7 @@ import PostAuthor from './PostAuthor';
 import axios from 'axios';
 import { API_ROOT } from '../../../utils/constants';
 import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'; // Giả sử context có thông tin user
-import '../blogComponent/PostDetail.css';
+import './PostDetail.css';
 
 const PostDetail = () => {
   const { id } = useParams(); 
@@ -65,9 +65,7 @@ const PostDetail = () => {
 
   
   const isAuthor = currentAccount && post.accountId === currentAccount.id;
-console.log('Current Account:', currentAccount);
-console.log('Post Author ID:', post.accountId);
-console.log('Is Author:', isAuthor);
+
   return (
     <div className="post-detail-firstdiv">
       <Navbar />
