@@ -587,7 +587,58 @@
     {
       "id": "2",
       "userId": "7gV5Fax",
-      "cartItem": []
+      "cartItem": [
+        {
+          "id": "2",
+          "productName": "USA RIB EYE STEAK",
+          "image": "/assets/images/steak2_test.jpg",
+          "productPrice": 195,
+          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+          "category": "Steak",
+          "categoryId": 3,
+          "hidden": false,
+          "quantity": 1,
+          "isChecked": true
+        },
+        {
+          "id": "4",
+          "productName": "VIETNAM BEEFSTEAK",
+          "image": "/assets/images/steak4_test.webp",
+          "productPrice": 105,
+          "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
+          "category": "Drinks",
+          "categoryId": "1",
+          "hidden": false,
+          "quantity": 1,
+          "isChecked": true
+        },
+        {
+          "id": "7",
+          "productName": "BEEF WITH PEPPER SAUCE",
+          "productOldPrice": 140,
+          "productPrice": 95,
+          "image": "/assets/images/steak7_test.jpg",
+          "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": [],
+          "quantity": 1,
+          "isChecked": false
+        },
+        {
+          "id": "8",
+          "productName": "NORWEGIAN SALMON",
+          "productOldPrice": 115,
+          "productPrice": 175,
+          "image": "/assets/images/steak8_test.webp",
+          "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": [],
+          "quantity": 1,
+          "isChecked": false
+        }
+      ]
     },
     {
       "id": "1",
@@ -685,7 +736,60 @@
     {
       "id": "2",
       "userId": "7gV5Fax",
-      "favoriteItems": []
+      "favoriteItems": [
+        {
+          "id": "1",
+          "productName": "HOKUBEE STEAK",
+          "image": "/assets/images/steak1.jpg",
+          "productPrice": 232,
+          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+          "categoryId": 1,
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "productName": "USA RIB EYE STEAK",
+          "image": "/assets/images/steak2_test.jpg",
+          "productPrice": 195,
+          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+          "category": "Steak",
+          "categoryId": 3,
+          "hidden": false
+        },
+        {
+          "id": "7",
+          "productName": "BEEF WITH PEPPER SAUCE",
+          "productOldPrice": 140,
+          "productPrice": 95,
+          "image": "/assets/images/steak7_test.jpg",
+          "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": []
+        },
+        {
+          "id": "8",
+          "productName": "NORWEGIAN SALMON",
+          "productOldPrice": 115,
+          "productPrice": 175,
+          "image": "/assets/images/steak8_test.webp",
+          "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": []
+        },
+        {
+          "id": "3",
+          "productName": "USA TOPBLADE STEAK",
+          "productOldPrice": 85,
+          "productPrice": 165,
+          "image": "/assets/images/steak3_test.webp",
+          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": []
+        }
+      ]
     }
   ]
 }
