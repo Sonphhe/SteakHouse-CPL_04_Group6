@@ -43,6 +43,8 @@ import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
 import ProductEdit from './pages/Admin/pages/ProductEdit/ProductEdit'
 import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
+import AddPost from './pages/Blog/blogComponent/AddPost'
+import EditPost from './pages/Blog/blogComponent/EditPost'
 
 function App() {
   return (
@@ -63,13 +65,15 @@ function App() {
               <Route path='/contact' element={<ContactUs />} />
               <Route path='/admin/dashboard' element={<AdminDashboard />} />
               <Route path='/blog' element={<Blog />} />
-              <Route path='/blog/postdetail/:id' element={<PostDetail />} />
+              <Route path="/blog/postdetail/:id" element={<PostDetail />} />
+              <Route path="/blog/edit/:id" element={<EditPost />} />
               <Route path='/admin/table-management' element={<TableManagement />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/management' element={<Management />} />
               <Route path='/user/account/userProfile' element={<UserProfile />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
+              <Route path='/add-post' element={<AddPost />} />
               {/* Wrap only the ProductManage route with ProductProvider */}
               <Route
                 path='/admin/dashboard'

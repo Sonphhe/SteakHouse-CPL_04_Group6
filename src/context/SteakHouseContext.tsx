@@ -76,7 +76,7 @@ interface BlogType {
   image: string
   blogCategoryId: number
   accountId: string
-  publishDate: Date
+  publishDate: string
 }
 
 interface CurrentAccount {
