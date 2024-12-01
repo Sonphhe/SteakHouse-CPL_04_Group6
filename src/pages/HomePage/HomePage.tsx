@@ -8,6 +8,7 @@ import Footer from "../../components/ui/Footer/Footer"
 import Chat from '../../components/Chat/Chat'
 import GoToTopButton from "../../components/GoToTopButton/GoToTopButton"
 import CardGrid from "../../components/ui/CardGrid/CardGrid"
+import FlashSale from "../Sale/FlashSale"
 const Home = () => {
     return (
       <div className='homepage-container'>
@@ -19,6 +20,7 @@ const Home = () => {
           title = 'We Here For Your Meal'
           text = 'Choose Your Favourite Meal'
         />
+        <FlashSale />
         <CardGrid/>
         <FavouriteFood/>
         <Colaborator/>

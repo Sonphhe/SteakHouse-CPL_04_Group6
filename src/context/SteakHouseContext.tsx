@@ -9,6 +9,7 @@ interface SteakHouseType {
   categories: ProductCategoryType[]
   blogCategories: BlogCategoryType[]
   blogs: BlogType[]
+  flashSales: FlashSale[]
   searchQuery: string
   sortOrder: string
   currentPage: number
@@ -18,6 +19,8 @@ interface SteakHouseType {
   option: string
   setOption: Dispatch<SetStateAction<string>>
   setPhoneNumberValidation: Dispatch<string>
+  setFlashSales: Dispatch<SetStateAction<FlashSale[]>>;
+  getSalePrice: (productId: number) => number | null;
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
@@ -82,7 +85,7 @@ interface BlogType {
   image: string
   blogCategoryId: number
   accountId: string
-  publishDate: Date
+  publishDate: string
 }
 
 interface CurrentAccount {
@@ -123,6 +126,14 @@ interface AccountStatistics {
   percentage: number;
 }
 
+interface FlashSale {
+  productId: number; 
+  sale: number; 
+  startDate: string; 
+  endDate: string; 
+}
+
+
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -142,6 +153,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<string>('default')
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [flashSales, setFlashSales] = useState<FlashSale[]>([]);
   const itemsPerPage = 8
 
   const [currentAccount, setCurrentAccount] = useState<CurrentAccount>(() => {
@@ -285,12 +297,13 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes] = await Promise.all([
+        const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes, flashSalesRes] = await Promise.all([
           axios.get(`${API_ROOT}/account`),
           axios.get(`${API_ROOT}/product`),
           axios.get(`${API_ROOT}/productCategory`),
           axios.get(`${API_ROOT}/blogCategory`),
-          axios.get(`${API_ROOT}/blog`)
+          axios.get(`${API_ROOT}/blog`),
+          axios.get(`${API_ROOT}/flashSales`)
         ])
 
         setAccounts(accountRes.data)
@@ -300,6 +313,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCategories(categoryRes.data)
         setBlogCategories(blogCategoryRes.data)
         setBlogs(blogRes.data)
+        setFlashSales(flashSalesRes.data)
         // setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] })
       } catch (error) {
         console.error('Error fetching data:', error)
@@ -363,6 +377,17 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return author ? author.image : 'Unknown Author'
   }
 
+  const getSalePrice = (productId: number) => {
+    const sale = flashSales.find(
+      (sale) =>
+        sale.productId === productId &&
+        new Date(sale.startDate) <= new Date() &&
+        new Date(sale.endDate) >= new Date()
+    );
+  
+    return sale ? sale.sale : null;
+  };
+
   return (
     <SteakHouseContext.Provider
       value={{
@@ -378,6 +403,9 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         currentAccount,
         phoneNumberValidation,
         option,
+        flashSales,
+        setFlashSales,
+        getSalePrice,
         setOption,
         setPhoneNumberValidation,
         login,

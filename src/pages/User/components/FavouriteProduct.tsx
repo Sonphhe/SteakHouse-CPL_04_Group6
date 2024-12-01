@@ -54,7 +54,7 @@ const FavouriteProduct = () => {
           ))}
         </div>
       ) : (
-        <p>Danh sách sản phẩm yêu thích của bạn hiện đang trống.</p>
+        <p>Your wishlist is currently empty.</p>
       )}
     </div>
   );
