@@ -3,13 +3,13 @@ import axios from 'axios';
 import { API_ROOT } from '../utils/constants';
 import { useSteakHouseContext } from '../hooks/useSteakHouseContext';
 
-interface OwnCart {
+export interface OwnCart {
   id: string;
   userId: string;
   cartItem: CartItem[];
 }
 
-interface CartItem {
+export interface CartItem {
   id: string;
   productName: string;
   productOldPrice: number;
@@ -20,12 +20,28 @@ interface CartItem {
   quantity: number;
   isChecked: boolean;
 }
+export interface cartItems {
+  id: string;
+  status: string;
+  items: Array<{
+    id: string;
+  productName: string;
+  productOldPrice: number;
+  productPrice: number;
+  image: string;
+  description: string;
+  categoryId: string;
+  quantity: number;
+  isChecked: boolean;
+  }>;
+  orderTime: string;
+}
 
-interface CheckOutItem {
+export interface CheckOutItems {
   id: string;
   userId: string;
   status: string;
-  cartItem: CartItem[];
+  cartItem: cartItems[];
 }
 
 interface CartContextType {
@@ -156,20 +172,22 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const addToCart = async (product: CartItem) => {
     try {
       const existingItem = cartItems.cartItem.find((item) => item.id === product.id);
-
+  
       const updatedCart = existingItem
         ? cartItems.cartItem.map((item) =>
             item.id === product.id ? { ...item, quantity: item.quantity + product.quantity } : item
           )
         : [...cartItems.cartItem, product];
-
+  
       await axios.patch(`${API_ROOT}/ownCart/${cartItems.id}`, { cartItem: updatedCart });
-
+  
       setCartItems((prev) => ({ ...prev, cartItem: updatedCart }));
+      console.log('Added to cart successfully!');
     } catch (error) {
       console.error('Error adding item to cart:', error);
     }
   };
+  
 
   const removeFromCart = async (id: string) => {
     try {
