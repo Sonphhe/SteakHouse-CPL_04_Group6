@@ -1,0 +1,116 @@
+/* Tổng thể cho trang PostDetail */
+.post-detail-firstdiv {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.post-detail {
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.post-detail-container {
+  padding: 20px;
+}
+
+/* Tiêu đề bài viết */
+.post-detail h1 {
+  font-size: 2.2rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Hình ảnh thumbnail */
+.post-detail-thumbnail img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Nội dung mô tả bài viết */
+.post-detail p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Header chứa thông tin tác giả và ngày */
+.post-detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 20px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+/* Các nút hành động: Edit và Delete */
+.post-detail-actions {
+  display: flex ;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.edit-button,
+.delete-button {
+  padding: 10px 15px !important;
+  font-size: 1rem !important;
+  border: none !important;
+  border-radius: 4px !important; 
+  cursor: pointer !important;
+  transition: background-color 0.3s, transform 0.2s !important;
+}
+
+/* Nút Edit */
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Nút Delete */
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #a71d2a;
+  transform: scale(1.05);
+}
+
+/* Hình ảnh tác giả và thông tin */
+.post-detail-author {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.post-detail-author img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.post-detail-author span {
+  font-size: 0.9rem;
+  color: #555;
+}

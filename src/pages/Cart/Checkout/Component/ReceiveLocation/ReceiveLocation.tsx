@@ -36,8 +36,9 @@ const ReceiveLocation = (props: {onDistanceChange: Dispatch<SetStateAction<numbe
   const [commune, setCommune] = useState('Your Location...')
   const [searchValue, setSearchValue] = useState('')
 
-  const handleSetCommune = (item: string) => {
+  const handleSetCommune = (item: string, distance: number) => {
     setCommune(item)
+    props.onDistanceChange(distance)
     setOpenSearchPanel(false)
   }
 
@@ -83,7 +84,7 @@ const ReceiveLocation = (props: {onDistanceChange: Dispatch<SetStateAction<numbe
                     <ul>
                       {filteredCommunes.length > 0 ? (
                         filteredCommunes.map((item, i) => (
-                          <li onClick={() => handleSetCommune(item.name)} key={`${item.name}-${i}`}>
+                          <li onClick={() => handleSetCommune(item.name, item.distance)} key={`${item.name}-${i}`}>
                             {item.name}
                           </li>
                         ))
