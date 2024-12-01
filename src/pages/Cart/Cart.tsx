@@ -10,8 +10,6 @@ import Chat from '../../components/Chat/Chat'
 import { useNavigate } from 'react-router-dom'
 import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder'
 import EmptyBlank from '../../components/ui/EmptyBlank/EmptyBlank'
-import axios from 'axios'
-import { API_ROOT } from '../../utils/constants'
 
 const Cart = () => {
   const navigate = useNavigate()
@@ -56,16 +54,20 @@ const Cart = () => {
           ? prevSelectedItems.filter((id) => id !== itemId)
           : [...prevSelectedItems, itemId]
       )
-      const existingItem = cartItems?.cartItem.find((item) => item.id === itemId)
-      // const updatedCart = [{...cartItems?.cartItem.filter(item => item.id !== existingItem?.id)}]
+      if (!cartItems?.cartItem) return
+
+      const existedItem = cartItems?.cartItem.find((item) => item.id === itemId)
       
-      // await axios.patch(`${API_ROOT}/ownCart/${cartItems?.id}`, { cartItem: updatedCart })
-      // setCartItems((prevCart) => ({ ...prevCart, cartItem: updateCartItems }))
+      console.log(existedItem);
+      
+
+      // await axios.patch(`${API_ROOT}/ownCart/${cartItems?.id}`, {
+      //   cartItem: updatedCarts
+      // })
     } catch (error) {
-      console.log(error)
+      console.error('Error updating cart:', error)
     }
   }
-
 
   const handleSelectAllChange = () => {
     if (selectedItems.length === (cartItems?.cartItem.length || 0)) {

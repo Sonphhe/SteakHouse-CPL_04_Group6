@@ -67,9 +67,17 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
 
   // Calculate final amount after discount
   const finalAmount = useMemo(() => {
-    const discountAmount = total * (voucherDiscount / 100) // Calculate discount amount
-    return total - discountAmount + shippingFee
-  }, [total, voucherDiscount, shippingFee])
+    // Cộng phí vận chuyển vào tổng trước khi tính giảm giá
+    const totalWithShipping = total + shippingFee;
+  
+    // Tính lại số tiền giảm giá từ tổng cộng với phí vận chuyển
+    const discountAmount = totalWithShipping * (voucherDiscount / 100);
+  
+    // Trừ số tiền giảm giá từ tổng cộng với phí vận chuyển để ra finalAmount
+    return totalWithShipping - discountAmount;
+  }, [total, voucherDiscount, shippingFee]);
+  
+  
 
   // Handle confirm action based on context
   const handleConfirm = () => {
@@ -108,7 +116,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
             {context === 'checkout' && (
               <li>
                 <p className='title'>Voucher discount</p>
-                <p className='price-discount'>{(total * 1000 * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ</p>
+                <p className='price-discount'>{((total + shippingFee )*1000 * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ</p>
               </li>
             )}
             <li>

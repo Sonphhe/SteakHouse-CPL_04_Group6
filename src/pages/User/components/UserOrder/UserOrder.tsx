@@ -3,11 +3,22 @@ import SearchBarFilter from '../../../../components/ui/SearchBarFilter/SearchBar
 import '../../User.css'
 import ProductItems from './components/ProductItems'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
+import axios from 'axios'
+import { API_ROOT } from '../../../../utils/constants'
+import { cartItems, OwnCart } from '../../../../context/CartContext'
+import { useNavigate } from 'react-router-dom'
 
 const UserOrder = () => {
   const [orders, setOrders] = useState<any[]>([]) // State để lưu đơn hàng
   const [filterStatus, setFilterStatus] = useState<string>('All') // Trạng thái lọc
   const { currentAccount } = useSteakHouseContext()
+  const navigate = useNavigate()
+  const [cartItems, setCartItems] = useState<OwnCart>({
+    id: '',
+    userId: '',
+    cartItem: [],
+  });
+  
   // Lấy dữ liệu đơn hàng từ API, lọc theo userId
   useEffect(() => {
     const fetchOrders = async () => {
@@ -46,15 +57,103 @@ const UserOrder = () => {
     }))
   )
 
-  const handleBuyAgain = (orderId: string) => {
-    console.log(`Buy again for order: ${orderId}`)
-    // Thêm logic xử lý mua lại ở đây
-  }
-
-  const handleCancelOrder = (orderId: string) => {
-    console.log(`Cancel order: ${orderId}`)
-    // Thêm logic xử lý hủy đơn ở đây
-  }
+  const handleBuyAgain = async (cartItemId: string) => {
+    console.log(`Buy again for cartItemId: ${cartItemId}`);
+    
+    try {
+      // Giả sử bạn có một kiểu dữ liệu cho orders
+      const orderToReorder = orders.find((order: { cartItems: cartItems[] }) =>
+        order.cartItems.some((cartItem: cartItems) => cartItem.id === cartItemId)
+      );
+  
+      if (!orderToReorder) {
+        console.error("Order not found");
+        return;
+      }
+  
+      const cartItemToReorder = orderToReorder.cartItems.find(
+        (cartItem: cartItems) => cartItem.id === cartItemId
+      );
+  
+      if (!cartItemToReorder) {
+        console.error("Cart item not found");
+        return;
+      }
+  
+      const cartItemsToAdd = cartItemToReorder.items;
+  
+      const response = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`);
+      const fetchedCartItem = response.data[0];
+  
+      let updatedCartItems = fetchedCartItem ? fetchedCartItem.cartItem : [];
+  
+      // Kiểm tra và tăng số lượng sản phẩm nếu nó đã tồn tại
+      cartItemsToAdd.forEach((newItem: any) => {
+        const existingItem = updatedCartItems.find((item: any) => item.id === newItem.id);
+  
+        if (existingItem) {
+          existingItem.quantity += newItem.quantity; // Tăng số lượng sản phẩm nếu đã tồn tại
+        } else {
+          updatedCartItems.push({ ...newItem }); // Thêm sản phẩm mới nếu chưa tồn tại
+        }
+      });
+  
+      await axios.patch(`${API_ROOT}/ownCart/${fetchedCartItem.id}`, {
+        cartItem: updatedCartItems,
+      });
+  
+      setCartItems((prev) => ({ ...prev, cartItem: updatedCartItems }));
+  
+      console.log("Reorder successful!");
+      navigate("/cart");
+      window.location.reload();
+    } catch (error) {
+      console.error("Error reordering:", error);
+    }
+  };
+  
+  //Hàm huỷ đơn hàng
+  const handleCancelOrder = async (orderId: string) => {
+    try {
+      // Tìm đơn hàng cần hủy
+      const orderToCancel = orders.find((order) => 
+        order.cartItems.some((cartItem: any) => cartItem.id === orderId)
+      );
+  
+      if (!orderToCancel) {
+        console.error("Order not found");
+        return;
+      }
+  
+      // Cập nhật trạng thái đơn hàng
+      const updatedCartItems = orderToCancel.cartItems.map((cartItem: any) =>
+        cartItem.id === orderId ? { ...cartItem, status: "Cancel" } : cartItem
+      );
+  
+      // Gửi yêu cầu cập nhật trạng thái lên server
+      await fetch(`http://localhost:9999/checkOutItems/${orderToCancel.id}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          cartItems: updatedCartItems,
+        }),
+      });
+  
+      // Cập nhật state sau khi API thành công
+      setOrders((prevOrders) =>
+        prevOrders.map((order) =>
+          order.id === orderToCancel.id
+            ? { ...order, cartItems: updatedCartItems }
+            : order
+        )
+      );
+  
+      console.log("Order cancelled successfully!");
+    } catch (error) {
+      console.error("Error cancelling order:", error);
+    }
+  };
+  
 
   return (
     <div className='user-order'>

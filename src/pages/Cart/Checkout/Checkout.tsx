@@ -37,7 +37,7 @@ const Checkout = () => {
             </div>
             <div className='right-handside'>
               <ConfirmOrder
-                shippingFee={0}
+                shippingFee={distance}
                 cartItems={cartItems?.cartItem}
                 selectedItems={selectedItems}
                 paymentMethod={paymentMethod}
