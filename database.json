@@ -720,8 +720,8 @@
           "orderTime": "01:14 01/12/2024"
         },
         {
-          "id": "1733033908093-9zin89mmp",
-          "status": "Waiting for Payment",
+          "id": "1733035854919-qi8lx8u9d",
+          "status": "Cancel",
           "items": [
             {
               "id": "18",
@@ -733,7 +733,7 @@
               "categoryId": 3,
               "hidden": false,
               "reviews": [],
-              "quantity": 3,
+              "quantity": 1,
               "isChecked": true
             },
             {
@@ -746,7 +746,7 @@
               "categoryId": 3,
               "hidden": false,
               "reviews": [],
-              "quantity": 3,
+              "quantity": 1,
               "isChecked": true
             },
             {
@@ -761,27 +761,7 @@
               "isChecked": true
             }
           ],
-          "orderTime": "13:18 01/12/2024"
-        },
-        {
-          "id": "1733035507152-yzdovxwfv",
-          "status": "Cancel",
-          "items": [
-            {
-              "id": "19",
-              "productName": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
-              "productOldPrice": 85,
-              "productPrice": 180,
-              "image": "/assets/images/SPAGHETTI2.jpeg",
-              "description": " A rich and indulgent seafood pasta dish featuring a savory salted egg sauce that coats the pasta and seafood with a creamy, umami flavor. This fusion dish combines the richness of salted egg with the natural sweetness of seafood, creating a unique and satisfying meal.",
-              "categoryId": 3,
-              "hidden": false,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "13:45 01/12/2024"
+          "orderTime": "13:50 01/12/2024"
         }
       ]
     }
