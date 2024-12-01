@@ -49,6 +49,8 @@ import EditPost from './pages/Blog/blogComponent/EditPost'
 import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
 import Location from './pages/User/components/Location'
 import Checkout from './pages/Cart/Checkout/Checkout'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
 
 
 function App() {
