@@ -451,12 +451,12 @@
   "blog": [
     {
       "id": "2",
-      "title": "The Basics of Machine Learning test hung",
+      "title": "The Basics of Machine Learning test hung123",
       "description": "An introductory article on machine learning concepts and applications.",
-      "image": "/assets/images/beef-wellington-brocolini.webp",
       "blogCategoryId": "3",
-      "accountId": "7gV5Fax",
-      "publishDate": "2024-11-27"
+      "authorId": "7gV5Fax",
+      "image": "/assets/images/beef-wellington-brocolini.webp",
+      "publishDate": "2024-12-01"
     },
     {
       "id": "3",
@@ -760,6 +760,26 @@
       "discountValue": 20,
       "backGroundIcon": "",
       "id": "7019"
+    }
+  ],
+  "flashSales": [
+    {
+      "productId": "1",
+      "sale": 20,
+      "startDate": "2023-12-01T00:00:00Z",
+      "endDate": "2025-12-05T23:59:59Z"
+    },
+    {
+      "productId": "2",
+      "sale": 15,
+      "startDate": "2023-12-03T00:00:00Z",
+      "endDate": "2025-12-10T23:59:59Z"
+    },
+    {
+      "productId": "3",
+      "sale": 25,
+      "startDate": "2023-12-04T00:00:00Z",
+      "endDate": "2025-12-07T23:59:59Z"
     }
   ]
 }
