@@ -19,7 +19,8 @@ import {
   Settings as SettingsIcon,
   People as PeopleIcon,
   Article as ArticleIcon,
-  TableChart as TableChartIcon
+  TableChart as TableChartIcon,
+  ShoppingCart as ShoppingCartIcon 
 } from '@mui/icons-material';
 
 const drawerWidth = 240;
@@ -37,6 +38,7 @@ const menuItems = [
   { label: 'Product Management', path: '/admin/product-management', icon: SettingsIcon },
   { label: 'Account Management', path: '/admin/account-management', icon: PeopleIcon },
   { label: 'Blog Management', path: '/admin/blog-management', icon: ArticleIcon },
+  { label: 'Checkout Management', path: '/admin/checkout-management', icon: ShoppingCartIcon }, // Thêm mục này
 ];
 
 interface SidebarProps {
