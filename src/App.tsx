@@ -49,6 +49,7 @@ import EditPost from './pages/Blog/blogComponent/EditPost'
 import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
 import Location from './pages/User/components/Location'
 import Checkout from './pages/Cart/Checkout/Checkout'
+import CheckoutManage from './pages/Admin/pages/CheckoutManage/CheckoutManage'
 
 
 function App() {
@@ -202,14 +203,19 @@ function App() {
                 }
               />
 
-              <Route
-                path='/admin/account-edit/:id'
+<Route
+                path='/admin/checkout-management'
                 element={
                   <AccountProvider>
-                    <AccountEdit />
+                    <AdminLayout>
+                      <CheckoutManage />
+                    </AdminLayout>
                   </AccountProvider>
                 }
               />
+
+
+
             </Routes>
           </BrowserRouter>
         </CartProvider>

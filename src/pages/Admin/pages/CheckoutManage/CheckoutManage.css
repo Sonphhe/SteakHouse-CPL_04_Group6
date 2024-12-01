@@ -1,0 +1,77 @@
+.admin-dashboard-checkout-CheckMana {
+    padding-left: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-container-checkout-CheckMana {
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-mainCheckout-CheckMana {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .checkout-manage-CheckMana {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .checkout-manage-header-CheckMana {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-manage-header-CheckMana button {
+    background-color: #1976d2;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .checkout-manage-header-CheckMana button:hover {
+    background-color: #1565c0;
+  }
+  
+  .search-bar-checkout-CheckMana {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-bar-checkout-CheckMana:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+  }
+  
+  .MuiButton-root-CheckMana {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  .MuiBox-root-CheckMana {
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  .MuiTypography-root-CheckMana {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
