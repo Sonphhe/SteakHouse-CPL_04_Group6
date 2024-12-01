@@ -72,3 +72,50 @@
 .submit-button:hover {
   background: #0056b3;
 }
+
+/* Phong cách tổng thể cho nút input file */
+.image-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.image-upload-wrapper label {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.image-upload-wrapper label:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.image-upload-wrapper label:active {
+  background-color: #004494;
+}
+
+.image-upload-wrapper input[type="file"] {
+  display: none; /* Ẩn input file */
+}
+
+.image-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
