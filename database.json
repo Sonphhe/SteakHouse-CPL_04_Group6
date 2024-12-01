@@ -587,7 +587,21 @@
     {
       "id": "2",
       "userId": "7gV5Fax",
-      "cartItem": []
+      "cartItem": [
+        {
+          "id": "10",
+          "productName": "COOKTAIL FRUIT SEASON",
+          "productOldPrice": 70,
+          "productPrice": 46,
+          "image": "/assets/images/DRINKS1.jpeg",
+          "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
+          "categoryId": 2,
+          "hidden": false,
+          "reviews": [],
+          "isChecked": true,
+          "quantity": 1
+        }
+      ]
     },
     {
       "id": "1",
@@ -657,7 +671,7 @@
         },
         {
           "id": "1732977198597-56nsr5nrt",
-          "status": "Waiting for Confirmation",
+          "status": "Complete",
           "items": [
             {
               "id": "10",
@@ -718,50 +732,6 @@
             }
           ],
           "orderTime": "01:14 01/12/2024"
-        },
-        {
-          "id": "1733035854919-qi8lx8u9d",
-          "status": "Cancel",
-          "items": [
-            {
-              "id": "18",
-              "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
-              "productOldPrice": 100,
-              "productPrice": 165,
-              "image": "/assets/images/SPAGHETTI1.jpeg",
-              "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
-              "categoryId": 3,
-              "hidden": false,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            },
-            {
-              "id": "19",
-              "productName": "SEAFOOD PASTA WITH SALTED EGG PRODUCTS",
-              "productOldPrice": 85,
-              "productPrice": 180,
-              "image": "/assets/images/SPAGHETTI2.jpeg",
-              "description": " A rich and indulgent seafood pasta dish featuring a savory salted egg sauce that coats the pasta and seafood with a creamy, umami flavor. This fusion dish combines the richness of salted egg with the natural sweetness of seafood, creating a unique and satisfying meal.",
-              "categoryId": 3,
-              "hidden": false,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            },
-            {
-              "id": "1",
-              "productName": "HOKUBEE STEAK",
-              "image": "/assets/images/steak1.jpg",
-              "productPrice": 232,
-              "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-              "categoryId": 1,
-              "hidden": false,
-              "quantity": 2,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "13:50 01/12/2024"
         }
       ]
     }

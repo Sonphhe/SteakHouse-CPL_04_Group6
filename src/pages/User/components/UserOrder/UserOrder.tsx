@@ -59,7 +59,7 @@ const UserOrder = () => {
 
   const handleBuyAgain = async (cartItemId: string) => {
     console.log(`Buy again for cartItemId: ${cartItemId}`);
-  
+    
     try {
       // Giả sử bạn có một kiểu dữ liệu cho orders
       const orderToReorder = orders.find((order: { cartItems: cartItems[] }) =>
@@ -87,7 +87,16 @@ const UserOrder = () => {
   
       let updatedCartItems = fetchedCartItem ? fetchedCartItem.cartItem : [];
   
-      updatedCartItems = [...updatedCartItems, ...cartItemsToAdd];
+      // Kiểm tra và tăng số lượng sản phẩm nếu nó đã tồn tại
+      cartItemsToAdd.forEach((newItem: any) => {
+        const existingItem = updatedCartItems.find((item: any) => item.id === newItem.id);
+  
+        if (existingItem) {
+          existingItem.quantity += newItem.quantity; // Tăng số lượng sản phẩm nếu đã tồn tại
+        } else {
+          updatedCartItems.push({ ...newItem }); // Thêm sản phẩm mới nếu chưa tồn tại
+        }
+      });
   
       await axios.patch(`${API_ROOT}/ownCart/${fetchedCartItem.id}`, {
         cartItem: updatedCartItems,
@@ -102,6 +111,7 @@ const UserOrder = () => {
       console.error("Error reordering:", error);
     }
   };
+  
   //Hàm huỷ đơn hàng
   const handleCancelOrder = async (orderId: string) => {
     try {
