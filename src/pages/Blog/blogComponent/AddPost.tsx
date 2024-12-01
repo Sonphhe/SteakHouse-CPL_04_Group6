@@ -116,23 +116,22 @@ const AddPost = () => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="image">Image</label>
-            <input
-              type="file"
-              id="image"
-              accept="image/*"
-              onChange={handleImageUpload} // Use updated image handler
-              required
-            />
-          </div>
-
-          {imageUrl && (
-            <div className="image-preview">
-              <p>Image Preview:</p>
-              <img src={imageUrl} alt="Preview" style={{ width: '100px', height: '100px' }} />
+          <div className="image-upload-wrapper">
+              <label htmlFor="image-upload">Upload Image</label>
+              <input
+                type="file"
+                id="image-upload"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
+              {imageUrl && (
+                <div className="image-preview">
+                  <p>Image Preview:</p>
+                  <img src={imageUrl} alt="Preview" />
+                </div>
+              )}
             </div>
-          )}
+
 
           <button type="submit" className="submit-button">
             Add Post
