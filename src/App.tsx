@@ -25,7 +25,6 @@ import UserProfile from './pages/UserProfile/UserProfile'
 // import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
 import { BlogProvider } from './context/BlogContext'
 import BlogEdit from './pages/Admin/pages/BlogEdit/BlogEdit'
-import AdminLayout from './pages/Admin/pages/Dashboard/AdminLayout'
 import BlogAdd from './pages/Admin/pages/BlogAdd/BlogAdd'
 import Chat from './components/Chat/Chat'
 // import ValidationNum from './pages/UserProfile/components/ValidationNum/ValidationNum'
@@ -33,7 +32,7 @@ import AccountManage from './pages/Admin/pages/AccountManage/AccountManage'
 import { AccountProvider } from './context/AccountContext'
 import AccountAdd from './pages/Admin/pages/AccountAdd/AccountAdd'
 import AccountEdit from './pages/Admin/pages/AccountEdit/AccountEdit'
-import Checkout from './pages/Cart/Checkout/Checkout'
+import AdminLayout from './pages/Admin/pages/Dashboard'
 // import NewCartStyle from './pages/Cart/newCartStyle/newCartStyle'
 import sampleImg from '/assets/images/SALAD1.jpeg'
 import Orderer from './pages/Cart/Checkout/Component/Orderer/Orderer'
@@ -43,15 +42,21 @@ import ProductManage from './pages/Admin/pages/ProductManage/ProductManage'
 import ProductEdit from './pages/Admin/pages/ProductEdit/ProductEdit'
 import ProductAdd from './pages/Admin/pages/ProductAdd/ProductAdd'
 import BlogManage from './pages/Admin/pages/BlogManage/BlogManage'
+
 import AddPost from './pages/Blog/blogComponent/AddPost'
 import EditPost from './pages/Blog/blogComponent/EditPost'
+
+import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
+import Location from './pages/User/components/Location'
+import Checkout from './pages/Cart/Checkout/Checkout'
+
 
 function App() {
   return (
     <div className='App'>
       <Chat />
-      <CartProvider>
-        <SteakHouseProvider>
+      <SteakHouseProvider>
+        <CartProvider>
           <BrowserRouter>
             <Routes>
               <Route path='/login' element={<Login />} />
@@ -73,7 +78,12 @@ function App() {
               <Route path='/user/account/userProfile' element={<UserProfile />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/checkout' element={<Checkout />} />
+
               <Route path='/add-post' element={<AddPost />} />
+
+              <Route path='/qrcode' element={<QrCodePage />} />
+              <Route path="/profile/locations" element={<Location />} />
+
               {/* Wrap only the ProductManage route with ProductProvider */}
               <Route
                 path='/admin/dashboard'
@@ -92,8 +102,9 @@ function App() {
                 }
               />
 
-              <Route
-                path='/admin/product-management'
+              
+              <Route 
+                path='/admin/product-management' 
                 element={
                   <ProductProvider>
                     <AdminLayout>
@@ -201,8 +212,8 @@ function App() {
               />
             </Routes>
           </BrowserRouter>
-        </SteakHouseProvider>
-      </CartProvider>
+        </CartProvider>
+      </SteakHouseProvider>
     </div>
   )
 }

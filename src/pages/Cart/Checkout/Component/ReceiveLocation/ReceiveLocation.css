@@ -117,3 +117,41 @@
   line-height: 20px;
   font-weight: 400;
 }
+.receive-location-container .content-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  font-family: Arial, sans-serif;
+  color: #333; /* Text color */
+}
+
+.receive-location-container .content-2 svg {
+  width: 24px;
+  height: 24px;
+  color: #555; /* Icon color */
+}
+
+.receive-location-container .content-2 p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.receive-location-container .content-2 textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  resize: none; /* Prevent resizing for better layout consistency */
+}
+
+.receive-location-container .content-2 textarea:focus {
+  outline: none;
+  border-color: #007bff; /* Highlight on focus */
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Subtle glow effect */
+}

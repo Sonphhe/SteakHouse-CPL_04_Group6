@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, { createContext, useContext, useState, ReactNode, useEffect, Dispatch, SetStateAction } from 'react'
 import { API_ROOT } from '../utils/constants'
-import { uniq } from 'lodash'
 
 // Types for the various entities managed by the context
 interface SteakHouseType {
@@ -16,8 +15,8 @@ interface SteakHouseType {
   totalPages: number
   currentAccount: CurrentAccount | undefined
   phoneNumberValidation: string
-  ownCart: OwnCart,
-  currentOwnCart: OwnCart,
+  option: string
+  setOption: Dispatch<SetStateAction<string>>
   setPhoneNumberValidation: Dispatch<string>
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
@@ -28,10 +27,17 @@ interface SteakHouseType {
   login: (currentAccount: CurrentAccount) => void
   logout: () => void
   setCurrentAccount: Dispatch<CurrentAccount>
-  getAuthorName: (authorId: string) => string;
-  getAuthorImg: (authorId: string) => string;
-  getCategoryName: (categoryId: number) => string;
+  getAuthorName: (authorId: string) => string
+  getAuthorImg: (authorId: string) => string
+  getCategoryName: (categoryId: number) => string
+  accountStatistics: {
+    total: number
+    statistics: AccountStatistics[]
+    monthWithMostRegistrations: AccountStatistics
+  } | null
+  fetchAccountStatistics: () => Promise<void>
 }
+
 
 interface AccountType {
   username: string
@@ -98,15 +104,23 @@ interface CurrentAccount {
 interface OwnCart {
   id: string
   userId: string
-  cartItem: {
-    id: string
-    productName: string
-    productOldPrice: string
-    productPrice: string
-    image: string
-    description: string
-    categoryId: string
-  }[] // This defines cartItem as an array, not a tuple
+  cartItem: CartItem[]
+}
+
+interface CartItem {
+  id: string
+  productName: string
+  productOldPrice: number
+  productPrice: number
+  image: string
+  description: string
+  categoryId: string
+}
+
+interface AccountStatistics {
+  month: string;
+  count: number;
+  percentage: number;
 }
 
 // Create context
@@ -135,42 +149,118 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return savedAccount ? JSON.parse(savedAccount) : null
   })
 
-  const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
+  const API_ROOT = 'http://localhost:9999' 
 
-  const [ownCart, setOwnCart] = useState<OwnCart>({
-    id: '',
-    userId: '',
-    cartItem: [] // Now this matches the updated type
-  })
+  const [accountStatistics, setAccountStatistics] = useState<{
+    total: number
+    statistics: AccountStatistics[]
+    monthWithMostRegistrations: AccountStatistics
+  } | null>(null)
+  const fetchAccountStatistics = async () => {
+    try {
+      const response = await axios.get(`${API_ROOT}/account`)
+      const accounts = response.data
 
-  const currentOwnCart = ownCart
-  console.log(currentOwnCart);
-  
+      // Tạo thống kê
+      const monthCounts: { [key: string]: number } = {}
+      accounts.forEach((account: any) => {
+        if (account.createDate) {
+          const month = account.createDate.slice(3, 5) + '/' + account.createDate.slice(6)
+          monthCounts[month] = (monthCounts[month] || 0) + 1
+        }
+      })
+
+      const totalAccounts = accounts.length
+      const statistics: AccountStatistics[] = Object.entries(monthCounts)
+        .map(([month, count]) => ({
+          month,
+          count,
+          percentage: Number(((count / totalAccounts) * 100).toFixed(2))
+        }))
+        .sort((a, b) => {
+          const [aMonth, aYear] = a.month.split('/')
+          const [bMonth, bYear] = b.month.split('/')
+          return aYear === bYear
+            ? parseInt(aMonth) - parseInt(bMonth)
+            : parseInt(aYear) - parseInt(bYear)
+        })
+
+      const monthWithMostRegistrations = statistics.reduce((prev, current) =>
+        prev.count > current.count ? prev : current
+      )
+
+      setAccountStatistics({
+        total: totalAccounts,
+        statistics,
+        monthWithMostRegistrations
+      })
+    } catch (error) {
+      console.error('Error fetching account statistics:', error)
+    }
+  }
+
   useEffect(() => {
-    // Define an async function inside useEffect
-    const fetchOwnCart = async () => {
+    fetchAccountStatistics()
+  }, [])
+
+  useEffect(() => {
+    const syncAccountAndCart = async () => {
       try {
-        const ownCartRes = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount.id}`)
-        setOwnCart(ownCartRes.data || { id: '', userId: '', cartItem: [] }) // Provide a fallback structure
+        if (currentAccount) {
+          // Lưu currentAccount vào localStorage
+          localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
+
+          // Kiểm tra xem cart của user đã tồn tại chưa
+          const { data: ownCartResCheck } = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount.id}`)
+          const ownCartCheck = ownCartResCheck[0]
+
+          if (ownCartCheck || currentAccount.id === '') {
+            console.log('Cart exists:', ownCartCheck)
+          } else {
+            // Nếu cart chưa tồn tại, tạo mới
+            // const defaultCartItem = {
+            //   id: null,
+            //   productName: null,
+            //   productOldPrice: null,
+            //   productPrice: null,
+            //   image: null,
+            //   description: null,
+            //   categoryId: null,
+            //   reviews: [],
+            //   quantity: null
+            // }
+
+            await axios.post(
+              `${API_ROOT}/ownCart`,
+              {
+                userId: currentAccount.id,
+                cartItem: []
+              },
+              {
+                headers: { 'Content-Type': 'application/json' },
+                withCredentials: true
+              }
+            )
+
+            console.log('New cart created for user:', currentAccount.id)
+          }
+        } else {
+          localStorage.removeItem('currentAccount')
+        }
       } catch (error) {
-        console.error('Error fetching ownCart:', error)
+        console.error('Error syncing account and cart:', error)
       }
     }
 
-    fetchOwnCart() // Call the async function
-  }, [currentAccount])
-
-  useEffect(() => {
-    if (currentAccount) {
-      localStorage.setItem('currentAccount', JSON.stringify(currentAccount))
-    } else {
-      localStorage.removeItem('currentAccount')
-    }
+    syncAccountAndCart()
   }, [currentAccount])
 
   const login = (currentAccount: CurrentAccount) => {
     setCurrentAccount(currentAccount)
   }
+
+  const [phoneNumberValidation, setPhoneNumberValidation] = useState('')
+  const [option, setOption] = useState('edit')
 
   const logout = () => {
     const resetAccount = {
@@ -258,21 +348,20 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     if (currentPage < totalPages) setCurrentPage(currentPage + 1)
   }
 
-  const getAuthorName = (authorId: string) => { 
-      const author = accounts.find((account) => account.id === authorId);
-        return author ? author.fullName : 'Unknown Author';
-  };
-  
-  const getCategoryName = (categoryId: number) => {   
-      const category = blogCategories.find((cat) => cat.id === categoryId.toString());
-      return category ? category.name : 'Unknown Category';
-  };
+  const getAuthorName = (authorId: string) => {
+    const author = accounts.find((account) => account.id === authorId)
+    return author ? author.fullName : 'Unknown Author'
+  }
 
-  const getAuthorImg = (authorId: string) => { 
-    const author = accounts.find((account) => account.id === authorId);
-      return author ? author.image : 'Unknown Author';
-};
+  const getCategoryName = (categoryId: number) => {
+    const category = blogCategories.find((cat) => cat.id === categoryId.toString())
+    return category ? category.name : 'Unknown Category'
+  }
 
+  const getAuthorImg = (authorId: string) => {
+    const author = accounts.find((account) => account.id === authorId)
+    return author ? author.image : 'Unknown Author'
+  }
 
   return (
     <SteakHouseContext.Provider
@@ -284,13 +373,12 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         blogs,
         searchQuery,
         sortOrder,
-
         currentPage,
         totalPages,
         currentAccount,
         phoneNumberValidation,
-        ownCart,
-        currentOwnCart,
+        option,
+        setOption,
         setPhoneNumberValidation,
         login,
         logout,
@@ -303,7 +391,9 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         setCurrentAccount,
         getAuthorName,
         getCategoryName,
-        getAuthorImg
+        getAuthorImg,
+        accountStatistics,
+        fetchAccountStatistics,
       }}
     >
       {children}

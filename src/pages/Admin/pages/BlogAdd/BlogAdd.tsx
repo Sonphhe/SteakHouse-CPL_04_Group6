@@ -1,21 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import {
+  Box,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+  CircularProgress,
+  Alert,
+} from '@mui/material';
 import { useBlogContext } from '../../../../context/BlogContext';
-import './BlogAdd.css';
 
 const BlogAdd = () => {
-  const { addBlog, loading, error } = useBlogContext();
+  const { addBlog, loading, error, blogs, blogCategories } = useBlogContext();
   const navigate = useNavigate();
 
   const [newBlog, setNewBlog] = useState({
     title: '',
     description: '',
     image: '',
-    blogCategoryId: 1, // Default category ID
+    blogCategoryId: blogCategories.length > 0 ? blogCategories[0].id : '', // Default
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  useEffect(() => {
+    if (blogCategories.length > 0) {
+      setNewBlog((prev) => ({
+        ...prev,
+        blogCategoryId: blogCategories[0].id, // Đặt giá trị hợp lệ đầu tiên
+      }));
+    }
+  }, [blogCategories]);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setNewBlog((prev) => ({
       ...prev,
@@ -23,21 +42,30 @@ const BlogAdd = () => {
     }));
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      const fileName = file.name; // Lấy tên file
-      const imagePath = `/assets/images/${fileName}`; // Đường dẫn ảnh tạm thời
+      const fileName = file.name;
+      const imagePath = `/assets/images/${fileName}`;
       setNewBlog((prev) => ({ ...prev, image: imagePath }));
     }
+  };
+
+  const calculateMaxAccountId = () => {
+    return blogs.reduce((maxId, blog) => {
+      const id = blog.accountId;
+      return id > maxId ? id : maxId;
+    }, 0);
   };
 
   const handleAddBlog = async () => {
     if (newBlog.title.trim() && newBlog.description.trim()) {
       try {
-        const accountId = 1; // Thay thế bằng accountId từ auth context nếu có
-        const blogToAdd = { ...newBlog, accountId }; // Gắn accountId vào blog
-        await addBlog(blogToAdd); // Gọi addBlog từ context
+        const maxAccountId = calculateMaxAccountId();
+        const accountId = maxAccountId + 1;
+        const blogToAdd = { ...newBlog, accountId };
+        console.log(accountId);
+         addBlog(blogToAdd);
         navigate('/admin/blog-management');
       } catch (err) {
         console.error('Failed to add blog:', err);
@@ -48,85 +76,118 @@ const BlogAdd = () => {
   };
 
   return (
-    <div className="admin-dashboard-blogAdd">
-      <div className="dashboard-container-blogAdd">
-        <main className="dashboard-main-blogAdd">
-          <div className="blog-add-hungkc">
-            <h2>Add New Blog</h2>
-            <form>
-              {/* Hiển thị lỗi nếu có */}
-              {error && <p className="error-message">{error}</p>}
+    <Box
+      sx={{
+        maxWidth: 600,
+        mx: 'auto',
+        mt: 4,
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 3,
+        backgroundColor: 'white',
+      }}
+    >
+      <Typography variant="h5" gutterBottom>
+        Add New Blog
+      </Typography>
 
-              {/* Hiển thị trạng thái tải */}
-              {loading && <p className="loading-message">Adding blog...</p>}
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        {error && <Alert severity="error">{error}</Alert>}
 
-              <label>Title:</label>
-              <input
-                type="text"
-                name="title"
-                value={newBlog.title}
-                onChange={handleInputChange}
-                required
-              />
+        {loading && (
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 2 }}>
+            <CircularProgress />
+          </Box>
+        )}
 
-              <label>Description:</label>
-              <textarea
-                name="description"
-                value={newBlog.description}
-                onChange={handleInputChange}
-                required
-              ></textarea>
+        <TextField
+          label="Title"
+          name="title"
+          value={newBlog.title}
+          onChange={handleInputChange}
+          fullWidth
+          required
+        />
 
-              <label>Image URL:</label>
-              <input
-                type="text"
-                name="image"
-                value={newBlog.image}
-                onChange={handleInputChange}
-                readOnly
-              />
+        <TextField
+          label="Description"
+          name="description"
+          value={newBlog.description}
+          onChange={handleInputChange}
+          multiline
+          rows={4}
+          fullWidth
+          required
+        />
 
-<label>Choose Image:</label>
-<input
-  id="fileInput-HKC" // Thêm id với hậu tố HKC
-  className="file-input-HKC" // Thêm className với hậu tố HKC
-  type="file"
-  accept="image/*"
-  onChange={handleImageChange}
-/>
+        <TextField
+          label="Image URL"
+          name="image"
+          value={newBlog.image}
+          onChange={handleInputChange}
+          fullWidth
+          required
+        />
 
-              <label>Category:</label>
-              <select
-                name="blogCategoryId"
-                value={newBlog.blogCategoryId}
-                onChange={handleInputChange}
-              >
-                <option value={1}>Meat</option>
-                <option value={2}>Vegetables</option>
-                <option value={3}>Fruits</option>
-                <option value={4}>Dairy & Eggs</option>
-              </select>
+        <Button variant="outlined" component="label">
+          Upload Image
+          <input type="file" hidden accept="image/*" onChange={handleImageChange} />
+        </Button>
 
-              <div className="actions">
-                <button
-                  type="button"
-                  onClick={handleAddBlog}
-                  disabled={loading} // Vô hiệu hóa khi đang tải
-                >
-                  Add Blog
-                </button>
-                <button
-                  type="button"
-                  onClick={() => navigate('/admin/blog-management')}
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </main>
-      </div>
-    </div>
+        {newBlog?.image && (
+      <Box sx={{ mt: 2, textAlign: 'center' }}>
+        <img 
+          src={newBlog.image} 
+          alt="Preview" 
+          style={{ maxWidth: '200px', maxHeight: '200px' }} 
+        />
+      </Box>
+    )}
+
+        
+
+        <FormControl fullWidth>
+          <InputLabel>Category</InputLabel>
+          <Select
+            name="blogCategoryId"
+            value={newBlog.blogCategoryId}
+            onChange={handleInputChange}
+            label="Category"
+          >
+            {blogCategories.map((category) => (
+              <MenuItem key={category.id} value={category.id}>
+                {category.name}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={handleAddBlog}
+            disabled={loading}
+          >
+            Add Blog
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => navigate('/admin/blog-management')}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

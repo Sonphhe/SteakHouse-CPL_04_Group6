@@ -36,7 +36,7 @@ interface AdminLayoutProps {
   children: React.ReactNode;
 }
 
-const AdminLayout: React.FC<AdminLayoutProps> = ({ children }) => {
+const AdminLayout = ({ children }: AdminLayoutProps) => {
   const [open, setOpen] = useState(false);
   const { currentAccount, logout, login } = useSteakHouseContext();
   const navigate = useNavigate();

@@ -8,9 +8,15 @@ import ReceiveLocation from './Component/ReceiveLocation/ReceiveLocation'
 import Footer from '../../../components/ui/Footer/Footer'
 import ConfirmOrder from './Component/ConfirmOrder/ConfirmOrder'
 import PaymentMethod from './Component/PaymentMethod/PaymentMethod'
+import { useState } from 'react'
+import { useCartContext } from '../../../context/CartContext'
 
 const Checkout = () => {
   const navigate = useNavigate()
+  const [distance, setDistance] = useState(0)
+  const { cartItems, selectedItems } = useCartContext()
+
+  const [paymentMethod, setPaymentMethod] = useState<string>('')
 
   return (
     <>
@@ -26,11 +32,17 @@ const Checkout = () => {
             <div className='left-handside'>
               <ProductInCart />
               <Orderer />
-              <ReceiveLocation />
-              <PaymentMethod />
+              <ReceiveLocation onDistanceChange={setDistance} />
+              <PaymentMethod paymentMethod={paymentMethod} setPaymentMethod={setPaymentMethod} />
             </div>
             <div className='right-handside'>
-              <ConfirmOrder cartItems={[]} selectedItems={[]} />
+              <ConfirmOrder
+                shippingFee={distance}
+                cartItems={cartItems?.cartItem}
+                selectedItems={selectedItems}
+                paymentMethod={paymentMethod}
+                context='checkout'
+              />
             </div>
           </div>
         </div>

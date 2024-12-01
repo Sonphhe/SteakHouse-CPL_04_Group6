@@ -45,6 +45,14 @@
     line-height: 24px;
     text-align: left;
 }
+.productInCart-container .left-side .quantity{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.productInCart-container .left-side .quantity p{
+    font-size: 12px;
+}
 .productInCart-container .product .price{
     margin-right: 10px;
 }

@@ -4,14 +4,19 @@
   padding-top: 20vh;
 }
 .user-profile-content {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20% 75%;
+  gap: 30px;
   padding-left: 3rem;
+  width: 100%;
+  margin-bottom: 40px;
 }
 .user-profile-top {
   display: flex;
+  flex-direction: column;
   gap: 20px;
   border-bottom: 1px solid #9b9b9b;
-  padding: 20px 0;
+  padding-bottom: 20px;
 }
 .user-profile-top img {
   width: 3rem;

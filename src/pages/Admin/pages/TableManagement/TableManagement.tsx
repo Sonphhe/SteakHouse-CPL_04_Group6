@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { FaEye, FaEdit, FaTrashAlt, FaUndoAlt } from 'react-icons/fa';
 import './TableManagement.css';
-
+import Sidebar from '../../components/Sidebar/Sidebar';
+import Navbar from '../../components/Navbar/Navbar';
 
 interface TableData {
   id: string;
@@ -136,7 +137,9 @@ const TableManagement: React.FC = () => {
   };
 
   return (
+
     <div className="admin-dashboard">
+     
       <div className="dashboard-container">
         <main className="dashboard-mainTMHKC">
           <div className="table-management">

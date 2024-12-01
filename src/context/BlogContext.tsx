@@ -17,6 +17,7 @@ interface BlogContextType {
   editBlog: (id: string, updatedBlog: Partial<BlogType>) => Promise<void>;
   deleteBlog: (id: string) => Promise<void>;
   filterBlogs: (searchTerm: string) => void;
+  blogCategories: Array<{ id: string; name: string }>;
   loading: boolean;
   error: string | null;
 }
@@ -28,7 +29,7 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
   const [filteredBlogs, setFilteredBlogs] = useState<BlogType[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
+  const [blogCategories, setBlogCategories] = useState<Array<{ id: string; name: string }>>([]);
   // Fetch blogs when the component mounts
   useEffect(() => {
     const fetchBlogs = async () => {
@@ -47,6 +48,19 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     };
     fetchBlogs();
   }, []);
+
+  useEffect(() => {
+    // Fetch blog categories when the component mounts
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get(`${API_ROOT}/blogCategory`);
+        setBlogCategories(response.data);
+      } catch (err) {
+        console.error('Error fetching blog categories:', err);
+      }
+    };
+    fetchCategories();
+  }, [])
 
   // Add a new blog
   const addBlog = async (blog: Omit<BlogType, 'id'>) => {
@@ -123,6 +137,7 @@ export const BlogProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         editBlog,
         deleteBlog,
         filterBlogs,
+        blogCategories,
         loading,
         error,
       }}

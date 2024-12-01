@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
 import { useProductContext } from '../../../../context/ProductContext';
-import './ProductAdd.css';
+import {
+  Box,
+  Button,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+  InputLabel,
+  FormControl,
+} from '@mui/material';
 
 const ProductAdd = () => {
-  const { addProduct, products } = useProductContext(); // Access products from context
+  const { addProduct, products, categoryProduct } = useProductContext();
   const navigate = useNavigate();
-
-  const categories = [
-    { id: 1, name: "Steak" },
-    { id: 2, name: "Drinks" },
-    { id: 3, name: "Spaghetti" },
-    { id: 4, name: "Salad" },
-  ];
 
   const [productData, setProductData] = useState({
     productName: '',
@@ -21,13 +22,13 @@ const ProductAdd = () => {
     productOldPrice: 0,
     description: '',
     image: '',
-    categoryId: categories[0].id, // Set default category
-    reviews: [], // Default empty reviews
+    categoryId: categoryProduct[0].id,
+    reviews: [],
   });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
     setProductData((prev) => ({
       ...prev,
@@ -36,146 +37,162 @@ const ProductAdd = () => {
           ? parseFloat(value)
           : value,
     }));
+
+    // Kiểm tra lại các trường khi người dùng thay đổi dữ liệu
+    if (productData.productName && productData.productPrice && productData.description && productData.image && productData.categoryId) {
+      setError(null); // Nếu tất cả các trường đã được điền, xóa lỗi
+    }
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (file) {
-      const fileName = file.name; // Get the file name
-      const imagePath = `/assets/images/${fileName}`; // Construct the path
-      setProductData((prev) => ({ ...prev, image: imagePath })); // Set the path in state
+      const fileName = file.name;
+      const imagePath = `/assets/images/${fileName}`;
+      setProductData((prev) => ({ ...prev, image: imagePath }));
+
+      // Kiểm tra lại các trường khi thay đổi ảnh
+      if (productData.productName && productData.productPrice && productData.description && imagePath && productData.categoryId) {
+        setError(null); // Nếu tất cả các trường đã được điền, xóa lỗi
+      }
     }
   };
 
   const calculateMaxId = () => {
-    let maxId = 0;
-    for (const product of products) {
-      maxId +=1;
-    }
-    return maxId;
+    return products.reduce((maxId, product) => {
+      const productId = parseInt(product.id, 10);
+      return productId > maxId ? productId : maxId;
+    }, 0);
   };
 
   const handleAddNewProduct = () => {
-    const maxId = calculateMaxId(); // Call the function to calculate maxId
-    const newId = (maxId + 1).toString(); // Increment and convert to string
+    const { productName, productPrice, description, image, categoryId } = productData;
 
-    // Create new product
-    const newProduct = { ...productData, id: newId, reviews: [] };
+    // Kiểm tra xem tất cả các trường có giá trị hợp lệ không
+    if (!productName || !productPrice || !description || !image || !categoryId) {
+      setError('Please fill in all fields');
+      return;
+    }
 
-    // Add the product
+    const maxId = calculateMaxId();
+    const newId = (maxId + 1).toString();
+
+    const newProduct = { ...productData, id: newId };
     addProduct(newProduct);
-
-    // Navigate to product management page
     navigate('/admin/product-management');
   };
 
-  const handleCalculateMaxId = () => {
-    const maxId = calculateMaxId();
-    console.log("Max ID (calculated):", maxId);
-  };
-
   return (
-    <div className="admin-dashboard-add-hung11-11Add">
-      <div className="dashboard-container-add-hung11-11Add">
-        <main className="dashboard-main-add-hung11-11Add">
-          <div className="product-add-container-hung11-11Add">
-            <h2>Add New Product</h2>
-            <div className="product-add-form-hung11-11Add">
-              <div className="form-group">
-                <label>Product Name:</label>
-                <input
-                  type="text"
-                  name="productName"
-                  value={productData.productName}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Add"
-                />
-              </div>
+    <Box
+      sx={{
+        maxWidth: 600,
+        mx: 'auto',
+        mt: 4,
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 3,
+        backgroundColor: 'white',
+      }}
+    >
+      <Typography variant="h5" gutterBottom>
+        Add New Product
+      </Typography>
 
-              <div className="form-group">
-                <label>Price:</label>
-                <input
-                  type="number"
-                  name="productPrice"
-                  value={productData.productPrice}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Add"
-                />
-              </div>
+      {error && <Typography color="error">{error}</Typography>}
 
-              <div className="form-group">
-                <label>Description:</label>
-                <textarea
-                  name="description"
-                  value={productData.description}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Add"
-                />
-              </div>
+      <Box
+        component="form"
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
+      >
+        <TextField
+          label="Product Name"
+          name="productName"
+          value={productData.productName}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-              <div className="form-group">
-                <label>Image URL:</label>
-                <input
-                  type="text"
-                  name="image"
-                  value={productData.image}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Add"
-                />
-              </div>
+        <TextField
+          label="Price"
+          type="number"
+          name="productPrice"
+          value={productData.productPrice}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-              <div className="form-group">
-                <label>Choose Image:</label>
-                <input
-                  id="fileInput-HKC"
-                  className="file-input-HKC"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                />
-              </div>
+        <TextField
+          label="Description"
+          name="description"
+          multiline
+          rows={4}
+          value={productData.description}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-              <div className="form-group">
-                <label>Category:</label>
-                <select
-                  name="categoryId"
-                  value={productData.categoryId}
-                  onChange={handleInputChange}
-                  className="large-input-hung11-11Add"
-                >
-                  {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
-                      {category.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
+        <TextField
+          label="Image URL"
+          name="image"
+          value={productData.image}
+          onChange={handleInputChange}
+          fullWidth
+        />
 
-              <div className="modal-actions-hung11-11Add">
-                <button
-                  className="save-btn-hung11-11Add"
-                  onClick={handleAddNewProduct}
-                >
-                  Add Product
-                </button>
-                <button
-                  className="cancel-btn"
-                  onClick={() => navigate('/admin/product-management')}
-                >
-                  Cancel
-                </button>
-                <button
-                  className="calculate-max-id-btn"
-                  onClick={handleCalculateMaxId}
-                >
-                  Calculate Max ID
-                </button>
-              </div>
-            </div>
-          </div>
-        </main>
-      </div>
-    </div>
+        <Button variant="outlined" component="label">
+          Upload Image
+          <input
+            type="file"
+            hidden
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+        </Button>
+
+        {productData?.image && (
+          <Box sx={{ mt: 2, textAlign: 'center' }}>
+            <img
+              src={productData.image}
+              alt="Preview"
+              style={{ maxWidth: '200px', maxHeight: '200px' }}
+            />
+          </Box>
+        )}
+
+        <FormControl fullWidth>
+          <InputLabel>Category</InputLabel>
+          <Select
+            name="categoryId"
+            value={productData.categoryId}
+            onChange={handleInputChange}
+            label="Category"
+          >
+            {categoryProduct.map((category) => (
+              <MenuItem key={category.id} value={category.id}>
+                {category.categoryName}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
+          <Button variant="contained" color="primary" onClick={handleAddNewProduct}>
+            Add Product
+          </Button>
+          <Button
+            variant="outlined"
+            color="secondary"
+            onClick={() => navigate('/admin/product-management')}
+          >
+            Cancel
+          </Button>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

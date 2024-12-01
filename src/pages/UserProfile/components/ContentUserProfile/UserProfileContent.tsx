@@ -1,8 +1,6 @@
-import { FaUserCircle } from 'react-icons/fa'
 import './UserProfileContent.css'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 import { Dispatch, SetStateAction } from 'react'
-import UserOrder from '../../../User/components/UserOrder'
 
 const UserProfileContent = (props: { title: string, setEdit:Dispatch<SetStateAction<boolean>> }) => {
 
@@ -30,7 +28,6 @@ const UserProfileContent = (props: { title: string, setEdit:Dispatch<SetStateAct
         </div>
         <button onClick={() => props.setEdit(true)} className='edit-profile'>Edit profile</button>
       </div>
-      <UserOrder/>
     </div>
   )
 }

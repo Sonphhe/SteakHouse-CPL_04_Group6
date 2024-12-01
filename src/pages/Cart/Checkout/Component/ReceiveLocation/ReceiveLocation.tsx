@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import './ReceiveLocation.css'
 import { CiShop } from 'react-icons/ci'
 import { IoIosArrowForward } from 'react-icons/io'
@@ -6,7 +6,7 @@ import { FaChevronDown } from 'react-icons/fa6'
 import { CiSearch } from 'react-icons/ci'
 import { LiaTimesCircle } from 'react-icons/lia'
 
-const ReceiveLocation = () => {
+const ReceiveLocation = (props: {onDistanceChange: Dispatch<SetStateAction<number>>}) => {
   const [enable, setEnable] = useState(true)
 
   const communeList = [
@@ -36,8 +36,9 @@ const ReceiveLocation = () => {
   const [commune, setCommune] = useState('Your Location...')
   const [searchValue, setSearchValue] = useState('')
 
-  const handleSetCommune = (item: string) => {
+  const handleSetCommune = (item: string, distance: number) => {
     setCommune(item)
+    props.onDistanceChange(distance)
     setOpenSearchPanel(false)
   }
 
@@ -83,7 +84,7 @@ const ReceiveLocation = () => {
                     <ul>
                       {filteredCommunes.length > 0 ? (
                         filteredCommunes.map((item, i) => (
-                          <li onClick={() => handleSetCommune(item.name)} key={`${item.name}-${i}`}>
+                          <li onClick={() => handleSetCommune(item.name, item.distance)} key={`${item.name}-${i}`}>
                             {item.name}
                           </li>
                         ))
@@ -102,7 +103,6 @@ const ReceiveLocation = () => {
         ) : (
           <div className='content-2'>
             <CiShop /> <p>Shop location: Fpt University - Thach Hoa - Thach That - Ha Noi</p>
-            <p>Request Notes</p>
             <textarea maxLength={128} rows={4} placeholder='Notes (Example: Call me when you are done)'></textarea>
           </div>
         )}

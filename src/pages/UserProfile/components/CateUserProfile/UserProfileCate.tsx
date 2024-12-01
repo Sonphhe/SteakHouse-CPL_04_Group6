@@ -3,43 +3,14 @@ import './UserProfileCate.css'
 import { FaRegHeart } from 'react-icons/fa6'
 import { SlLocationPin } from 'react-icons/sl'
 import { FiLogOut } from 'react-icons/fi'
-import { useState } from 'react'
+import { Dispatch, SetStateAction, useState } from 'react'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 import { useNavigate } from 'react-router-dom'
 
-const UserProfileCate = () => {
+const UserProfileCate = (props:{stateAction:string, setStateAction:Dispatch<SetStateAction<string>>}) => {
   const { logout } = useSteakHouseContext()
-  const [activeBsBoxSeam, setActiveBsBoxSeam] = useState(false)
-  const [activeFaRegHeart, setActiveFaRegHeart] = useState(false)
-  const [activeSlLocationPin, setActiveSlLocationPin] = useState(false)
-  const [activeFiLogOut, setActiveFiLogOut] = useState(false)
+ 
   const navigate = useNavigate()
-
-  const handleActive = (key: string) => {
-    switch (key) {
-      case 'box':
-        setActiveBsBoxSeam(true)
-        setActiveFaRegHeart(false)
-        setActiveSlLocationPin(false)
-        break
-      case 'location':
-        setActiveBsBoxSeam(false)
-        setActiveFaRegHeart(false)
-        setActiveSlLocationPin(true)
-        break
-      case 'heart':
-        setActiveBsBoxSeam(false)
-        setActiveFaRegHeart(true)
-        setActiveSlLocationPin(false)
-        break
-      case 'logout':
-        logout()
-        navigate('/')
-        break
-      default:
-        break
-    }
-  }
   const handleLogout = () => {
     logout
     navigate('/login')
@@ -49,16 +20,16 @@ const UserProfileCate = () => {
     <div className='userProfileCate'>
       <div className='userProfileCate-container'>
         <ul>
-          <li onClick={() => handleActive('box')} className={activeBsBoxSeam ? 'active' : 'non-active'}>
+          <li onClick={() => props.setStateAction('userOrder')} className={props.stateAction==='userOrder' ? 'active' : 'non-active'}>
             <BsBoxSeam className='icon' size={20} /> My Orders
           </li>
-          <li onClick={() => handleActive('heart')} className={activeFaRegHeart ? 'active' : 'non-active'}>
+          <li onClick={() => props.setStateAction('heart')} className={props.stateAction==='heart' ? 'active' : 'non-active'}>
             <FaRegHeart className='icon' size={20} /> Favorite Products
           </li>
-          <li onClick={() => handleActive('location')} className={activeSlLocationPin ? 'active' : 'non-active'}>
+          <li onClick={() => props.setStateAction('location')} className={props.stateAction==='location' ? 'active' : 'non-active'}>
             <SlLocationPin className='icon' size={20} /> My Locations
           </li>
-          <li onClick={() => handleActive('logout')} className={activeFiLogOut ? 'active' : 'non-active'}>
+          <li onClick={handleLogout} className={props.stateAction==='logout' ? 'active' : 'non-active'}>
             <FiLogOut className='icon' size={20} /> Logout
           </li>
         </ul>

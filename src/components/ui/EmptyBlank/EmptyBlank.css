@@ -1,0 +1,22 @@
+.emptyblank-container{
+    width: 100%;
+    height: fit-content;
+}
+.emptyblank-container img{
+    width: 100%;
+}
+.emptyblank-container .title{
+    font-size: 25px;
+    font-weight: 500;
+}
+.emptyblank-container .subtitle{
+    margin: 10px 0;
+}
+.emptyblank-container button{
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: #92373c;
+    color: #fff;
+    cursor: pointer;
+}
