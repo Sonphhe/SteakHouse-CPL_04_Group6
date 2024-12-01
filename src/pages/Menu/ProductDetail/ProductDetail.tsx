@@ -202,20 +202,20 @@ const ProductDetail: React.FC = () => {
 
             <div className="product-info">
               <h2>{productData.productName}</h2>
-              <p className="product-price">Price: {productData.productPrice}$</p>
+              <p className="product-price">Price: {productData.productPrice}.000đ</p>
               <div className="product-sale">
                 <h4>Hot Sale: </h4>
                 <li>
                   <i className="fa fa-truck" style={{ marginRight: '8px', color: '#4CAF50' }}></i>
-                  Shipping promotion with orders over 500$
+                  Shipping promotion with orders over 100.000đ
                 </li>
                 <li>
                   <i className="fa fa-gift" style={{ marginRight: '8px', color: '#FFA500' }}></i>
-                  GiffCard up to 100$
+                  GiffCard up to 100.000đ
                 </li>
                 <li>
                   <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
-                  50$ voucher discount for bill from $350
+                  100.000đ voucher discount for bill from 1.000.000đ
                 </li>
               </div>
 
@@ -255,7 +255,7 @@ const ProductDetail: React.FC = () => {
                 <div onClick={() => handleProductClick(product)} className="product-card-relate">
                   <img className="card-image-large-relate" src={product.image} alt={product.productName} />
                   <h4 className="card-title-centered-relate">{product.productName}</h4>
-                  <p className="card-price-centered-relate">{product.productPrice}$</p>
+                  <p className="card-price-centered-relate">{product.productPrice}.000đ</p>
                 </div>
               </div>
             ))}
