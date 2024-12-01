@@ -102,7 +102,6 @@
       "category": "Steak",
       "categoryId": 1,
       "hidden": false,
-      "categoryId": 1,
       "reviews": [
         {
           "userName": "Alice Johnson",
@@ -687,8 +686,6 @@
       "userId": "7gV5Fax",
       "cartItem": [
         {
-          "id": "5",
-          "productName": "SHAKING BEEF",
           "id": "18",
           "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
           "productOldPrice": 100,
@@ -810,14 +807,27 @@
       "userId": "7gV5Fax",
       "favoriteItems": [
         {
-          "id": "2",
-          "productName": "USA RIB EYE STEAK",
-          "image": "/assets/images/steak2_test.jpg",
-          "productPrice": 195,
-          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-          "category": "Steak",
-          "categoryId": 3,
-          "hidden": false
+          "id": "1",
+          "productName": "HOKUBEE STEAK",
+          "productOldPrice": 100,
+          "productPrice": 233,
+          "image": "/assets/images/steak1.jpg",
+          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+          "categoryId": 1,
+          "reviews": [
+            {
+              "userName": "John Doe",
+              "rating": 5,
+              "comment": "Delicious steak with great flavor!",
+              "date": "2024-11-15"
+            },
+            {
+              "userName": "Jane Smith",
+              "rating": 4,
+              "comment": "Tasty, but a bit too salty for my taste.",
+              "date": "2024-11-14"
+            }
+          ]
         },
         {
           "id": "8",
@@ -827,38 +837,56 @@
           "image": "/assets/images/steak8_test.webp",
           "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
           "categoryId": 1,
-          "hidden": false,
           "reviews": []
         },
         {
-          "id": "1",
-          "productName": "HOKUBEE STEAK",
-          "image": "/assets/images/steak1.jpg",
-          "productPrice": 232,
-          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-          "categoryId": 1,
-          "hidden": false
-        },
-        {
-          "id": "3",
-          "productName": "USA TOPBLADE STEAK",
-          "productOldPrice": 85,
-          "productPrice": 165,
-          "image": "/assets/images/steak3_test.webp",
-          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": []
-        },
-        {
-          "id": "16",
-          "productName": "SALT LEMON SODA",
-          "productOldPrice": 65,
-          "productPrice": 60,
-          "image": "/assets/images/DRINKS7.jpg",
-          "description": "A refreshing and tangy non-alcoholic drink made from the zesty combination of fresh lemon juice, a pinch of salt, and sparkling soda water. Salt Lemon Soda is a perfect thirst-quencher with a unique balance of salty and sour, making it an ideal drink for hot days or to accompany meals.",
+          "id": "10",
+          "productName": "COOKTAIL FRUIT SEASON",
+          "productOldPrice": 70,
+          "productPrice": 46,
+          "image": "/assets/images/DRINKS1.jpeg",
+          "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
           "categoryId": 2,
-          "hidden": false,
+          "reviews": []
+        },
+        {
+          "id": "20",
+          "productName": "FRESH PASTA WITH  BEEF SAUCE TOMATOES",
+          "productOldPrice": 110,
+          "productPrice": 105,
+          "image": "/assets/images/SPAGHETTI3.jpg",
+          "description": "A classic Italian-inspired pasta dish featuring fresh, handmade pasta paired with a rich, savory beef tomato sauce. The hearty beef sauce is simmered with ripe tomatoes and aromatic herbs, creating a comforting and satisfying meal.",
+          "categoryId": 3,
+          "reviews": []
+        },
+        {
+          "id": "22",
+          "productName": "FRESH PASTA WITH BACON, CHEESE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 105,
+          "image": "/assets/images/SPAGHETTI5.jpeg",
+          "description": "A creamy and indulgent pasta dish featuring fresh, handmade pasta paired with crispy bacon and a rich, velvety cheese sauce. The bacon adds a savory, smoky flavor that complements the creamy cheese sauce, making for a comforting and satisfying meal.",
+          "categoryId": 3,
+          "reviews": []
+        },
+        {
+          "id": "26",
+          "productName": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 60,
+          "image": "/assets/images/SALAD2.jpg",
+          "description": "A hearty and protein-packed salad combining tender beef, succulent chicken, and flavorful tuna, all tossed with a smoky BBQ sauce and fresh vegetables. This dish offers a variety of textures and flavors, with the savory meats paired perfectly with the bold, tangy BBQ sauce.",
+          "categoryId": 4,
+          "reviews": []
+        },
+        {
+          "id": "28",
+          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
+          "productOldPrice": 110,
+          "productPrice": 65,
+          "image": "/assets/images/SALAD4.png",
+          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
+          "categoryId": 4,
           "reviews": []
         }
       ]
