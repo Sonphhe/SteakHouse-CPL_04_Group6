@@ -5,7 +5,7 @@ import BlogFooter from './BlogFooter';
 import PostAuthor from './PostAuthor';
 import axios from 'axios';
 import { API_ROOT } from '../../../utils/constants';
-import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'; // Giả sử context có thông tin user
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
 import './PostDetail.css';
 
 const PostDetail = () => {
@@ -17,23 +17,35 @@ const PostDetail = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Gửi yêu cầu API để lấy bài viết
+    // Kiểm tra ID từ URL
+    console.log('Post ID from URL:', id);
+
     const fetchPost = async () => {
       try {
-        console.log('Fetching post with ID:', id);
-        const response = await axios.get(`${API_ROOT}/blog/${id}`);
-        console.log('API Response:', response.data);
+        const postId = Number(id);
+        const apiUrl = `${API_ROOT}/blog/${postId}`;
+        console.log('Fetching post with API URL:', apiUrl);
+        
+        const response = await axios.get(apiUrl);
+
+        console.log('API Response:', response.data); // Log dữ liệu trả về từ API
         setPost(response.data);
         setLoading(false);
       } catch (err) {
         console.error('Error fetching post:', err);
-  
-        if (err.response?.status === 404) {
-          setError('The post was not found. It may have been deleted.');
+
+        if (err.response) {
+          console.log('Error Response Data:', err.response.data);
+          console.log('Error Status Code:', err.response.status);
+          if (err.response.status === 404) {
+            setError('The post was not found. It may have been deleted.');
+          } else {
+            setError('An error occurred while fetching the post.');
+          }
         } else {
-          setError('An error occurred while fetching the post.');
+          setError('An unexpected error occurred.');
         }
-  
+
         setLoading(false);
       }
     };
@@ -41,15 +53,16 @@ const PostDetail = () => {
     fetchPost();
   }, [id]);
   
-  console.log('Post Data:', post);
-  
+  console.log('Post Data after fetch:', post);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div className="error-message">{error}</div>;
   if (!post) return <div>No post available to display.</div>;
+
   const handleDelete = async () => {
     if (window.confirm('Are you sure you want to delete this post?')) {
       try {
-        await axios.delete(`${API_ROOT}/blog/${id}`); // Gửi yêu cầu xóa bài viết
+        await axios.delete(`${API_ROOT}/blog/${id}`); 
         alert('Post deleted successfully!');
         navigate('/blog'); 
       } catch (err) {
@@ -63,8 +76,8 @@ const PostDetail = () => {
     navigate(`/blog/edit/${id}`); 
   };
 
-  
-  const isAuthor = currentAccount && post.accountId === currentAccount.id;
+
+  const isAuthor = currentAccount && String(post.accountId) === String(currentAccount.id);
 
   return (
     <div className="post-detail-firstdiv">

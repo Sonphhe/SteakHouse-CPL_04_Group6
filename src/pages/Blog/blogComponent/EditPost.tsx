@@ -69,7 +69,7 @@ const EditPost = () => {
       title,
       description,
       blogCategoryId: category,
-      authorId: currentAccount?.id,
+      accountId: currentAccount?.id,
       image: imageUrl, // Use Base64 image
       publishDate: currentDate,
     };
