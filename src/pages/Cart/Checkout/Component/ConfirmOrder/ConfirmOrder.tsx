@@ -68,21 +68,24 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
   // Calculate final amount after discount
   const finalAmount = useMemo(() => {
     // Cộng phí vận chuyển vào tổng trước khi tính giảm giá
-    const totalWithShipping = total + shippingFee;
-  
+    const totalWithShipping = total + shippingFee
+
     // Tính lại số tiền giảm giá từ tổng cộng với phí vận chuyển
-    const discountAmount = totalWithShipping * (voucherDiscount / 100);
-  
+    const discountAmount = totalWithShipping * (voucherDiscount / 100)
+
     // Trừ số tiền giảm giá từ tổng cộng với phí vận chuyển để ra finalAmount
-    return totalWithShipping - discountAmount;
-  }, [total, voucherDiscount, shippingFee]);
-  
-  
+    return totalWithShipping - discountAmount
+  }, [total, voucherDiscount, shippingFee])
 
   // Handle confirm action based on context
   const handleConfirm = () => {
     if (context === 'cart') {
-      navigate('/checkout') // Điều hướng đến trang thanh toán
+      selectedItems.length === 0
+        ? swal({
+            title: 'Please choose at least 1 product!',
+            icon: 'warning'
+          })
+        : navigate('/checkout')
     } else if (context === 'checkout') {
       if (paymentMethod === 'qrCode') {
         console.log(paymentMethod)
@@ -116,7 +119,9 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
             {context === 'checkout' && (
               <li>
                 <p className='title'>Voucher discount</p>
-                <p className='price-discount'>{((total + shippingFee )*1000 * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ</p>
+                <p className='price-discount'>
+                  {((total + shippingFee) * 1000 * (voucherDiscount / 100)).toLocaleString('vi-VN')}đ
+                </p>
               </li>
             )}
             <li>

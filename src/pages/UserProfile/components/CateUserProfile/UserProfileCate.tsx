@@ -26,9 +26,9 @@ const UserProfileCate = (props:{stateAction:string, setStateAction:Dispatch<SetS
           <li onClick={() => props.setStateAction('heart')} className={props.stateAction==='heart' ? 'active' : 'non-active'}>
             <FaRegHeart className='icon' size={20} /> Favorite Products
           </li>
-          <li onClick={() => props.setStateAction('location')} className={props.stateAction==='location' ? 'active' : 'non-active'}>
+          {/* <li onClick={() => props.setStateAction('location')} className={props.stateAction==='location' ? 'active' : 'non-active'}>
             <SlLocationPin className='icon' size={20} /> My Locations
-          </li>
+          </li> */}
           <li onClick={handleLogout} className={props.stateAction==='logout' ? 'active' : 'non-active'}>
             <FiLogOut className='icon' size={20} /> Logout
           </li>

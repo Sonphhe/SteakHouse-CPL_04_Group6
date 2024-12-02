@@ -37,6 +37,7 @@ const VerifyNum = (props: {
       if (confirmation) {
         props.set(false)
         props.setShowValidNum(true)
+        console.log(recaptcha);
       }
     } catch (error) {
       console.log(error)
@@ -52,8 +53,8 @@ const VerifyNum = (props: {
   // }
 
   return (
-    <div className='verify-number'>
-      <div className='verify-number-container'>
+    <div className='verify-number' onClick={() => props.set(false)}>
+      <div className='verify-number-container' onClick={(e) => e.stopPropagation()}>
         <div onClick={() => props.set(false)} className='close'>
           <FaTimes size={20} />
         </div>

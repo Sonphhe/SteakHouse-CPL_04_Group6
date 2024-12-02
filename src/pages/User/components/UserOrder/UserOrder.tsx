@@ -58,6 +58,7 @@ const UserOrder = () => {
 
   const filterOrders = (status: string) => {
     setFilterStatus(status)
+    setCateName(status)
   }
   // Lọc các đơn hàng theo trạng thái
   const filteredOrders = orders.flatMap((order) =>
@@ -162,23 +163,26 @@ const UserOrder = () => {
     }
   }
 
+
+  const [cateName, setCateName] = useState('All')
+
   return (
     <div className='user-order'>
       <div className='user-order-container'>
         <div className='order-section'>
-          <div className='order-section-cate' onClick={() => filterOrders('All')}>
+          <div className={cateName === 'All'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('All')}>
             All
           </div>
-          <div className='order-section-cate' onClick={() => filterOrders('Waiting for Payment')}>
+          <div className={cateName === 'Waiting for Payment'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Waiting for Payment')}>
             Waiting for payment
           </div>
-          <div className='order-section-cate' onClick={() => filterOrders('Shipping')}>
+          <div className={cateName === 'Shipping'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Shipping')}>
             Waiting for delivery
           </div>
-          <div className='order-section-cate' onClick={() => filterOrders('Complete')}>
+          <div className={cateName === 'Complete'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Complete')}>
             Complete
           </div>
-          <div className='order-section-cate' onClick={() => filterOrders('Cancel')}>
+          <div className={cateName === 'Cancel'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Cancel')}>
             Cancel
           </div>
         </div>
@@ -217,7 +221,7 @@ const UserOrder = () => {
                 <div className='total'>
                   <p className='total-text'>Total:</p>
                   <p className='total-money'>
-                    {cartItem.items?.reduce((acc: number, item: any) => acc + item.productPrice * item.quantity, 0)}đ
+                    {cartItem.items?.reduce((acc: number, item: any) => acc + item.productPrice * item.quantity, 0)}.000đ
                   </p>
                 </div>
 

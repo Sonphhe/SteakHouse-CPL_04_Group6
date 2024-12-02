@@ -57,11 +57,11 @@ const DropDownProfile = (props: { name: string }) => {
           <p>My Orders</p>
           <span>{`>`}</span>
         </div>
-        <div className='sub-menu-links' onClick={() => handleChoose('location')}>
+        {/* <div className='sub-menu-links' onClick={() => handleChoose('location')}>
           <SlLocationPin size={20} />
           <p>My Location</p>
           <span>{`>`}</span>
-        </div>
+        </div> */}
         <div className='sub-menu-links' onClick={() => handleChoose('heart')}>
           <FaRegHeart size={20} />
           <p>Favourite</p>

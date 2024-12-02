@@ -257,16 +257,12 @@ const ProductDetail: React.FC = () => {
             </div>
 
             {isModalOpen && (
-              <div className="modal">
-                <div className="modal-content">
-                  <h3>Product added to cart!</h3>
-                  <p>Do you want to view your cart or continue shopping?</p>
-                  <div className="modal-buttons">
-                    <button onClick={handleViewCart}>View Cart</button>
-                    <button onClick={handleCloseModal}>Continue Shopping</button>
-                  </div>
-                </div>
+              <div className='modal-overlay' onClick={() => setIsModalOpen(false)}>
+              <div className='modal-content' onClick={(e) => e.stopPropagation()}>
+                <div className='check-icon'>✔</div>
+                <p>Add product successfully</p>
               </div>
+            </div>
             )}
           </div>
           <h3 className="related-title">Ralated Product</h3>

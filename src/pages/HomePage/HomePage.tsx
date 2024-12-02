@@ -21,7 +21,7 @@ const Home = () => {
           text = 'Choose Your Favourite Meal'
         />
         <FlashSale />
-        <CardGrid/>
+        {/* <CardGrid/> */}
         <FavouriteFood/>
         <Colaborator/>
         <Chat />

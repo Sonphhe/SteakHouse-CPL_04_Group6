@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './FavouriteProduct.css';
-import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
+import { useSteakHouseContext } from '../../../../../hooks/useSteakHouseContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 const FavouriteProduct = () => {
   const [favouriteProducts, setFavouriteProducts] = useState<any[]>([]);

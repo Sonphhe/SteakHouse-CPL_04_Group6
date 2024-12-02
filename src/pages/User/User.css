@@ -20,7 +20,16 @@
 }
 .user-order-container .order-section .order-section-cate:hover {
   color: #7d161c;
-  border-bottom: 1px solid #7d161c;
+  border-bottom: 2px solid #7d161c;
+}
+.user-order-container .order-section .order-section-cate-active{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  color: #7d161c;
+  border-bottom: 2px solid #7d161c;
 }
 .product-list {
   display: flex;

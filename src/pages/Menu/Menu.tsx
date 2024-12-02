@@ -90,7 +90,7 @@ const Menu: React.FC = () => {
     const productWithValidQuantity = {
       ...product,
       quantity: parseInt(product.quantity, 10) || 1,
-      isChecked: false
+      isChecked: true
     }
     addToCart(productWithValidQuantity)
     setModalMessage('Product added to cart!')

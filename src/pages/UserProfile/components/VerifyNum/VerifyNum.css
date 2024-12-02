@@ -18,6 +18,7 @@
   background-color: white;
   padding: 30px 0;
   border-radius: 20px;
+  margin-top: 5%;
 }
 .verify-number-container .close {
   display: flex;

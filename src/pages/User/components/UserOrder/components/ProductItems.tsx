@@ -57,8 +57,8 @@ const ProductItems: React.FC<ProductItemsProps> = ({ product}) => {
           </div>
         </div>
         <div className="rightside">
-          <span className="old-price">{product.productOldPrice}đ</span>
-          <span className="new-price">{product.productPrice}đ</span>
+          <span className="old-price">{product.productOldPrice}.000đ</span>
+          <span className="new-price">{product.productPrice}.000đ</span>
         </div>
       </div>
     </div>

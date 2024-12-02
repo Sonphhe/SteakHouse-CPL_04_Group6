@@ -5,9 +5,9 @@ import { FaTimes } from 'react-icons/fa'
 
 const ProductInCart = () => {
   const { currentAccount } = useSteakHouseContext()
-  const { cartItems } = useCartContext()
+  const { cartItems, selectedItems } = useCartContext()
 
-  const cartCheckoutItem: any = cartItems?.cartItem.filter(item => item.isChecked === true)
+  const cartCheckoutItem: any = cartItems?.cartItem.filter(item => selectedItems.includes(item.id))
 
   return (
     <div className='productInCart'>
@@ -22,7 +22,7 @@ const ProductInCart = () => {
 
             {cartItems?.cartItem && cartItems.cartItem.length > 0 ? (
               cartItems.cartItem
-                .filter((cart) => cart.isChecked === true)
+                .filter((cart) => selectedItems.includes(cart.id))
                 .map((cart) => (
                   <div key={cart.id} className='product'>
                     <div className='left-side'>
