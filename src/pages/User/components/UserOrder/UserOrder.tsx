@@ -11,149 +11,156 @@ import { useNavigate } from 'react-router-dom'
 const UserOrder = () => {
   const [orders, setOrders] = useState<any[]>([]) // State để lưu đơn hàng
   const [filterStatus, setFilterStatus] = useState<string>('All') // Trạng thái lọc
+  const [searchQuery, setSearchQuery] = useState<string>('') // State để lưu giá trị tìm kiếm
   const { currentAccount } = useSteakHouseContext()
   const navigate = useNavigate()
   const [cartItems, setCartItems] = useState<OwnCart>({
     id: '',
     userId: '',
-    cartItem: [],
-  });
-  
+    cartItem: []
+  })
   // Lấy dữ liệu đơn hàng từ API, lọc theo userId
   useEffect(() => {
     const fetchOrders = async () => {
-      if (!currentAccount) return; // Kiểm tra nếu không có tài khoản đăng nhập
+      if (!currentAccount) return
 
-      const response = await fetch(`http://localhost:9999/checkOutItems?userId=${currentAccount.id}`) // Lọc đơn hàng theo userId
+      const response = await fetch(`http://localhost:9999/checkOutItems?userId=${currentAccount.id}`)
       const data = await response.json()
-      setOrders(data) // Lưu dữ liệu vào state
+
+      // Hàm chuyển chuỗi thời gian "HH:mm DD/MM/YYYY" thành đối tượng Date
+      const parseOrderTime = (orderTime: string) => {
+        const [time, date] = orderTime.split(' ') // Tách thời gian và ngày
+        const [hour, minute] = time.split(':').map(Number) // Lấy giờ, phút
+        const [day, month, year] = date.split('/').map(Number) // Lấy ngày, tháng, năm
+        return new Date(year, month - 1, day, hour, minute) // Tạo đối tượng Date
+      }
+
+      // Sắp xếp đơn hàng dựa trên thời gian trong cartItems
+      const sortedOrders = data.map((order: any) => ({
+        ...order,
+        cartItems: order.cartItems.sort(
+          (a: any, b: any) => parseOrderTime(b.orderTime).getTime() - parseOrderTime(a.orderTime).getTime()
+        )
+      }))
+
+      // Sắp xếp các đơn hàng theo thời gian mới nhất trong cartItems
+      sortedOrders.sort((a: any, b: any) => {
+        const latestA = parseOrderTime(a.cartItems[0]?.orderTime).getTime()
+        const latestB = parseOrderTime(b.cartItems[0]?.orderTime).getTime()
+        return latestB - latestA
+      })
+
+      setOrders(sortedOrders) // Lưu dữ liệu đã sắp xếp vào state
     }
 
     fetchOrders()
-  }, [currentAccount]) // Chạy lại mỗi khi currentAccount thay đổi
-  // Lấy dữ liệu đơn hàng từ API
-  // useEffect(() => {
-  //   const fetchOrders = async () => {
-  //     const response = await fetch('http://localhost:9999/checkOutItems') // URL API
-  //     const data = await response.json()
-  //     setOrders(data) // Lưu dữ liệu vào state
-  //   }
-
-  //   fetchOrders()
-  // }, [])
+  }, [currentAccount])
 
   const filterOrders = (status: string) => {
     setFilterStatus(status)
   }
-
   // Lọc các đơn hàng theo trạng thái
-  const filteredOrders = orders.flatMap((order) => 
-    order.cartItems.filter((cartItem: any) => 
-      filterStatus === 'All' || cartItem.status === filterStatus
-    ).map((cartItem: any) => ({
-      ...cartItem,
-      parentOrderId: order.id,
-      orderTime: cartItem.orderTime // Thêm ID cha để dễ xử lý
-    }))
+  const filteredOrders = orders.flatMap((order) =>
+    order.cartItems
+      .filter((cartItem: any) =>
+        (filterStatus === 'All' || cartItem.status === filterStatus) &&
+        cartItem.items.some((item: any) => item.productName.toLowerCase().includes(searchQuery.toLowerCase())) // Thêm điều kiện tìm kiếm
+      )
+      .map((cartItem: any) => ({
+        ...cartItem,
+        parentOrderId: order.id,
+        orderTime: cartItem.orderTime // Thêm ID cha để dễ xử lý
+      }))
   )
-
+  
   const handleBuyAgain = async (cartItemId: string) => {
-    console.log(`Buy again for cartItemId: ${cartItemId}`);
-    
+    console.log(`Buy again for cartItemId: ${cartItemId}`)
+
     try {
-      // Giả sử bạn có một kiểu dữ liệu cho orders
       const orderToReorder = orders.find((order: { cartItems: cartItems[] }) =>
         order.cartItems.some((cartItem: cartItems) => cartItem.id === cartItemId)
-      );
-  
+      )
+
       if (!orderToReorder) {
-        console.error("Order not found");
-        return;
+        console.error('Order not found')
+        return
       }
-  
-      const cartItemToReorder = orderToReorder.cartItems.find(
-        (cartItem: cartItems) => cartItem.id === cartItemId
-      );
-  
+
+      const cartItemToReorder = orderToReorder.cartItems.find((cartItem: cartItems) => cartItem.id === cartItemId)
+
       if (!cartItemToReorder) {
-        console.error("Cart item not found");
-        return;
+        console.error('Cart item not found')
+        return
       }
-  
-      const cartItemsToAdd = cartItemToReorder.items;
-  
-      const response = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`);
-      const fetchedCartItem = response.data[0];
-  
-      let updatedCartItems = fetchedCartItem ? fetchedCartItem.cartItem : [];
-  
-      // Kiểm tra và tăng số lượng sản phẩm nếu nó đã tồn tại
+
+      const cartItemsToAdd = cartItemToReorder.items
+
+      // Lấy giỏ hàng hiện tại từ server
+      const response = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`)
+      const fetchedCartItem = response.data[0]
+
+      let updatedCartItems = fetchedCartItem ? fetchedCartItem.cartItem : []
+      // Kiểm tra và thêm sản phẩm mới hoặc tăng số lượng
       cartItemsToAdd.forEach((newItem: any) => {
-        const existingItem = updatedCartItems.find((item: any) => item.id === newItem.id);
-  
+        const existingItem = updatedCartItems.find((item: any) => item.id === newItem.id)
+
         if (existingItem) {
-          existingItem.quantity += newItem.quantity; // Tăng số lượng sản phẩm nếu đã tồn tại
+          existingItem.quantity += newItem.quantity
         } else {
-          updatedCartItems.push({ ...newItem }); // Thêm sản phẩm mới nếu chưa tồn tại
+          updatedCartItems.push({ ...newItem })
         }
-      });
-  
+      })
+      // Cập nhật lại server
       await axios.patch(`${API_ROOT}/ownCart/${fetchedCartItem.id}`, {
-        cartItem: updatedCartItems,
-      });
-  
-      setCartItems((prev) => ({ ...prev, cartItem: updatedCartItems }));
-  
-      console.log("Reorder successful!");
-      navigate("/cart");
-      window.location.reload();
+        cartItem: updatedCartItems
+      })
+
+      // Gọi lại API để lấy dữ liệu mới nhất
+      const updatedCartResponse = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`)
+      setCartItems(updatedCartResponse.data[0])
+
+      console.log('Reorder successful!')
+      navigate('/cart', { replace: true })
     } catch (error) {
-      console.error("Error reordering:", error);
+      console.error('Error reordering:', error)
     }
-  };
-  
+  }
+
   //Hàm huỷ đơn hàng
   const handleCancelOrder = async (orderId: string) => {
     try {
       // Tìm đơn hàng cần hủy
-      const orderToCancel = orders.find((order) => 
-        order.cartItems.some((cartItem: any) => cartItem.id === orderId)
-      );
-  
+      const orderToCancel = orders.find((order) => order.cartItems.some((cartItem: any) => cartItem.id === orderId))
+
       if (!orderToCancel) {
-        console.error("Order not found");
-        return;
+        console.error('Order not found')
+        return
       }
-  
+
       // Cập nhật trạng thái đơn hàng
       const updatedCartItems = orderToCancel.cartItems.map((cartItem: any) =>
-        cartItem.id === orderId ? { ...cartItem, status: "Cancel" } : cartItem
-      );
-  
+        cartItem.id === orderId ? { ...cartItem, status: 'Cancel' } : cartItem
+      )
+
       // Gửi yêu cầu cập nhật trạng thái lên server
       await fetch(`http://localhost:9999/checkOutItems/${orderToCancel.id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          cartItems: updatedCartItems,
-        }),
-      });
-  
+          cartItems: updatedCartItems
+        })
+      })
+
       // Cập nhật state sau khi API thành công
       setOrders((prevOrders) =>
-        prevOrders.map((order) =>
-          order.id === orderToCancel.id
-            ? { ...order, cartItems: updatedCartItems }
-            : order
-        )
-      );
-  
-      console.log("Order cancelled successfully!");
+        prevOrders.map((order) => (order.id === orderToCancel.id ? { ...order, cartItems: updatedCartItems } : order))
+      )
+
+      console.log('Order cancelled successfully!')
     } catch (error) {
-      console.error("Error cancelling order:", error);
+      console.error('Error cancelling order:', error)
     }
-  };
-  
+  }
 
   return (
     <div className='user-order'>
@@ -175,7 +182,7 @@ const UserOrder = () => {
             Cancel
           </div>
         </div>
-        <SearchBarFilter title='You can search your product by name' />
+        <SearchBarFilter title="You can search your product by name" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
         <div className='product-list'>
           {filteredOrders.map((cartItem) => (
             <div key={cartItem.id} className='order-group'>
@@ -197,7 +204,11 @@ const UserOrder = () => {
               {/* Sản phẩm trong đơn hàng */}
               <div className='order-products'>
                 {cartItem.items?.map((item: any) => (
-                  <ProductItems key={item.id} product={{ ...item, orderTime: cartItem.orderTime }} status={cartItem.status} />
+                  <ProductItems
+                    key={item.id}
+                    product={{ ...item, orderTime: cartItem.orderTime }}
+                    status={cartItem.status}
+                  />
                 ))}
               </div>
 
