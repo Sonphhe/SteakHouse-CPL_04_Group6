@@ -1,0 +1,37 @@
+.MuiCard-root {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+  }
+  
+  .MuiCardContent-root {
+    padding: 16px;
+  }
+  
+  .MuiTypography-root {
+    margin-bottom: 12px;
+  }
+  
+  .MuiGrid-item {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .MuiCardMedia-root {
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .MuiButton-root {
+    width: 100%;
+    background-color: #1976d2;
+    color: white;
+    font-weight: bold;
+    margin-top: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .MuiButton-root:hover {
+    background-color: #1565c0;
+  }
+  

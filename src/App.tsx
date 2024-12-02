@@ -49,6 +49,11 @@ import EditPost from './pages/Blog/blogComponent/EditPost'
 import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrCodePage'
 import Location from './pages/User/components/Location'
 import Checkout from './pages/Cart/Checkout/Checkout'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+import CheckoutManage from './pages/Admin/pages/CheckoutManage/CheckoutManage'
+import ListCheckoutDetail from './pages/Admin/pages/ListCheckoutDetail/ListCheckoutDetail'
+
 
 
 function App() {
@@ -202,14 +207,31 @@ function App() {
                 }
               />
 
-              <Route
-                path='/admin/account-edit/:id'
+<Route
+                path='/admin/checkout-management'
                 element={
                   <AccountProvider>
-                    <AccountEdit />
+                    <AdminLayout>
+                      <CheckoutManage />
+                    </AdminLayout>
                   </AccountProvider>
                 }
               />
+              
+              <Route
+                path='/checkout-details/:checkoutId'
+                element={
+
+                    <AdminLayout>
+                      <ListCheckoutDetail />
+                    </AdminLayout>
+                 
+                }
+              />
+
+
+
+
             </Routes>
           </BrowserRouter>
         </CartProvider>

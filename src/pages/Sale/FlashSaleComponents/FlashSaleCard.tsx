@@ -1,7 +1,7 @@
 import React from 'react';
 import './FlashSaleCard.css';
 import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext';
-
+import { useNavigate, useSearchParams } from 'react-router-dom';
 const FlashSaleCard = ({
   productId,
   sale,
@@ -12,6 +12,7 @@ const FlashSaleCard = ({
   endDate: string;
 }) => {
   const { products } = useSteakHouseContext();
+  const navigate = useNavigate();
 
   // Ép kiểu `prod.id` về số trước khi so sánh
   const product = products.find((prod) => {
@@ -33,14 +34,21 @@ const FlashSaleCard = ({
   // Tính giá sau giảm giá
   const salePrice = product.productPrice * (1 - sale / 100);
 
+  const handleProductClick = (product: any) => {
+    navigate(`/productdetail/${product.productName}`, { state: { product } });
+  };
+
   return (
-    <div className="flash-sale-item">
+    <div  className="flash-sale-item">
+      <div onClick={() => handleProductClick(product)}>
       <img src={product.image} alt={product.productName} />
       <h3>{product.productName}</h3>
       <p className="original-price">${product.productPrice.toFixed(2)}</p>
       <p className="sale-price">${salePrice.toFixed(2)}</p>
       <p className="sale-percent">-{sale}%</p>
       <p className="sale-timer">Ends on: {new Date(endDate).toLocaleDateString()}</p>
+      </div>
+      
     </div>
   );
 };

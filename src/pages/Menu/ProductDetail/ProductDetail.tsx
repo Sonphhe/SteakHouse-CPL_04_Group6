@@ -31,7 +31,7 @@ const ProductDetail: React.FC = () => {
   const currentComments = comments.slice(indexOfFirstComment, indexOfLastComment);
 
   const totalPages = Math.ceil(comments.length / commentsPerPage);
-  const { currentAccount } = useSteakHouseContext()
+  const { currentAccount, flashSales } = useSteakHouseContext()
   // const handleFilter = useSteakHouseContext();
   // Fetch dữ liệu sản phẩm
   const { getPaginatedItems } = useSteakHouseContext();
@@ -83,6 +83,19 @@ const ProductDetail: React.FC = () => {
       : 0;
   };
 
+  
+  const flashSale = flashSales.find((sale) => {
+    
+    return (
+      Number(sale.productId) === Number(productData.id) && // Chuyển về cùng kiểu number
+      new Date(sale.startDate) <= new Date() &&
+      new Date(sale.endDate) >= new Date()
+    );
+  });
+  
+  const salePrice = flashSale
+    ? productData?.productPrice * (1 - flashSale.sale / 100)
+    : null;
   // Thay đổi số lượng
   const handleIncreaseQuantity = () => setQuantity(prev => prev + 1);
   const handleDecreaseQuantity = () => setQuantity(prev => (prev > 1 ? prev - 1 : 1));
@@ -201,23 +214,31 @@ const ProductDetail: React.FC = () => {
             </div>
 
             <div className="product-info">
-              <h2>{productData.productName}</h2>
-              <p className="product-price">Price: {productData.productPrice}.000đ</p>
-              <div className="product-sale">
-                <h4>Hot Sale: </h4>
-                <li>
-                  <i className="fa fa-truck" style={{ marginRight: '8px', color: '#4CAF50' }}></i>
-                  Shipping promotion with orders over 100.000đ
-                </li>
-                <li>
-                  <i className="fa fa-gift" style={{ marginRight: '8px', color: '#FFA500' }}></i>
-                  GiffCard up to 100.000đ
-                </li>
-                <li>
-                  <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
-                  100.000đ voucher discount for bill from 1.000.000đ
-                </li>
-              </div>
+  <h2>{productData.productName}</h2>
+  <p className="product-price">
+    Price: <span className={flashSale ? "original-price" : ""}>{productData.productPrice}.000đ</span>
+  </p>
+  {flashSale && (
+    <p className="flash-sale-price">
+      Sale Price: <span>{salePrice?.toFixed(3)}đ</span>
+    </p>
+  )}
+  <div className="product-sale">
+    <h4>Hot Sale: </h4>
+    <li>
+      <i className="fa fa-truck" style={{ marginRight: '8px', color: '#4CAF50' }}></i>
+      Shipping promotion with orders over 100.000đ
+    </li>
+    <li>
+      <i className="fa fa-gift" style={{ marginRight: '8px', color: '#FFA500' }}></i>
+      GiffCard up to 100.000đ
+    </li>
+    <li>
+      <i className="fa fa-ticket" style={{ marginRight: '8px', color: '#FF5722' }}></i>
+      100.000đ voucher discount for bill from 1.000.000đ
+    </li>
+  </div>
+
 
 
               <div className="quantity-container">

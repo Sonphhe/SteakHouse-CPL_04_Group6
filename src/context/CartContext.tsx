@@ -52,6 +52,7 @@ interface CartContextType {
   removeFromCart: (id: string) => Promise<void>;
   updateQuantity: (id: string, quantity: number) => Promise<void>;
   saveToCheckOut: (paymentMethod?: string) => Promise<void>;
+  setCartItems: React.Dispatch<React.SetStateAction<OwnCart>>;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -227,6 +228,7 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         addToCart,
         removeFromCart,
         updateQuantity,
+        setCartItems,
       }}
     >
       {children}

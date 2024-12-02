@@ -69,7 +69,7 @@ const EditPost = () => {
       title,
       description,
       blogCategoryId: category,
-      authorId: currentAccount?.id,
+      accountId: currentAccount?.id,
       image: imageUrl, // Use Base64 image
       publishDate: currentDate,
     };
@@ -145,22 +145,21 @@ const EditPost = () => {
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="image">Image</label>
-            <input
-              type="file"
-              id="image"
-              accept="image/*"
-              onChange={handleImageUpload} // Use updated image handler
-            />
+          <div className="image-upload-wrapper">
+                <label htmlFor="image-upload">Upload New Image</label>
+                <input
+                  type="file"
+                  id="image-upload"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                />
+                {imageUrl && (
+                  <div className="image-preview">
+                    <p>Image Preview:</p>
+                    <img src={imageUrl} alt="Preview" />
+                  </div>
+                )}
           </div>
-
-          {imageUrl && (
-            <div className="image-preview">
-              <p>Image Preview:</p>
-              <img src={imageUrl} alt="Preview" style={{ width: '100px', height: '100px' }} />
-            </div>
-          )}
 
           <button type="submit" className="submit-button">
             Update Post
