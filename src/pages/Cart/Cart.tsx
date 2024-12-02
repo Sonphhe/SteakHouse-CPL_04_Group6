@@ -10,6 +10,9 @@ import Chat from '../../components/Chat/Chat'
 import { useNavigate } from 'react-router-dom'
 import ConfirmOrder from './Checkout/Component/ConfirmOrder/ConfirmOrder'
 import EmptyBlank from '../../components/ui/EmptyBlank/EmptyBlank'
+import axios from 'axios'
+import { API_ROOT } from '../../utils/constants'
+import { log } from 'console'
 
 const Cart = () => {
   const navigate = useNavigate()

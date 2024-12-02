@@ -48,6 +48,20 @@
       "roleId": "3",
       "image": "/assets/images/image-baklava-thumbnail.jpg",
       "id": "8"
+    },
+    {
+      "username": "sonphhe173195@fpt.edu.vn",
+      "password": "105917570415484790918",
+      "fullName": "user",
+      "roleId": 3,
+      "image": "https://lh3.googleusercontent.com/a/ACg8ocIINygTF_igv8pBOETlFbo0tIAOVrPX9VX2xr4MuAdr9Wx64g=s96-c",
+      "location": {
+        "province": "",
+        "district": "",
+        "commune": "",
+        "detailLocation": ""
+      },
+      "id": "cJssgbX"
     }
   ],
   "productCategory": [
@@ -686,46 +700,6 @@
       "userId": "7gV5Fax",
       "cartItem": [
         {
-          "id": "18",
-          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
-          "productOldPrice": 100,
-          "productPrice": 165,
-          "image": "/assets/images/SPAGHETTI1.jpeg",
-          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
-          "categoryId": 3,
-          "reviews": []
-        },
-        {
-          "id": "28",
-          "productName": "BEEF, TUNA SALAD MIXED WITH MAYONNAISE SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD4.png",
-          "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
-          "categoryId": 4,
-          "reviews": []
-        },
-        {
-          "id": "29",
-          "productName": "SAUSAGE, BACON SALAD WITH CHEESE SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD5.jpg",
-          "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
-          "categoryId": 4,
-          "reviews": []
-        },
-        {
-          "id": "30",
-          "productName": "MULBERRY SALAD AND ICE CREAM",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD6.jpg",
-          "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
-          "categoryId": 4,
-          "reviews": []
-        },
-        {
           "id": "3",
           "productName": "USA TOPBLADE STEAK",
           "productOldPrice": 85,
@@ -735,7 +709,7 @@
           "categoryId": 1,
           "reviews": [],
           "quantity": 1,
-          "isChecked": false
+          "isChecked": true
         },
         {
           "id": "2",
@@ -762,7 +736,7 @@
             }
           ],
           "quantity": 1,
-          "isChecked": false
+          "isChecked": true
         },
         {
           "id": "1",
@@ -787,7 +761,26 @@
             }
           ],
           "quantity": 1,
-          "isChecked": false
+          "isChecked": true
+        },
+        {
+          "id": "4",
+          "productName": "VIETNAM BEEFSTEAK",
+          "productOldPrice": 95,
+          "productPrice": 105,
+          "image": "/assets/images/steak4_test.webp",
+          "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
+          "categoryId": 1,
+          "reviews": [
+            {
+              "userName": "Mark Lee",
+              "rating": 3,
+              "comment": "It was okay, but I prefer other options.",
+              "date": "2024-11-12"
+            }
+          ],
+          "quantity": 1,
+          "isChecked": true
         }
       ]
     },
@@ -837,6 +830,11 @@
       "userId": "1",
       "cartItem": [],
       "id": "LNcNBpV"
+    },
+    {
+      "userId": "cJssgbX",
+      "cartItem": [],
+      "id": "G_p2Ad0"
     }
   ],
   "checkOutItems": [
