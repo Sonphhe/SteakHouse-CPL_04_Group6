@@ -50,6 +50,7 @@ import QrCodePage from './pages/Cart/Checkout/Component/PaymentMethod/QrCode/QrC
 import Location from './pages/User/components/Location'
 import Checkout from './pages/Cart/Checkout/Checkout'
 import CheckoutManage from './pages/Admin/pages/CheckoutManage/CheckoutManage'
+import ListCheckoutDetail from './pages/Admin/pages/ListCheckoutDetail/ListCheckoutDetail'
 
 
 function App() {
@@ -213,6 +214,18 @@ function App() {
                   </AccountProvider>
                 }
               />
+              
+              <Route
+                path='/checkout-details/:checkoutId'
+                element={
+
+                    <AdminLayout>
+                      <ListCheckoutDetail />
+                    </AdminLayout>
+                 
+                }
+              />
+
 
 
 

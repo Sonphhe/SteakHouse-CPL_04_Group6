@@ -75,3 +75,52 @@
     font-weight: bold;
   }
   
+  .admin-dashboard-checkout-litDetailcheckout {
+    background-color: #f4f4f4;
+    padding: 20px;
+  }
+  
+  .dashboard-container-checkout-litDetailcheckout {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-mainCheckout-litDetailcheckout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .checkout-manage-litDetailcheckout {
+    padding: 20px;
+  }
+  
+  .checkout-manage-header-litDetailcheckout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-data-table {
+    margin-top: 20px;
+  }
+  
+  .edit-modal-box-litDetailcheckout {
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .MuiTextField-root,
+  .MuiSelect-root {
+    margin-bottom: 10px;
+  }
+  
+  .MuiButton-root {
+    margin-top: 10px;
+    padding: 10px 20px;
+  }
+  
