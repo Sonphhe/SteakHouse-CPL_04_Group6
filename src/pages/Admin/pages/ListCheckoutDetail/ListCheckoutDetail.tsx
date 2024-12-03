@@ -144,30 +144,31 @@ const ListCheckoutDetail = () => {
 
                 {/* Display Items Inside Cart Item */}
                 <div>
-                  {cartItem.items.map((item: any) => (
-                    <Box key={item.id} marginBottom={2}>
-                      <Grid container spacing={2} alignItems="center" direction="row"> {/* Row direction */}
-                        <Grid item>
-                          <img
-                            src={item.image || 'https://via.placeholder.com/100'}
-                            alt={item.productName}
-                            style={{
-                              width: '100px',        // Đặt chiều rộng cố định
-                              height: '100px',       // Đặt chiều cao cố định
-                              objectFit: 'cover',   // Đảm bảo ảnh không bị méo, sẽ cắt bớt phần thừa nếu ảnh quá lớn
-                              borderRadius: '8px',  // Nếu cần bo góc ảnh
-                            }}
-                          />
-                        </Grid>
-                        <Grid item xs>
-                          <Typography variant="body1">{item.productName}</Typography>
-                          <Typography variant="body2" color="textSecondary">Price: ${item.productPrice}</Typography>
-                          <Typography variant="body2" color="textSecondary">Quantity: {item.quantity}</Typography>
-                        </Grid>
-                      </Grid>
-                    </Box>
-                  ))}
-                </div>
+  {cartItem.items.map((item: any) => (
+    <Box key={item.id} marginBottom={2} sx={{ marginLeft: '256px' }}> {/* Thêm marginLeft cho Box */}
+      <Grid container spacing={2} alignItems="center" direction="row">
+        <Grid item>
+          <img
+            src={item.image || 'https://via.placeholder.com/100'}
+            alt={item.productName}
+            style={{
+              width: '100px',
+              height: '100px',
+              objectFit: 'cover',
+              borderRadius: '8px',
+            }}
+          />
+        </Grid>
+        <Grid item xs>
+          <Typography variant="body1">{item.productName}</Typography>
+          <Typography variant="body2" color="textSecondary">Price: ${item.productPrice}</Typography>
+          <Typography variant="body2" color="textSecondary">Quantity: {item.quantity}</Typography>
+        </Grid>
+      </Grid>
+    </Box>
+  ))}
+</div>
+
 
                 <Typography variant="h6">
                   Total: ${calculateTotalPrice(cartItem).toFixed(2)}
