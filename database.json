@@ -707,47 +707,7 @@
     {
       "id": "2",
       "userId": "7gV5Fax",
-      "cartItem": [
-        {
-          "id": "2",
-          "productName": "USA RIB EYE STEAK",
-          "productOldPrice": 120,
-          "productPrice": 195,
-          "image": "/assets/images/steak2_test.jpg",
-          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-          "category": "Steak",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": [
-            {
-              "userName": "Alice Johnson",
-              "rating": 5,
-              "comment": "The best rib-eye I've ever had!",
-              "date": "2024-11-13"
-            },
-            {
-              "userName": "Pham Hung Son",
-              "rating": 4,
-              "comment": "asd",
-              "date": "2024-11-16"
-            }
-          ],
-          "quantity": 1,
-          "isChecked": true
-        },
-        {
-          "id": "7",
-          "productName": "BEEF WITH PEPPER SAUCE",
-          "productOldPrice": 140,
-          "productPrice": 95,
-          "image": "/assets/images/steak7_test.jpg",
-          "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
-          "categoryId": 1,
-          "reviews": [],
-          "quantity": 1,
-          "isChecked": true
-        }
-      ]
+      "cartItem": []
     },
     {
       "id": "1",
