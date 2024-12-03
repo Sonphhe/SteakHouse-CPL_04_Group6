@@ -145,7 +145,7 @@ const ListCheckoutDetail = () => {
                 {/* Display Items Inside Cart Item */}
                 <div>
   {cartItem.items.map((item: any) => (
-    <Box key={item.id} marginBottom={2} sx={{ marginLeft: '256px' }}> {/* Thêm marginLeft cho Box */}
+    <Box key={item.id} marginBottom={2} sx={{ marginLeft: '126px' ,borderTop: '1px solid #ddd' }}> {/* Thêm marginLeft cho Box */}
       <Grid container spacing={2} alignItems="center" direction="row">
         <Grid item>
           <img
