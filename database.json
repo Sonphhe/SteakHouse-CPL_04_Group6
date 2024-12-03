@@ -139,7 +139,8 @@
       "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [
+      ]
     },
     {
       "id": "4",

@@ -62,33 +62,39 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
 }
 
 .quantity-controls {
   display: flex;
   align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+  border: 1px solid #ccc;
 }
 
 .quantity-btn {
   background-color: #f5f5f5;
-  border: none;
+  border: 1px solid #ccc;
   padding: 10px 15px;
   cursor: pointer;
   font-size: 18px;
   transition: background-color 0.3s;
+  /* margin-top: 20px; */
 }
 
 .quantity-btn:hover {
-  background-color: #ddd;
+  background-color: #ccc;
 }
 
 #quantity {
-  width: 50px;
+  width: 40px;
   text-align: center;
   border: none;
+  font-size: 16px;
+  margin: 0 5px;
+  font-weight: bold;
+  color: red;
+  outline: none;
   background-color: #F9F9F9;
-  font-size: 18px;
 }
 .add-to-cart {
   display: inline-block;
@@ -559,5 +565,5 @@
   font-size: 1.8rem;
   color: #e53935;
   font-weight: bold;
-  margin-top: 5px;
+  margin: 5px 0 30px 0;
 }
