@@ -73,7 +73,7 @@ function App() {
               <Route path='/productdetail/:productName' element={<ProductDetail />} />
               <Route path='/about' element={<AboutUs />} />
               <Route path='/contact' element={<ContactUs />} />
-              <Route path='/admin/dashboard' element={<AdminDashboard />} />
+              {/* <Route path='/admin/dashboard' element={<AdminDashboard />} /> */}
               <Route path='/blog' element={<Blog />} />
               <Route path="/blog/postdetail/:id" element={<PostDetail />} />
               <Route path="/blog/edit/:id" element={<EditPost />} />
@@ -93,9 +93,9 @@ function App() {
               <Route
                 path='/admin/dashboard'
                 element={
-                  <AdminLayout>
+             
                     <AdminDashboard />
-                  </AdminLayout>
+              
                 }
               />
               <Route

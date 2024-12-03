@@ -77,9 +77,9 @@ const StatCard = ({
 const DashBoardDetails = () => {
   const { accountStatistics } = useSteakHouseContext();
 
-  if (!accountStatistics) {
-    return <Typography>Loading...</Typography>;
-  }
+  // if (!accountStatistics) {
+  //   return <Typography>Loading...</Typography>;
+  // }
 
   return (
     <Container maxWidth="xl" sx={{ py: 4 }}>
@@ -94,7 +94,7 @@ const DashBoardDetails = () => {
       </Box>
 
       {/* Stats Cards */}
-      <Grid container spacing={3} justifyContent="center" mb={4}>
+      {/* <Grid container spacing={3} justifyContent="center" mb={4}>
         <Grid item xs={12} sm={6} md={4}>
           <StatCard 
             icon={TrendingUp}
@@ -114,7 +114,7 @@ const DashBoardDetails = () => {
             color={orange[500]}
           />
         </Grid>
-      </Grid>
+      </Grid> */}
 
       {/* Charts Grid */}
       <Grid container spacing={3} mb={4}>
