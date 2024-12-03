@@ -698,6 +698,7 @@
     {
       "id": "2",
       "userId": "7gV5Fax",
+<<<<<<< HEAD
       "cartItem": [
         {
           "id": "2",
@@ -751,6 +752,9 @@
           "isChecked": true
         }
       ]
+=======
+      "cartItem": []
+>>>>>>> 4c629eb28574756fac9cb528a557d987fab07b5e
     },
     {
       "id": "1",

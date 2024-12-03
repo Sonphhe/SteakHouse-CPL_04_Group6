@@ -27,8 +27,23 @@ const Cart = () => {
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [isDeleteAllModalOpen, setIsDeleteAllModalOpen] = useState(false)
   const [itemToDelete, setItemToDelete] = useState<string | null>(null)
-  const currentAccount = JSON.parse(localStorage.getItem('currentAccount') || '{}') // Thay bằng cách bạn lấy tài khoản hiện tại
-  const API_ROOT = 'http://localhost:9999' // Cập nhật API URL của bạn
+  const currentAccount = JSON.parse(localStorage.getItem('currentAccount') || '{}')
+  const API_ROOT = 'http://localhost:9999'
+  // Fetch giỏ hàng từ server
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`);
+        setCartItems(response.data[0]); // Giả sử response trả về dữ liệu như vậy
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    };
+
+    if (currentAccount) {
+      fetchCartItems();
+    }
+  }, [currentAccount, setCartItems]);
 
   useEffect(() => {
     const fetchCartItems = async () => {
