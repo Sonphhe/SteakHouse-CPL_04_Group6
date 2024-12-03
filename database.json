@@ -475,15 +475,6 @@
       "publishDate": "2024-12-01"
     },
     {
-      "id": "3",
-      "title": "Exploring the Human Brain",
-      "description": "Insights into neuroscience and how the brain functions.",
-      "image": "/assets/images/regular-steak1.jpg",
-      "blogCategoryId": "4",
-      "accountId": "7gV5Fax",
-      "publishDate": "2024-11-27"
-    },
-    {
       "id": "4",
       "title": "History of Ancient Civilizations",
       "description": "A journey through ancient civilizations and their impact on modern society.",
@@ -736,12 +727,24 @@
           "isChecked": true
         },
         {
-          "id": "7",
-          "productName": "BEEF WITH PEPPER SAUCE",
-          "productOldPrice": 140,
-          "productPrice": 95,
-          "image": "/assets/images/steak7_test.jpg",
-          "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
+          "id": "3",
+          "productName": "USA TOPBLADE STEAK",
+          "productOldPrice": 85,
+          "productPrice": 165,
+          "image": "/assets/images/steak3_test.webp",
+          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
+          "categoryId": 1,
+          "reviews": [],
+          "quantity": 1,
+          "isChecked": true
+        },
+        {
+          "id": "8",
+          "productName": "NORWEGIAN SALMON",
+          "productOldPrice": 115,
+          "productPrice": 175,
+          "image": "/assets/images/steak8_test.webp",
+          "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
           "categoryId": 1,
           "reviews": [],
           "quantity": 1,
@@ -808,8 +811,39 @@
       "userId": "7gV5Fax",
       "cartItems": [
         {
+          "id": "1733166429082-vfh6ivn7y",
+          "status": "Complete",
+          "items": [
+            {
+              "id": "3",
+              "productName": "USA TOPBLADE STEAK",
+              "productOldPrice": 85,
+              "productPrice": 165,
+              "image": "/assets/images/steak3_test.webp",
+              "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
+              "categoryId": 1,
+              "reviews": [],
+              "quantity": 1,
+              "isChecked": true
+            },
+            {
+              "id": "8",
+              "productName": "NORWEGIAN SALMON",
+              "productOldPrice": 115,
+              "productPrice": 175,
+              "image": "/assets/images/steak8_test.webp",
+              "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
+              "categoryId": 1,
+              "reviews": [],
+              "quantity": 1,
+              "isChecked": true
+            }
+          ],
+          "orderTime": "02:07 03/12/2024"
+        },
+        {
           "id": "1733165522844-cx95vwjul",
-          "status": "Waiting for Confirmation",
+          "status": "Cancel",
           "items": [
             {
               "id": "10",
@@ -1025,37 +1059,6 @@
             }
           ],
           "orderTime": "21:19 30/11/2024"
-        },
-        {
-          "id": "1733166429082-vfh6ivn7y",
-          "status": "Waiting for Confirmation",
-          "items": [
-            {
-              "id": "3",
-              "productName": "USA TOPBLADE STEAK",
-              "productOldPrice": 85,
-              "productPrice": 165,
-              "image": "/assets/images/steak3_test.webp",
-              "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-              "categoryId": 1,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            },
-            {
-              "id": "8",
-              "productName": "NORWEGIAN SALMON",
-              "productOldPrice": 115,
-              "productPrice": 175,
-              "image": "/assets/images/steak8_test.webp",
-              "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
-              "categoryId": 1,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "02:07 03/12/2024"
         }
       ]
     }

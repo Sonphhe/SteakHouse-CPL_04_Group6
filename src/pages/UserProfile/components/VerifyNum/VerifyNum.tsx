@@ -44,14 +44,6 @@ const VerifyNum = (props: {
     }
   }
 
-  // const verifyOtp = async () => {
-  //   try {
-  //     await user.confirm(otp)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
   return (
     <div className='verify-number' onClick={() => props.set(false)}>
       <div className='verify-number-container' onClick={(e) => e.stopPropagation()}>
