@@ -109,11 +109,11 @@ const ProductDetail: React.FC = () => {
   }
 
   // Đóng modal
-  const handleCloseModal = () => setIsModalOpen(false)
-  const handleViewCart = () => {
-    setIsModalOpen(false)
-    navigate('/cart')
-  }
+  // const handleCloseModal = () => setIsModalOpen(false)
+  // const handleViewCart = () => {
+  //   setIsModalOpen(false)
+  //   navigate('/cart')
+  // }
 
   // Thêm bình luận
   const handleAddComment = async () => {
