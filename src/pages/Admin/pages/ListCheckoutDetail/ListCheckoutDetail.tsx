@@ -90,18 +90,30 @@ const ListCheckoutDetail = () => {
       alert('Failed to save changes.');
     }
   };
-
+ 
   return (
-    <Box>
-      <Typography variant="h4" gutterBottom>Checkout Details</Typography>
-      
+    <Box 
+      sx={{
+        border: '1px solid #ddd',  // Màu border xám nhạt
+        borderRadius: '12px',  // Góc bo tròn
+        padding: '20px',  // Padding xung quanh Box để nội dung không chạm vào border
+        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',  // Thêm shadow cho Box để tạo chiều sâu
+        backgroundColor: '#fff',  // Màu nền trắng cho Box
+        margin: '20px auto',  // Căn giữa Box và margin xung quanh
+        maxWidth: '1200px'  // Giới hạn chiều rộng tối đa cho Box
+      }}
+    >
+      <Typography variant="h4" gutterBottom>
+        Checkout Details
+      </Typography>
+
       {/* Status Filter */}
       <FormControl sx={{ width: '60%' }} margin="normal">
         <InputLabel>Status</InputLabel>
         <Select
           value={filterStatus}
           onChange={handleStatusChange}
-          label="Status"
+          label="Filter by Status"
         >
           <MenuItem value="All">All</MenuItem>
           {possibleStatuses.map((status, index) => (
@@ -111,35 +123,40 @@ const ListCheckoutDetail = () => {
       </FormControl>
 
       {/* Search Bar */}
-      <TextField
-        label="Search by product name"
+      {/* <TextField
+        label="Search by Product Name"
         variant="outlined"
-      sx={{ width: '60%' }} 
-        margin="normal"
+        fullWidth
+        sx={{ marginTop: 2 }}
         value={searchQuery}
         onChange={handleSearchChange}
-      />
+      /> */}
 
-      {/* Display cart items */}
-      <Grid container spacing={6}  marginLeft="100px">
+      {/* Display Cart Items */}
+      <Grid container spacing={4} marginTop={3}>
         {filteredCartItems.map((cartItem: any, index: number) => (
-          <Grid item xs={12} sm={3} md={3} key={cartItem.id}>
-            <Card>
-      
-              <CardContent>
-                {/* <Typography variant="h6" gutterBottom>{cartItem.items[0]?.productName}</Typography> */}
+          <Grid item xs={12} sm={12} md={12} key={cartItem.id}>
+            <Card sx={{ boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)', height: '100%' }}>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', padding: '16px' }}>
+                <Typography variant="h6" gutterBottom>{cartItem.items[0]?.productName}</Typography>
                 <Typography>Status: {cartItem.status}</Typography>
                 <Typography>Order Time: {cartItem.orderTime}</Typography>
+
+                {/* Display Items Inside Cart Item */}
                 <div>
                   {cartItem.items.map((item: any) => (
-                    <Box key={item.id} marginBottom={1}>
-                      <Grid container spacing={4} alignItems="center">
+                    <Box key={item.id} marginBottom={2}>
+                      <Grid container spacing={2} alignItems="center" direction="row"> {/* Row direction */}
                         <Grid item>
                           <img
                             src={item.image || 'https://via.placeholder.com/100'}
                             alt={item.productName}
-                            width={50}
-                            height={50}
+                            style={{
+                              width: '100px',        // Đặt chiều rộng cố định
+                              height: '100px',       // Đặt chiều cao cố định
+                              objectFit: 'cover',   // Đảm bảo ảnh không bị méo, sẽ cắt bớt phần thừa nếu ảnh quá lớn
+                              borderRadius: '8px',  // Nếu cần bo góc ảnh
+                            }}
                           />
                         </Grid>
                         <Grid item xs>
@@ -151,23 +168,30 @@ const ListCheckoutDetail = () => {
                     </Box>
                   ))}
                 </div>
+
                 <Typography variant="h6">
                   Total: ${calculateTotalPrice(cartItem).toFixed(2)}
                 </Typography>
+                <FormControl sx={{ 
+  width: '70%', 
+  justifyContent: 'center', 
+  marginLeft: '15%', // Thêm margin bên trái để căn giữa
+  marginTop: 2, // Thêm khoảng cách phía trên
+  marginBottom: 2 // Thêm khoảng cách phía dưới
+}} margin="normal">
+  <InputLabel>Status</InputLabel>
+  <Select
+    value={statusChanges[cartItem.id] || cartItem.status}
+    onChange={(e) => handleStatusSelectChange(cartItem.id, e)}
+    label="Status"
+  >
+    {possibleStatuses.map((status, index) => (
+      <MenuItem key={index} value={status}>{status}</MenuItem>
+    ))}
+  </Select>
+</FormControl>
 
-                {/* Change Status */}
-                <FormControl sx={{ width: '60%' }} margin="normal">
-                  <InputLabel>Status</InputLabel>
-                  <Select
-                    value={statusChanges[cartItem.id] || cartItem.status}
-                    onChange={(e) => handleStatusSelectChange(cartItem.id, e)}
-                    label="Status"
-                  >
-                    {possibleStatuses.map((status, index) => (
-                      <MenuItem key={index} value={status}>{status}</MenuItem>
-                    ))}
-                  </Select>
-                </FormControl>
+
               </CardContent>
             </Card>
           </Grid>
@@ -179,12 +203,15 @@ const ListCheckoutDetail = () => {
         variant="contained"
         color="primary"
         onClick={handleSaveChanges}
-        style={{ marginTop: '20px' }}
+        sx={{ marginTop: '20px' }}
+     
       >
         Save Changes
       </Button>
     </Box>
   );
 };
+
+
 
 export default ListCheckoutDetail;
