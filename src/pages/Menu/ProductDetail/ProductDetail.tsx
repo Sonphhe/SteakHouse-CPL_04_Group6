@@ -44,9 +44,6 @@ const ProductDetail: React.FC = () => {
   // const [showModal, setShowModal] = useState(false);
   // const [modalMessage, setModalMessage] = useState('');
 
-  swal({
-    icon: "success",
-  });
 
   useEffect(() => {
     const fetchProductData = async () => {
@@ -121,12 +118,67 @@ const ProductDetail: React.FC = () => {
   // Thêm bình luận
   const handleAddComment = async () => {
     if (currentAccount?.id === '') {
-      alert('You need to login to comment and rate the product.')
+      swal({
+        icon: "info",
+        text: "You need to login to comment and rate the product."
+      });
     } else {
       if (!commentText) {
-        alert('Please provide comment and rate.')
+        swal({
+          icon: "info",
+          text: "Please provide comment and rating."
+        });
         return
       }
+
+      if (!commentText.trim()) {
+        swal({
+          icon: "error",
+          text: "Comment cannot be empty or contain only spaces."
+        });
+        return;
+      }
+      const hasInvalidSpaces = /^\s+|\s+$|\s{2,}/.test(commentText);
+
+      if (hasInvalidSpaces) {
+        swal({
+          icon: "error",
+          text: "Comment cannot contain leading, trailing, or consecutive spaces."
+        });
+        return;
+      }
+
+      
+      const cleanCommentText = commentText.trim();
+      const hasExcessiveSpaces = /\s{2,}/.test(cleanCommentText);
+
+      if (hasExcessiveSpaces) {
+        swal({
+          icon: "error",
+          text: "Comment cannot contain more than 2 consecutive spaces."
+        });
+        return;
+      }
+      // Kiểm tra số lượng ký tự không phải khoảng trắng
+      const nonWhiteSpaceCharCount = cleanCommentText.replace(/\s+/g, '').length;
+    
+      if (nonWhiteSpaceCharCount < 5) {
+        swal({
+          icon: "error",
+          text: "Comment must contain at least 5 meaningful characters without excessive spaces."
+        });
+        return;
+      }
+    
+
+      if(cleanCommentText.length > 200){
+        swal({
+          icon: "error",
+          text: "Comment cannot exceed 200 characters long."
+        });
+        return;
+      }
+
 
       const newComment = {
         userName,
@@ -147,9 +199,12 @@ const ProductDetail: React.FC = () => {
         })
 
         if (!response.ok) {
-          const errorText = await response.text()
-          console.error('Error updating product reviews:', errorText)
-          return
+          const errorText = await response.text();
+          swal({
+            icon: "error",
+            text: `Failed to add comment: ${errorText}`
+          });
+          return;
         }
 
         console.log('Comment added successfully')
@@ -159,6 +214,10 @@ const ProductDetail: React.FC = () => {
         setCommentText('')
         setUserName('')
         setRating(0)
+        swal({
+          icon: "success",
+          text: "Comment added successfully!"
+        });
       } catch (error) {
         console.error('Error submitting comment:', error)
       }

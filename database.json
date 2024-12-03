@@ -139,7 +139,8 @@
       "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [
+      ]
     },
     {
       "id": "4",
@@ -475,6 +476,15 @@
       "publishDate": "2024-12-01"
     },
     {
+      "id": "3",
+      "title": "Exploring the Human Brain",
+      "description": "Insights into neuroscience and how the brain functions.",
+      "image": "/assets/images/regular-steak1.jpg",
+      "blogCategoryId": "4",
+      "accountId": "7gV5Fax",
+      "publishDate": "2024-11-27"
+    },
+    {
       "id": "4",
       "title": "History of Ancient Civilizations",
       "description": "A journey through ancient civilizations and their impact on modern society.",
@@ -698,63 +708,7 @@
     {
       "id": "2",
       "userId": "7gV5Fax",
-<<<<<<< HEAD
-      "cartItem": [
-        {
-          "id": "2",
-          "productName": "USA RIB EYE STEAK",
-          "productOldPrice": 120,
-          "productPrice": 195,
-          "image": "/assets/images/steak2_test.jpg",
-          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-          "category": "Steak",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": [
-            {
-              "userName": "Alice Johnson",
-              "rating": 5,
-              "comment": "The best rib-eye I've ever had!",
-              "date": "2024-11-13"
-            },
-            {
-              "userName": "Pham Hung Son",
-              "rating": 4,
-              "comment": "asd",
-              "date": "2024-11-16"
-            }
-          ],
-          "quantity": 1,
-          "isChecked": true
-        },
-        {
-          "id": "3",
-          "productName": "USA TOPBLADE STEAK",
-          "productOldPrice": 85,
-          "productPrice": 165,
-          "image": "/assets/images/steak3_test.webp",
-          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-          "categoryId": 1,
-          "reviews": [],
-          "quantity": 1,
-          "isChecked": true
-        },
-        {
-          "id": "8",
-          "productName": "NORWEGIAN SALMON",
-          "productOldPrice": 115,
-          "productPrice": 175,
-          "image": "/assets/images/steak8_test.webp",
-          "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
-          "categoryId": 1,
-          "reviews": [],
-          "quantity": 1,
-          "isChecked": true
-        }
-      ]
-=======
       "cartItem": []
->>>>>>> 4c629eb28574756fac9cb528a557d987fab07b5e
     },
     {
       "id": "1",
@@ -815,39 +769,8 @@
       "userId": "7gV5Fax",
       "cartItems": [
         {
-          "id": "1733166429082-vfh6ivn7y",
-          "status": "Complete",
-          "items": [
-            {
-              "id": "3",
-              "productName": "USA TOPBLADE STEAK",
-              "productOldPrice": 85,
-              "productPrice": 165,
-              "image": "/assets/images/steak3_test.webp",
-              "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-              "categoryId": 1,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            },
-            {
-              "id": "8",
-              "productName": "NORWEGIAN SALMON",
-              "productOldPrice": 115,
-              "productPrice": 175,
-              "image": "/assets/images/steak8_test.webp",
-              "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
-              "categoryId": 1,
-              "reviews": [],
-              "quantity": 1,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "02:07 03/12/2024"
-        },
-        {
           "id": "1733165522844-cx95vwjul",
-          "status": "Cancel",
+          "status": "Waiting for Confirmation",
           "items": [
             {
               "id": "10",
@@ -1063,6 +986,37 @@
             }
           ],
           "orderTime": "21:19 30/11/2024"
+        },
+        {
+          "id": "1733166429082-vfh6ivn7y",
+          "status": "Waiting for Confirmation",
+          "items": [
+            {
+              "id": "3",
+              "productName": "USA TOPBLADE STEAK",
+              "productOldPrice": 85,
+              "productPrice": 165,
+              "image": "/assets/images/steak3_test.webp",
+              "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
+              "categoryId": 1,
+              "reviews": [],
+              "quantity": 1,
+              "isChecked": true
+            },
+            {
+              "id": "8",
+              "productName": "NORWEGIAN SALMON",
+              "productOldPrice": 115,
+              "productPrice": 175,
+              "image": "/assets/images/steak8_test.webp",
+              "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
+              "categoryId": 1,
+              "reviews": [],
+              "quantity": 1,
+              "isChecked": true
+            }
+          ],
+          "orderTime": "02:07 03/12/2024"
         }
       ]
     }
