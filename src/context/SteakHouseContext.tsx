@@ -19,8 +19,8 @@ interface SteakHouseType {
   option: string
   setOption: Dispatch<SetStateAction<string>>
   setPhoneNumberValidation: Dispatch<string>
-  setFlashSales: Dispatch<SetStateAction<FlashSale[]>>;
-  getSalePrice: (productId: number) => number | null;
+  setFlashSales: Dispatch<SetStateAction<FlashSale[]>>
+  getSalePrice: (productId: number) => number | null
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
   handleSort: (order: string) => void
@@ -40,7 +40,6 @@ interface SteakHouseType {
   } | null
   fetchAccountStatistics: () => Promise<void>
 }
-
 
 interface AccountType {
   username: string
@@ -121,18 +120,17 @@ interface CartItem {
 }
 
 interface AccountStatistics {
-  month: string;
-  count: number;
-  percentage: number;
+  month: string
+  count: number
+  percentage: number
 }
 
 interface FlashSale {
-  productId: number; 
-  sale: number; 
-  startDate: string; 
-  endDate: string; 
+  productId: number
+  sale: number
+  startDate: string
+  endDate: string
 }
-
 
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
@@ -153,7 +151,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [sortOrder, setSortOrder] = useState<string>('default')
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [flashSales, setFlashSales] = useState<FlashSale[]>([]);
+  const [flashSales, setFlashSales] = useState<FlashSale[]>([])
   const itemsPerPage = 8
 
   const [currentAccount, setCurrentAccount] = useState<CurrentAccount>(() => {
@@ -161,24 +159,27 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return savedAccount ? JSON.parse(savedAccount) : null
   })
 
-  const API_ROOT = 'http://localhost:9999' 
+  const API_ROOT = 'http://localhost:9999'
 
   const [accountStatistics, setAccountStatistics] = useState<{
     total: number
     statistics: AccountStatistics[]
     monthWithMostRegistrations: AccountStatistics
   } | null>(null)
+
   const fetchAccountStatistics = async () => {
     try {
       const response = await axios.get(`${API_ROOT}/account`)
       const accounts = response.data
 
-      // Tạo thống kê
+      // Improved month counting and formatting
       const monthCounts: { [key: string]: number } = {}
       accounts.forEach((account: any) => {
         if (account.createDate) {
-          const month = account.createDate.slice(3, 5) + '/' + account.createDate.slice(6)
-          monthCounts[month] = (monthCounts[month] || 0) + 1
+          // Assuming createDate is in format DD/MM/YYYY
+          const [day, month, year] = account.createDate.split('/')
+          const formattedMonth = `${month}/${year}` // Format as MM/YYYY
+          monthCounts[formattedMonth] = (monthCounts[formattedMonth] || 0) + 1
         }
       })
 
@@ -192,9 +193,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         .sort((a, b) => {
           const [aMonth, aYear] = a.month.split('/')
           const [bMonth, bYear] = b.month.split('/')
-          return aYear === bYear
-            ? parseInt(aMonth) - parseInt(bMonth)
-            : parseInt(aYear) - parseInt(bYear)
+          return aYear === bYear ? parseInt(aMonth) - parseInt(bMonth) : parseInt(aYear) - parseInt(bYear)
         })
 
       const monthWithMostRegistrations = statistics.reduce((prev, current) =>
@@ -380,13 +379,11 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   const getSalePrice = (productId: number) => {
     const sale = flashSales.find(
       (sale) =>
-        sale.productId === productId &&
-        new Date(sale.startDate) <= new Date() &&
-        new Date(sale.endDate) >= new Date()
-    );
-  
-    return sale ? sale.sale : null;
-  };
+        sale.productId === productId && new Date(sale.startDate) <= new Date() && new Date(sale.endDate) >= new Date()
+    )
+
+    return sale ? sale.sale : null
+  }
 
   return (
     <SteakHouseContext.Provider
@@ -421,7 +418,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         getCategoryName,
         getAuthorImg,
         accountStatistics,
-        fetchAccountStatistics,
+        fetchAccountStatistics
       }}
     >
       {children}
