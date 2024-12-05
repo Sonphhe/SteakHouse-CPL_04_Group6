@@ -143,7 +143,8 @@
       "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [],
+      "hidden": true
     },
     {
       "id": "4",
@@ -1046,74 +1047,67 @@
   ],
   "flashSales": [
     {
-      "productId": 1,
-      "sale": 20,
-      "startDate": "2023-12-01T00:00:00Z",
-      "endDate": "2025-12-10T23:59:59Z",
-      "id": "fff3"
-    },
-    {
-      "productId": 2,
-      "sale": 15,
-      "startDate": "2023-12-05T00:00:00Z",
-      "endDate": "2025-12-12T23:59:59Z",
-      "id": "34ac"
-    },
-    {
       "productId": 3,
       "sale": 30,
       "startDate": "2023-12-03T00:00:00Z",
       "endDate": "2025-12-08T23:59:59Z",
-      "id": "d6b0"
+      "id": "360e"
     },
     {
       "productId": 4,
       "sale": 25,
       "startDate": "2023-12-02T00:00:00Z",
       "endDate": "2025-12-09T23:59:59Z",
-      "id": "aaad"
+      "id": "efce"
     },
     {
       "productId": 5,
       "sale": 10,
       "startDate": "2023-12-01T00:00:00Z",
       "endDate": "2025-12-15T23:59:59Z",
-      "id": "a0f8"
+      "id": "5b3a"
     },
     {
       "productId": 6,
       "sale": 50,
       "startDate": "2023-12-06T00:00:00Z",
       "endDate": "2025-12-10T23:59:59Z",
-      "id": "8225"
+      "id": "167e"
     },
     {
       "productId": 7,
       "sale": 35,
       "startDate": "2023-12-04T00:00:00Z",
       "endDate": "2025-12-11T23:59:59Z",
-      "id": "e915"
+      "id": "d3ba"
     },
     {
       "productId": 8,
       "sale": 40,
       "startDate": "2023-12-07T00:00:00Z",
       "endDate": "2025-12-14T23:59:59Z",
-      "id": "3b1c"
+      "id": "6964"
     },
     {
       "productId": 9,
       "sale": 5,
       "startDate": "2023-12-01T00:00:00Z",
       "endDate": "2025-12-31T23:59:59Z",
-      "id": "761b"
+      "id": "7977"
     },
     {
       "productId": 10,
       "sale": 60,
       "startDate": "2023-12-10T00:00:00Z",
       "endDate": "2025-12-20T23:59:59Z",
-      "id": "9003"
+      "id": "a934"
+    },
+    {
+      "id": "26c8",
+      "productId": 12,
+      "sale": 30,
+      "startDate": "2024-12-04",
+      "endDate": "2024-12-29"
     }
   ],
   "favourite": [

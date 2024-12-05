@@ -4,12 +4,13 @@ import FlashSaleCard from './FlashSaleComponents/FlashSaleCard';
 import './FlashSale.css';
 
 const FlashSale = () => {
-  const { flashSales } = useSteakHouseContext();
+  const { flashSales , products} = useSteakHouseContext();
   const carouselRef = useRef(null); // Ref để tham chiếu đến carousel
 
   const currentFlashSales = flashSales.filter(
     (sale) =>
-      new Date(sale.startDate) <= new Date() && new Date(sale.endDate) >= new Date()
+      new Date(sale.startDate) <= new Date() && new Date(sale.endDate) >= new Date() 
+
   );
 
   useEffect(() => {

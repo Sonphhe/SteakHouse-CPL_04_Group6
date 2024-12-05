@@ -33,6 +33,9 @@ interface SteakHouseType {
   getAuthorName: (authorId: string) => string
   getAuthorImg: (authorId: string) => string
   getCategoryName: (categoryId: number) => string
+  addFlashSale: (newSale: FlashSale) => void;
+  editFlashSale: (updatedSale: FlashSale) => void;
+  deleteFlashSale: (id: string) => void;
   accountStatistics: {
     total: number
     statistics: AccountStatistics[]
@@ -65,6 +68,7 @@ interface ProductType {
   image: string
   description: string
   categoryId: number
+  hidden: boolean
 }
 
 interface ProductCategoryType {
@@ -130,6 +134,7 @@ interface FlashSale {
   sale: number
   startDate: string
   endDate: string
+  id: string
 }
 
 // Create context
@@ -385,6 +390,39 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     return sale ? sale.sale : null
   }
 
+  const addFlashSale = async (newFlashSale: FlashSale) => {
+    try {
+      const response = await axios.post(`${API_ROOT}/flashSales`, newFlashSale)
+      setFlashSales((prevSales) => [...prevSales, response.data]) // Update flashSales in context
+    } catch (error) {
+      console.error('Error adding flash sale:', error)
+    }
+  }
+  
+  const editFlashSale = async (updatedSale: FlashSale) => {
+    try {
+      const response = await axios.put(`${API_ROOT}/flashSales/${updatedSale.id}`, updatedSale);
+      setFlashSales((prevSales) =>
+        prevSales.map((sale) => (sale.productId === updatedSale.productId ? response.data : sale))
+      );
+    } catch (error) {
+      console.error('Lỗi khi cập nhật flash sale:', error);
+    }
+  };
+  
+  const deleteFlashSale = async (flashSaleId: string) => {
+    try {
+      // Gọi API để xóa flash sale khỏi cơ sở dữ liệu
+      await axios.delete(`${API_ROOT}/flashSales/${flashSaleId}`);
+
+      const updatedFlashSales = flashSales.filter(flashSale => flashSale.id !== flashSaleId);
+      setFlashSales(updatedFlashSales);
+    } catch (error) {
+      console.error('Error deleting flash sale:', error);
+    }
+  };
+  
+
   return (
     <SteakHouseContext.Provider
       value={{
@@ -418,7 +456,10 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         getCategoryName,
         getAuthorImg,
         accountStatistics,
-        fetchAccountStatistics
+        fetchAccountStatistics,
+        addFlashSale,      
+        editFlashSale,     
+        deleteFlashSale,
       }}
     >
       {children}

@@ -18,6 +18,8 @@ import EditIcon from '@mui/icons-material/EditOutlined';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { DataGrid } from '@mui/x-data-grid';
+import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext';
+import { DeleteIcon } from 'lucide-react';
 
 interface Product {
   id: string;
@@ -29,6 +31,12 @@ interface Product {
   hidden?: boolean;
 }
 
+interface FlashSale {
+  productId: number
+  sale: number
+  startDate: string
+  endDate: string
+}
 const ProductManage = () => {
   const { 
     products, 
@@ -42,6 +50,9 @@ const ProductManage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [openEditModal, setOpenEditModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const {flashSales, setFlashSales, addFlashSale, editFlashSale, deleteFlashSale} = useSteakHouseContext();
+  const [openFlashSaleModal, setOpenFlashSaleModal] = useState(false);
+  const [selectedFlashSale, setSelectedFlashSale] = useState<FlashSale | null>(null);
   const navigate = useNavigate();
 
   // Sync productData with context products
@@ -117,6 +128,69 @@ const ProductManage = () => {
     }
   };
 
+  const handleAddFlashSale = (product: Product) => {
+    setSelectedFlashSale({
+      productId: Number(product.id),
+      sale: 0,
+      startDate: '',
+      endDate: '',
+    });
+    setOpenFlashSaleModal(true);
+  };
+
+const handleEditFlashSale = (flashSale: FlashSale) => {
+  setSelectedFlashSale(flashSale);
+  setOpenFlashSaleModal(true);
+};
+
+const handleDeleteFlashSale = async (flashSaleId: string) => {
+  if (flashSaleId) {
+    try {
+      // Gọi API hoặc context để xóa flashSale
+      await deleteFlashSale(flashSaleId); // Truyền ID đúng vào hàm
+      setSelectedFlashSale(null); // Sau khi xóa, reset selectedFlashSale
+
+      // Cập nhật lại flashSales trong state
+      const updatedFlashSales = flashSales.filter(flashSale => flashSale.id !== flashSaleId);
+      setFlashSales(updatedFlashSales);
+
+      alert('Flash Sale deleted successfully!');
+    } catch (error) {
+      console.error('Failed to delete Flash Sale:', error);
+      alert('Failed to delete Flash Sale');
+    }
+  }
+};
+
+const handleSaveFlashSale = async () => {
+  if (selectedFlashSale) {
+    // Kiểm tra nếu có ID thì là cập nhật, nếu không là thêm mới
+    const flashSaleData = {
+      productId: selectedFlashSale.productId,
+      sale: selectedFlashSale.sale,
+      startDate: selectedFlashSale.startDate,
+      endDate: selectedFlashSale.endDate,
+      id: selectedFlashSale.id || undefined, // Nếu không có ID, không cần gửi trường này
+    };
+
+    try {
+      // In ra dữ liệu JSON để kiểm tra cấu trúc
+      console.log('Sending data:', JSON.stringify(flashSaleData));
+
+      // Nếu có ID, gọi API để cập nhật, nếu không thì gọi API thêm mới
+      if (selectedFlashSale.id) {
+        await editFlashSale(flashSaleData); // API update
+      } else {
+        await addFlashSale(flashSaleData); // API thêm mới
+      }
+
+      setOpenFlashSaleModal(false);
+    } catch (error) {
+      console.error('Error during flash sale update:', error);
+    }
+  }
+};
+
   // DataGrid columns configuration
   const columns = [
     { field: 'id', headerName: 'ID', width: 100 },
@@ -134,6 +208,47 @@ const ProductManage = () => {
       ),
     },
     { field: 'productPrice', headerName: 'Price', width: 130, type: 'number' },
+    {
+      field: 'flashSale', 
+      headerName: 'Flash Sale', 
+      width: 180,
+      renderCell: (params) => {
+        const flashSaleData = flashSales.find(flash => flash.productId === Number(params.row.id));
+        return flashSaleData ? (
+          <Box className="flash-sale-column-hungkc">
+            <Typography variant="body2" color="primary">{flashSaleData.sale}%</Typography>
+            <Button
+              className="flash-sale-button-hungkc flash-sale-edit-button-hungkc"
+              variant="outlined"
+              size="very-small"
+              startIcon={<EditIcon />}
+              onClick={() => handleEditFlashSale(flashSaleData)}
+            >
+            </Button>
+            <Button
+              className="flash-sale-button-hungkc flash-sale-delete-button-hungkc"
+              variant="outlined"
+              size="small"
+              startIcon={<DeleteIcon />}
+              onClick={() => handleDeleteFlashSale(flashSaleData.id)}
+            >
+            </Button>
+          </Box>
+        ) : (
+          <Button
+            className="flash-sale-button-hungkc flash-sale-add-button-hungkc"
+            variant="outlined"
+            color="primary"
+            size="small"
+            startIcon={<AddIcon />}
+            onClick={() => handleAddFlashSale(params.row)}
+          >
+          </Button>
+        );
+      }
+    },
+    
+    
     { field: 'description', headerName: 'Description', width: 250 },
     {
       field: 'hidden', 
@@ -332,6 +447,63 @@ const ProductManage = () => {
           </Box>
         </Box>
       </Modal>
+      <Modal open={openFlashSaleModal} onClose={() => setOpenFlashSaleModal(false)}>
+  <Box
+    sx={{
+      maxWidth: '600px',
+      width: '80%',
+      maxHeight: '90vh',
+      overflowY: 'auto',
+      mx: 'auto',
+      mt: '5vh',
+      p: 3,
+      borderRadius: 2,
+      boxShadow: 3,
+      backgroundColor: 'white',
+    }}
+  >
+    <Typography variant="h5" gutterBottom>
+      {selectedFlashSale?.id ? 'Edit Flash Sale' : 'Add Flash Sale'}
+    </Typography>
+    <Box component="form" sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+      <TextField
+        label="Sale Percentage"
+        type="number"
+        name="sale"
+        value={selectedFlashSale?.sale || ''}
+        onChange={(e) => setSelectedFlashSale({ ...selectedFlashSale!, sale: parseFloat(e.target.value) })}
+        fullWidth
+      />
+      <TextField
+        label="Start Date"
+        type="date"
+        name="startDate"
+        value={selectedFlashSale?.startDate.split('T')[0] || ''}
+        onChange={(e) => setSelectedFlashSale({ ...selectedFlashSale!, startDate: e.target.value })}
+        fullWidth
+        InputLabelProps={{ shrink: true }}
+      />
+      <TextField
+        label="End Date"
+        type="date"
+        name="endDate"
+        value={selectedFlashSale?.endDate.split('T')[0] || ''}
+        onChange={(e) => setSelectedFlashSale({ ...selectedFlashSale!, endDate: e.target.value })}
+        fullWidth
+        InputLabelProps={{ shrink: true }}
+      />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}>
+        <Button variant="contained" color="primary" onClick={handleSaveFlashSale}>
+          Save
+        </Button>
+        <Button variant="outlined" color="secondary" onClick={() => setOpenFlashSaleModal(false)}>
+          Cancel
+        </Button>
+      </Box>
+    </Box>
+  </Box>
+</Modal>
+
     </div>
   );
 };
