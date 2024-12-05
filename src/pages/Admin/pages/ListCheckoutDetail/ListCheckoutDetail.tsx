@@ -98,7 +98,7 @@ const ListCheckoutDetail = () => {
         borderRadius: '12px',  // Góc bo tròn
         padding: '20px',  // Padding xung quanh Box để nội dung không chạm vào border
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',  // Thêm shadow cho Box để tạo chiều sâu
-        backgroundColor: '#fff',  // Màu nền trắng cho Box
+        backgroundColor: '#eeded1',  // Màu nền trắng cho Box
         margin: '20px auto',  // Căn giữa Box và margin xung quanh
         maxWidth: '1200px'  // Giới hạn chiều rộng tối đa cho Box
       }}
@@ -145,7 +145,7 @@ const ListCheckoutDetail = () => {
                 {/* Display Items Inside Cart Item */}
                 <div>
   {cartItem.items.map((item: any) => (
-    <Box key={item.id} marginBottom={2} sx={{ marginLeft: '256px' }}> {/* Thêm marginLeft cho Box */}
+    <Box key={item.id} marginBottom={2} sx={{ marginLeft: '126px' ,borderTop: '1px solid #ddd' }}> {/* Thêm marginLeft cho Box */}
       <Grid container spacing={2} alignItems="center" direction="row">
         <Grid item>
           <img

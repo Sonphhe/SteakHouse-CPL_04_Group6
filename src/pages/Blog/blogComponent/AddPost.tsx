@@ -7,7 +7,7 @@ import './AddPost.css'; // Custom styling
 import { API_ROOT } from '../../../utils/constants';
 
 const AddPost = () => {
-  const { blogCategories, currentAccount, blogs } = useSteakHouseContext();
+  const { blogCategories, currentAccount, blogs, setBlogs } = useSteakHouseContext();
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
@@ -36,7 +36,7 @@ const AddPost = () => {
     }
 
     // Auto-increment blog ID
-    const blogId = blogs.length > 0 ? Math.max(...blogs.map((blog) => blog.id)) + 1 : 1;
+    const blogId = blogs.length > 0 ? (Math.max(...blogs.map((blog) => blog.id)) + 1).toString() : 1;
     const currentDate = new Date().toISOString().split('T')[0];
     const postData = {
       id: blogId,
@@ -59,6 +59,13 @@ const AddPost = () => {
 
       if (response.ok) {
         alert('Post added successfully!');
+        // Fetch the updated list of blogs after the post is added
+        const updatedBlogsResponse = await fetch(`${API_ROOT}/blog/`);
+        const updatedBlogs = await updatedBlogsResponse.json();
+        
+        // Update context with the latest blog data
+        setBlogs(updatedBlogs);
+        
         navigate('/blog');
       } else {
         const errorData = await response.json();
@@ -117,21 +124,20 @@ const AddPost = () => {
           </div>
 
           <div className="image-upload-wrapper">
-              <label htmlFor="image-upload">Upload Image</label>
-              <input
-                type="file"
-                id="image-upload"
-                accept="image/*"
-                onChange={handleImageUpload}
-              />
-              {imageUrl && (
-                <div className="image-preview">
-                  <p>Image Preview:</p>
-                  <img src={imageUrl} alt="Preview" />
-                </div>
-              )}
-            </div>
-
+            <label htmlFor="image-upload">Upload Image</label>
+            <input
+              type="file"
+              id="image-upload"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+            {imageUrl && (
+              <div className="image-preview">
+                <p>Image Preview:</p>
+                <img src={imageUrl} alt="Preview" />
+              </div>
+            )}
+          </div>
 
           <button type="submit" className="submit-button">
             Add Post
