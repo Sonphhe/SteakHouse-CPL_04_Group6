@@ -298,12 +298,14 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
       try {
         const [accountRes, productRes, categoryRes, blogCategoryRes, blogRes, flashSalesRes] = await Promise.all([
           axios.get(`${API_ROOT}/account`),
-          axios.get(`${API_ROOT}/product`),
+          axios.get(`${API_ROOT}/product?hidden=false`),
           axios.get(`${API_ROOT}/productCategory`),
           axios.get(`${API_ROOT}/blogCategory`),
           axios.get(`${API_ROOT}/blog`),
           axios.get(`${API_ROOT}/flashSales`)
         ])
+
+        // console.log(productRes);
 
         setAccounts(accountRes.data)
         setProducts(productRes.data)
@@ -321,6 +323,8 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     fetchData()
   }, [])
 
+  
+  
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage)
 
   const handleFilter = (category: string) => {

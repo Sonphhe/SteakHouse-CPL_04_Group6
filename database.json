@@ -108,7 +108,8 @@
           "comment": "Tasty, but a bit too salty for my taste.",
           "date": "2024-11-14"
         }
-      ]
+      ],
+      "hidden": false
     },
     {
       "id": "2",
@@ -143,7 +144,8 @@
       "image": "/assets/images/steak3_test.webp",
       "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "4",
@@ -160,7 +162,8 @@
           "comment": "It was okay, but I prefer other options.",
           "date": "2024-11-12"
         }
-      ]
+      ],
+      "hidden": false
     },
     {
       "id": "5",
@@ -170,7 +173,8 @@
       "image": "/assets/images/steak5.jpg",
       "description": "Tender cuts of beef, typically sirloin or tenderloin, marinated and stir-fried to perfection. The beef is diced into cubes, which are quickly seared at high heat, creating a crispy outer layer while retaining juiciness inside.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "6",
@@ -193,7 +197,8 @@
           "comment": "s",
           "date": "2024-11-25"
         }
-      ]
+      ],
+      "hidden": false
     },
     {
       "id": "7",
@@ -203,7 +208,8 @@
       "image": "/assets/images/steak7_test.jpg",
       "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "8",
@@ -213,7 +219,8 @@
       "image": "/assets/images/steak8_test.webp",
       "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "9",
@@ -223,7 +230,8 @@
       "image": "/assets/images/steak9.jpg",
       "description": "Premium duck breast, carefully smoked to perfection to enhance its natural flavor. The smoking process imparts a rich, savory aroma and a tender texture that melts in the mouth.",
       "categoryId": 1,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "10",
@@ -233,7 +241,8 @@
       "image": "/assets/images/DRINKS1.jpeg",
       "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
       "categoryId": 2,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "12",
@@ -253,7 +262,8 @@
       "image": "/assets/images/DRINKS4.jpg",
       "description": "A vibrant, refreshing cocktail featuring a blend of green fruits and herbs, designed to evoke the freshness and tranquility of a forest. This cocktail offers a harmonious mix of fruity sweetness and herbal zest, with a delightful green hue.",
       "categoryId": 2,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "14",
@@ -263,7 +273,8 @@
       "image": "/assets/images/DRINKS5.jpeg",
       "description": "A delightful, non-alcoholic mocktail that captures the essence of the freshest fruits in season. This refreshing beverage combines a variety of sweet, tangy, and juicy fruits, offering a burst of natural flavors with every sip.",
       "categoryId": 2,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "15",
@@ -273,7 +284,8 @@
       "image": "/assets/images/DRINKS6.jpeg",
       "description": "A high-quality wine from the renowned wine regions of Chile, celebrated for its rich, bold flavors and exceptional balance. Chile is known for producing a wide range of red, white, and sparkling wines, with favorable climates that enhance the development of complex flavors and aromas.",
       "categoryId": 2,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "16",
@@ -283,7 +295,8 @@
       "image": "/assets/images/DRINKS7.jpg",
       "description": "A refreshing and tangy non-alcoholic drink made from the zesty combination of fresh lemon juice, a pinch of salt, and sparkling soda water. Salt Lemon Soda is a perfect thirst-quencher with a unique balance of salty and sour, making it an ideal drink for hot days or to accompany meals.",
       "categoryId": 2,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "17",
@@ -293,7 +306,8 @@
       "image": "/assets/images/DRINKS8.jpg",
       "description": "Freshly squeezed or bottled lemon juice, renowned for its bright, tangy flavor. It is a versatile ingredient used in both cooking and beverages, offering a refreshing, citrusy punch to a variety of dishes and drinks.",
       "categoryId": 2,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "18",
@@ -303,7 +317,8 @@
       "image": "/assets/images/SPAGHETTI1.jpeg",
       "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "19",
@@ -313,7 +328,8 @@
       "image": "/assets/images/SPAGHETTI2.jpeg",
       "description": " A rich and indulgent seafood pasta dish featuring a savory salted egg sauce that coats the pasta and seafood with a creamy, umami flavor. This fusion dish combines the richness of salted egg with the natural sweetness of seafood, creating a unique and satisfying meal.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "20",
@@ -323,7 +339,8 @@
       "image": "/assets/images/SPAGHETTI3.jpg",
       "description": "A classic Italian-inspired pasta dish featuring fresh, handmade pasta paired with a rich, savory beef tomato sauce. The hearty beef sauce is simmered with ripe tomatoes and aromatic herbs, creating a comforting and satisfying meal.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "21",
@@ -333,7 +350,8 @@
       "image": "/assets/images/SPAGHETTI4.jpg",
       "description": "A creamy, indulgent pasta dish featuring fresh, handmade pasta paired with tender salmon in a rich, velvety cream sauce. The sauce is delicately flavored with herbs and a hint of lemon, creating a perfect balance to complement the richness of the salmon and the fresh pasta.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "22",
@@ -343,7 +361,8 @@
       "image": "/assets/images/SPAGHETTI5.jpeg",
       "description": "A creamy and indulgent pasta dish featuring fresh, handmade pasta paired with crispy bacon and a rich, velvety cheese sauce. The bacon adds a savory, smoky flavor that complements the creamy cheese sauce, making for a comforting and satisfying meal.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "23",
@@ -353,7 +372,8 @@
       "image": "/assets/images/SPAGHETTI6.jpg",
       "description": "A flavorful and hearty pasta dish featuring fresh, handmade pasta paired with a creamy sauce made from savory sausage and colorful, tender vegetables. The rich cream sauce balances the flavors of the sausage, while the vegetables add freshness and texture.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "24",
@@ -363,7 +383,8 @@
       "image": "/assets/images/SPAGHETTI7.jpg",
       "description": "A simple yet flavorful vegetable dish featuring fresh spinach sautéed with a black pepper sauce and complemented by a medley of colorful vegetables. The rich and aromatic black pepper sauce enhances the freshness of the spinach, while the vegetables add texture and sweetness.",
       "categoryId": 3,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "25",
@@ -373,7 +394,8 @@
       "image": "/assets/images/SALAD1.jpeg",
       "description": "A sophisticated and flavorful salad featuring tender smoked goose meat paired with crisp fresh greens and vegetables, all tossed in a rich, nutty roasted sesame sauce. The smokiness of the goose contrasts beautifully with the refreshing vegetables, while the sesame sauce adds a deep, earthy flavor.",
       "categoryId": 4,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "26",
@@ -383,7 +405,8 @@
       "image": "/assets/images/SALAD2.jpg",
       "description": "A hearty and protein-packed salad combining tender beef, succulent chicken, and flavorful tuna, all tossed with a smoky BBQ sauce and fresh vegetables. This dish offers a variety of textures and flavors, with the savory meats paired perfectly with the bold, tangy BBQ sauce.",
       "categoryId": 4,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "27",
@@ -393,7 +416,8 @@
       "image": "/assets/images/SALAD3.jpg",
       "description": "A vibrant, flavorful salad featuring a combination of tender beef and tuna, tossed with a zesty spicy and sour sauce. The mix of protein-rich beef and tuna pairs perfectly with the tangy and spicy dressing, making this a bold and satisfying dish.",
       "categoryId": 4,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "28",
@@ -403,7 +427,8 @@
       "image": "/assets/images/SALAD4.png",
       "description": "A creamy and satisfying salad combining tender beef and tuna, tossed with a rich mayonnaise dressing. The creamy sauce enhances the savory flavors of the meats, creating a hearty and comforting dish with a perfect balance of textures.",
       "categoryId": 4,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "29",
@@ -413,7 +438,8 @@
       "image": "/assets/images/SALAD5.jpg",
       "description": "A hearty and indulgent salad featuring savory sausage and crispy bacon, complemented by a rich and creamy cheese sauce. This dish is perfect for those who enjoy a combination of bold flavors and a satisfying texture, offering both the richness of the meats and the creaminess of the cheese sauce.",
       "categoryId": 4,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     },
     {
       "id": "30",
@@ -423,7 +449,8 @@
       "image": "/assets/images/SALAD6.jpg",
       "description": "A unique and refreshing combination of fresh mulberries mixed with a light, crisp salad, topped with a scoop of creamy ice cream. This dessert salad is the perfect blend of sweet, tart, and creamy flavors, ideal for those looking for a sweet treat with a fruity twist.",
       "categoryId": 4,
-      "reviews": []
+      "reviews": [],
+      "hidden": false
     }
   ],
   "blogCategory": [
@@ -1297,6 +1324,61 @@
           "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
           "categoryId": 1,
           "reviews": []
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "userId": "1",
+      "favoriteItems": [
+        {
+          "id": "1",
+          "productName": "HOKUBEE STEAK",
+          "productOldPrice": 100,
+          "productPrice": 233,
+          "image": "/assets/images/steak1.jpg",
+          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
+          "categoryId": 1,
+          "reviews": [
+            {
+              "userName": "John Doe",
+              "rating": 5,
+              "comment": "Delicious steak with great flavor!",
+              "date": "2024-11-15"
+            },
+            {
+              "userName": "Jane Smith",
+              "rating": 4,
+              "comment": "Tasty, but a bit too salty for my taste.",
+              "date": "2024-11-14"
+            }
+          ],
+          "hidden": false
+        },
+        {
+          "id": "2",
+          "productName": "USA RIB EYE STEAK",
+          "productOldPrice": 120,
+          "productPrice": 195,
+          "image": "/assets/images/steak2_test.jpg",
+          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+          "category": "Steak",
+          "categoryId": 1,
+          "hidden": false,
+          "reviews": [
+            {
+              "userName": "Alice Johnson",
+              "rating": 5,
+              "comment": "The best rib-eye I've ever had!",
+              "date": "2024-11-13"
+            },
+            {
+              "userName": "Pham Hung Son",
+              "rating": 4,
+              "comment": "asd",
+              "date": "2024-11-16"
+            }
+          ]
         }
       ]
     }
