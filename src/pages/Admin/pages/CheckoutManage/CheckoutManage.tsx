@@ -305,6 +305,8 @@ interface CheckOutItemType {
 interface UserType {
   id: string;
   username: string;
+  fullName: string;
+  phoneNumber: string;
 }
 
 const CheckoutManage = () => {
@@ -356,6 +358,14 @@ const CheckoutManage = () => {
   const getUsernameById = (userId: string) => {
     const user = users.find((user) => user.id === userId);
     return user ? user.username : 'Unknown';
+  };
+  const getfullNameById = (userId: string) => {
+    const user = users.find((user) => user.id === userId);
+    return user ? user.fullName : 'Unknown';
+  };
+  const getphoneNumberById = (userId: string) => {
+    const user = users.find((user) => user.id === userId);
+    return user ? user.phoneNumber : 'Unknown';
   };
   const handleViewDetails = (checkOutItem: CheckOutItemType) => {
     // Navigate to the checkout details page with the checkoutId
@@ -424,9 +434,12 @@ const CheckoutManage = () => {
   // DataGrid columns configuration
   const columns = [
     { field: 'id', headerName: 'ID', width: 150 },
-    { field: 'orderTime', headerName: 'Order Time', width: 180 },
-    { field: 'status', headerName: 'Status', width: 150 },
-    { field: 'userId', headerName: 'Username', width: 180, renderCell: (params) => getUsernameById(params.row.userId) },
+    // { field: 'orderTime', headerName: 'Order Time', width: 180 },
+    // { field: 'status', headerName: 'Status', width: 150 },
+
+    // { field: 'userId', headerName: 'Username', width: 180, renderCell: (params) => getUsernameById(params.row.userId) },
+    { field: 'fullName', headerName: 'Username', width: 180, renderCell: (params) => getfullNameById(params.row.userId) },
+    { field: 'phoneNumber', headerName: 'phonenumber', width: 180, renderCell: (params) => getphoneNumberById(params.row.userId) },
     {
       field: 'actions',
       headerName: 'Actions',

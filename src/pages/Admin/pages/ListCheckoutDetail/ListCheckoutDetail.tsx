@@ -98,7 +98,7 @@ const ListCheckoutDetail = () => {
         borderRadius: '12px',  // Góc bo tròn
         padding: '20px',  // Padding xung quanh Box để nội dung không chạm vào border
         boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',  // Thêm shadow cho Box để tạo chiều sâu
-        backgroundColor: '#fff',  // Màu nền trắng cho Box
+        backgroundColor: '#eeded1',  // Màu nền trắng cho Box
         margin: '20px auto',  // Căn giữa Box và margin xung quanh
         maxWidth: '1200px'  // Giới hạn chiều rộng tối đa cho Box
       }}
