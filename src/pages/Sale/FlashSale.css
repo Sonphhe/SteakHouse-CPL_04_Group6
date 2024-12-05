@@ -1,7 +1,8 @@
 .flash-sale {
   padding: 20px;
   background-color: #f9f9f9;
-  overflow: hidden;
+  overflow-x: hidden; 
+  position: relative;
 }
 
 .flash-sale h2 {
@@ -10,39 +11,35 @@
 }
 
 .flash-sale-carousel {
-  display: flex;
-  overflow-x: scroll;
+  display: flex; 
+  gap: 20px; 
+  overflow-x: auto; 
   scroll-behavior: smooth;
-  gap: 10px;
+  -webkit-overflow-scrolling: touch; 
+  white-space: nowrap; 
 }
 
 .flash-sale-item {
-  flex: 0 0 calc(20% - 10px); /* Hiển thị 5 item */
+  flex: 0 0 calc(20% - 20px); 
   box-sizing: border-box;
-  text-align: center;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 10px;
-  background-color: white;
+  display: inline-block; 
+  border: 1px solid #ddd; /* Viền */
+  border-radius: 8px; /* Bo góc */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-button.prev,
-button.next {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
 }
 
-button.prev {
-  left: 10px;
+
+.flash-sale-item:hover {
+  transform: scale(1.1); /* Phóng to khi hover */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
-button.next {
-  right: 10px;
+.flash-sale-carousel::-webkit-scrollbar {
+  display: none;
 }
