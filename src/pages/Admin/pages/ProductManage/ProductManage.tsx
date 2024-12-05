@@ -220,7 +220,7 @@ const handleSaveFlashSale = async () => {
             <Button
               className="flash-sale-button-hungkc flash-sale-edit-button-hungkc"
               variant="outlined"
-              size="very-small"
+              size="small"
               startIcon={<EditIcon />}
               onClick={() => handleEditFlashSale(flashSaleData)}
             >

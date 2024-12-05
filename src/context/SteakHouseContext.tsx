@@ -20,6 +20,7 @@ interface SteakHouseType {
   setOption: Dispatch<SetStateAction<string>>
   setPhoneNumberValidation: Dispatch<string>
   setFlashSales: Dispatch<SetStateAction<FlashSale[]>>
+  setBlogs: Dispatch<SetStateAction<BlogType[]>>
   getSalePrice: (productId: number) => number | null
   handleFilter: (category: string) => void
   handleSearch: (query: string) => void
@@ -439,6 +440,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         phoneNumberValidation,
         option,
         flashSales,
+        setBlogs,
         setFlashSales,
         getSalePrice,
         setOption,
