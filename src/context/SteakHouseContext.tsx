@@ -168,6 +168,7 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
     statistics: AccountStatistics[]
     monthWithMostRegistrations: AccountStatistics
   } | null>(null)
+  
   const fetchAccountStatistics = async () => {
     try {
       const response = await axios.get(`${API_ROOT}/account`)

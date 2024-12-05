@@ -45,7 +45,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
 
   // Tính toán các sản phẩm đã chọn
   const selectedProducts = useMemo(() => {
-    return cartItems?.filter((item) => selectedItems.includes(item.id) && item.isChecked === true) || []
+    return cartItems?.filter((item) => selectedItems.includes(item.id)) || []
   }, [selectedItems, cartItems])
 
   // Calculate total before applying voucher
@@ -82,7 +82,7 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
     if (context === 'cart') {
       selectedItems.length === 0
         ? swal({
-            title: 'Please choose at least 1 product!',
+            text: 'Please choose at least 1 product!',
             icon: 'warning'
           })
         : navigate('/checkout')

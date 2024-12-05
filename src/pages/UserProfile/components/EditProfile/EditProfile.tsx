@@ -1,14 +1,33 @@
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react'
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
 import './EditProfile.css'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import swal from 'sweetalert'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
-const EditProfile = (props: { title: string; set: Dispatch<SetStateAction<boolean>>, setShowEdit: Dispatch<SetStateAction<boolean>> }) => {
+const FULLNAME_REGEX = /^[A-Z][a-z]+(?:\s[A-Z][a-z]+)+$/
+
+const EditProfile = (props: {
+  title: string
+  set: Dispatch<SetStateAction<boolean>>
+  setShowEdit: Dispatch<SetStateAction<boolean>>
+}) => {
   const { currentAccount, setCurrentAccount } = useSteakHouseContext()
   const navigate = useNavigate()
-  const [fullName, setFullName] = useState(currentAccount?.fullName)
+
+  const fullNameRef = useRef<HTMLInputElement | null>(null)
+  const [fullName, setFullName] = useState<string>(currentAccount?.fullName || '')
+  const [validFullName, setValidFullName] = useState(false)
+  const [fullNameFocus, setFullNameFocus] = useState(false)
+  const [validMatch, setValidMatch] = useState(false)
+  const [matchFocus, setMatchFocus] = useState(false)
+
+  useEffect(() => {
+    setValidFullName(FULLNAME_REGEX.test(fullName))
+  }, [fullName])
+
   const [phoneNum, setPhoneNum] = useState(currentAccount?.phoneNumber)
 
   const handleChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +82,25 @@ const EditProfile = (props: { title: string; set: Dispatch<SetStateAction<boolea
             </div>
             <div className='input-label'>
               <label>Full name</label>
-              <input type='text' onChange={(e) => setFullName(e.target.value)} placeholder={currentAccount?.fullName} />
+              <input
+                type='text'
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder={currentAccount?.fullName}
+                required
+                aria-invalid={validFullName ? 'false' : 'true'}
+                aria-describedby='uidnote'
+                autoComplete='off'
+                value={fullName}
+                onFocus={() => setFullNameFocus(true)}
+                onBlur={() => setFullNameFocus(false)}
+              />
+              <p id='uidnote' className={fullNameFocus && fullName && !validFullName ? 'instructions' : 'offscreen'}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                4 to 24 characters.
+                <br />
+                Not allowed to contain number
+                <br />
+              </p>
             </div>
             <div className='input-label'>
               <label>Phone number</label>
@@ -74,7 +111,10 @@ const EditProfile = (props: { title: string; set: Dispatch<SetStateAction<boolea
                 value={currentAccount?.phoneNumber}
               />
             </div>
-            <button type='submit'>Update your info</button>
+            {/* <button {fullNameFocus && fullName && !validFullName?disabled:''} type='submit'>Update your info</button> */}
+            <button disabled={!validFullName} type='submit'>
+              Update your info
+            </button>
           </div>
         </form>
       </div>

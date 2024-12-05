@@ -16,9 +16,9 @@ const FlashSaleCard = ({
 
   // Ép kiểu `prod.id` về số trước khi so sánh
   const product = products.find((prod) => {
-    console.log(
-      `Comparing prod.id (${prod.id}, type: ${typeof prod.id}) with productId (${productId}, type: ${typeof productId})`
-    );
+    // console.log(
+    //   `Comparing prod.id (${prod.id}, type: ${typeof prod.id}) with productId (${productId}, type: ${typeof productId})`
+    // );
     return Number(prod.id) === productId; // Ép kiểu `prod.id` về số
   });
 

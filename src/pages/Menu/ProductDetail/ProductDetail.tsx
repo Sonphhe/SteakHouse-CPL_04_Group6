@@ -44,10 +44,6 @@ const ProductDetail: React.FC = () => {
   // const [showModal, setShowModal] = useState(false);
   // const [modalMessage, setModalMessage] = useState('');
 
-  swal({
-    icon: "success",
-  });
-
   useEffect(() => {
     const fetchProductData = async () => {
       if (id) {
@@ -105,9 +101,16 @@ const ProductDetail: React.FC = () => {
 
   // Xử lý thêm vào giỏ hàng
   const handleAddToCart = () => {
-    if (productData) {
-      addToCart({ ...productData, quantity })
-      setIsModalOpen(true)
+    if (!currentAccount?.id) {
+      swal({
+        icon: 'warning',
+        text: 'Please login to continue!'
+      })
+    } else {
+      if (productData) {
+        addToCart({ ...productData, quantity })
+        setIsModalOpen(true)
+      }
     }
   }
 

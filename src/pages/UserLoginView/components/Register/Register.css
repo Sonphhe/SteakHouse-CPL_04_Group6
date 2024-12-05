@@ -89,6 +89,8 @@
 }
 
 .instructions {
+  width: 100%;
+  height: fit-content;
   font-size: 0.75rem;
   border-radius: 0.5rem;
   background: #000;
@@ -96,6 +98,7 @@
   padding: 0.25rem;
   position: relative;
   bottom: -10px;
+  margin-bottom: 10px;
 }
 
 .instructions > svg {

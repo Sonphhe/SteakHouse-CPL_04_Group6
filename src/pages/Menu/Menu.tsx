@@ -87,14 +87,21 @@ const Menu: React.FC = () => {
   }, [showModal])
 
   const handleAddToCart = (product: any) => {
-    const productWithValidQuantity = {
-      ...product,
-      quantity: parseInt(product.quantity, 10) || 1,
-      isChecked: true
+    if (!currentAccount?.id) {
+      swal({
+        icon: "warning",
+        text: "Please login to continue!"
+      });
+    } else {
+      const productWithValidQuantity = {
+        ...product,
+        quantity: parseInt(product.quantity, 10) || 1,
+        isChecked: true
+      }
+      addToCart(productWithValidQuantity)
+      setModalMessage('Product added to cart!')
+      setShowModal(true)
     }
-    addToCart(productWithValidQuantity)
-    setModalMessage('Product added to cart!')
-    setShowModal(true)
   }
 
   const [favorites, setFavorites] = useState<{ [key: string]: boolean }>({})
