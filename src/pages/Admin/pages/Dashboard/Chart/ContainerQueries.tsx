@@ -1,88 +1,84 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import React from 'react'
+import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography'
+import { useSteakHouseContext } from '../../../../../hooks/useSteakHouseContext'
 
-export default function ContainerQueries() {
+function ContainerQueries() {
+  const { flashSales, products } = useSteakHouseContext()
+
   return (
-    <Box
-      sx={{
-        overflow: 'auto',
-        resize: 'horizontal',
-        width: 400,
-        maxWidth: '80%',
-        containerType: 'inline-size',
-      }}
-    >
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column', '@350': 'row' },
-          bgcolor: 'background.default',
-          border: '1px solid',
-          borderColor: 'divider',
-          borderRadius: 2,
-          overflow: 'clip',
-        }}
-      >
-        <Box
-          component="img"
-          sx={{
-            alignSelf: 'stretch',
-            aspectRatio: '16 / 9',
-            objectFit: 'cover',
-            width: '100%',
-            maxWidth: { '@350': '36%', '@500': 240 },
-          }}
-          alt="The house from the offer."
-          src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
-        />
-        <Box
-          sx={{
-            p: { xs: 2, '@500': 3 },
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 1,
-          }}
-        >
-          <div>
-            <Box
-              component="span"
-              sx={{ fontSize: '0.875rem', color: 'text.secondary' }}
-            >
-              123 Main St, Phoenix AZ
-            </Box>
-            <Box
-              sx={{
-                color: 'primary.main',
-                fontSize: '1.125rem',
-                fontWeight: 'bold',
-              }}
-            >
-              $280,000 — $310,000
-            </Box>
-          </div>
-          <Box
-            sx={{
-              width: 'fit-content',
-              py: 0.5,
-              px: 1,
-              backgroundColor: 'rgba(46, 125, 50, 0.1)',
-              borderRadius: 10,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 0.5,
-              border: '1px solid',
-              borderColor: 'rgba(46, 125, 50, 0.1)',
-              fontSize: '0.7rem',
-              fontWeight: 'bold',
-              letterSpacing: '.05rem',
-              textTransform: 'uppercase',
-              color: 'success.main',
-            }}
-          >
-            Confidence score: 85%
-          </Box>
-        </Box>
-      </Box>
+    <Box sx={{ px: 4, py: 2 }}>
+      <Typography variant='h4' align='center' color='red' sx={{ mb: 4, fontWeight: 'bold' }}>
+        Flash Sales
+      </Typography>
+      <Grid container spacing={3}>
+        {flashSales.map((sale) => {
+          const product = products.find((prod) => Number(prod.id) === sale.productId)
+
+          if (!product) return null
+
+          return (
+            <Grid item xs={12} sm={6} md={4} lg={3} key={sale.productId}>
+              <Box
+                sx={{
+                  border: '1px solid #ddd',
+                  borderRadius: 4,
+                  overflow: 'hidden',
+                  boxShadow: '0px 2px 4px rgba(0,0,0,0.1)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  height: '100%'
+                }}
+              >
+                <Box
+                  component='img'
+                  src={product.image}
+                  alt={product.productName}
+                  sx={{
+                    width: '100%',
+                    height: 200,
+                    objectFit: 'cover'
+                  }}
+                />
+                <Box sx={{ p: 2, flex: 1 }}>
+                  <Typography variant='h6'>{product.productName}</Typography>
+                  <Typography color='text.secondary'>{product.description}</Typography>
+                  <Box
+                    sx={{
+                      mt: 1,
+                      display: 'flex',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <Typography
+                      sx={{
+                        textDecoration: 'line-through',
+                        color: 'gray'
+                      }}
+                    >
+                      ${product.productOldPrice}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: 'success.main',
+                        fontWeight: 'bold'
+                      }}
+                    >
+                      ${product.productPrice}
+                    </Typography>
+                  </Box>
+                  <Typography color='primary'>
+                    Sale: {sale.sale}% - Ends: {new Date(sale.endDate).toLocaleDateString()}
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
+          )
+        })}
+      </Grid>
     </Box>
-  );
+  )
 }
+
+export default ContainerQueries

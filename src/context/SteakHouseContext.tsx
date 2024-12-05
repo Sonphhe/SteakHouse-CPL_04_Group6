@@ -39,6 +39,14 @@ interface SteakHouseType {
     monthWithMostRegistrations: AccountStatistics
   } | null
   fetchAccountStatistics: () => Promise<void>
+  fetchProductStatistics: () => Promise<ProductStats[]>
+  fetchTopSellingProducts: () => Promise<ProductStats[]>
+}
+
+interface ProductStats {
+  productName: string
+  totalPurchases: number
+  totalReturns: number
 }
 
 interface AccountType {
@@ -132,6 +140,12 @@ interface FlashSale {
   endDate: string
 }
 
+interface ProductStats {
+  productName: string
+  totalPurchases: number
+  totalReturns: number
+}
+
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -213,6 +227,95 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   useEffect(() => {
     fetchAccountStatistics()
   }, [])
+
+  const fetchProductStatistics = async () => {
+    try {
+      const response = await axios.get(`${API_ROOT}/checkOutItems`)
+      const orders = response.data
+
+      // Create a map to store product statistics
+      const productStatsMap = new Map<string, ProductStats>()
+
+      // Iterate through each cart item
+      orders.forEach((order: any) => {
+        order.cartItems.forEach((cartItem: any) => {
+          cartItem.items.forEach((item: any) => {
+            // Initialize product stats if not exists
+            if (!productStatsMap.has(item.productName)) {
+              productStatsMap.set(item.productName, {
+                productName: item.productName,
+                totalPurchases: 0,
+                totalReturns: 0
+              })
+            }
+
+            // Update statistics based on order status
+            const productStats = productStatsMap.get(item.productName)!
+            if (cartItem.status === 'Complete') {
+              productStats.totalPurchases += item.quantity
+            } else if (cartItem.status === 'Cancel') {
+              productStats.totalReturns += item.quantity
+            }
+          })
+        })
+      })
+
+      // Convert map to array and sort by total purchases
+      const productStatistics = Array.from(productStatsMap.values()).sort((a, b) => b.totalPurchases - a.totalPurchases)
+
+      // Optional: Log or set state with the results
+
+      // setProductStatistics(productStatistics);
+
+      return productStatistics
+    } catch (error) {
+      console.error('Error fetching product statistics:', error)
+      return []
+    }
+  }
+
+  const fetchTopSellingProducts = async () => {
+    try {
+      const response = await axios.get(`${API_ROOT}/checkOutItems`)
+      const orders = response.data
+
+      const productStatsMap = new Map<string, ProductStats>()
+
+      orders.forEach((order: any) => {
+        order.cartItems.forEach((cartItem: any) => {
+          cartItem.items.forEach((item: any) => {
+            if (!productStatsMap.has(item.productName)) {
+              productStatsMap.set(item.productName, {
+                productName: item.productName,
+                totalPurchases: 0,
+                totalReturns: 0
+              })
+            }
+
+            const productStats = productStatsMap.get(item.productName)!
+            if (cartItem.status === 'Complete') {
+              productStats.totalPurchases += 1
+            }
+          })
+        })
+      })
+
+      const sortedProducts = Array.from(productStatsMap.values())
+        .sort((a, b) => b.totalPurchases - a.totalPurchases)
+        .slice(0, 7)
+
+      // Fisher-Yates shuffle algorithm
+      for (let i = sortedProducts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[sortedProducts[i], sortedProducts[j]] = [sortedProducts[j], sortedProducts[i]]
+      }
+
+      return sortedProducts
+    } catch (error) {
+      console.error('Error fetching top selling products:', error)
+      return []
+    }
+  }
 
   useEffect(() => {
     const syncAccountAndCart = async () => {
@@ -418,7 +521,9 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         getCategoryName,
         getAuthorImg,
         accountStatistics,
-        fetchAccountStatistics
+        fetchAccountStatistics,
+        fetchProductStatistics,
+        fetchTopSellingProducts
       }}
     >
       {children}
