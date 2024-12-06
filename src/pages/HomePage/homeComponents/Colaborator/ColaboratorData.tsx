@@ -1,13 +1,15 @@
 import './Colaborator.css'
 
-const ColaboratorData = (props:{image: string, heading: string, text: string}) => {
+const ColaboratorData = (props: {location:string; image: string; heading: string; text: string }) => {
   return (
     <div className='c-card'>
-        <div className="c-image">
-            <img src={props.image} alt="" />
+      <a href={props.location} target='_blank'>
+        <div className='c-image'>
+          <img src={props.image} alt='' />
         </div>
         <h4>{props.heading}</h4>
         <p>{props.text}</p>
+      </a>
     </div>
   )
 }

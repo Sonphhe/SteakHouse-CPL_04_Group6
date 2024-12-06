@@ -1,0 +1,45 @@
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 10px 0;
+  font-size: 20px;
+  justify-content: center; 
+  align-items: center; /* Căn giữa theo chiều dọc */
+  padding-top: 120px;
+  /* padding-right: 400px; */
+}
+
+
+.breadcrumb-item {
+  margin-right: 5px;
+  display: flex;
+  align-items: center; /* Căn giữa item trong breadcrumb */
+}
+
+.breadcrumb-link {
+  color: #e53935; /* Màu đỏ cho liên kết */
+  text-decoration: none; /* Không gạch chân */
+  font-weight: bold; /* Làm đậm văn bản */
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline; /* Gạch chân khi hover */
+}
+
+.breadcrumb-separator {
+  color: #333; /* Màu xám cho dấu phân cách */
+}
+
+.breadcrumb-current {
+  font-weight: bold; /* Làm đậm tên của breadcrumb hiện tại */
+  color: #000; /* Màu đen cho breadcrumb hiện tại */
+}
+
+
+.breadcrumb a:hover {
+  color: #e53935; /* Đổi màu khi hover */
+}
+
+.breadcrumb-item:last-child .breadcrumb-separator {
+  display: none; /* Ẩn dấu phân cách sau phần tử cuối cùng */
+}

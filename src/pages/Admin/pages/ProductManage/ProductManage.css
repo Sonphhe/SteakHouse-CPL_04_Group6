@@ -1,0 +1,78 @@
+.admin-dashboard-hungkc {
+    padding-left: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  .dashboard-container-hungkc {
+    background-color: #f4f4f4;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-mainPM-hungkc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .product-manage-hungkc {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .product-manage-header-hungkc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar-hungkc {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  .search-bar-hungkc:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 2px rgba(25, 118, 210, 0.2);
+  }
+
+  /* Cột Flash Sale */
+.flash-sale-column-hungkc {
+  display: flex;
+  justify-content: space-between; /* Canh giữa các phần tử */
+  gap: 10px; /* Khoảng cách giữa các nút */
+  align-items: center; /* Căn chỉnh các phần tử theo chiều dọc */
+}
+
+.flash-sale-button-hungkc {
+  padding: 5px 10px; /* Nút có padding vừa phải */
+  font-size: 14px; /* Font size nhỏ hơn để đồng nhất với các nút khác */
+  border-radius: 4px; /* Bo tròn viền */
+  text-transform: none; /* Không làm chữ in hoa */
+}
+
+.flash-sale-edit-button-hungkc {
+  color: #1976d2; /* Màu xanh của nút sửa */
+}
+
+.flash-sale-delete-button-hungkc {
+  color: #d32f2f; /* Màu đỏ của nút xóa */
+}
+
+.flash-sale-add-button-hungkc {
+  color: #388e3c; /* Màu xanh lá của nút thêm mới */
+}
+
+.flash-sale-column-hungkc .MuiButton-root {
+  font-size: 14px; /* Đồng bộ font-size với các cột khác */
+}

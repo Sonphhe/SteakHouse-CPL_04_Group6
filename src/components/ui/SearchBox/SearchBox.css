@@ -1,0 +1,21 @@
+.search-box{
+    margin-top: 10px;
+}
+.search-box-container{
+    display: flex;
+}
+.search-box-container input{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    border-radius: 5px;
+    width: 80px;
+    cursor: pointer;
+}
+.search-box-container i{
+    position: relative;
+    left: -20px;
+    bottom: -2px;
+}
+.search-box-container input:hover{
+    background: rgb(232, 228, 228);
+}

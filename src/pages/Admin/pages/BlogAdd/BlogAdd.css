@@ -1,0 +1,109 @@
+.admin-dashboard-blogAdd {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f0f2f5;
+}
+
+.dashboard-container-blogAdd {
+  display: flex;
+  flex: 1;
+  padding-top: 60px; /* Account for navbar height */
+}
+
+.dashboard-main-blogAdd {
+  flex: 1;
+  padding: 30px;
+  margin-left: 30px; /* Width of sidebar */
+  background-color: #ffffff;
+}
+
+.blog-add-hungkc {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+}
+
+.blog-add-hungkc h2 {
+  margin-bottom: 20px;
+}
+
+.blog-add-hungkc form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.blog-add-hungkc label {
+  font-weight: bold;
+  color: #555;
+}
+
+.blog-add-hungkc input,
+.blog-add-hungkc textarea,
+.blog-add-hungkc select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.blog-add-hungkc input:focus,
+.blog-add-hungkc textarea:focus,
+.blog-add-hungkc select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.3);
+}
+
+.error-message {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.loading-message {
+  color: #007bff;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.actions button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.actions button:first-child {
+  background-color: #4caf50;
+  color: white;
+}
+
+.actions button:first-child:hover {
+  background-color: #45a049;
+}
+
+.actions button:last-child {
+  background-color: #f44336;
+  color: white;
+}
+
+.actions button:last-child:hover {
+  background-color: #d32f2f;
+}
+
+/* Đảm bảo input file được hiển thị rõ ràng */
+input[type="file"].file-input-HKC {
+  display: block; /* Đảm bảo hiển thị */
+  visibility: visible; /* Đảm bảo không bị ẩn */
+  cursor: pointer; /* Thay đổi con trỏ khi di chuột */
+}

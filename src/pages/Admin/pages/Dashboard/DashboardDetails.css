@@ -1,0 +1,234 @@
+/* Main Container */
+.dashboard-container {
+    padding: 24px;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Header Section */
+  .dashboard-header {
+    margin-bottom: 32px;
+    text-align: center;
+  }
+  
+  .dashboard-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin-bottom: 8px;
+  }
+  
+  .dashboard-subtitle {
+    color: #64748b;
+    font-size: 16px;
+  }
+  
+  /* Stats Card */
+  .stats-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 24px;
+    transition: transform 0.2s ease;
+    max-width: 600px;
+  }
+  
+  .stats-card:hover {
+    transform: translateY(-2px);
+  }
+  
+  .stats-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .stats-info {
+    text-align: center;
+  }
+  
+  .stats-label {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 8px;
+  }
+  
+  .stats-value {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  
+  .stats-number {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1f36;
+    margin: 0;
+  }
+  
+  .stats-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #10b981;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 4px 8px;
+    background-color: rgba(16, 185, 129, 0.1);
+    border-radius: 6px;
+  }
+  
+  .stats-period {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+  }
+  
+  .stats-icon {
+    background-color: #f1f5f9;
+    padding: 16px;
+    border-radius: 12px;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Charts Grid */
+  .charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin: 0 auto 24px;
+    max-width: 1200px;
+  }
+  
+  /* Combined Section */
+  .combined-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin: 0 auto 24px;
+    max-width: 1200px;
+  }
+  
+  /* Chart Cards */
+  .chart-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    height: 100%;
+  }
+  
+  .chart-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .chart-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin: 0;
+    text-align: center;
+  }
+  
+  .chart-content {
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Products Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-header {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  
+  .product-content {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      padding: 16px;
+    }
+  
+    .charts-grid,
+    .combined-section,
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .chart-content {
+      height: 250px;
+    }
+  
+    .stats-card {
+      padding: 16px;
+    }
+  
+    .stats-number {
+      font-size: 24px;
+    }
+  }
+  
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+  }

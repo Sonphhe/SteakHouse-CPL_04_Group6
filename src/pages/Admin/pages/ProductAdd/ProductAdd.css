@@ -1,0 +1,169 @@
+/* src/pages/Admin/pages/ProductAdd/ProductAdd.css */
+
+.admin-dashboard-add-hung11-11Add {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f2f5;
+  }
+  
+  .dashboard-container-add-hung11-11Add {
+    display: flex;
+    flex: 1;
+    padding-top: 60px; /* Account for navbar height */
+  }
+  
+  .dashboard-main-add-hung11-11Add {
+    flex: 1;
+    padding: 30px;
+    margin-left: 30px; /* Sidebar width */
+    background-color: #ffffff;
+  }
+  
+  .product-add-container-hung11-11Add {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-add-form-hung11-11Add label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+  }
+  
+  .product-add-form-hung11-11Add input,
+  .product-add-form-hung11-11Add textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .modal-actions-hung11-11Add {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .save-btn-hung11-11Add {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  /* Main Admin Dashboard Layout for Product Add */
+.admin-dashboard-add-hung11-11Add {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: #f4f7fa;
+}
+
+.dashboard-container-add-hung11-11Add {
+  display: flex;
+  flex: 1;
+  padding-top: 60px;
+}
+
+.dashboard-main-add-hung11-11Add {
+  flex: 1;
+  padding: 30px;
+  margin-left: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-add-container-hung11-11Add {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.product-add-form-hung11-11Add .form-group {
+  margin-bottom: 20px;
+}
+
+.product-add-form-hung11-11Add label {
+  font-size: 1.1em;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 6px;
+}
+
+.large-input-hung11-11Add {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #ffffff;
+  transition: border 0.3s ease;
+  min-height: 50px;
+}
+
+.large-input-hung11-11Add:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0px 0px 4px rgba(0, 123, 255, 0.3);
+}
+
+/* Buttons */
+.save-btn-hung11-11Add,
+.cancel-btn-hung11-11Add {
+  padding: 10px 20px;
+  font-size: 1em;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.save-btn-hung11-11Add {
+  background-color: #28a745;
+  color: white;
+  margin-right: 10px;
+}
+
+.save-btn-hung11-11Add:hover {
+  background-color: #218838;
+}
+
+.cancel-btn-hung11-11Add {
+  background-color: #6c757d;
+  color: white;
+}
+
+.cancel-btn-hung11-11Add:hover {
+  background-color: #5a6268;
+}
+
+/* Đảm bảo input file được hiển thị rõ ràng */
+input[type="file"].file-input-HKC {
+  display: block; /* Đảm bảo hiển thị */
+  visibility: visible; /* Đảm bảo không bị ẩn */
+  cursor: pointer; /* Thay đổi con trỏ khi di chuột */
+}

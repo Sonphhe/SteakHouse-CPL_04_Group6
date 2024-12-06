@@ -1,82 +1,117 @@
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { IoHome } from 'react-icons/io5'
 import { MdOutlineRestaurantMenu } from 'react-icons/md'
 import { IoLogoWechat } from 'react-icons/io5'
 import { AiFillInfoCircle } from 'react-icons/ai'
 import { FaPhoneVolume } from 'react-icons/fa6'
+import { FaCartArrowDown } from 'react-icons/fa6'
 import { FaBars } from 'react-icons/fa6'
 import { TiTimes } from 'react-icons/ti'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import DropDownProfile from './DropDownProfile/DropDownProfile'
+import { useSteakHouseContext } from '../../../hooks/useSteakHouseContext'
+import { useCartContext } from '../../../context/CartContext'
+import { CgProfile } from 'react-icons/cg'
+import { FaRegUser } from 'react-icons/fa'
+import Login from '../../../pages/UserLoginView/components/Login/Login'
+import SearchDropDown from './SearchDropDown/SearchDropDown'
+import { HiOutlineMenuAlt1 } from 'react-icons/hi'
+import swal from 'sweetalert'
 
 const Navbar = () => {
   const navListItems = [
-    {
-      text: 'Home',
-      icon: <IoHome />
-    },
-    {
-      text: 'Menu',
-      icon: <MdOutlineRestaurantMenu />
-    },
-    {
-      text: 'Blog',
-      icon: <IoLogoWechat />
-    },
-    {
-      text: 'About',
-      icon: <AiFillInfoCircle />
-    },
-    {
-      text: 'Contact',
-      icon: <FaPhoneVolume />
-    }
+    { text: 'Home', icon: <IoHome />, link: '/home' },
+    { text: 'Menu', icon: <MdOutlineRestaurantMenu />, link: '/menu' },
+    { text: 'Blog', icon: <IoLogoWechat />, link: '/blog' },
+    { text: 'About', icon: <AiFillInfoCircle />, link: '/about' },
+    { text: 'Contact', icon: <FaPhoneVolume />, link: '/contact' }
   ]
 
   const [closeMenu, setCloseMenu] = useState(true)
+  const [openProfile, setOpenProfile] = useState(false)
+  const { cartItems } = useCartContext() // Access cart items from context
+  const navigate = useNavigate()
+  // Calculate total number of items in the cart
 
+  const { currentAccount } = useSteakHouseContext()
+
+  const [value, setValue] = useState('')
+
+  // const onSearch = (searchTerm) => {
+
+  // }
+
+  const [openSearchDoropdown, setopenSearchDoropdown] = useState(false)
+
+  const locateCart = () => {
+    navigate('/cart')
+  }
+  const locateHome = () => {
+    navigate('/')
+  }
+
+  const handleOpenProfile = () => {
+    if (currentAccount?.id === '') {
+      swal('You should login to view your profile!', 'Redirect to Login page...', 'warning').then(() =>
+        navigate('/login')
+      )
+    } else {
+      setOpenProfile(!openProfile)
+    }
+  }
+
+  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+  }
   return (
-    <nav className='navbar-items'>
-      <h1 className='navbar-logo'>Steak House</h1>
+    <div>
+      <nav className='navbar-items'>
+        <div className='headerNav'>
+          <h1 onClick={locateHome} className='navbar-logo'>
+            SteakHouse
+          </h1>
+          <button onClick={() => navigate('/menu')}>
+            <HiOutlineMenuAlt1 size={25} /> Menu
+          </button>
+        </div>
 
-      <div className='menu-icons'>
-        <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
-      </div>
+        <div className='navbar-search'>
+          <input
+            className='search_input'
+            value={value}
+            onClick={() => setopenSearchDoropdown(!openSearchDoropdown)}
+            onChange={handleChangeSearch}
+            type='text'
+            placeholder='Search'
+          />
+          {openSearchDoropdown ? <SearchDropDown value={value} action={setopenSearchDoropdown} /> : <></>}
+        </div>
 
-      <ul className={closeMenu ? 'nav-menu' : 'nav-menu active'}>
-        {navListItems.map((item, i) => (
-          <li className='navlinks' key={i}>
-            <Link to={''}
-              style={{
-                textDecoration: 'none',
-                color: '#222',
-                fontSize: '1.2rem',
-                fontWeight: '600',
-                padding: '0.7rem 1rem',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              {item.icon} {item.text}
-            </Link>
-          </li>
-        ))}
-        <li className='nav-button'>
-          <Link
-            to={'/'}
-            style={{
-              textDecoration: 'none',
-              color: '#222',
-              fontSize: '1.2rem',
-              fontWeight: '600',
-              padding: '0.7rem 1rem',
-              whiteSpace: 'nowrap'
-            }}
-          >
-            Logout
-          </Link>
-        </li>
-      </ul>
-    </nav>
+        <div className='rightside-options'>
+          <div className='menu-icons'>
+            <span onClick={() => setCloseMenu(!closeMenu)}>{closeMenu ? <FaBars /> : <TiTimes />}</span>
+          </div>
+          <div onClick={handleOpenProfile} className='profile-icon'>
+            <i>
+              <FaRegUser />
+            </i>
+          </div>
+          <div className='navbar-cart' onClick={locateCart}>
+            <button>
+              <FaCartArrowDown size={25} /> Cart Items
+            </button>
+            <div className='shopee-cart-number-badge'>{cartItems?.cartItem.length || 0}</div>
+          </div>
+          <div className='navbar-blog'>
+            <button onClick={() => navigate('/blog')}>
+              Blogs
+            </button>
+          </div>
+          {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
+        </div>
+      </nav>
+    </div>
   )
 }
 

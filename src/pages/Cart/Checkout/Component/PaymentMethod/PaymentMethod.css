@@ -1,0 +1,139 @@
+.payment-method-container {
+  width: 100%;
+  height: fit-content;
+  border-radius: 10px;
+  background-color: #fff;
+  border: none;
+  padding: 1.5rem;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.payment-method-container .title {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.payment-method-container .payment-option {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.payment-method-container .payment-option label {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  border: 1px solid rgb(209 213 219 / 1);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #f9f9f9;
+  transition:
+    background-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.payment-method-container .payment-option label:hover {
+  background-color: #f0f0f0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px;
+}
+
+.payment-method-container .payment-option label input[type='radio'] {
+  display: none;
+}
+
+.payment-method-container .payment-option label img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.payment-method-container .payment-option label span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.payment-method-container .payment-option label.selected {
+  background-color: #eef7ff;
+  border: 1px solid #007bff;
+}
+.qr-modal {
+  margin-top: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.qr-modal-content {
+  position: relative; 
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute; 
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+
+.qr-code-img {
+  width: 100%;
+  height: auto;
+}
+.additional-info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #000000;
+  font-style: italic;
+}
+
+.additional-info p {
+  margin: 5px 0;
+}
+
+.terms {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.terms label {
+  display: flex;
+  align-items: center;
+}
+
+.terms input[type='checkbox'] {
+  margin-right: 10px; 
+}
+
+.terms a {
+  color: blue;
+  text-decoration: underline;
+}

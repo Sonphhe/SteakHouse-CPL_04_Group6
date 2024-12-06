@@ -1,0 +1,58 @@
+.edit-profile {
+  margin: 20px 20px;
+}
+.edit-profile-container {
+  width: 1000px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 0 solid #e5e7eb;
+  box-sizing: border-box;
+  box-shadow:
+    rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  border-radius: 10px;
+  padding: 30px 0px;
+  justify-content: center;
+  align-items: center;
+}
+.edit-profile-container img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.edit-profile-container .content{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.edit-profile-container .input-label{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.edit-profile-container .input-label label{
+    font-size: 14px;
+}
+.edit-profile-container .input-label input{
+    padding: 10px 10px;
+    padding-right: 150px;
+    border-radius: 5px;
+    border: 1px solid rgb(182, 176, 176);
+}
+.edit-profile-container button{
+    padding: 10px 0;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    background: #d74040;
+    cursor: pointer;
+}
+.edit-profile-container button:hover{
+    background: #d03232;
+}

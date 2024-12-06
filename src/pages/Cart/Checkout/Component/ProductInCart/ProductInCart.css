@@ -1,0 +1,70 @@
+.productInCart{
+    width: 100%;
+}
+.productInCart-container{
+    background-color: #fff;
+    width: 100%;
+    height: fit-content;
+    border-radius: 10px;
+    border: none;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; 
+}
+.productInCart-container .product{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+.productInCart-container .product .left-side{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+}
+.productInCart-container .title{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+.productInCart-container .product .left-side .image{
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+}
+.productInCart-container .product .left-side .image img{
+    width: 40px;
+    height: 40px;
+}
+.productInCart-container .left-side p{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: left;
+}
+.productInCart-container .left-side .quantity{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+.productInCart-container .left-side .quantity p{
+    font-size: 12px;
+}
+.productInCart-container .product .price{
+    margin-right: 10px;
+}
+.productInCart-container .product .price .new-price{
+    font-size: 16px;
+    font-weight: 600;
+    color: #dc2626;
+    width: fit-content;
+}
+.productInCart-container .product .price .old-price{
+    font-size: 14px;
+    font-weight: 500;
+    color: #6b7280;
+    text-decoration: line-through;
+}

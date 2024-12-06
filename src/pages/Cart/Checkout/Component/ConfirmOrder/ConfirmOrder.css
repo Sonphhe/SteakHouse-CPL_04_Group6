@@ -1,0 +1,90 @@
+.confirm-order-container {
+  margin-top: 20px;
+  width: 100%;
+  height: fit-content;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 10px;
+  margin-top: 55.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.confirm-order-container .discount-ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #7d161c;
+  background-color: #e6cecf;
+  padding: 6px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.confirm-order-container .discount-ticket p {
+  font-size: 14px;
+}
+.confirm-order-container .cf-content {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d8b7b9;
+}
+.confirm-order-container .cf-content ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.confirm-order-container .cf-content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.confirm-order-container .cf-content li p.title {
+  font-size: 16px;
+  color: #4a4f63;
+}
+.confirm-order-container .cf-content li p.price {
+  font-size: 16px;
+}
+.confirm-order-container .cf-content li p.price-discount {
+  font-size: 16px;
+  color: #f79009;
+}
+.cf-offer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.cf-offer div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cf-offer div p.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cf-offer div p.money {
+  font-size: 20px;
+  font-weight: 600;
+  color: #7d161c;
+}
+.cf-offer button {
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  color: #fff;
+  background: #92373c;
+  border-radius: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.decor-tailer {
+  height: 24px;
+  background: white;
+  mask:
+    radial-gradient(11.52px at 50% calc(100% - 15.45px), rgb(0, 0, 0) 99%, rgba(0, 0, 0, 0) 101%) calc(50% - 20.6px) 0px /
+      41.2px 100%,
+    radial-gradient(11.52px at 50% calc(100% + 5.15px), rgba(0, 0, 0, 0) 99%, rgb(0, 0, 0) 101%) 50% calc(100% - 10.3px) /
+      41.2px 100% repeat-x;
+}

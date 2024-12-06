@@ -1,0 +1,102 @@
+/* Main Admin Dashboard Layout */
+.admin-dashboard-hungkc {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Poppins", sans-serif;
+    background-color: #f0f2f5;
+  }
+  
+  .dashboard-container-hungkc {
+    display: flex;
+    flex: 1;
+    padding-top: 60px;
+  }
+  
+  .dashboard-mainAM-hungkc {
+    flex: 1;
+    padding: 30px;
+    margin-left: 30px;
+    background-color: #ffffff;
+  }
+  
+  /* Account Manage Styling */
+  .account-manage-hungkc {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .account-manage-header-hungkc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .add-account-btn-hungkc {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .add-account-btn-hungkc:hover {
+    background-color: #0056b3;
+  }
+  
+  .search-bar-hungkc {
+    padding: 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+  }
+  
+  .account-table-hungkc {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .account-table-hungkc th,
+  .account-table-hungkc td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #dee2e6;
+  }
+  
+  .account-table-hungkc th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .account-table-hungkc tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .account-image-hungkc {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .action-icon-hungkc {
+    margin: 0 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+  }
+  
+  .edit-icon-hungkc {
+    color: #ffc107;
+  }
+  
+  .delete-icon-hungkc {
+    color: #dc3545;
+  }
+  

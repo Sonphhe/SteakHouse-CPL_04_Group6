@@ -1,0 +1,121 @@
+/* Adjust the spacing between the Navbar and main content */
+.add-post-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 150px; /* Space between Navbar and content */
+}
+
+/* Align the title and center the form */
+.add-post-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Form group styling */
+.add-post-form .form-group {
+  margin-bottom: 15px;
+}
+
+.add-post-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.add-post-form input,
+.add-post-form textarea,
+.add-post-form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Textarea customization */
+.add-post-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Image preview styling */
+.add-post-form .image-preview {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.add-post-form .image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styling */
+.submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #0056b3;
+}
+
+/* Phong cách tổng thể cho nút input file */
+.image-upload-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.image-upload-wrapper label {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  text-align: center;
+}
+
+.image-upload-wrapper label:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.image-upload-wrapper label:active {
+  background-color: #004494;
+}
+
+.image-upload-wrapper input[type="file"] {
+  display: none; /* Ẩn input file */
+}
+
+.image-preview {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.image-preview img {
+  max-width: 150px;
+  max-height: 150px;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,15 @@
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.drawerPaper {
+  width: 240px;
+  transition: all 0.3s;
+}
