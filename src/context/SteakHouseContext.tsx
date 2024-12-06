@@ -34,15 +34,23 @@ interface SteakHouseType {
   getAuthorName: (authorId: string) => string
   getAuthorImg: (authorId: string) => string
   getCategoryName: (categoryId: number) => string
-  addFlashSale: (newSale: FlashSale) => void;
-  editFlashSale: (updatedSale: FlashSale) => void;
-  deleteFlashSale: (id: string) => void;
+  addFlashSale: (newSale: FlashSale) => void
+  editFlashSale: (updatedSale: FlashSale) => void
+  deleteFlashSale: (id: string) => void
   accountStatistics: {
     total: number
     statistics: AccountStatistics[]
     monthWithMostRegistrations: AccountStatistics
   } | null
   fetchAccountStatistics: () => Promise<void>
+  fetchProductStatistics: () => Promise<ProductStats[]>
+  fetchTopSellingProducts: () => Promise<ProductStats[]>
+}
+
+interface ProductStats {
+  productName: string
+  totalPurchases: number
+  totalReturns: number
 }
 
 interface AccountType {
@@ -138,6 +146,12 @@ interface FlashSale {
   id: string
 }
 
+interface ProductStats {
+  productName: string
+  totalPurchases: number
+  totalReturns: number
+}
+
 // Create context
 export const SteakHouseContext = createContext<SteakHouseType | undefined>(undefined)
 
@@ -219,6 +233,95 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
   useEffect(() => {
     fetchAccountStatistics()
   }, [])
+
+  const fetchProductStatistics = async () => {
+    try {
+      const response = await axios.get(`${API_ROOT}/checkOutItems`)
+      const orders = response.data
+
+      // Create a map to store product statistics
+      const productStatsMap = new Map<string, ProductStats>()
+
+      // Iterate through each cart item
+      orders.forEach((order: any) => {
+        order.cartItems.forEach((cartItem: any) => {
+          cartItem.items.forEach((item: any) => {
+            // Initialize product stats if not exists
+            if (!productStatsMap.has(item.productName)) {
+              productStatsMap.set(item.productName, {
+                productName: item.productName,
+                totalPurchases: 0,
+                totalReturns: 0
+              })
+            }
+
+            // Update statistics based on order status
+            const productStats = productStatsMap.get(item.productName)!
+            if (cartItem.status === 'Complete') {
+              productStats.totalPurchases += item.quantity
+            } else if (cartItem.status === 'Cancel') {
+              productStats.totalReturns += item.quantity
+            }
+          })
+        })
+      })
+
+      // Convert map to array and sort by total purchases
+      const productStatistics = Array.from(productStatsMap.values()).sort((a, b) => b.totalPurchases - a.totalPurchases)
+
+      // Optional: Log or set state with the results
+
+      // setProductStatistics(productStatistics);
+
+      return productStatistics
+    } catch (error) {
+      console.error('Error fetching product statistics:', error)
+      return []
+    }
+  }
+
+  const fetchTopSellingProducts = async () => {
+    try {
+      const response = await axios.get(`${API_ROOT}/checkOutItems`)
+      const orders = response.data
+
+      const productStatsMap = new Map<string, ProductStats>()
+
+      orders.forEach((order: any) => {
+        order.cartItems.forEach((cartItem: any) => {
+          cartItem.items.forEach((item: any) => {
+            if (!productStatsMap.has(item.productName)) {
+              productStatsMap.set(item.productName, {
+                productName: item.productName,
+                totalPurchases: 0,
+                totalReturns: 0
+              })
+            }
+
+            const productStats = productStatsMap.get(item.productName)!
+            if (cartItem.status === 'Complete') {
+              productStats.totalPurchases += 1
+            }
+          })
+        })
+      })
+
+      const sortedProducts = Array.from(productStatsMap.values())
+        .sort((a, b) => b.totalPurchases - a.totalPurchases)
+        .slice(0, 7)
+
+      // Fisher-Yates shuffle algorithm
+      for (let i = sortedProducts.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1))
+        ;[sortedProducts[i], sortedProducts[j]] = [sortedProducts[j], sortedProducts[i]]
+      }
+
+      return sortedProducts
+    } catch (error) {
+      console.error('Error fetching top selling products:', error)
+      return []
+    }
+  }
 
   useEffect(() => {
     const syncAccountAndCart = async () => {
@@ -403,30 +506,29 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
       console.error('Error adding flash sale:', error)
     }
   }
-  
+
   const editFlashSale = async (updatedSale: FlashSale) => {
     try {
-      const response = await axios.put(`${API_ROOT}/flashSales/${updatedSale.id}`, updatedSale);
+      const response = await axios.put(`${API_ROOT}/flashSales/${updatedSale.id}`, updatedSale)
       setFlashSales((prevSales) =>
         prevSales.map((sale) => (sale.productId === updatedSale.productId ? response.data : sale))
-      );
+      )
     } catch (error) {
-      console.error('Lỗi khi cập nhật flash sale:', error);
+      console.error('Lỗi khi cập nhật flash sale:', error)
     }
-  };
-  
+  }
+
   const deleteFlashSale = async (flashSaleId: string) => {
     try {
       // Gọi API để xóa flash sale khỏi cơ sở dữ liệu
-      await axios.delete(`${API_ROOT}/flashSales/${flashSaleId}`);
+      await axios.delete(`${API_ROOT}/flashSales/${flashSaleId}`)
 
-      const updatedFlashSales = flashSales.filter(flashSale => flashSale.id !== flashSaleId);
-      setFlashSales(updatedFlashSales);
+      const updatedFlashSales = flashSales.filter((flashSale) => flashSale.id !== flashSaleId)
+      setFlashSales(updatedFlashSales)
     } catch (error) {
-      console.error('Error deleting flash sale:', error);
+      console.error('Error deleting flash sale:', error)
     }
-  };
-  
+  }
 
   return (
     <SteakHouseContext.Provider
@@ -463,9 +565,11 @@ export const SteakHouseProvider: React.FC<SteakHouseProviderProps> = ({ children
         getAuthorImg,
         accountStatistics,
         fetchAccountStatistics,
-        addFlashSale,      
-        editFlashSale,     
-        deleteFlashSale,
+        fetchProductStatistics,
+        fetchTopSellingProducts,
+        addFlashSale,
+        editFlashSale,
+        deleteFlashSale
       }}
     >
       {children}

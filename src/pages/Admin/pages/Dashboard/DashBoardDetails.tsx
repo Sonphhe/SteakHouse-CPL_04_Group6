@@ -7,8 +7,6 @@ import { green, orange } from '@mui/material/colors'
 import BarAnimation from './Chart/BarAnimation'
 import ContainerQueries from './Chart/ContainerQueries'
 import LineArea from './Chart/LineArea'
-import CustomAxis from './Chart/CustomAxis'
-import BasicGauges from './Chart/BasicGauges'
 
 // Context Hook
 import { useSteakHouseContext } from '../../../../hooks/useSteakHouseContext'
@@ -48,14 +46,14 @@ const StatCard: React.FC<StatCardProps> = ({ icon: Icon, title, value, change, c
     </Stack>
 
     <Typography variant='body2' color='text.secondary'>
-      vs. last week
+      vs. last month
     </Typography>
   </Paper>
 )
 
 const DashBoardDetails = () => {
   const { accountStatistics } = useSteakHouseContext()
-
+  const { products } = useSteakHouseContext()
   // if (!accountStatistics) {
   //   return <Typography>Loading...</Typography>;
   // }
@@ -85,13 +83,7 @@ const DashBoardDetails = () => {
         </Grid>
 
         <Grid item xs={12} sm={6} md={4}>
-          <StatCard
-            icon={TrendingUp}
-            title='Most Active Month'
-            value={accountStatistics?.monthWithMostRegistrations?.month ?? 'N/A'}
-            change={`${accountStatistics?.monthWithMostRegistrations?.percentage ?? 0}%`}
-            color={orange[500]}
-          />
+          <StatCard icon={TrendingUp} title='Total Product' value={products.length} change='N/A' color={orange[500]} />
         </Grid>
       </Grid>
 
@@ -100,7 +92,7 @@ const DashBoardDetails = () => {
         <Grid item xs={12} md={6}>
           <Paper elevation={2} sx={{ p: 3 }}>
             <Typography variant='h6' mb={2}>
-              Revenue Analysis
+              Analysis Product
             </Typography>
             <Box height={300}>
               <BarAnimation />
@@ -111,7 +103,7 @@ const DashBoardDetails = () => {
         <Grid item xs={12} md={6}>
           <Paper elevation={2} sx={{ p: 3 }}>
             <Typography variant='h6' mb={2}>
-              Trend Overview
+              Trend Product
             </Typography>
             <Box height={300}>
               <LineArea />
@@ -120,43 +112,8 @@ const DashBoardDetails = () => {
         </Grid>
       </Grid>
 
-      {/* Performance Metrics */}
-      <Grid container spacing={3} mb={4}>
-        <Grid item xs={12} md={6}>
-          <Paper elevation={2} sx={{ p: 3 }}>
-            <Typography variant='h6' mb={2}>
-              Performance Metrics
-            </Typography>
-            <CustomAxis />
-          </Paper>
-        </Grid>
-
-        <Grid item xs={12} md={6}>
-          <Paper elevation={2} sx={{ p: 3 }}>
-            <Typography variant='h6' mb={2}>
-              Goal Completion
-            </Typography>
-            <BasicGauges />
-          </Paper>
-        </Grid>
-      </Grid>
-
       {/* Products Grid */}
-      <Grid container spacing={3}>
-        {[1, 2, 3, 4].map((item) => (
-          <Grid item xs={12} sm={6} md={3} key={item}>
-            <Paper elevation={2} sx={{ p: 3 }}>
-              <Typography variant='h6' mb={2} display='flex' alignItems='center' gap={1}>
-                <Package size={20} />
-                Featured Product
-              </Typography>
-              <Box display='flex' justifyContent='center' alignItems='center'>
-                <ContainerQueries />
-              </Box>
-            </Paper>
-          </Grid>
-        ))}
-      </Grid>
+      <ContainerQueries />
     </Container>
   )
 }
