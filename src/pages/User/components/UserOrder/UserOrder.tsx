@@ -63,9 +63,10 @@ const UserOrder = () => {
   // Lọc các đơn hàng theo trạng thái
   const filteredOrders = orders.flatMap((order) =>
     order.cartItems
-      .filter((cartItem: any) =>
-        (filterStatus === 'All' || cartItem.status === filterStatus) &&
-        cartItem.items.some((item: any) => item.productName.toLowerCase().includes(searchQuery.toLowerCase())) // Thêm điều kiện tìm kiếm
+      .filter(
+        (cartItem: any) =>
+          (filterStatus === 'All' || cartItem.status === filterStatus) &&
+          cartItem.items.some((item: any) => item.productName.toLowerCase().includes(searchQuery.toLowerCase())) // Thêm điều kiện tìm kiếm
       )
       .map((cartItem: any) => ({
         ...cartItem,
@@ -73,7 +74,7 @@ const UserOrder = () => {
         orderTime: cartItem.orderTime // Thêm ID cha để dễ xử lý
       }))
   )
-  
+
   const handleBuyAgain = async (cartItemId: string) => {
     console.log(`Buy again for cartItemId: ${cartItemId}`)
 
@@ -163,30 +164,48 @@ const UserOrder = () => {
     }
   }
 
-
   const [cateName, setCateName] = useState('All')
 
   return (
     <div className='user-order'>
       <div className='user-order-container'>
         <div className='order-section'>
-          <div className={cateName === 'All'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('All')}>
+          <div
+            className={cateName === 'All' ? 'order-section-cate-active' : 'order-section-cate'}
+            onClick={() => filterOrders('All')}
+          >
             All
           </div>
-          <div className={cateName === 'Waiting for Payment'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Waiting for Payment')}>
+          <div
+            className={cateName === 'Waiting for Payment' ? 'order-section-cate-active' : 'order-section-cate'}
+            onClick={() => filterOrders('Waiting for Payment')}
+          >
             Waiting for payment
           </div>
-          <div className={cateName === 'Shipping'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Shipping')}>
+          <div
+            className={cateName === 'Shipping' ? 'order-section-cate-active' : 'order-section-cate'}
+            onClick={() => filterOrders('Shipping')}
+          >
             Waiting for delivery
           </div>
-          <div className={cateName === 'Complete'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Complete')}>
+          <div
+            className={cateName === 'Complete' ? 'order-section-cate-active' : 'order-section-cate'}
+            onClick={() => filterOrders('Complete')}
+          >
             Complete
           </div>
-          <div className={cateName === 'Cancel'?'order-section-cate-active':'order-section-cate'} onClick={() => filterOrders('Cancel')}>
+          <div
+            className={cateName === 'Cancel' ? 'order-section-cate-active' : 'order-section-cate'}
+            onClick={() => filterOrders('Cancel')}
+          >
             Cancel
           </div>
         </div>
-        <SearchBarFilter title="You can search your product by name" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+        <SearchBarFilter
+          title='You can search your product by name'
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
         <div className='product-list'>
           {filteredOrders.map((cartItem) => (
             <div key={cartItem.id} className='order-group'>
@@ -221,7 +240,11 @@ const UserOrder = () => {
                 <div className='total'>
                   <p className='total-text'>Total:</p>
                   <p className='total-money'>
-                    {cartItem.items?.reduce((acc: number, item: any) => acc + item.productPrice * item.quantity, 0)}.000đ
+                    {(
+                      cartItem.items?.reduce((acc: number, item: any) => acc + item.productPrice * item.quantity, 0) *
+                      1000
+                    ).toLocaleString('vi-VN')}
+                    đ
                   </p>
                 </div>
 

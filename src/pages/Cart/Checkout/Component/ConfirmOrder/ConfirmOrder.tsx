@@ -5,6 +5,7 @@ import VoucherModal from '../Voucher/VoucherModal'
 import { useNavigate } from 'react-router-dom'
 import swal from 'sweetalert'
 import { useCartContext } from '../../../../../context/CartContext'
+import { useSteakHouseContext } from '../../../../../hooks/useSteakHouseContext'
 interface CartItem {
   id: string
   productName: string
@@ -40,7 +41,8 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
 }) => {
   const [isModalVisible, setModalVisible] = useState(false)
   const [voucherDiscount, setVoucherDiscount] = useState<number>(0)
-  const { saveToCheckOut } = useCartContext()
+  const { saveToCheckOut, setSelectedItems } = useCartContext()
+  const { setOption, currentAccount } = useSteakHouseContext()
   const navigate = useNavigate()
 
   // Tính toán các sản phẩm đã chọn
@@ -90,12 +92,29 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
       if (paymentMethod === 'qrCode') {
         console.log(paymentMethod)
         navigate('/qrcode', { state: { totalMoney: finalAmount } })
-      } else if (paymentMethod === 'cashOnDelivery') {
-        swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success')
-        saveToCheckOut(paymentMethod) // Truyền `paymentMethod` vào hàm
-      } else {
-        swal('Warning', 'Please select a payment method before confirming.', 'warning')
-      }
+      }else{
+        if (currentAccount?.phoneNumber === '' || currentAccount?.fullName === 'user') {
+          setOption('edit')
+          swal('Warning', 'Please provide your name and phone_number', 'warning')
+          .then(() => navigate('/user/account/userProfile'))
+        }
+        else if (paymentMethod !== 'cashOnDelivery') {
+          swal('Warning', 'Please select a payment method before confirming.', 'warning')
+        }
+        else {
+          if (selectedProducts.length !== 0) {
+            swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success')
+            setOption('userOrder')
+            setSelectedItems([])
+            saveToCheckOut(paymentMethod).then(() => navigate('/user/account/userProfile'))
+          } else {
+            swal('Warning', 'Please select at least 1 products!', 'warning').then(() => navigate('/cart'))
+          }
+        }
+      } 
+
+        // Truyền `paymentMethod` vào hàm
+      
     }
   }
 

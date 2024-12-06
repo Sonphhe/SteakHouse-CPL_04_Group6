@@ -17,6 +17,7 @@ import { FaRegUser } from 'react-icons/fa'
 import Login from '../../../pages/UserLoginView/components/Login/Login'
 import SearchDropDown from './SearchDropDown/SearchDropDown'
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import swal from 'sweetalert'
 
 const Navbar = () => {
   const navListItems = [
@@ -56,7 +57,9 @@ const Navbar = () => {
 
   const handleOpenProfile = () => {
     if (currentAccount?.id === '') {
-      navigate('/login')
+      swal('You should login to view your profile!', 'Redirect to Login page...', 'warning')
+      .then(() => navigate('/login'))
+      
     } else {
       setOpenProfile(!openProfile)
     }

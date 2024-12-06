@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 
 const FULLNAME_REGEX = /^[A-Z][a-z]+(?:\s[A-Z][a-z]+)+$/
+const PHONENUM_REGEX = /^(\+\d{1,2}\s?)?1?\-?\.?\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/
 
 const EditProfile = (props: {
   title: string
@@ -17,10 +18,16 @@ const EditProfile = (props: {
   const { currentAccount, setCurrentAccount } = useSteakHouseContext()
   const navigate = useNavigate()
 
+  const phoneNumRef = useRef<HTMLInputElement | null>(null)
+  const [phoneNum, setPhoneNum] = useState<string>(currentAccount?.phoneNumber || '')
+  const [validPhoneNum, setValidPhoneNum] = useState(false)
+  const [phoneNumFocus, setPhoneNumFocus] = useState(false)
+
   const fullNameRef = useRef<HTMLInputElement | null>(null)
   const [fullName, setFullName] = useState<string>(currentAccount?.fullName || '')
   const [validFullName, setValidFullName] = useState(false)
   const [fullNameFocus, setFullNameFocus] = useState(false)
+
   const [validMatch, setValidMatch] = useState(false)
   const [matchFocus, setMatchFocus] = useState(false)
 
@@ -28,7 +35,9 @@ const EditProfile = (props: {
     setValidFullName(FULLNAME_REGEX.test(fullName))
   }, [fullName])
 
-  const [phoneNum, setPhoneNum] = useState(currentAccount?.phoneNumber)
+  useEffect(() => {
+    setValidPhoneNum(PHONENUM_REGEX.test(phoneNum))
+  }, [phoneNum])
 
   const handleChangeImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -105,11 +114,25 @@ const EditProfile = (props: {
             <div className='input-label'>
               <label>Phone number</label>
               <input
-                onClick={() => props.set(true)}
+                // onClick={() => props.set(true)}
                 onChange={(e) => setPhoneNum(e.target.value)}
                 type='text'
-                value={currentAccount?.phoneNumber}
+                placeholder={currentAccount?.phoneNumber}
+                required
+                aria-invalid={validPhoneNum ? 'false' : 'true'}
+                aria-describedby='uidnote'
+                autoComplete='off'
+                value={phoneNum}
+                onFocus={() => setPhoneNumFocus(true)}
+                onBlur={() => setPhoneNumFocus(false)}
               />
+              <p id='uidnote' className={phoneNumFocus && phoneNum && !validPhoneNum ? 'instructions' : 'offscreen'}>
+                <FontAwesomeIcon icon={faInfoCircle} />
+                10 digit phone number - optional international code.
+                <br />
+                Not allowed a characters
+                <br />
+              </p>
             </div>
             {/* <button {fullNameFocus && fullName && !validFullName?disabled:''} type='submit'>Update your info</button> */}
             <button disabled={!validFullName} type='submit'>

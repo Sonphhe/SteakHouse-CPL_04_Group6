@@ -9,8 +9,8 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
   const { products, categories } = useSteakHouseContext()
   const navigate = useNavigate()
 
-  const onSearch = (searchTerm: any) => {
-    navigate(`/productdetail/${searchTerm.id}`, { state: { searchTerm } })
+  const onSearch = (product: any) => {
+    navigate(`/productdetail/${product.id}`, { state: { product } })
   }
 
   const onCategoryClick = (categoryName: string) => {
@@ -51,7 +51,7 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
           </ul>
           <h5 className='delete'>Delete All</h5>
         </div>
-        <div className='search-category'>
+        {/* <div className='search-category'>
           <h4>Search Categories</h4>
           <ul>
             {categories.map((item) => (
@@ -60,7 +60,7 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   )

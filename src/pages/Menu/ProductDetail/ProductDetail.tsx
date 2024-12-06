@@ -108,7 +108,7 @@ const ProductDetail: React.FC = () => {
       })
     } else {
       if (productData) {
-        addToCart({ ...productData, quantity })
+        addToCart({ ...productData, quantity, productPrice: salePrice })
         setIsModalOpen(true)
       }
     }

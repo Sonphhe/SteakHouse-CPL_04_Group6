@@ -27,7 +27,8 @@ const Menu: React.FC = () => {
     handleSearch,
     handleSort,
     handlePrevious,
-    handleNext
+    handleNext,
+    flashSales
   } = useSteakHouseContext()
 
   const { addToCart } = useCartContext()
@@ -86,7 +87,18 @@ const Menu: React.FC = () => {
     }
   }, [showModal])
 
+  
+
   const handleAddToCart = (product: any) => {
+    const flashSale = flashSales.find((sale) => {
+      return (
+        Number(sale.productId) === Number(product?.id) &&
+        new Date(sale.startDate) <= new Date() &&
+        new Date(sale.endDate) >= new Date()
+      )
+    })
+  
+    const salePrice = flashSale ? product?.productPrice * (1 - flashSale.sale / 100) : null
     if (!currentAccount?.id) {
       swal({
         icon: "warning",
@@ -96,7 +108,8 @@ const Menu: React.FC = () => {
       const productWithValidQuantity = {
         ...product,
         quantity: parseInt(product.quantity, 10) || 1,
-        isChecked: true
+        isChecked: true,
+        productPrice: salePrice
       }
       addToCart(productWithValidQuantity)
       setModalMessage('Product added to cart!')

@@ -77,7 +77,7 @@ const ProductAdd = () => {
     const maxId = calculateMaxId();
     const newId = (maxId + 1).toString();
 
-    const newProduct = { ...productData, id: newId };
+    const newProduct = { ...productData, id: newId, hidden: false };
     addProduct(newProduct);
     navigate('/admin/product-management');
   };

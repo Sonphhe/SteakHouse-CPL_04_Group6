@@ -33,42 +33,17 @@ const Cart = () => {
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
-        const response = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`);
-        setCartItems(response.data[0]); // Giả sử response trả về dữ liệu như vậy
+        const response = await axios.get(`${API_ROOT}/ownCart?userId=${currentAccount?.id}`)
+        setCartItems(response.data[0]) // Giả sử response trả về dữ liệu như vậy
       } catch (error) {
-        console.error('Error fetching cart items:', error);
+        console.error('Error fetching cart items:', error)
       }
-    };
+    }
 
     if (currentAccount) {
-      fetchCartItems();
+      fetchCartItems()
     }
-  }, [currentAccount, setCartItems]);
-
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        if (!currentAccount?.id) {
-          console.warn('User ID is missing, skipping API call.');
-          return;
-        }
-
-        const response = await axios.get(`${API_ROOT}/ownCart`, {
-          params: { userId: currentAccount.id }, 
-        });
-
-        if (response.data && response.data.length > 0) {
-          setCartItems(response.data[0]);
-        } else {
-          console.warn('No cart items found in response:', response.data);
-        }
-      } catch (error) {
-        console.error('Error fetching cart items:', error);
-      }
-    };
-
-    fetchCartItems();
-  }, []);
+  }, [setCartItems])
 
   const handleDeleteClick = (id: string) => {
     setItemToDelete(id)

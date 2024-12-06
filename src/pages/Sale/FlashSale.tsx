@@ -10,7 +10,6 @@ const FlashSale = () => {
   const currentFlashSales = flashSales.filter(
     (sale) =>
       new Date(sale.startDate) <= new Date() && new Date(sale.endDate) >= new Date() 
-
   );
 
   useEffect(() => {

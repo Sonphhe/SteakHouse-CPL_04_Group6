@@ -75,6 +75,7 @@ const ReceiveLocation = (props: {onDistanceChange: Dispatch<SetStateAction<numbe
                       onChange={(e) => setSearchValue(e.target.value)}
                       value={searchValue}
                       placeholder='Choose your ward/commune'
+                      required
                     />
                     {searchValue && (
                       <LiaTimesCircle onClick={() => setSearchValue('')} size={20} className='search-icon-times' />

@@ -144,15 +144,6 @@ const Login = () => {
               />
               <FaLock className='icon' />
             </div>
-            {/* <div className='remember-forgot'>
-              <label>
-                <input type='checkbox' />
-                Remember me
-              </label>
-              <Link to={'/forgotpass'}>
-                <a href='#'>Forgot password?</a>
-              </Link>
-            </div> */}
             <button type='submit'>Login</button>
             <div className='google-login'>
               <CustomButton onClick={() => loginGoogle()} />
@@ -168,9 +159,9 @@ const Login = () => {
             </div>
           </form>
         </div>
-        <Link className='without-login-btn' to={'/home'}>
+        {/* <Link className='without-login-btn' to={'/home'}>
           Countinue Shopping
-        </Link>
+        </Link> */}
       </div>
 
       {/* Ban Modal */}
