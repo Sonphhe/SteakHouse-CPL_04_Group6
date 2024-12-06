@@ -16,7 +16,7 @@ import { CgProfile } from 'react-icons/cg'
 import { FaRegUser } from 'react-icons/fa'
 import Login from '../../../pages/UserLoginView/components/Login/Login'
 import SearchDropDown from './SearchDropDown/SearchDropDown'
-import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import { HiOutlineMenuAlt1 } from 'react-icons/hi'
 import swal from 'sweetalert'
 
 const Navbar = () => {
@@ -38,10 +38,6 @@ const Navbar = () => {
 
   const [value, setValue] = useState('')
 
-  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value)
-  }
-
   // const onSearch = (searchTerm) => {
 
   // }
@@ -57,14 +53,17 @@ const Navbar = () => {
 
   const handleOpenProfile = () => {
     if (currentAccount?.id === '') {
-      swal('You should login to view your profile!', 'Redirect to Login page...', 'warning')
-      .then(() => navigate('/login'))
-      
+      swal('You should login to view your profile!', 'Redirect to Login page...', 'warning').then(() =>
+        navigate('/login')
+      )
     } else {
       setOpenProfile(!openProfile)
     }
   }
 
+  const handleChangeSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(e.target.value)
+  }
   return (
     <div>
       <nav className='navbar-items'>
@@ -72,7 +71,9 @@ const Navbar = () => {
           <h1 onClick={locateHome} className='navbar-logo'>
             SteakHouse
           </h1>
-          <button onClick={() => navigate('/menu')}><HiOutlineMenuAlt1 size={25}/> Menu</button>
+          <button onClick={() => navigate('/menu')}>
+            <HiOutlineMenuAlt1 size={25} /> Menu
+          </button>
         </div>
 
         <div className='navbar-search'>
@@ -97,8 +98,15 @@ const Navbar = () => {
             </i>
           </div>
           <div className='navbar-cart' onClick={locateCart}>
-            <button><FaCartArrowDown size={25} /> Cart Items</button>
+            <button>
+              <FaCartArrowDown size={25} /> Cart Items
+            </button>
             <div className='shopee-cart-number-badge'>{cartItems?.cartItem.length || 0}</div>
+          </div>
+          <div className='navbar-blog'>
+            <button onClick={() => navigate('/blog')}>
+              Blogs
+            </button>
           </div>
           {openProfile && <DropDownProfile name={openProfile ? 'sub-menu-wrap open-menu' : 'sub-menu-wrap'} />}
         </div>

@@ -42,7 +42,7 @@ const Navbar = () => {
   
   const handleLogout = () => {
     logout()
-    navigate('/')
+    navigate('/login')
   }
 
   const handleLogin = () => {

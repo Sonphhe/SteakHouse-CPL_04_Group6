@@ -103,10 +103,11 @@ const ConfirmOrder: React.FC<ConfirmOrderProps> = ({
         }
         else {
           if (selectedProducts.length !== 0) {
-            swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success')
             setOption('userOrder')
             setSelectedItems([])
-            saveToCheckOut(paymentMethod).then(() => navigate('/user/account/userProfile'))
+            saveToCheckOut(paymentMethod)
+            swal('Success!', 'Your order has been confirmed with cash on delivery payment method!', 'success')
+            .then(() => navigate('/user/account/userProfile'))
           } else {
             swal('Warning', 'Please select at least 1 products!', 'warning').then(() => navigate('/cart'))
           }

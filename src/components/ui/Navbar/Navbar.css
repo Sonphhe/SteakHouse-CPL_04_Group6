@@ -78,6 +78,22 @@
   font-size: larger;
 }
 
+.navbar-blog button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background-color: #7d161c;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+}
+
 .shopee-cart-number-badge {
   background-color: red;
   padding: 3px 5px;

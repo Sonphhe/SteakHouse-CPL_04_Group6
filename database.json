@@ -64,8 +64,7 @@
         "commune": "",
         "detailLocation": ""
       },
-      "id": "cJssgbX",
-      "createDate": "29/11/24"
+      "id": "t0vmAYn"
     }
   ],
   "productCategory": [
@@ -248,11 +247,13 @@
       "id": "12",
       "productName": "MOCKTAIL TORNADOL",
       "productOldPrice": 75,
-      "productPrice": 55,
+      "productPrice": 99,
       "image": "/assets/images/DRINKS3.jpeg",
       "description": "A refreshing, non-alcoholic mocktail that combines vibrant tropical flavors with a zesty twist. The Tornadol is a creative blend of fruit juices, soda, and a hint of spice, delivering a fun and fizzy experience for any occasion.",
-      "categoryId": 2,
-      "reviews": []
+      "categoryId": "2",
+      "reviews": [],
+      "hidden": true,
+      "category": "Drinks"
     },
     {
       "id": "13",
@@ -263,7 +264,7 @@
       "description": "A vibrant, refreshing cocktail featuring a blend of green fruits and herbs, designed to evoke the freshness and tranquility of a forest. This cocktail offers a harmonious mix of fruity sweetness and herbal zest, with a delightful green hue.",
       "categoryId": 2,
       "reviews": [],
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "14",
@@ -274,7 +275,7 @@
       "description": "A delightful, non-alcoholic mocktail that captures the essence of the freshest fruits in season. This refreshing beverage combines a variety of sweet, tangy, and juicy fruits, offering a burst of natural flavors with every sip.",
       "categoryId": 2,
       "reviews": [],
-      "hidden": false
+      "hidden": true
     },
     {
       "id": "15",
@@ -762,6 +763,19 @@
       "userId": "7gV5Fax",
       "cartItem": [
         {
+          "id": "10",
+          "productName": "COOKTAIL FRUIT SEASON",
+          "productOldPrice": 70,
+          "productPrice": 18.400000000000002,
+          "image": "/assets/images/DRINKS1.jpeg",
+          "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
+          "categoryId": 2,
+          "reviews": [],
+          "hidden": false,
+          "quantity": 1,
+          "isChecked": true
+        },
+        {
           "id": "1",
           "productName": "HOKUBEE STEAK",
           "productOldPrice": 100,
@@ -786,147 +800,23 @@
           "hidden": false,
           "quantity": 1,
           "isChecked": true
-        },
-        {
-          "id": "2",
-          "productName": "USA RIB EYE STEAK",
-          "productOldPrice": 120,
-          "productPrice": 165.75,
-          "image": "/assets/images/steak2_test.jpg",
-          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-          "category": "Steak",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": [
-            {
-              "userName": "Alice Johnson",
-              "rating": 5,
-              "comment": "The best rib-eye I've ever had!",
-              "date": "2024-11-13"
-            },
-            {
-              "userName": "Pham Hung Son",
-              "rating": 4,
-              "comment": "asd",
-              "date": "2024-11-16"
-            }
-          ],
-          "quantity": 1,
-          "isChecked": true
         }
       ]
     },
     {
-      "id": "1",
-      "userId": "8",
-      "cartItem": [
-        {
-          "id": "18",
-          "productName": "SEAFOOD PASTA WITH TOMYUM SAUCE",
-          "productOldPrice": 100,
-          "productPrice": 165,
-          "image": "/assets/images/SPAGHETTI1.jpeg",
-          "description": "A flavorful and fusion-style pasta dish, combining the richness of seafood with the bold, aromatic flavors of Tom Yum sauce. This dish features perfectly cooked pasta, complemented by a mix of fresh seafood, all enveloped in a spicy, tangy, and fragrant Tom Yum sauce inspired by traditional Thai cuisine.",
-          "categoryId": 3,
-          "reviews": [],
-          "quantity": 2,
-          "isChecked": true
-        }
-      ]
-    },
-    {
-      "userId": "UvmIhuy",
+      "userId": "t0vmAYn",
       "cartItem": [],
-      "id": "XsmKL4Y"
-    },
-    {
-      "userId": "588tNWj",
-      "cartItem": [
-        {
-          "id": "3",
-          "productName": "USA TOPBLADE STEAK",
-          "productOldPrice": 85,
-          "productPrice": 165,
-          "image": "/assets/images/steak3_test.webp",
-          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": [],
-          "isChecked": false,
-          "quantity": 2
-        }
-      ],
-      "id": "qmhQU5H"
+      "id": "k7W0Yvm"
     },
     {
       "userId": "1",
-      "cartItem": [
-        {
-          "id": "4",
-          "productName": "VIETNAM BEEFSTEAK",
-          "productOldPrice": 95,
-          "productPrice": 105,
-          "image": "/assets/images/steak4_test.webp",
-          "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
-          "categoryId": 1,
-          "reviews": [
-            {
-              "userName": "Mark Lee",
-              "rating": 3,
-              "comment": "It was okay, but I prefer other options.",
-              "date": "2024-11-12"
-            }
-          ],
-          "hidden": false,
-          "quantity": 1
-        }
-      ],
-      "id": "LNcNBpV"
+      "cartItem": [],
+      "id": "E37Blj8"
     },
     {
-      "userId": "cJssgbX",
-      "cartItem": [
-        {
-          "id": "1",
-          "productName": "HOKUBEE STEAK",
-          "productOldPrice": 100,
-          "productPrice": 186.4,
-          "image": "/assets/images/steak1.jpg",
-          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-          "categoryId": 1,
-          "reviews": [
-            {
-              "userName": "John Doe",
-              "rating": 5,
-              "comment": "Delicious steak with great flavor!",
-              "date": "2024-11-15"
-            },
-            {
-              "userName": "Jane Smith",
-              "rating": 4,
-              "comment": "Tasty, but a bit too salty for my taste.",
-              "date": "2024-11-14"
-            }
-          ],
-          "hidden": false,
-          "quantity": 1,
-          "isChecked": true
-        },
-        {
-          "id": "3",
-          "productName": "USA TOPBLADE STEAK",
-          "productOldPrice": 85,
-          "productPrice": 115.49999999999999,
-          "image": "/assets/images/steak3_test.webp",
-          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-          "categoryId": 1,
-          "reviews": [],
-          "hidden": false,
-          "quantity": 1,
-          "isChecked": true
-        }
-      ],
-      "id": "G_p2Ad0"
+      "userId": "1",
+      "cartItem": [],
+      "id": "1wSbP3Z"
     }
   ],
   "checkOutItems": [
@@ -1256,128 +1146,9 @@
             }
           ],
           "orderTime": "09:29 06/12/2024"
-        }
-      ]
-    },
-    {
-      "id": "1733411929402",
-      "userId": "cJssgbX",
-      "cartItems": [
-        {
-          "id": "1733411929366-xv9g84luf",
-          "status": "Waiting for Confirmation",
-          "items": [
-            {
-              "id": "6",
-              "productName": "LAMB STEAK",
-              "productOldPrice": 130,
-              "productPrice": 125,
-              "image": "/assets/images/steak6.jpg",
-              "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
-              "categoryId": 1,
-              "reviews": [
-                {
-                  "userName": "Tom Harris",
-                  "rating": 4,
-                  "comment": "Tender and flavorful lamb, great experience.",
-                  "date": "2024-11-11"
-                },
-                {
-                  "userName": "s",
-                  "rating": 4,
-                  "comment": "s",
-                  "date": "2024-11-25"
-                }
-              ],
-              "hidden": false,
-              "quantity": 1,
-              "isChecked": true
-            },
-            {
-              "id": "7",
-              "productName": "BEEF WITH PEPPER SAUCE",
-              "productOldPrice": 140,
-              "productPrice": 95,
-              "image": "/assets/images/steak7_test.jpg",
-              "description": "Tender cuts of beef, often from the sirloin or flank, cooked to perfection and served with a rich and flavorful pepper sauce. The beef is seared to lock in juices and combined with a creamy, peppery sauce that adds depth and heat.",
-              "categoryId": 1,
-              "reviews": [],
-              "hidden": false,
-              "quantity": 1,
-              "isChecked": true
-            },
-            {
-              "id": "8",
-              "productName": "NORWEGIAN SALMON",
-              "productOldPrice": 115,
-              "productPrice": 175,
-              "image": "/assets/images/steak8_test.webp",
-              "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
-              "categoryId": 1,
-              "reviews": [],
-              "hidden": false,
-              "quantity": 1,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "22:18 05/12/2024"
         },
         {
-          "id": "1733449701948-kw0atgwy1",
-          "status": "Waiting for Confirmation",
-          "items": [
-            {
-              "id": "2",
-              "productName": "USA RIB EYE STEAK",
-              "productOldPrice": 120,
-              "productPrice": 165.75,
-              "image": "/assets/images/steak2_test.jpg",
-              "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-              "category": "Steak",
-              "categoryId": 1,
-              "hidden": false,
-              "reviews": [
-                {
-                  "userName": "Alice Johnson",
-                  "rating": 5,
-                  "comment": "The best rib-eye I've ever had!",
-                  "date": "2024-11-13"
-                },
-                {
-                  "userName": "Pham Hung Son",
-                  "rating": 4,
-                  "comment": "asd",
-                  "date": "2024-11-16"
-                }
-              ],
-              "quantity": 1,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "08:48 06/12/2024"
-        },
-        {
-          "id": "1733450298021-00kyxq73k",
-          "status": "Waiting for Confirmation",
-          "items": [
-            {
-              "id": "3",
-              "productName": "USA TOPBLADE STEAK",
-              "productOldPrice": 85,
-              "productPrice": 115.49999999999999,
-              "image": "/assets/images/steak3_test.webp",
-              "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-              "categoryId": 1,
-              "reviews": [],
-              "hidden": false,
-              "quantity": 1,
-              "isChecked": true
-            }
-          ],
-          "orderTime": "08:58 06/12/2024"
-        },
-        {
-          "id": "1733450480375-8pu2m78oz",
+          "id": "1733472872864-bifa7pyze",
           "status": "Waiting for Confirmation",
           "items": [
             {
@@ -1407,40 +1178,100 @@
               "isChecked": true
             },
             {
-              "id": "3",
-              "productName": "USA TOPBLADE STEAK",
-              "productOldPrice": 85,
-              "productPrice": 115.49999999999999,
-              "image": "/assets/images/steak3_test.webp",
-              "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
+              "id": "2",
+              "productName": "USA RIB EYE STEAK",
+              "productOldPrice": 120,
+              "productPrice": 165.75,
+              "image": "/assets/images/steak2_test.jpg",
+              "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
+              "category": "Steak",
               "categoryId": 1,
-              "reviews": [],
               "hidden": false,
+              "reviews": [
+                {
+                  "userName": "Alice Johnson",
+                  "rating": 5,
+                  "comment": "The best rib-eye I've ever had!",
+                  "date": "2024-11-13"
+                },
+                {
+                  "userName": "Pham Hung Son",
+                  "rating": 4,
+                  "comment": "asd",
+                  "date": "2024-11-16"
+                }
+              ],
               "quantity": 1,
               "isChecked": true
-            },
+            }
+          ],
+          "orderTime": "15:14 06/12/2024"
+        },
+        {
+          "id": "1733472979434-gqq3b1kvf",
+          "status": "Waiting for Confirmation",
+          "items": [
             {
-              "id": "4",
-              "productName": "VIETNAM BEEFSTEAK",
-              "productOldPrice": 95,
-              "productPrice": 78.75,
-              "image": "/assets/images/steak4_test.webp",
-              "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
+              "id": "6",
+              "productName": "LAMB STEAK",
+              "productOldPrice": 130,
+              "productPrice": 62.5,
+              "image": "/assets/images/steak6.jpg",
+              "description": "Tender cuts of lamb, typically from the rib or loin, providing a juicy and flavorful steak experience. The meat is known for its slightly gamey taste and rich texture, making it a favorite for steak lovers.",
               "categoryId": 1,
               "reviews": [
                 {
-                  "userName": "Mark Lee",
-                  "rating": 3,
-                  "comment": "It was okay, but I prefer other options.",
-                  "date": "2024-11-12"
+                  "userName": "Tom Harris",
+                  "rating": 4,
+                  "comment": "Tender and flavorful lamb, great experience.",
+                  "date": "2024-11-11"
+                },
+                {
+                  "userName": "s",
+                  "rating": 4,
+                  "comment": "s",
+                  "date": "2024-11-25"
                 }
               ],
               "hidden": false,
               "quantity": 1,
               "isChecked": true
+            },
+            {
+              "id": "8",
+              "productName": "NORWEGIAN SALMON",
+              "productOldPrice": 115,
+              "productPrice": 105,
+              "image": "/assets/images/steak8_test.webp",
+              "description": "Premium wild-caught or farmed Norwegian salmon, known for its bright pink color, tender texture, and rich, fatty content. Renowned for its high-quality, sustainable sourcing from the cold, clean waters of Norway.",
+              "categoryId": 1,
+              "reviews": [],
+              "hidden": false,
+              "quantity": 1,
+              "isChecked": true
             }
           ],
-          "orderTime": "09:01 06/12/2024"
+          "orderTime": "15:16 06/12/2024"
+        },
+        {
+          "id": "1733474770669-557uojtli",
+          "status": "Shipping",
+          "items": [
+            {
+              "id": "10",
+              "productName": "COOKTAIL FRUIT SEASON",
+              "productOldPrice": 70,
+              "productPrice": 18.400000000000002,
+              "image": "/assets/images/DRINKS1.jpeg",
+              "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
+              "categoryId": 2,
+              "reviews": [],
+              "hidden": false,
+              "quantity": 1,
+              "isChecked": true
+            }
+          ],
+          "orderTime": "15:46 06/12/2024"
         }
       ]
     }
@@ -1539,43 +1370,6 @@
   ],
   "favourite": [
     {
-      "id": "1",
-      "userId": "3Lo4Ulj",
-      "favoriteItems": [
-        {
-          "id": "26",
-          "productName": "BEEF, CHICKEN, TUNA SALAD MIXED WITH BBQ SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 60,
-          "image": "/assets/images/SALAD2.jpg",
-          "description": "A hearty and protein-packed salad combining tender beef, succulent chicken, and flavorful tuna, all tossed with a smoky BBQ sauce and fresh vegetables. This dish offers a variety of textures and flavors, with the savory meats paired perfectly with the bold, tangy BBQ sauce.",
-          "categoryId": 4,
-          "hidden": false,
-          "reviews": []
-        },
-        {
-          "id": "27",
-          "productName": "BEEF, TUNA SALAD MIXED WITH SPICY AND SOUR SAUCE",
-          "productOldPrice": 110,
-          "productPrice": 65,
-          "image": "/assets/images/SALAD3.jpg",
-          "description": "A vibrant, flavorful salad featuring a combination of tender beef and tuna, tossed with a zesty spicy and sour sauce. The mix of protein-rich beef and tuna pairs perfectly with the tangy and spicy dressing, making this a bold and satisfying dish.",
-          "categoryId": 4,
-          "hidden": false,
-          "reviews": []
-        },
-        {
-          "id": "1",
-          "productName": "HOKUBEE STEAK",
-          "image": "/assets/images/steak1.jpg",
-          "productPrice": 232,
-          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-          "categoryId": 1,
-          "hidden": false
-        }
-      ]
-    },
-    {
       "id": "2",
       "userId": "7gV5Fax",
       "favoriteItems": [
@@ -1630,145 +1424,39 @@
           "categoryId": 1,
           "hidden": false,
           "reviews": []
-        }
-      ]
-    },
-    {
-      "id": "3",
-      "userId": "",
-      "favoriteItems": [
-        {
-          "id": "4",
-          "productName": "VIETNAM BEEFSTEAK",
-          "productOldPrice": 95,
-          "productPrice": 105,
-          "image": "/assets/images/steak4_test.webp",
-          "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
-          "categoryId": 1,
-          "reviews": [
-            {
-              "userName": "Mark Lee",
-              "rating": 3,
-              "comment": "It was okay, but I prefer other options.",
-              "date": "2024-11-12"
-            }
-          ],
-          "hidden": false
-        }
-      ]
-    },
-    {
-      "id": "4",
-      "userId": "1",
-      "favoriteItems": [
-        {
-          "id": "1",
-          "productName": "HOKUBEE STEAK",
-          "productOldPrice": 100,
-          "productPrice": 233,
-          "image": "/assets/images/steak1.jpg",
-          "description": "Sirloin (beef back) is famous for its softness and light fat taste, suitable for those who love steak with natural sweetness and rich flavor.",
-          "categoryId": 1,
-          "reviews": [
-            {
-              "userName": "John Doe",
-              "rating": 5,
-              "comment": "Delicious steak with great flavor!",
-              "date": "2024-11-15"
-            },
-            {
-              "userName": "Jane Smith",
-              "rating": 4,
-              "comment": "Tasty, but a bit too salty for my taste.",
-              "date": "2024-11-14"
-            }
-          ],
-          "hidden": false
         },
         {
-          "id": "2",
-          "productName": "USA RIB EYE STEAK",
-          "productOldPrice": 120,
-          "productPrice": 195,
-          "image": "/assets/images/steak2_test.jpg",
-          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-          "category": "Steak",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": [
-            {
-              "userName": "Alice Johnson",
-              "rating": 5,
-              "comment": "The best rib-eye I've ever had!",
-              "date": "2024-11-13"
-            },
-            {
-              "userName": "Pham Hung Son",
-              "rating": 4,
-              "comment": "asd",
-              "date": "2024-11-16"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "5",
-      "userId": "cJssgbX",
-      "favoriteItems": [
-        {
-          "id": "3",
-          "productName": "USA TOPBLADE STEAK",
-          "productOldPrice": 85,
-          "productPrice": 165,
-          "image": "/assets/images/steak3_test.webp",
-          "description": "Topblade, a flavorful and tender cut from the shoulder of the cow. Known for its fine marbling, it delivers a rich and juicy taste, ideal for grilling or pan-searing.",
-          "categoryId": 1,
+          "id": "10",
+          "productName": "COOKTAIL FRUIT SEASON",
+          "productOldPrice": 70,
+          "productPrice": 46,
+          "image": "/assets/images/DRINKS1.jpeg",
+          "description": "A vibrant mix of seasonal fruits, carefully selected for their freshness and flavor. The combination typically includes fruits like watermelon, pineapple, mango, papaya, strawberries, grapes, and citrus fruits, offering a refreshing and tropical taste.",
+          "categoryId": 2,
           "reviews": [],
           "hidden": false
         },
         {
-          "id": "4",
-          "productName": "VIETNAM BEEFSTEAK",
-          "productOldPrice": 95,
-          "productPrice": 105,
-          "image": "/assets/images/steak4_test.webp",
-          "description": "Locally sourced beef, carefully selected to provide a lean and flavorful steak experience. Known for its natural taste and moderate tenderness, it is a versatile option for everyday meals.",
-          "categoryId": 1,
-          "reviews": [
-            {
-              "userName": "Mark Lee",
-              "rating": 3,
-              "comment": "It was okay, but I prefer other options.",
-              "date": "2024-11-12"
-            }
-          ],
+          "id": "15",
+          "productName": "CHILE WINE",
+          "productOldPrice": 60,
+          "productPrice": 55,
+          "image": "/assets/images/DRINKS6.jpeg",
+          "description": "A high-quality wine from the renowned wine regions of Chile, celebrated for its rich, bold flavors and exceptional balance. Chile is known for producing a wide range of red, white, and sparkling wines, with favorable climates that enhance the development of complex flavors and aromas.",
+          "categoryId": 2,
+          "reviews": [],
           "hidden": false
         },
         {
-          "id": "2",
-          "productName": "USA RIB EYE STEAK",
-          "productOldPrice": 120,
-          "productPrice": 195,
-          "image": "/assets/images/steak2_test.jpg",
-          "description": "Rib Eye (beef flank), famous for its perfect marbling, giving it a natural tenderness and rich flavor when cooked.",
-          "category": "Steak",
-          "categoryId": 1,
-          "hidden": false,
-          "reviews": [
-            {
-              "userName": "Alice Johnson",
-              "rating": 5,
-              "comment": "The best rib-eye I've ever had!",
-              "date": "2024-11-13"
-            },
-            {
-              "userName": "Pham Hung Son",
-              "rating": 4,
-              "comment": "asd",
-              "date": "2024-11-16"
-            }
-          ]
+          "id": "13",
+          "productName": "GREEN FOREST COCKTAIL",
+          "productOldPrice": 85,
+          "productPrice": 60,
+          "image": "/assets/images/DRINKS4.jpg",
+          "description": "A vibrant, refreshing cocktail featuring a blend of green fruits and herbs, designed to evoke the freshness and tranquility of a forest. This cocktail offers a harmonious mix of fruity sweetness and herbal zest, with a delightful green hue.",
+          "categoryId": 2,
+          "reviews": [],
+          "hidden": false
         }
       ]
     }

@@ -22,20 +22,28 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
       <div onClick={(e) => e.stopPropagation()} className='search-dropdown-container'>
         <div className='search-keyload'>
           <ul>
-            {products
-              .filter((item) => {
-                const searchTerm = props.value.toLowerCase()
-                const itemName = item.productName.toLowerCase()
-                return searchTerm && itemName.startsWith(searchTerm)
-              })
-              .map((item) => (
-                <li onClick={() => onSearch(item)} key={item.id}>
-                  {item.productName}
-                </li>
-              ))}
+            {products.filter((item) => {
+              const searchTerm = props.value.toLowerCase()
+              const itemName = item.productName.toLowerCase()
+              return searchTerm && itemName.startsWith(searchTerm)
+            }).length > 0 ? (
+              products
+                .filter((item) => {
+                  const searchTerm = props.value.toLowerCase()
+                  const itemName = item.productName.toLowerCase()
+                  return searchTerm && itemName.startsWith(searchTerm)
+                })
+                .map((item) => (
+                  <li onClick={() => onSearch(item)} key={item.id}>
+                    {item.productName}
+                  </li>
+                ))
+            ) : (
+              <p>No product is suitable</p>
+            )}
           </ul>
         </div>
-        <div className='search-history'>
+        {/* <div className='search-history'>
           <ul>
             <li>
               <div>
@@ -50,7 +58,7 @@ const SearchDropDown = (props: { value: string; action: Function }) => {
             </li>
           </ul>
           <h5 className='delete'>Delete All</h5>
-        </div>
+        </div> */}
         {/* <div className='search-category'>
           <h4>Search Categories</h4>
           <ul>

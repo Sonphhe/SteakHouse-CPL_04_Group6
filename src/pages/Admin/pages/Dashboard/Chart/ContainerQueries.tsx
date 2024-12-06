@@ -57,7 +57,7 @@ function ContainerQueries() {
                         color: 'gray'
                       }}
                     >
-                      ${product.productOldPrice}
+                      {(product.productPrice*1000).toLocaleString('vn-VN').concat('đ')}
                     </Typography>
                     <Typography
                       sx={{
@@ -65,7 +65,7 @@ function ContainerQueries() {
                         fontWeight: 'bold'
                       }}
                     >
-                      ${product.productPrice}
+                      {((product.productPrice - product.productPrice*(sale.sale/100))*1000).toLocaleString('vn-VN').concat('đ')}
                     </Typography>
                   </Box>
                   <Typography color='primary'>
